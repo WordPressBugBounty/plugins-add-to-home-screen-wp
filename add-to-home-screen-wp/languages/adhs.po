@@ -1,0 +1,213 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: ATHS WP Plugin\n"
+"POT-Creation-Date: 2025-02-17 16:36+0100\n"
+"PO-Revision-Date: 2025-02-17 16:38+0100\n"
+"Last-Translator: Tulipe Media <contact@tulipemedia.com>\n"
+"Language-Team: Tulipe Media <contact@tulipemedia.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=n>1;\n"
+"X-Generator: Poedit 3.5\n"
+"X-Poedit-KeywordsList: __;_e;_c\n"
+"X-Poedit-Basepath: .\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-SearchPath-0: C:/Users/Ziyad/Dropbox/Dev/adhs\n"
+
+#: index.php:75
+msgid "You do not have sufficient permissions to access this page."
+msgstr ""
+
+#: options.php:52
+msgid "ATHS Options &raquo; Settings"
+msgstr ""
+
+#: options.php:54
+msgid "Keep in touch with me."
+msgstr ""
+
+#: options.php:71
+msgid "Let me know that you are using my plugin!"
+msgstr ""
+
+#: options.php:72
+msgid ""
+"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
+"tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Apple "
+"#iOS"
+msgstr ""
+
+#: options.php:75
+msgid "Spread the word!"
+msgstr ""
+
+#: options.php:83 options.php:88
+msgid "Save Settings"
+msgstr ""
+
+#: options.php:94
+msgid "Floating bubble options"
+msgstr ""
+
+#: options.php:96
+msgid "Show to returning visitors only"
+msgstr ""
+
+#: options.php:98
+msgid ""
+"Set this to true and the message won't be shown the first time one user "
+"visits your blog. It can be useful to target only returning visitors and not "
+"irritate first time visitors. <i>I recommend to check this value</i>."
+msgstr ""
+
+#: options.php:103
+msgid "Custom message"
+msgstr ""
+
+#: options.php:105
+msgid ""
+"Type the custom message that you want appearing in the balloon. You can also "
+"display default message in the language of your choice by typing the locale "
+"(e.g: en_us)."
+msgstr ""
+
+#: options.php:106
+msgid ""
+"<i>Use %device to show user's device on message, %icon to display the first "
+"add icon, and %add to display the second add to home screen icon.</i>"
+msgstr ""
+
+#: options.php:111
+msgid "Animation in"
+msgstr ""
+
+#: options.php:113
+msgid "The animation the balloon appears with."
+msgstr ""
+
+#: options.php:122
+msgid "Animation out"
+msgstr ""
+
+#: options.php:124
+msgid "The animation the balloon exits with."
+msgstr ""
+
+#: options.php:133
+msgid "Start delay"
+msgstr ""
+
+#: options.php:135
+msgid "Milliseconds to wait before showing the message. Default: 2000"
+msgstr ""
+
+#: options.php:140
+msgid "Lifespan"
+msgstr ""
+
+#: options.php:142
+msgid "Milliseconds to wait before hiding the message. Default: 20000"
+msgstr ""
+
+#: options.php:147
+msgid "Bottom offset"
+msgstr ""
+
+#: options.php:149
+msgid ""
+"Distance in pixels from the bottom (iPhone) or the top (iPad). Default: 14"
+msgstr ""
+
+#: options.php:154
+msgid "Expire timeframe"
+msgstr ""
+
+#: options.php:156
+msgid ""
+"Minutes before displaying the message again. Default: 0 (=always show). It's "
+"highly recommended to set a timeframe in order to prevent showing message at "
+"each and every page load for those who didn't add the Web App to their "
+"homescreen or those who added it but load the blog on Safari!<br /"
+"><i>Recommended values: 43200 for one month or 525600 for one year.</i>"
+msgstr ""
+
+#: options.php:161
+msgid "iOs touch icons"
+msgstr ""
+
+#: options.php:163
+msgid "Touch icon"
+msgstr ""
+
+#: options.php:165
+msgid ""
+"If checked, the script checks for link rel=\"apple-touch-icon\" in the page "
+"HEAD and displays the application icon next to the message."
+msgstr ""
+
+#: options.php:170
+msgid "Precomposed icons"
+msgstr ""
+
+#: options.php:172
+msgid "If checked, icons will display without the Apple gloss effect."
+msgstr ""
+
+#: options.php:177
+msgid "Touch icons URLs"
+msgstr ""
+
+#: options.php:179
+msgid ""
+"If mentionned, those fields add <i>link rel=\"apple-touch-icon\"</i> in the "
+"page HEAD (convenient for those who have no touch icon). Just paste the URLs "
+"of your icons."
+msgstr ""
+
+#: options.php:184
+msgid "57x57 touch icon URL (for iPhone 3GS and 2011 iPod Touch)."
+msgstr ""
+
+#: options.php:190
+msgid "72x72 touch icon URL (for 1st generation iPad, iPad 2 and iPad mini)."
+msgstr ""
+
+#: options.php:196
+msgid "114x114 touch icon URL (for iPhone 4, 4S, 5 and 2012 iPod Touch)."
+msgstr ""
+
+#: options.php:202
+msgid "144x144 touch icon URL (for iPad 3rd and 4th generation)."
+msgstr ""
+
+#: options.php:208
+msgid "Title of your Web App"
+msgstr ""
+
+#: options.php:210
+msgid ""
+"Type the name of your blog (max: 12 characters !). Default: it takes the "
+"default title of the page."
+msgstr ""
+
+#: options.php:215
+msgid "On which page the balloon should appear?"
+msgstr ""
+
+#: options.php:217
+msgid ""
+"Keep in mind that if someone adds your blog to home screen from a single "
+"article page for instance, the web app will load this page and not the "
+"homepage of the blog. That's why you could choose to open the floating "
+"balloon on homepage only and not on all pages of your blog."
+msgstr ""
+
+#: options.php:220
+msgid "Home only"
+msgstr ""
+
+#: options.php:221
+msgid "All pages"
+msgstr ""
