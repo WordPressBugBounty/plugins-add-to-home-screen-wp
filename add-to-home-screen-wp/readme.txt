@@ -4,7 +4,7 @@ Donate link: https://tulipemedia.com
 Tags: iPhone, iOs, homescreen, homescreen, webapp
 Requires at least: 6.7
 Tested up to: 6.7
-Stable tag: 2.4
+Stable tag: 2.5
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -12,15 +12,15 @@ Add to HomeScreen WordPress plugin invites your readers to add your blog as an i
 
 == Description ==
 
-This plugin uses [Add to home screen's Cubiq script](https://cubiq.org/add-to-home-screen "Add to home screen") to place a floating balloon inviting the user to add a website to their home screen as a standard iOs application.
+This plugin uses [Add to home screen's Cubiq script](https://github.com/cubiq/add-to-homescreen "Add to home screen") to place a floating balloon inviting the user to add a website to their home screen as a standard iOs application.
 
 It's a good way to retain visitors coming to your blog, especially if you don't want to develop an expensive application just to let them read articles of your WordPress blog.
 
 The floating balloon is compatible with all recent iPhones and iPads.
 
-<strong>2023 UPDATE : The Add to home screen WP Plugin supports the latest versions of WordPress, and its use with the main Progressive Web App (PWA) extensions is highly recommended.</strong>
+<strong>2025 UPDATE : The Add to home screen WP Plugin Plugin is back online and fully compliant with WordPress requirements.</strong>
 
-You can now use a PWA WordPress plugin, like <a target="_blank" href="https://wordpress.org/plugins/pwa-for-wp/">PWA for WP & AMP</a> for instance, to turn your WordPress blog into a kind of native mobile app, without the constraints of native mobile app (store submission, costs, etc...).
+You can also use a PWA WordPress plugin, like <a target="_blank" href="https://wordpress.org/plugins/pwa-for-wp/">PWA for WP & AMP</a> for instance, to turn your WordPress blog into a kind of native mobile app, without the constraints of native mobile app (store submission, costs, etc...).
 
 With PWA coupled with Add to home screen WP Plugin, you will be able to display the legendary floating balloon that invites your visitors to add your blog to their iOs device, and then your blog will load as a PWA.
 
@@ -100,6 +100,12 @@ Of course, and it's highly suggested! You can add link, bold text and also add e
 
 Yes sir! With WPML, download and install the "String translation" add-on, scroll down, click on "Translate texts in admin screens" and look for "Message" field with the search tool of your browser, you should find the field containing your custom message. Just check the left box and save settings. Now come back to String translation and you will find your custom message, ready to be translated!
 
+= Can I use HTML in the custom message? =
+Yes, you can use basic HTML tags like `<center>`, `<h4>`, `<strong>`, `<br>`, `<p>`, `<b>`, and `<i>` to style your message.
+
+= What size should my touch icon be? =
+A 180x180 PNG icon is recommended for modern iOS devices. This will be scaled down as needed by iOS.
+
 == Screenshots ==
 
 1. Example of a nice custom floating balloon
@@ -111,6 +117,14 @@ Yes sir! With WPML, download and install the "String translation" add-on, scroll
 
 
 == Changelog ==
+
+= 2.5 =
+* Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
+* Removed: Deprecated touch icon sizes (57x57, 72x72, 114x114, 144x144) from options.
+* Updated: Replaced Universal Analytics tracking with Google Analytics 4 compatibility.
+* Improved: Renamed main plugin file from "index.php" to "add-to-home-screen-wp.php" to follow WordPress conventions.
+* Version 2.6 simplifies touch icon support to a single 180x180 size and updates tracking to Google Analytics 4.
+
 = 2.4 =
 Minor fix.
 
@@ -193,6 +207,15 @@ Display title of the page.
 First version of the plugin.
 
 == Upgrade Notice ==
+= 2.6 =
+Version 2.6 simplifies touch icon support to a single 180x180 size and updates tracking to Google Analytics 4.
+
+= 2.5 =
+* Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
+* Removed: Deprecated touch icon sizes (57x57, 72x72, 114x114, 144x144) from options.
+* Updated: Replaced Universal Analytics tracking with Google Analytics 4 compatibility.
+* Improved: Renamed main plugin file from "index.php" to "add-to-home-screen-wp.php" to follow WordPress conventions.
+
 = 2.4 =
 Minor fix.
 
@@ -248,7 +271,7 @@ Retrieve the wp_title function to display real page title below the home screen 
 First version of the plugin.
 
 == Credits ==
-This plugin has been written by [Ziyad Bachalany](https://tulipemedia.com) and uses the [Add to Home Screen Floating Layer script](https://cubiq.org/add-to-home-screen) by Matteo Spinelli that is released under the MIT License (see below).
+This plugin has been written by [Ziyad Bachalany](https://tulipemedia.com) and uses the [Add to Home Screen Floating Layer script](https://github.com/cubiq/add-to-homescreen) by Matteo Spinelli that is released under the MIT License (see below).
 
 ## License
 

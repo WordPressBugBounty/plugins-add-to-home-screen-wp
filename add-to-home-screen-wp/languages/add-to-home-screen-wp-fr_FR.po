@@ -1,8 +1,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATHS WP Plugin\n"
-"POT-Creation-Date: 2025-02-19 16:16+0100\n"
-"PO-Revision-Date: 2025-02-20 18:33+0100\n"
+"POT-Creation-Date: 2025-02-20 20:14+0100\n"
+"PO-Revision-Date: 2025-02-20 20:15+0100\n"
 "Last-Translator: Tulipe Media <contact@tulipemedia.com>\n"
 "Language-Team: Tulipe Media <contact@tulipemedia.com>\n"
 "Language: fr\n"
@@ -63,6 +63,9 @@ msgstr "Vous n'avez pas les permissions nécessaires pour accéder à cette page
 #: tags/1.5/5.1/1.2/options.php:53 tags/1.5/5.1/1.3/options.php:53
 #: tags/1.5/5.1/1.4/options.php:53 tags/1.6/options.php:53
 #: tags/1.7/options.php:53 tags/1.8/options.php:53 tags/1.9/options.php:53
+#: tags/2.1/options.php:52 tags/2.2/options.php:52
+#: tags/2.2/trunk/options.php:52 tags/2.3/options.php:52
+#: tags/2.4/options.php:52
 msgid "ATHS Options &raquo; Settings"
 msgstr "ATHS Option &raquo; Réglages"
 
@@ -158,6 +161,9 @@ msgstr "Sauvegarder"
 #: tags/1.5/5.1/1.2/options.php:106 tags/1.5/5.1/1.3/options.php:106
 #: tags/1.5/5.1/1.4/options.php:94 tags/1.6/options.php:94
 #: tags/1.7/options.php:94 tags/1.8/options.php:96 tags/1.9/options.php:96
+#: tags/2.1/options.php:96 tags/2.2/options.php:96
+#: tags/2.2/trunk/options.php:96 tags/2.3/options.php:96
+#: tags/2.4/options.php:96 trunk/options.php:95
 msgid "Show to returning visitors only"
 msgstr "N'afficher qu'après la seconde visite"
 
@@ -165,7 +171,9 @@ msgstr "N'afficher qu'après la seconde visite"
 #: tags/1.5/0.1/options.php:96 tags/1.5/0.2/options.php:96
 #: tags/1.5/0.3/options.php:96 tags/1.5/5.1/0.1/options.php:96
 #: tags/1.5/5.1/0.2/options.php:96 tags/1.5/5.1/0.3/options.php:96
-#: trunk/options.php:100
+#: tags/2.1/options.php:100 tags/2.2/options.php:100
+#: tags/2.2/trunk/options.php:100 tags/2.3/options.php:100
+#: tags/2.4/options.php:100 trunk/options.php:98
 msgid ""
 "Set this to true and the message won't be shown the first time one user "
 "visits your blog. It can be useful to target only returning visitors and not "
@@ -196,7 +204,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:113 tags/1.5/5.1/1.2/options.php:113
 #: tags/1.5/5.1/1.3/options.php:113 tags/1.5/5.1/1.4/options.php:101
 #: tags/1.6/options.php:101 tags/1.7/options.php:101 tags/1.8/options.php:103
-#: tags/1.9/options.php:103
+#: tags/1.9/options.php:103 tags/2.1/options.php:109 tags/2.2/options.php:109
+#: tags/2.2/trunk/options.php:109 tags/2.3/options.php:109
+#: tags/2.4/options.php:109 trunk/options.php:106
 msgid "Custom message"
 msgstr "Message personnalisé"
 
@@ -220,7 +230,9 @@ msgstr "Message personnalisé"
 #: tags/1.5/5.1/1.1/options.php:115 tags/1.5/5.1/1.2/options.php:115
 #: tags/1.5/5.1/1.3/options.php:115 tags/1.5/5.1/1.4/options.php:103
 #: tags/1.6/options.php:103 tags/1.7/options.php:103 tags/1.8/options.php:105
-#: tags/1.9/options.php:105
+#: tags/1.9/options.php:105 tags/2.1/options.php:111 tags/2.2/options.php:111
+#: tags/2.2/trunk/options.php:111 tags/2.3/options.php:111
+#: tags/2.4/options.php:111 trunk/options.php:108
 msgid ""
 "Type the custom message that you want appearing in the balloon. You can also "
 "display default message in the language of your choice by typing the locale "
@@ -251,7 +263,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:121 tags/1.5/5.1/1.2/options.php:121
 #: tags/1.5/5.1/1.3/options.php:121 tags/1.5/5.1/1.4/options.php:109
 #: tags/1.6/options.php:109 tags/1.7/options.php:109 tags/1.8/options.php:111
-#: tags/1.9/options.php:111
+#: tags/1.9/options.php:111 tags/2.1/options.php:125 tags/2.2/options.php:125
+#: tags/2.2/trunk/options.php:125 tags/2.3/options.php:125
+#: tags/2.4/options.php:125 trunk/options.php:122
 msgid "Animation in"
 msgstr "Animation entrante"
 
@@ -275,7 +289,9 @@ msgstr "Animation entrante"
 #: tags/1.5/5.1/1.1/options.php:123 tags/1.5/5.1/1.2/options.php:123
 #: tags/1.5/5.1/1.3/options.php:123 tags/1.5/5.1/1.4/options.php:111
 #: tags/1.6/options.php:111 tags/1.7/options.php:111 tags/1.8/options.php:113
-#: tags/1.9/options.php:113
+#: tags/1.9/options.php:113 tags/2.1/options.php:127 tags/2.2/options.php:127
+#: tags/2.2/trunk/options.php:127 tags/2.3/options.php:127
+#: tags/2.4/options.php:127 trunk/options.php:124
 msgid "The animation the balloon appears with."
 msgstr "L'animation par laquelle la fenêtre apparaît."
 
@@ -299,7 +315,9 @@ msgstr "L'animation par laquelle la fenêtre apparaît."
 #: tags/1.5/5.1/1.1/options.php:132 tags/1.5/5.1/1.2/options.php:132
 #: tags/1.5/5.1/1.3/options.php:132 tags/1.5/5.1/1.4/options.php:120
 #: tags/1.6/options.php:120 tags/1.7/options.php:120 tags/1.8/options.php:122
-#: tags/1.9/options.php:122
+#: tags/1.9/options.php:122 tags/2.1/options.php:136 tags/2.2/options.php:136
+#: tags/2.2/trunk/options.php:136 tags/2.3/options.php:136
+#: tags/2.4/options.php:136 trunk/options.php:133
 msgid "Animation out"
 msgstr "Animation sortante"
 
@@ -323,7 +341,9 @@ msgstr "Animation sortante"
 #: tags/1.5/5.1/1.1/options.php:134 tags/1.5/5.1/1.2/options.php:134
 #: tags/1.5/5.1/1.3/options.php:134 tags/1.5/5.1/1.4/options.php:122
 #: tags/1.6/options.php:122 tags/1.7/options.php:122 tags/1.8/options.php:124
-#: tags/1.9/options.php:124
+#: tags/1.9/options.php:124 tags/2.1/options.php:138 tags/2.2/options.php:138
+#: tags/2.2/trunk/options.php:138 tags/2.3/options.php:138
+#: tags/2.4/options.php:138 trunk/options.php:135
 msgid "The animation the balloon exits with."
 msgstr "L'animation par laquelle la fenêtre disparaît."
 
@@ -347,7 +367,9 @@ msgstr "L'animation par laquelle la fenêtre disparaît."
 #: tags/1.5/5.1/1.1/options.php:143 tags/1.5/5.1/1.2/options.php:143
 #: tags/1.5/5.1/1.3/options.php:143 tags/1.5/5.1/1.4/options.php:131
 #: tags/1.6/options.php:131 tags/1.7/options.php:131 tags/1.8/options.php:133
-#: tags/1.9/options.php:133
+#: tags/1.9/options.php:133 tags/2.1/options.php:147 tags/2.2/options.php:147
+#: tags/2.2/trunk/options.php:147 tags/2.3/options.php:147
+#: tags/2.4/options.php:147 trunk/options.php:144
 msgid "Start delay"
 msgstr "Délai"
 
@@ -371,7 +393,9 @@ msgstr "Délai"
 #: tags/1.5/5.1/1.1/options.php:145 tags/1.5/5.1/1.2/options.php:145
 #: tags/1.5/5.1/1.3/options.php:145 tags/1.5/5.1/1.4/options.php:133
 #: tags/1.6/options.php:133 tags/1.7/options.php:133 tags/1.8/options.php:135
-#: tags/1.9/options.php:135
+#: tags/1.9/options.php:135 tags/2.1/options.php:149 tags/2.2/options.php:149
+#: tags/2.2/trunk/options.php:149 tags/2.3/options.php:149
+#: tags/2.4/options.php:149 trunk/options.php:146
 msgid "Milliseconds to wait before showing the message. Default: 2000"
 msgstr ""
 "Temps d'attente en millisecondes avant d'afficher le message. Par défaut : "
@@ -397,7 +421,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:150 tags/1.5/5.1/1.2/options.php:150
 #: tags/1.5/5.1/1.3/options.php:150 tags/1.5/5.1/1.4/options.php:138
 #: tags/1.6/options.php:138 tags/1.7/options.php:138 tags/1.8/options.php:140
-#: tags/1.9/options.php:140
+#: tags/1.9/options.php:140 tags/2.1/options.php:154 tags/2.2/options.php:154
+#: tags/2.2/trunk/options.php:154 tags/2.3/options.php:154
+#: tags/2.4/options.php:154 trunk/options.php:151
 msgid "Lifespan"
 msgstr "Durée de vie"
 
@@ -421,7 +447,9 @@ msgstr "Durée de vie"
 #: tags/1.5/5.1/1.1/options.php:152 tags/1.5/5.1/1.2/options.php:152
 #: tags/1.5/5.1/1.3/options.php:152 tags/1.5/5.1/1.4/options.php:140
 #: tags/1.6/options.php:140 tags/1.7/options.php:140 tags/1.8/options.php:142
-#: tags/1.9/options.php:142
+#: tags/1.9/options.php:142 tags/2.1/options.php:156 tags/2.2/options.php:156
+#: tags/2.2/trunk/options.php:156 tags/2.3/options.php:156
+#: tags/2.4/options.php:156 trunk/options.php:153
 msgid "Milliseconds to wait before hiding the message. Default: 20000"
 msgstr ""
 "Temps en millisecondes avant que le message ne disparaisse. Par défaut : "
@@ -447,7 +475,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:157 tags/1.5/5.1/1.2/options.php:157
 #: tags/1.5/5.1/1.3/options.php:157 tags/1.5/5.1/1.4/options.php:145
 #: tags/1.6/options.php:145 tags/1.7/options.php:145 tags/1.8/options.php:147
-#: tags/1.9/options.php:147
+#: tags/1.9/options.php:147 tags/2.1/options.php:161 tags/2.2/options.php:161
+#: tags/2.2/trunk/options.php:161 tags/2.3/options.php:161
+#: tags/2.4/options.php:161 trunk/options.php:158
 msgid "Bottom offset"
 msgstr "Distance"
 
@@ -471,7 +501,9 @@ msgstr "Distance"
 #: tags/1.5/5.1/1.1/options.php:159 tags/1.5/5.1/1.2/options.php:159
 #: tags/1.5/5.1/1.3/options.php:159 tags/1.5/5.1/1.4/options.php:147
 #: tags/1.6/options.php:147 tags/1.7/options.php:147 tags/1.8/options.php:149
-#: tags/1.9/options.php:149
+#: tags/1.9/options.php:149 tags/2.1/options.php:163 tags/2.2/options.php:163
+#: tags/2.2/trunk/options.php:163 tags/2.3/options.php:163
+#: tags/2.4/options.php:163 trunk/options.php:160
 msgid ""
 "Distance in pixels from the bottom (iPhone) or the top (iPad). Default: 14"
 msgstr ""
@@ -497,7 +529,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:164 tags/1.5/5.1/1.2/options.php:164
 #: tags/1.5/5.1/1.3/options.php:164 tags/1.5/5.1/1.4/options.php:152
 #: tags/1.6/options.php:152 tags/1.7/options.php:152 tags/1.8/options.php:154
-#: tags/1.9/options.php:154
+#: tags/1.9/options.php:154 tags/2.1/options.php:168 tags/2.2/options.php:168
+#: tags/2.2/trunk/options.php:168 tags/2.3/options.php:168
+#: tags/2.4/options.php:168 trunk/options.php:165
 msgid "Expire timeframe"
 msgstr "Expiration des délais"
 
@@ -534,7 +568,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:173 tags/1.5/5.1/1.2/options.php:173
 #: tags/1.5/5.1/1.3/options.php:173 tags/1.5/5.1/1.4/options.php:161
 #: tags/1.6/options.php:161 tags/1.7/options.php:161 tags/1.8/options.php:163
-#: tags/1.9/options.php:163
+#: tags/1.9/options.php:163 tags/2.1/options.php:177 tags/2.2/options.php:177
+#: tags/2.2/trunk/options.php:177 tags/2.3/options.php:177
+#: tags/2.4/options.php:177
 msgid "Touch icon"
 msgstr "Icône touch"
 
@@ -573,6 +609,7 @@ msgstr ""
 #: tags/1.5/5.1/0.3/options.php:168 tags/1.5/5.1/0.4/options.php:168
 #: tags/1.5/5.1/0.5/options.php:168 tags/1.5/5.1/0.6/options.php:168
 #: tags/1.5/5.1/0.7/options.php:168 tags/1.5/5.1/0.8/options.php:168
+#: trunk/options.php:191
 msgid "Touch icon URL"
 msgstr "URL de l'icône touch"
 
@@ -889,7 +926,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:218 tags/1.5/5.1/1.2/options.php:218
 #: tags/1.5/5.1/1.3/options.php:218 tags/1.5/5.1/1.4/options.php:206
 #: tags/1.6/options.php:206 tags/1.7/options.php:206 tags/1.8/options.php:208
-#: tags/1.9/options.php:208
+#: tags/1.9/options.php:208 tags/2.1/options.php:222 tags/2.2/options.php:222
+#: tags/2.2/trunk/options.php:222 tags/2.3/options.php:222
+#: tags/2.4/options.php:222 trunk/options.php:201
 msgid "Title of your Web App"
 msgstr "Titre de votre Application Web"
 
@@ -909,7 +948,9 @@ msgstr "Titre de votre Application Web"
 #: tags/1.5/5.1/1.1/options.php:220 tags/1.5/5.1/1.2/options.php:220
 #: tags/1.5/5.1/1.3/options.php:220 tags/1.5/5.1/1.4/options.php:208
 #: tags/1.6/options.php:208 tags/1.7/options.php:208 tags/1.8/options.php:210
-#: tags/1.9/options.php:210
+#: tags/1.9/options.php:210 tags/2.1/options.php:224 tags/2.2/options.php:224
+#: tags/2.2/trunk/options.php:224 tags/2.3/options.php:224
+#: tags/2.4/options.php:224
 msgid ""
 "Type the name of your blog (max: 12 characters !). Default: it takes the "
 "default title of the page."
@@ -999,7 +1040,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:225 tags/1.5/5.1/1.2/options.php:225
 #: tags/1.5/5.1/1.3/options.php:225 tags/1.5/5.1/1.4/options.php:213
 #: tags/1.6/options.php:213 tags/1.7/options.php:213 tags/1.8/options.php:215
-#: tags/1.9/options.php:215
+#: tags/1.9/options.php:215 tags/2.1/options.php:229 tags/2.2/options.php:229
+#: tags/2.2/trunk/options.php:229 tags/2.3/options.php:229
+#: tags/2.4/options.php:229 trunk/options.php:208
 msgid "On which page the balloon should appear?"
 msgstr "Sur quelles parties du site la fenêtre doit-elle apparaître ?"
 
@@ -1016,7 +1059,9 @@ msgstr "Sur quelles parties du site la fenêtre doit-elle apparaître ?"
 #: tags/1.5/5.1/1.1/options.php:227 tags/1.5/5.1/1.2/options.php:227
 #: tags/1.5/5.1/1.3/options.php:227 tags/1.5/5.1/1.4/options.php:215
 #: tags/1.6/options.php:215 tags/1.7/options.php:215 tags/1.8/options.php:217
-#: tags/1.9/options.php:217
+#: tags/1.9/options.php:217 tags/2.1/options.php:231 tags/2.2/options.php:231
+#: tags/2.2/trunk/options.php:231 tags/2.3/options.php:231
+#: tags/2.4/options.php:231 trunk/options.php:210
 msgid ""
 "Keep in mind that if someone adds your blog to home screen from a single "
 "article page for instance, the web app will load this page and not the "
@@ -1042,7 +1087,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:230 tags/1.5/5.1/1.2/options.php:230
 #: tags/1.5/5.1/1.3/options.php:230 tags/1.5/5.1/1.4/options.php:218
 #: tags/1.6/options.php:218 tags/1.7/options.php:218 tags/1.8/options.php:220
-#: tags/1.9/options.php:220
+#: tags/1.9/options.php:220 tags/2.1/options.php:234 tags/2.2/options.php:234
+#: tags/2.2/trunk/options.php:234 tags/2.3/options.php:234
+#: tags/2.4/options.php:234 trunk/options.php:213
 msgid "Home only"
 msgstr "Accueil seulement"
 
@@ -1059,7 +1106,9 @@ msgstr "Accueil seulement"
 #: tags/1.5/5.1/1.1/options.php:231 tags/1.5/5.1/1.2/options.php:231
 #: tags/1.5/5.1/1.3/options.php:231 tags/1.5/5.1/1.4/options.php:219
 #: tags/1.6/options.php:219 tags/1.7/options.php:219 tags/1.8/options.php:221
-#: tags/1.9/options.php:221
+#: tags/1.9/options.php:221 tags/2.1/options.php:235 tags/2.2/options.php:235
+#: tags/2.2/trunk/options.php:235 tags/2.3/options.php:235
+#: tags/2.4/options.php:235 trunk/options.php:214
 msgid "All pages"
 msgstr "Partout"
 
@@ -1220,7 +1269,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:55 tags/1.5/5.1/1.2/options.php:55
 #: tags/1.5/5.1/1.3/options.php:55 tags/1.5/5.1/1.4/options.php:55
 #: tags/1.6/options.php:55 tags/1.7/options.php:55 tags/1.8/options.php:55
-#: tags/1.9/options.php:55
+#: tags/1.9/options.php:55 tags/2.1/options.php:54 tags/2.2/options.php:54
+#: tags/2.2/trunk/options.php:54 tags/2.3/options.php:54
+#: tags/2.4/options.php:54 trunk/options.php:53
 msgid "Keep in touch with me."
 msgstr "Restons en contact ;)"
 
@@ -1233,7 +1284,9 @@ msgstr "Restons en contact ;)"
 #: tags/1.5/5.1/1.1/options.php:69 tags/1.5/5.1/1.2/options.php:69
 #: tags/1.5/5.1/1.3/options.php:69 tags/1.5/5.1/1.4/options.php:69
 #: tags/1.6/options.php:69 tags/1.7/options.php:69 tags/1.8/options.php:69
-#: tags/1.9/options.php:69
+#: tags/1.9/options.php:69 tags/2.1/options.php:71 tags/2.2/options.php:71
+#: tags/2.2/trunk/options.php:71 tags/2.3/options.php:71
+#: tags/2.4/options.php:71 trunk/options.php:70
 msgid "Let me know that you are using my plugin!"
 msgstr "Vous utilisez mon extension ? Faites-le moi savoir !"
 
@@ -1246,7 +1299,9 @@ msgstr "Vous utilisez mon extension ? Faites-le moi savoir !"
 #: tags/1.5/5.1/1.1/options.php:104 tags/1.5/5.1/1.2/options.php:104
 #: tags/1.5/5.1/1.3/options.php:104 tags/1.5/5.1/1.4/options.php:92
 #: tags/1.6/options.php:92 tags/1.7/options.php:92 tags/1.8/options.php:94
-#: tags/1.9/options.php:94
+#: tags/1.9/options.php:94 tags/2.1/options.php:93 tags/2.2/options.php:93
+#: tags/2.2/trunk/options.php:93 tags/2.3/options.php:93
+#: tags/2.4/options.php:93 trunk/options.php:92
 msgid "Floating bubble options"
 msgstr "Options de l'infobulle"
 
@@ -1259,7 +1314,9 @@ msgstr "Options de l'infobulle"
 #: tags/1.5/5.1/1.1/options.php:166 tags/1.5/5.1/1.2/options.php:166
 #: tags/1.5/5.1/1.3/options.php:166 tags/1.5/5.1/1.4/options.php:154
 #: tags/1.6/options.php:154 tags/1.7/options.php:154 tags/1.8/options.php:156
-#: tags/1.9/options.php:156
+#: tags/1.9/options.php:156 tags/2.1/options.php:170 tags/2.2/options.php:170
+#: tags/2.2/trunk/options.php:170 tags/2.3/options.php:170
+#: tags/2.4/options.php:170 trunk/options.php:168
 msgid ""
 "Minutes before displaying the message again. Default: 0 (=always show). It's "
 "highly recommended to set a timeframe in order to prevent showing message at "
@@ -1282,7 +1339,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:171 tags/1.5/5.1/1.2/options.php:171
 #: tags/1.5/5.1/1.3/options.php:171 tags/1.5/5.1/1.4/options.php:159
 #: tags/1.6/options.php:159 tags/1.7/options.php:159 tags/1.8/options.php:161
-#: tags/1.9/options.php:161
+#: tags/1.9/options.php:161 tags/2.1/options.php:175 tags/2.2/options.php:175
+#: tags/2.2/trunk/options.php:175 tags/2.3/options.php:175
+#: tags/2.4/options.php:175
 msgid "iOs touch icons"
 msgstr "Icône touch iOS"
 
@@ -1295,7 +1354,9 @@ msgstr "Icône touch iOS"
 #: tags/1.5/5.1/1.1/options.php:180 tags/1.5/5.1/1.2/options.php:180
 #: tags/1.5/5.1/1.3/options.php:180 tags/1.5/5.1/1.4/options.php:168
 #: tags/1.6/options.php:168 tags/1.7/options.php:168 tags/1.8/options.php:170
-#: tags/1.9/options.php:170
+#: tags/1.9/options.php:170 tags/2.1/options.php:184 tags/2.2/options.php:184
+#: tags/2.2/trunk/options.php:184 tags/2.3/options.php:184
+#: tags/2.4/options.php:184
 msgid "Precomposed icons"
 msgstr ""
 
@@ -1308,7 +1369,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:182 tags/1.5/5.1/1.2/options.php:182
 #: tags/1.5/5.1/1.3/options.php:182 tags/1.5/5.1/1.4/options.php:170
 #: tags/1.6/options.php:170 tags/1.7/options.php:170 tags/1.8/options.php:172
-#: tags/1.9/options.php:172
+#: tags/1.9/options.php:172 tags/2.1/options.php:186 tags/2.2/options.php:186
+#: tags/2.2/trunk/options.php:186 tags/2.3/options.php:186
+#: tags/2.4/options.php:186
 msgid "If checked, icons will display without the Apple gloss effect."
 msgstr ""
 "Si cette option est cochée, les icônes s'afficheront sans l'effet gloss "
@@ -1323,7 +1386,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:187 tags/1.5/5.1/1.2/options.php:187
 #: tags/1.5/5.1/1.3/options.php:187 tags/1.5/5.1/1.4/options.php:175
 #: tags/1.6/options.php:175 tags/1.7/options.php:175 tags/1.8/options.php:177
-#: tags/1.9/options.php:177
+#: tags/1.9/options.php:177 tags/2.1/options.php:191 tags/2.2/options.php:191
+#: tags/2.2/trunk/options.php:191 tags/2.3/options.php:191
+#: tags/2.4/options.php:191
 msgid "Touch icons URLs"
 msgstr "URLs des icônes touch"
 
@@ -1336,7 +1401,9 @@ msgstr "URLs des icônes touch"
 #: tags/1.5/5.1/1.1/options.php:189 tags/1.5/5.1/1.2/options.php:189
 #: tags/1.5/5.1/1.3/options.php:189 tags/1.5/5.1/1.4/options.php:177
 #: tags/1.6/options.php:177 tags/1.7/options.php:177 tags/1.8/options.php:179
-#: tags/1.9/options.php:179
+#: tags/1.9/options.php:179 tags/2.1/options.php:193 tags/2.2/options.php:193
+#: tags/2.2/trunk/options.php:193 tags/2.3/options.php:193
+#: tags/2.4/options.php:193
 msgid ""
 "If mentionned, those fields add <i>link rel=\"apple-touch-icon\"</i> in the "
 "page HEAD (convenient for those who have no touch icon). Just paste the URLs "
@@ -1355,7 +1422,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:194 tags/1.5/5.1/1.2/options.php:194
 #: tags/1.5/5.1/1.3/options.php:194 tags/1.5/5.1/1.4/options.php:182
 #: tags/1.6/options.php:182 tags/1.7/options.php:182 tags/1.8/options.php:184
-#: tags/1.9/options.php:184
+#: tags/1.9/options.php:184 tags/2.1/options.php:198 tags/2.2/options.php:198
+#: tags/2.2/trunk/options.php:198 tags/2.3/options.php:198
+#: tags/2.4/options.php:198
 msgid "57x57 touch icon URL (for iPhone 3GS and 2011 iPod Touch)."
 msgstr ""
 
@@ -1368,7 +1437,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:200 tags/1.5/5.1/1.2/options.php:200
 #: tags/1.5/5.1/1.3/options.php:200 tags/1.5/5.1/1.4/options.php:188
 #: tags/1.6/options.php:188 tags/1.7/options.php:188 tags/1.8/options.php:190
-#: tags/1.9/options.php:190
+#: tags/1.9/options.php:190 tags/2.1/options.php:204 tags/2.2/options.php:204
+#: tags/2.2/trunk/options.php:204 tags/2.3/options.php:204
+#: tags/2.4/options.php:204
 msgid "72x72 touch icon URL (for 1st generation iPad, iPad 2 and iPad mini)."
 msgstr ""
 
@@ -1381,7 +1452,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:206 tags/1.5/5.1/1.2/options.php:206
 #: tags/1.5/5.1/1.3/options.php:206 tags/1.5/5.1/1.4/options.php:194
 #: tags/1.6/options.php:194 tags/1.7/options.php:194 tags/1.8/options.php:196
-#: tags/1.9/options.php:196
+#: tags/1.9/options.php:196 tags/2.1/options.php:210 tags/2.2/options.php:210
+#: tags/2.2/trunk/options.php:210 tags/2.3/options.php:210
+#: tags/2.4/options.php:210
 msgid "114x114 touch icon URL (for iPhone 4, 4S, 5 and 2012 iPod Touch)."
 msgstr ""
 
@@ -1394,7 +1467,9 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:212 tags/1.5/5.1/1.2/options.php:212
 #: tags/1.5/5.1/1.3/options.php:212 tags/1.5/5.1/1.4/options.php:200
 #: tags/1.6/options.php:200 tags/1.7/options.php:200 tags/1.8/options.php:202
-#: tags/1.9/options.php:202
+#: tags/1.9/options.php:202 tags/2.1/options.php:216 tags/2.2/options.php:216
+#: tags/2.2/trunk/options.php:216 tags/2.3/options.php:216
+#: tags/2.4/options.php:216
 msgid "144x144 touch icon URL (for iPad 3rd and 4th generation)."
 msgstr ""
 
@@ -1480,12 +1555,14 @@ msgstr ""
 #: tags/1.5/5.1/1.1/options.php:175 tags/1.5/5.1/1.2/options.php:175
 #: tags/1.5/5.1/1.3/options.php:175 tags/1.5/5.1/1.4/options.php:163
 #: tags/1.6/options.php:163 tags/1.7/options.php:163 tags/1.8/options.php:165
-#: tags/1.9/options.php:165
+#: tags/1.9/options.php:165 tags/2.1/options.php:179 tags/2.2/options.php:179
+#: tags/2.2/trunk/options.php:179 tags/2.3/options.php:179
+#: tags/2.4/options.php:179
 msgid ""
 "If checked, the script checks for link rel=\"apple-touch-icon\" in the page "
 "HEAD and displays the application icon next to the message."
 msgstr ""
-"Si checkée, cette option indique au script de rechercher la balise "
+"Si cochée, cette option indique au script de rechercher la balise "
 "rel=\"apple-touch-icon\" dans le HEAD afin d'afficher l'icône de votre blog "
 "dans la fenêtre à côté du message dans l'infobulle."
 
@@ -1524,7 +1601,9 @@ msgstr ""
 "message, %icon pour afficher l'icône d'ajout, et %add pour afficher la "
 "seconde icône d'ajout à l'écran d'accueil.</i>"
 
-#: trunk/options.php:72
+#: tags/2.1/options.php:72 tags/2.2/options.php:72
+#: tags/2.2/trunk/options.php:72 tags/2.3/options.php:72
+#: tags/2.4/options.php:72 trunk/options.php:71
 msgid ""
 "Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
 "tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Apple "
@@ -1534,11 +1613,21 @@ msgstr ""
 "https://tulipemedia.com/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
 "#Apple #iOS"
 
-#: trunk/options.php:102
+#: tags/2.1/options.php:75 tags/2.2/options.php:75
+#: tags/2.2/trunk/options.php:75 tags/2.3/options.php:75
+#: tags/2.4/options.php:75 trunk/options.php:74
+msgid "Spread the word!"
+msgstr "Faites passer le mot, partagez mon plugin !"
+
+#: tags/2.1/options.php:102 tags/2.2/options.php:102
+#: tags/2.2/trunk/options.php:102 tags/2.3/options.php:102
+#: tags/2.4/options.php:102 trunk/options.php:100
 msgid "I recommend to check this value"
 msgstr "Je recommande de cocher cette option"
 
-#: trunk/options.php:115
+#: tags/2.1/options.php:115 tags/2.2/options.php:115
+#: tags/2.2/trunk/options.php:115 tags/2.3/options.php:115
+#: tags/2.4/options.php:115 trunk/options.php:112
 #, php-format
 msgid ""
 "Use %1$s to show user's device on message, %2$s to display the first add "
@@ -1547,6 +1636,53 @@ msgstr ""
 "Tapez %1$s pour afficher l’appareil de l'utilisateur dans votre message, "
 "%2$s pour afficher l'icône d'ajout, and %3$s pour afficher la seconde icône "
 "d'ajout à l'écran d'accueil."
+
+#: trunk/options.php:51
+msgid "ATHS Options » Settings"
+msgstr "ATHS Option &raquo; Réglages"
+
+#: trunk/options.php:175
+msgid "iOS Touch Icon"
+msgstr "Icône touch iOS"
+
+#: trunk/options.php:177
+msgid "Enable touch icon"
+msgstr "Icône touch iOS"
+
+#: trunk/options.php:179
+msgid ""
+"If checked, displays the application icon next to the message using the URL "
+"provided below."
+msgstr ""
+"Si cochée, cette option permet d’afficher l’icône de votre application à "
+"côté du message, en utilisant l’URL renseignée ci-après."
+
+#: trunk/options.php:184
+msgid "Precomposed icon"
+msgstr ""
+
+#: trunk/options.php:186
+msgid "If checked, the icon will display without the Apple gloss effect."
+msgstr ""
+"Si cette option est cochée, les icônes s'afficheront sans l'effet gloss "
+"d'Apple."
+
+#: trunk/options.php:194
+msgid ""
+"Paste the URL of a 180x180 icon for modern iOS devices. This will be added "
+"as <i>link rel=\"apple-touch-icon\"</i> in the page HEAD."
+msgstr ""
+"Collez l’URL d’une icône 180x180 pour les appareils iOs récents. L’icône "
+"sera ajoutée dans <i>link rel=« apple-touch-icon »</i> dans la partie HEAD "
+"de la page."
+
+#: trunk/options.php:203
+msgid ""
+"Type the name of your blog (max: 12 characters!). Default: it takes the "
+"default title of the page."
+msgstr ""
+"Tapez le nom de votre blog (max : 12 caractères !). Par défaut : le titre de "
+"la page sera récupéré."
 
 #~ msgid "false"
 #~ msgstr "non"

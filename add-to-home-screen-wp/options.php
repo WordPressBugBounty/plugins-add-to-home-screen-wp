@@ -1,7 +1,6 @@
 <?php if ( ! defined( 'ABSPATH' ) ) exit; // Exit if accessed directly ?>
 <div class="wrap">
  <style type="text/css">
-
 	input {
     border:1px solid #aaa;
     background: #fff;
@@ -49,7 +48,7 @@ font-size:13px;
 
 	<?php settings_fields($plugin_id.'_options'); ?>
 
-    <h2><?php esc_html_e('ATHS Options &raquo; Settings', 'add-to-home-screen-wp'); ?></h2>
+    <h2><?php esc_html_e('ATHS Options » Settings', 'add-to-home-screen-wp'); ?></h2>
 <div style="width:780px; background-color: #F2FBFD; margin: 20px auto; padding: 16px; border: 1px solid #B7E9E9; text-align: center;">
     <h3><?php esc_html_e('Keep in touch with me.', 'add-to-home-screen-wp'); ?></h3>
     
@@ -96,21 +95,19 @@ font-size:13px;
     <h3><?php esc_html_e('Show to returning visitors only', 'add-to-home-screen-wp'); ?></h3>
     <div class="adhs_description_field">
         <?php 
-        // translators: This message explains the setting for returning visitors. 
         $description = __('Set this to true and the message won\'t be shown the first time one user visits your blog. It can be useful to target only returning visitors and not irritate first time visitors.', 'add-to-home-screen-wp'); 
         ?>
         <span><?php echo wp_kses_post($description . ' <i>' . __('I recommend to check this value', 'add-to-home-screen-wp') . '</i>'); ?></span>
     </div>
-    <input type="checkbox" name="returningvisitor" <?php checked( esc_attr(get_option('returningvisitor')) == 'on', true ); ?> />
+    <input type="checkbox" name="returningvisitor" <?php checked(esc_attr(get_option('returningvisitor')) == 'on', true); ?> />
 </label>
-
 
                  <label for="message">
 				 <h3><?php esc_html_e('Custom message', 'add-to-home-screen-wp'); ?></h3>
                     <div class="adhs_description_field">
 						<span><?php esc_html_e('Type the custom message that you want appearing in the balloon. You can also display default message in the language of your choice by typing the locale (e.g: en_us).', 'add-to-home-screen-wp'); ?></span>
 						<span><br />
-<?php // translators: %device will be replaced by the user's device, %icon by the first add icon, and %add by the second add to home screen icon.
+<?php
 $message = sprintf(
     __('Use %1$s to show user\'s device on message, %2$s to display the first add icon, and %3$s to display the second add to home screen icon.', 'add-to-home-screen-wp'),
     '<i>%device</i>',
@@ -167,61 +164,43 @@ echo wp_kses_post($message); ?></span>
                  <label for="expire">
 					<h3><?php esc_html_e('Expire timeframe', 'add-to-home-screen-wp'); ?></h3>
 					<div class="adhs_description_field">
-						<span><?php esc_html_e('Minutes before displaying the message again. Default: 0 (=always show). It\'s highly recommended to set a timeframe in order to prevent showing message at each and every page load for those who didn\'t add the Web App to their homescreen or those who added it but load the blog on Safari!<br /><i>Recommended values: 43200 for one month or 525600 for one year.</i>', 'add-to-home-screen-wp'); ?></span>
+						<?php 
+						$expire_description = __('Minutes before displaying the message again. Default: 0 (=always show). It\'s highly recommended to set a timeframe in order to prevent showing message at each and every page load for those who didn\'t add the Web App to their homescreen or those who added it but load the blog on Safari!<br /><i>Recommended values: 43200 for one month or 525600 for one year.</i>', 'add-to-home-screen-wp');
+						?>
+						<span><?php echo wp_kses($expire_description, array('br' => array(), 'i' => array())); ?></span>
 					</div>
                     <input type="text" name="expire" value="<?php echo esc_attr(get_option('expire')); ?>"  />
                  </label>
 				 <hr style="color:#F2F3F3; background-color:#F2F3F3">
-				 <h2 style="margin-bottom:15px;"><?php esc_html_e('iOs touch icons', 'add-to-home-screen-wp'); ?></h2>
+				 <h2 style="margin-bottom:15px;"><?php esc_html_e('iOS Touch Icon', 'add-to-home-screen-wp'); ?></h2>
                  <label for="touchicon">
-					<h3><?php esc_html_e('Touch icon', 'add-to-home-screen-wp'); ?></h3>
+					<h3><?php esc_html_e('Enable touch icon', 'add-to-home-screen-wp'); ?></h3>
 					<div class="adhs_description_field">
-						<span><?php esc_html_e('If checked, the script checks for link rel="apple-touch-icon" in the page HEAD and displays the application icon next to the message.', 'add-to-home-screen-wp'); ?></span>
+						<span><?php esc_html_e('If checked, displays the application icon next to the message using the URL provided below.', 'add-to-home-screen-wp'); ?></span>
 					</div>
-                    <input type="checkbox" name="touchicon" <?php checked( esc_attr(get_option('touchicon')) == 'on', true ); ?> />
+                    <input type="checkbox" name="touchicon" <?php checked(esc_attr(get_option('touchicon')) == 'on', true); ?> />
                  </label>
                 <label for="aths_touchicon_precomposed">
-					<h3><?php esc_html_e('Precomposed icons', 'add-to-home-screen-wp'); ?></h3>
+					<h3><?php esc_html_e('Precomposed icon', 'add-to-home-screen-wp'); ?></h3>
 					<div class="adhs_description_field">
-						<span><?php esc_html_e('If checked, icons will display without the Apple gloss effect.', 'add-to-home-screen-wp'); ?></span>
+						<span><?php esc_html_e('If checked, the icon will display without the Apple gloss effect.', 'add-to-home-screen-wp'); ?></span>
 					</div>
-                    <input type="checkbox" name="aths_touchicon_precomposed" <?php checked( esc_attr(get_option('aths_touchicon_precomposed')) == 'on', true ); ?> />
+                    <input type="checkbox" name="aths_touchicon_precomposed" <?php checked(esc_attr(get_option('aths_touchicon_precomposed')) == 'on', true); ?> />
                 </label>
-				<label style="margin-bottom:-5px;">
-				<h3><?php esc_html_e('Touch icons URLs', 'add-to-home-screen-wp'); ?></h3>
-				<div class="adhs_description_field">
-				<span><?php esc_html_e('If mentionned, those fields add <i>link rel="apple-touch-icon"</i> in the page HEAD (convenient for those who have no touch icon). Just paste the URLs of your icons.', 'add-to-home-screen-wp'); ?></span>
-				</div>
-				</label>
 				<label for="touchicon_url">
-					<div class="adhs_description_field_touch">
-						<span><?php esc_html_e('57x57 touch icon URL (for iPhone 3GS and 2011 iPod Touch).', 'add-to-home-screen-wp'); ?></span>
+					<h3><?php esc_html_e('Touch icon URL', 'add-to-home-screen-wp'); ?></h3>
+					<div class="adhs_description_field">
+						<?php 
+						$icon_description = __('Paste the URL of a 180x180 icon for modern iOS devices. This will be added as <i>link rel="apple-touch-icon"</i> in the page HEAD.', 'add-to-home-screen-wp');
+						?>
+						<span><?php echo wp_kses($icon_description, array('i' => array())); ?></span>
 					</div>
-					<input type="url" size="60" name="touchicon_url" value="<?php echo esc_url(get_option('touchicon_url')); ?>"  />
+					<input type="url" size="60" name="touchicon_url" value="<?php echo esc_url(get_option('touchicon_url')); ?>" />
                 </label>
-				<label for="touchicon_url72">
-					<div class="adhs_description_field_touch">
-						<span><?php esc_html_e('72x72 touch icon URL (for 1st generation iPad, iPad 2 and iPad mini).', 'add-to-home-screen-wp'); ?></span>
-					</div>
-					<input type="url" size="60" name="touchicon_url72" value="<?php echo esc_url(get_option('touchicon_url72')); ?>"  />
-                </label>
-				<label for="touchicon_url114">
-					<div class="adhs_description_field_touch">
-						<span><?php esc_html_e('114x114 touch icon URL (for iPhone 4, 4S, 5 and 2012 iPod Touch).', 'add-to-home-screen-wp'); ?></span>
-					</div>
-					<input type="url" size="60" name="touchicon_url114" value="<?php echo esc_url(get_option('touchicon_url114')); ?>"  />
-                </label>
-				<label for="touchicon_url144">
-					<div class="adhs_description_field_touch">
-						<span><?php esc_html_e('144x144 touch icon URL (for iPad 3rd and 4th generation).', 'add-to-home-screen-wp'); ?></span>
-					</div>
-					<input type="url" size="60" name="touchicon_url144" value="<?php echo esc_url(get_option('touchicon_url144')); ?>"  />
-                </label>
-				
 				<label for="addmetawebcapabletitle" style="margin-top:15px">
 				<h3><?php esc_html_e('Title of your Web App', 'add-to-home-screen-wp'); ?></h3>
 					<div class="adhs_description_field">
-						<span class="adhs_description_field"><?php esc_html_e('Type the name of your blog (max: 12 characters !). Default: it takes the default title of the page.', 'add-to-home-screen-wp'); ?></span>
+						<span class="adhs_description_field"><?php esc_html_e('Type the name of your blog (max: 12 characters!). Default: it takes the default title of the page.', 'add-to-home-screen-wp'); ?></span>
 					</div>
 					 <input type="text" name="addmetawebcapabletitle" value="<?php echo esc_attr(get_option('addmetawebcapabletitle')); ?>"  />
                 </label>
