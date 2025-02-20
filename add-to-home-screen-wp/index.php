@@ -3,7 +3,7 @@
     Plugin Name: Add to home screen WP
     Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
     Description: Allow your visitors to add your WordPress blog on their iOS home screen (iPhone, iPod touch, iPad).
-    Version: 2.3
+    Version: 2.4
     Author: Ziyad Bachalany
     Author URI: https://tulipemedia.com
     License: GPL-2.0-or-later
