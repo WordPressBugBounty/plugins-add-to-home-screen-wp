@@ -4,7 +4,7 @@ Donate link: https://tulipemedia.com
 Tags: iPhone, iOs, homescreen, homescreen, webapp
 Requires at least: 6.7
 Tested up to: 6.7
-Stable tag: 2.1
+Stable tag: 2.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -111,6 +111,15 @@ Yes sir! With WPML, download and install the "String translation" add-on, scroll
 
 
 == Changelog ==
+= 2.3 =
+Minor fix.
+
+= 2.2 =
+Support for HTML formatting in the custom message balloon for richer styling.
+
+= 2.1 =
+Major fix.
+
 = 2 =
 Major fix.
 
@@ -181,10 +190,15 @@ Display title of the page.
 First version of the plugin.
 
 == Upgrade Notice ==
+= 2.3 =
+Minor fix.
+
+= 2.2 =
+Support for HTML formatting in the custom message balloon for richer styling.
 
 = 1.2 =
 New version tested up to 4.8.1.
-Some old functionnalities have been removed.
+Some old functionalities have been removed.
 
 = 1.1 =
 Fix for the iOS 7 web app status bar.
