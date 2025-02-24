@@ -3,7 +3,7 @@
     Plugin Name: Add to Home Screen WP
     Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
     Description: Allow your visitors to add your WordPress blog to their iOS home screen (iPhone, iPod Touch, iPad) with a floating balloon. Premium features include full PWA support, forced homepage start, PWA toggle, and loading indicator.
-    Version: 2.6.1
+    Version: 2.6.3
     Author: Ziyad Bachalany
     Author URI: https://tulipemedia.com
     License: GPL-2.0-or-later

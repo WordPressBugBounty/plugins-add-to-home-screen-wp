@@ -4,7 +4,7 @@ Donate link: https://tulipemedia.com
 Tags: iPhone, iOs, homescreen, webapp, PWA, push notifications
 Requires at least: 6.7
 Tested up to: 6.7
-Stable tag: 2.6.1
+Stable tag: 2.6.3
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,8 +37,7 @@ Unlock advanced features with a purchase at [tulipemedia.com](https://tulipemedi
 The free version adds the floating balloon, while the premium version enhances your blog with these powerful PWA features and more.
 
 = Demo =
-See a demo with the video below:
-https://www.youtube.com/watch?v=Bd4i4k_DhE4
+[Watch the Demo Video](https://www.youtube.com/watch?v=Bd4i4k_DhE4)
 
 [Check a demo on my blog](https://tulipemedia.com) (load it on an iPhone).
 
@@ -71,7 +70,7 @@ Keep in touch on:
 - [LinkedIn](https://www.linkedin.com/in/ziyadbachalany/)
 - [Twitter](https://twitter.com/ziyadbachalany)
 - [Facebook](https://www.facebook.com/ziyadbachalany)
-- [TulipeMedia](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
+- [Tulipemedia](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
 
 == Installation ==
 1. Upload the `add-to-home-screen-wp` folder to `/wp-content/plugins/` or install via the WordPress dashboard.
@@ -114,6 +113,12 @@ Purchase a subscription at [tulipemedia.com](https://tulipemedia.com/en/product/
 
 
 == Changelog ==
+= 2.6.3 =
+* Changed: Replaced embedded YouTube demo video with a clickable link in readme.txt for reliability.
+
+= 2.6.2 =
+* Fixed: YouTube demo video not displaying on plugin page, now embedded correctly.
+
 = 2.6.1 =
 * Fixed: "Enable ATHS Premium Features" checkbox now saves correctly when unchecked.
 
