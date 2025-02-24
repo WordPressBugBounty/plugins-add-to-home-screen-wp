@@ -1,84 +1,86 @@
-=== Add to home screen WP ===
+=== Add to Home Screen WP ===
 Contributors: tulipwork
 Donate link: https://tulipemedia.com
-Tags: iPhone, iOs, homescreen, homescreen, webapp
+Tags: iPhone, iOs, homescreen, webapp, PWA, push notifications
 Requires at least: 6.7
 Tested up to: 6.7
-Stable tag: 2.5
+Stable tag: 2.6.1
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add to HomeScreen WordPress plugin invites your readers to add your blog as an icon / web app on home screen of their iPhone, iPad and iPod touch.
+Add to HomeScreen WordPress plugin invites your readers to add your blog as an icon / web app on the home screen of their iPhone, iPad, and iPod touch. Premium features unlock PWA support, Add to home screen button for Android users, loading indicators and other customization options.
 
 == Description ==
 
-This plugin uses [Add to home screen's Cubiq script](https://github.com/cubiq/add-to-homescreen "Add to home screen") to place a floating balloon inviting the user to add a website to their home screen as a standard iOs application.
+This plugin uses [Add to Home Screen's Cubiq script](https://github.com/cubiq/add-to-homescreen "Add to home screen") to place a floating balloon inviting the user to add a website to their home screen as a standard iOS application.
 
-It's a good way to retain visitors coming to your blog, especially if you don't want to develop an expensive application just to let them read articles of your WordPress blog.
+It's a good way to retain visitors coming to your blog, especially if you don’t want to develop an expensive native application just to let them read your WordPress blog articles.
 
 The floating balloon is compatible with all recent iPhones and iPads.
 
-<strong>2025 UPDATE : The Add to home screen WP Plugin Plugin is back online and fully compliant with WordPress requirements.</strong>
+<strong>2025 UPDATE: The Add to Home Screen WP Plugin is back online, fully compliant with WordPress requirements, and now offers premium features!</strong>
 
-You can also use a PWA WordPress plugin, like <a target="_blank" href="https://wordpress.org/plugins/pwa-for-wp/">PWA for WP & AMP</a> for instance, to turn your WordPress blog into a kind of native mobile app, without the constraints of native mobile app (store submission, costs, etc...).
+### Free Features
+- Floating balloon to invite users to add your blog to their iOS home screen.
+- Customizable message, animations, delays, and touch icon.
+- Compatible with iPhones, iPads, and iPod Touch.
 
-With PWA coupled with Add to home screen WP Plugin, you will be able to display the legendary floating balloon that invites your visitors to add your blog to their iOs device, and then your blog will load as a PWA.
+### Premium Features
 
-This combination is the best way to increase visitor loyalty, without being obliged to upload a costly native mobile app into App Store.
+Unlock advanced features with a purchase at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/):
 
-On Android devices, PWA extensions usually provide a popup to invite users to add your blog to their device. But in iOs devices, this popup are not native. That's why this plugin is very useful in addition of a PWA plugin.
+* *PWA Support*: Transform your blog into a Progressive Web App.
+* *Android Install Prompt*: Display a custom "Add to Home Screen" button for Android users.
+* *Loading Indicator*: Add a sleek spinner for smooth page transitions.
+* *Customization Options*: Tailor your app with color settings and force the web app to launch on the homepage.
+
+The free version adds the floating balloon, while the premium version enhances your blog with these powerful PWA features and more.
 
 = Demo =
-
-See nice demo with the video below :
-
+See a demo with the video below:
 https://www.youtube.com/watch?v=Bd4i4k_DhE4
 
-[Check a demo in my blog](https://tulipemedia.com) (load it on an iPhone for instance).
+[Check a demo on my blog](https://tulipemedia.com) (load it on an iPhone).
 
-[Read more and documentation on my blog](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ "Add to home screen WP Plugin documentation on Tulipe Media")
-
-[En savoir plus et lire la documentation sur mon blog](https://tulipemedia.com/plugin-wordpress-pour-ajouter-son-blog-a-lecran-daccueil-iphone-ipad-et-ipod-touch/ "Plugin Add to Home Screen pour WordPress sur Tulipe Media")
+[Read more and documentation](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
 
 = Internationalisation =
-This plugin provides support for language translations. Help me to translate it by [notifying me in comments](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ "notify me in comments") and I'll add your mo/po files to the official plugin.
+This plugin supports translations. Help translate it by [notifying me in comments](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/) and I’ll add your mo/po files.
 
-Available languages: English, French and German.
-Thanks to [Julian](https://profiles.wordpress.org/h3p315t05 "Julian") for the German translation!
+Available languages: English, French, German. Thanks to [Julian](https://profiles.wordpress.org/h3p315t05) for the German translation!
 
 = Features =
+*Free Features (Cubiq Script):*
+- Custom message with HTML support.
+- Animation: drop, bubble, or fade.
+- Delays: start delay and lifespan.
+- Expire: minutes before showing again.
+- Touch icon support.
+- Show to returning visitors only.
 
-*Thanks to the functions of the Cubiq script, there are many features and allowed customizations:*
-
-* Message: type the message that you want inside the floating window. If you don't custom the message, the script checks the user's locale and shows a default message in an appropriate language. You can also force a language.
-* Animation: drop, bubble or fade.
-* Delays: before showing the message and its duration.
-* Expire: minutes before displaying the message again.
-* Touch icon: icon of your app but also image while your app is loading.
-* Show to returning visitors only: to only target returning visitors and not irritate first time visitors.
-
-*Additional features:*
-
-* Custom the title of your application.
-* Show message on homepage only or on the entire blog.
+*Premium Features:*
+- PWA Support.
+- Android Install Prompt.
+- Loading Indicator.
+- Color Option.
+- Force the web app to launch on the homepage.
 
 = Follow me =
-Keep in touch with me on:
-<a target="_blank" rel="author" href="https://instagram.com/ziyadbachalany/">Instagram</a>
-<a target="_blank" rel="author" href="https://www.linkedin.com/in/ziyadbachalany/">LinkedIn</a>
-<a target="_blank" href="https://twitter.com/ziyadbachalany">Twitter</a>
-<a target="_blank" href="https://www.facebook.com/ziyadbachalany">Facebook</a>
+Keep in touch on:
+- [Instagram](https://instagram.com/ziyadbachalany/)
+- [LinkedIn](https://www.linkedin.com/in/ziyadbachalany/)
+- [Twitter](https://twitter.com/ziyadbachalany)
+- [Facebook](https://www.facebook.com/ziyadbachalany)
+- [TulipeMedia](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
 
 == Installation ==
-
-1. Upload add-to-home-screen-wp folder to the '/wp-content/plugins/' directory or install it via the WordPress dashboard.
-2. Activate the plugin through the 'Plugins' menu in WordPress. The floating balloon is now enabled.
-3. Go to Settings > ATHS Options and play with settings.
+1. Upload the `add-to-home-screen-wp` folder to `/wp-content/plugins/` or install via the WordPress dashboard.
+2. Activate the plugin through the 'Plugins' menu in WordPress.
+3. Go to **Settings > ATHS Options** for settings.
 
 == Frequently Asked Questions ==
-
 = If a visitor adds my blog to its home screen, will the balloon continue to appear? =
-Your blog will open on Safari browser when you will tap on your icon, and the balloon will continue to appear (unfortunately, we cannot prevent it from being opened in this mode even if user has alreay added the blog to its homescreen). The solution is to set an important expire timeframe (e.g on year) in the options page.
+In the free version, the balloon may still appear when opening your blog in Safari, even after adding it to the homescreen. With the premium version, this behavior is prevented—once added to the homescreen, the balloon won’t load, ensuring a seamless experience. Alternatively, in the free version, you can set a long expire timeframe (e.g., one month or one year) in the options page to reduce its frequency.
 
 = I made changes on options page but nothing's changed when I load my blog? =
 
@@ -100,23 +102,25 @@ Of course, and it's highly suggested! You can add link, bold text and also add e
 
 Yes sir! With WPML, download and install the "String translation" add-on, scroll down, click on "Translate texts in admin screens" and look for "Message" field with the search tool of your browser, you should find the field containing your custom message. Just check the left box and save settings. Now come back to String translation and you will find your custom message, ready to be translated!
 
-= Can I use HTML in the custom message? =
-Yes, you can use basic HTML tags like `<center>`, `<h4>`, `<strong>`, `<br>`, `<p>`, `<b>`, and `<i>` to style your message.
-
-= What size should my touch icon be? =
-A 180x180 PNG icon is recommended for modern iOS devices. This will be scaled down as needed by iOS.
+= How do I activate premium features? =
+Purchase a subscription at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/), enter your license key in **Settings > PWA Premium**, and unlock premium features.
 
 == Screenshots ==
-
 1. Example of a nice custom floating balloon
 2. Example of the English floating balloon
 3. Example of the French floating balloon
-4. Plugin Option page
-5. Plugin Option page
-
+4. Free Plugin Option page
+5. Premium PWA Settings page
 
 
 == Changelog ==
+= 2.6.1 =
+* Fixed: "Enable ATHS Premium Features" checkbox now saves correctly when unchecked.
+
+= 2.6 =
+* Improved: free option page settings
+* Added: License key system to unlock premium features.
+* Improved: Updated plugin structure for freemium model.
 
 = 2.5 =
 * Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
@@ -208,7 +212,7 @@ First version of the plugin.
 
 == Upgrade Notice ==
 = 2.6 =
-Version 2.6 simplifies touch icon support to a single 180x180 size and updates tracking to Google Analytics 4.
+Version 2.6 is improving the setting page and introducing new premium features.
 
 = 2.5 =
 * Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
