@@ -18,6 +18,9 @@
         .aths-footer { max-width: 800px; margin: 20px auto; padding: 20px; background: #F2FBFD; border: 1px solid #B7E9E9; text-align: center; border-radius: 4px; }
         .aths-footer h3 { margin-top: 0; font-size: 18px; }
         .aths-footer .social-links { display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; margin: 15px 0; }
+        #athswp_license_status.success { color: green; font-weight: bold; }
+        #athswp_license_status.error { color: red; }
+        #athswp_license_status.checking { color: #666; font-style: italic; }
     </style>
 
     <h2><?php esc_html_e('ATHS Options » Settings', 'add-to-home-screen-wp'); ?></h2>
@@ -47,7 +50,7 @@
                     </div>
                 </div>
 
-               <div class="aths-option">
+                <div class="aths-option">
                     <label class="aths-option-label" for="message"><?php esc_html_e('Custom message', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
                         <textarea rows="3" cols="50" name="message" id="message"><?php echo esc_textarea(get_option('message')); ?></textarea>
@@ -185,62 +188,87 @@
             <!-- Onglet Premium -->
             <div id="premium" class="aths-tab-content">
                 <?php
-                $license_key = get_option('pwa_license_key');
-                $is_valid = $license_key ? verify_license_key($license_key) : false;
-
-                if (isset($_POST['pwa_license_key'])) {
-                    $new_key = sanitize_text_field($_POST['pwa_license_key']);
-                    if ($new_key !== $license_key) {
-                        update_option('pwa_license_key', $new_key);
-                        $is_valid = verify_license_key($new_key);
-                    }
-                }
-                if (isset($_POST['reset_top_color']) && $_POST['reset_top_color'] == '1' && $is_valid) {
-                    update_option('pwa_theme_color', '#000000');
-                }
+                $license_key = get_option('athswp_license_key', '');
+                $is_premium = athswp_is_premium();
 
                 $top_color = get_option('pwa_theme_color') ?: '#000000';
-                $enable_features = get_option('pwa_enable_features', 'on'); // Valeur par défaut 'on'
+                $enable_features = get_option('pwa_enable_features', 'on');
                 $force_homepage = get_option('pwa_force_homepage') ?: 'off';
                 $show_loading = get_option('pwa_show_loading') ?: 'off';
                 $show_install_button = get_option('pwa_show_install_button') ?: 'off';
 
                 // Gérer explicitement la case à cocher pwa_enable_features
-                if (isset($_POST['submit'])) { // Quand le formulaire est soumis
+                if (isset($_POST['submit'])) {
                     $enable_features = isset($_POST['pwa_enable_features']) && $_POST['pwa_enable_features'] === 'on' ? 'on' : 'off';
                     update_option('pwa_enable_features', $enable_features);
                 }
                 ?>
                 <div class="aths-option">
-                    <label class="aths-option-label" for="pwa_license_key"><?php esc_html_e('License Key', 'add-to-home-screen-wp'); ?></label>
+                    <label class="aths-option-label" for="athswp_license_key"><?php esc_html_e('License Key', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="text" id="pwa_license_key" name="pwa_license_key" value="<?php echo esc_attr($license_key); ?>" class="regular-text" />
-                        <div class="description">
-                            <?php esc_html_e('Enter your premium license key to unlock ATHS Premium features.', 'add-to-home-screen-wp'); ?>
-                            <?php if (!$is_valid) : ?>
-                                <br><a href="https://tulipemedia.com/produit/aths-wordpress-premium/" target="_blank" style="color: #f39c12; text-decoration: none;">
-                                    <span class="dashicons dashicons-star-filled premium-lock"></span> <?php esc_html_e('Get Premium', 'add-to-home-screen-wp'); ?>
-                                </a>
-                            <?php endif; ?>
-                            <?php if ($license_key) : ?>
-                                <?php if ($is_valid) : ?>
-                                    <br><span style="color: green; font-weight: bold;"><?php esc_html_e('Valid license key! Premium features are unlocked.', 'add-to-home-screen-wp'); ?></span>
-                                <?php else : ?>
-                                    <br><span style="color: red; font-weight: bold;"><?php esc_html_e('Invalid license key. Please check your key or purchase a subscription.', 'add-to-home-screen-wp'); ?></span>
-                                <?php endif; ?>
-                            <?php endif; ?>
-                        </div>
+                        <input type="text" id="athswp_license_key" name="athswp_license_key" value="<?php echo esc_attr($license_key); ?>" style="width:300px;" placeholder="ex: ATHSUS2W-HFII-5495" />
+                        <button type="button" id="athswp_validate_license" class="button"><?php esc_html_e('Validate License', 'add-to-home-screen-wp'); ?></button>
+                        <p class="description">
+                            <span id="athswp_license_status" class="<?php echo $is_premium ? 'success' : ''; ?>">
+                                <?php
+                                if ($is_premium) {
+                                    echo '<strong>' . esc_html__('License active! All premium features are unlocked.', 'add-to-home-screen-wp') . '</strong>';
+                                } else {
+                                    printf(
+                                        esc_html__('Enter your premium license key and click "Validate License" to unlock all features. %sGet your license now%s.', 'add-to-home-screen-wp'),
+                                        '<a href="https://tulipemedia.com/produit/aths-wordpress-premium/" target="_blank">',
+                                        '</a>'
+                                    );
+                                }
+                                ?>
+                            </span>
+                        </p>
+                        <script>
+                        document.getElementById('athswp_validate_license').addEventListener('click', function() {
+                            var licenseKey = document.getElementById('athswp_license_key').value;
+                            var statusElement = document.getElementById('athswp_license_status');
+                            var validateButton = document.getElementById('athswp_validate_license');
+
+                            statusElement.innerHTML = '<?php esc_html_e('Checking license...', 'add-to-home-screen-wp'); ?>';
+                            statusElement.className = 'checking';
+                            validateButton.disabled = true;
+
+                            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: 'action=athswp_validate_license&license_key=' + encodeURIComponent(licenseKey) + '&nonce=<?php echo wp_create_nonce('athswp_validate_nonce'); ?>'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    statusElement.innerHTML = '<strong><?php esc_html_e('License activated successfully!', 'add-to-home-screen-wp'); ?></strong>';
+                                    statusElement.className = 'success';
+                                    setTimeout(() => location.reload(), 1000);
+                                } else {
+                                    statusElement.innerHTML = data.data;
+                                    statusElement.className = 'error';
+                                    validateButton.disabled = false;
+                                }
+                            })
+                            .catch(error => {
+                                statusElement.innerHTML = '<?php esc_html_e('Error validating license. Please try again.', 'add-to-home-screen-wp'); ?>';
+                                statusElement.className = 'error';
+                                validateButton.disabled = false;
+                                console.error('Validation error:', error);
+                            });
+                        });
+                        </script>
                     </div>
                 </div>
 
                 <div class="aths-option">
                     <label class="aths-option-label" for="pwa_enable_features"><?php esc_html_e('Enable ATHS Premium Features', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="checkbox" id="pwa_enable_features" name="pwa_enable_features" value="on" <?php checked($enable_features === 'on'); ?> <?php echo !$is_valid ? 'disabled' : ''; ?> />
+                        <input type="checkbox" id="pwa_enable_features" name="pwa_enable_features" value="on" <?php checked($enable_features === 'on'); ?> <?php echo !$is_premium ? 'disabled' : ''; ?> />
                         <div class="description">
                             <?php esc_html_e('Check to enable premium features (manifest, etc.). Uncheck to disable them without losing your settings. This turns your blog into a Web App, making it faster, giving it a native app feel on mobile devices, and allowing customization of the options below.', 'add-to-home-screen-wp'); ?>
                         </div>
-                        <?php if (!$is_valid) : ?>
+                        <?php if (!$is_premium) : ?>
                             <input type="hidden" name="pwa_enable_features" value="<?php echo esc_attr($enable_features); ?>" />
                         <?php endif; ?>
                     </div>
@@ -249,10 +277,10 @@
                 <div class="aths-option">
                     <label class="aths-option-label" for="pwa_theme_color"><?php esc_html_e('Top Color', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="color" id="pwa_theme_color" name="pwa_theme_color" value="<?php echo esc_attr($top_color); ?>" <?php echo !$is_valid ? 'disabled' : ''; ?> />
-                        <button type="button" id="reset_top_color" class="button" <?php echo !$is_valid ? 'disabled' : ''; ?>><?php esc_html_e('Reset to Default', 'add-to-home-screen-wp'); ?></button>
+                        <input type="color" id="pwa_theme_color" name="pwa_theme_color" value="<?php echo esc_attr($top_color); ?>" <?php echo !$is_premium ? 'disabled' : ''; ?> />
+                        <button type="button" id="reset_top_color" class="button" <?php echo !$is_premium ? 'disabled' : ''; ?>><?php esc_html_e('Reset to Default', 'add-to-home-screen-wp'); ?></button>
                         <div class="description"><?php esc_html_e('The color of the top bar in your Web App. Default: #000000 (black).', 'add-to-home-screen-wp'); ?></div>
-                        <?php if (!$is_valid) : ?>
+                        <?php if (!$is_premium) : ?>
                             <input type="hidden" name="pwa_theme_color" value="<?php echo esc_attr($top_color); ?>" />
                         <?php endif; ?>
                     </div>
@@ -261,9 +289,9 @@
                 <div class="aths-option">
                     <label class="aths-option-label" for="pwa_force_homepage"><?php esc_html_e('Force Homepage on Launch', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="checkbox" id="pwa_force_homepage" name="pwa_force_homepage" <?php checked($force_homepage === 'on'); ?> <?php echo !$is_valid ? 'disabled' : ''; ?> />
+                        <input type="checkbox" id="pwa_force_homepage" name="pwa_force_homepage" <?php checked($force_homepage === 'on'); ?> <?php echo !$is_premium ? 'disabled' : ''; ?> />
                         <div class="description"><?php esc_html_e('If checked, the Web App will always launch on the homepage, even if added from another page.', 'add-to-home-screen-wp'); ?></div>
-                        <?php if (!$is_valid) : ?>
+                        <?php if (!$is_premium) : ?>
                             <input type="hidden" name="pwa_force_homepage" value="<?php echo esc_attr($force_homepage); ?>" />
                         <?php endif; ?>
                     </div>
@@ -272,9 +300,9 @@
                 <div class="aths-option">
                     <label class="aths-option-label" for="pwa_show_loading"><?php esc_html_e('Show Loading Indicator', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="checkbox" id="pwa_show_loading" name="pwa_show_loading" <?php checked($show_loading === 'on'); ?> <?php echo !$is_valid ? 'disabled' : ''; ?> />
+                        <input type="checkbox" id="pwa_show_loading" name="pwa_show_loading" <?php checked($show_loading === 'on'); ?> <?php echo !$is_premium ? 'disabled' : ''; ?> />
                         <div class="description"><?php esc_html_e('If checked, a loading spinner will appear when navigating between pages in the Web App.', 'add-to-home-screen-wp'); ?></div>
-                        <?php if (!$is_valid) : ?>
+                        <?php if (!$is_premium) : ?>
                             <input type="hidden" name="pwa_show_loading" value="<?php echo esc_attr($show_loading); ?>" />
                         <?php endif; ?>
                     </div>
@@ -283,9 +311,9 @@
                 <div class="aths-option">
                     <label class="aths-option-label" for="pwa_show_install_button"><?php esc_html_e('Show Install Button for Android', 'add-to-home-screen-wp'); ?></label>
                     <div class="aths-option-field">
-                        <input type="checkbox" id="pwa_show_install_button" name="pwa_show_install_button" value="on" <?php checked($show_install_button === 'on'); ?> <?php echo !$is_valid ? 'disabled' : ''; ?> />
+                        <input type="checkbox" id="pwa_show_install_button" name="pwa_show_install_button" value="on" <?php checked($show_install_button === 'on'); ?> <?php echo !$is_premium ? 'disabled' : ''; ?> />
                         <div class="description"><?php esc_html_e('If checked, a button will appear on Android devices to prompt users to add the Web App to their home screen.', 'add-to-home-screen-wp'); ?></div>
-                        <?php if (!$is_valid) : ?>
+                        <?php if (!$is_premium) : ?>
                             <input type="hidden" name="pwa_show_install_button" value="<?php echo esc_attr($show_install_button); ?>" />
                         <?php endif; ?>
                     </div>
@@ -335,16 +363,13 @@
             $('#pwa_theme_color').val('#000000');
         });
 
-        // Gestion du bouton d’upload d’icône
         $('.upload-icon-button').click(function(e) {
             e.preventDefault();
             var button = $(this);
             var inputId = button.data('input');
             var customUploader = wp.media({
                 title: '<?php esc_html_e('Select or Upload Icon', 'add-to-home-screen-wp'); ?>',
-                button: {
-                    text: '<?php esc_html_e('Use this Icon', 'add-to-home-screen-wp'); ?>'
-                },
+                button: { text: '<?php esc_html_e('Use this Icon', 'add-to-home-screen-wp'); ?>' },
                 multiple: false,
                 library: { type: 'image' }
             }).on('select', function() {
