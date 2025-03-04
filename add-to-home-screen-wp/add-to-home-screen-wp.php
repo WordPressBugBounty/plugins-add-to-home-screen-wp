@@ -3,7 +3,7 @@
     Plugin Name: Add to Home Screen WP
     Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
     Description: Allow your visitors to add your WordPress blog to their iOS home screen (iPhone, iPod Touch, iPad) with a floating balloon. Premium features include full PWA support, forced homepage start, PWA toggle, and loading indicator.
-    Version: 2.6.4
+    Version: 2.6.5
     Author: Ziyad Bachalany
     Author URI: https://tulipemedia.com
     License: GPL-2.0-or-later
@@ -44,7 +44,7 @@ class adhsOptions
     }
 
     public static function register() {
-        // Options gratuites
+        // OPTIONS GRATUITES
         register_setting(adhsOptions_ID.'_options', 'returningvisitor', array('sanitize_callback' => 'sanitize_key'));
         register_setting(adhsOptions_ID.'_options', 'message', array('sanitize_callback' => array('adhsOptions', 'sanitize_message')));
         register_setting(adhsOptions_ID.'_options', 'animationin', array('sanitize_callback' => 'sanitize_text_field'));
@@ -60,7 +60,7 @@ class adhsOptions
         register_setting(adhsOptions_ID.'_options', 'aths_touchicon_precomposed', array('sanitize_callback' => 'sanitize_key'));
         register_setting(adhsOptions_ID.'_options', 'aths_increaseslot', array('sanitize_callback' => 'absint'));
 
-        // Options premium
+        // OPTIONS PREMIUM
         register_setting(adhsOptions_ID.'_options', 'athswp_license_key', array('sanitize_callback' => 'sanitize_text_field'));
         register_setting(adhsOptions_ID.'_options', 'athswp_premium_status', array('sanitize_callback' => 'sanitize_key')); // Statut premium
         register_setting(adhsOptions_ID.'_options', 'pwa_theme_color', array('sanitize_callback' => 'sanitize_hex_color'));
@@ -90,12 +90,12 @@ if (is_admin()) {
     add_action('admin_menu', array('adhsOptions', 'menu'));
 }
 
-// Check premium status using stored option
+// CHECK PREMIUM STATUS USING STORED OPTION
 function athswp_is_premium() {
     return get_option('athswp_premium_status', 'no') === 'yes';
 }
 
-// AJAX handler for license validation
+// AJAX HANDLER FOR LICENSE VALIDATION
 add_action('wp_ajax_athswp_validate_license', 'athswp_validate_license_callback');
 function athswp_validate_license_callback() {
     check_ajax_referer('athswp_validate_nonce', 'nonce');
@@ -115,19 +115,25 @@ function athswp_validate_license_callback() {
     if ($is_valid) {
         wp_send_json_success(__('License activated successfully!', 'add-to-home-screen-wp'));
     } else {
-        wp_send_json_error(__('Invalid license key. Please check and try again.', 'add-to-home-screen-wp'));
+        wp_send_json_error(__('Invalid license key, exceeded activations, or expired. Please check or renew your license.', 'add-to-home-screen-wp'));
     }
 }
 
-// Verify license (called explicitly via AJAX)
+// VERIFY LICENSE WITH PRODUCT ID, ACTIVATION LIMITS, AND INSTANCE CHECK
 function athswp_verify_license($key) {
     if (empty($key) || strlen($key) < 5) {
+        error_log("License key $key rejected: too short or empty");
         return false;
     }
 
-    $api_key = 'ck_ccf0d0edd9ea99ecc2c6b252c6285d20512d5b0c';
-    $api_secret = 'cs_67ed4168c40f836dd0608d36bf3dc17ad5f0117b';
-    $response = wp_remote_get("https://tulipemedia.com/wp-json/lmfwc/v2/licenses/validate/{$key}", [
+    $api_key = 'ck_20551ed87d39acacbef2bf23a89926ae0c4e6794';
+    $api_secret = 'cs_b81243b795cbce812308c13c0842de1a0f3fdd31';
+    $endpoint = 'https://tulipemedia.com/wp-json/lmfwc/v2';
+    $expected_product_id = '4595'; // ID produit correct pour ATHS
+    $current_instance = home_url();
+
+    // Validation initiale
+    $response = wp_remote_get("{$endpoint}/licenses/validate/{$key}", [
         'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
         'timeout' => 10,
     ]);
@@ -138,13 +144,264 @@ function athswp_verify_license($key) {
     }
 
     $response_code = wp_remote_retrieve_response_code($response);
-    $body = wp_remote_retrieve_body($response);
-    error_log("License API response for key $key: Code $response_code, Body: $body");
-    $body = json_decode($body);
-    return isset($body->success) && $body->success === true;
+    $body = json_decode(wp_remote_retrieve_body($response));
+    error_log("Initial license validation response for key $key (Code $response_code): " . print_r($body, true));
+
+    if (!isset($body->success) || $body->success !== true) {
+        error_log("License $key invalid: " . print_r($body, true));
+        return false;
+    }
+
+    // Vérification du productId si présent dans /validate/
+    if (isset($body->data->productId)) {
+        error_log("Product ID from validate: value=" . $body->data->productId . ", type=" . gettype($body->data->productId));
+        if ($body->data->productId != $expected_product_id) {
+            error_log("License $key rejected: product ID mismatch in validate (expected $expected_product_id, got " . $body->data->productId . ")");
+            return false;
+        }
+    }
+
+    // Vérification de l'expiration
+    if (isset($body->data->expiresAt) && !empty($body->data->expiresAt)) {
+        $expiration_date = strtotime($body->data->expiresAt);
+        if ($expiration_date < time()) {
+            error_log("License $key expired on " . $body->data->expiresAt);
+            return false;
+        }
+    }
+
+    // Vérification des activations
+    $times_activated = $body->data->timesActivated ?? 0;
+    $remaining_activations = $body->data->remainingActivations ?? 0;
+
+    if ($times_activated > 0) {
+        // Clé déjà activée, vérifier les instances
+        $activations = wp_remote_get("{$endpoint}/licenses/activations/{$key}", [
+            'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+            'timeout' => 10,
+        ]);
+
+        if (!is_wp_error($activations)) {
+            $activations_body = json_decode(wp_remote_retrieve_body($activations));
+            error_log("License activations for key $key: " . print_r($activations_body, true));
+            $found_current_instance = false;
+
+            if (isset($activations_body->success) && $activations_body->success === true && !empty($activations_body->data)) {
+                foreach ($activations_body->data as $activation) {
+                    if ($activation->instance === $current_instance) {
+                        $found_current_instance = true;
+                        break;
+                    }
+                }
+            }
+
+            if ($found_current_instance) {
+                error_log("License $key already activated on this instance ($current_instance), considered valid.");
+                return true;
+            } else if ($remaining_activations <= 0) {
+                error_log("License $key already activated elsewhere, no remaining activations.");
+                return false;
+            }
+        }
+    }
+
+    // Tentative d'activation si des activations restent disponibles
+    if ($remaining_activations <= 0) {
+        error_log("License $key has no activations remaining: " . print_r($body, true));
+        return false;
+    }
+
+    $activate_response = wp_remote_get("{$endpoint}/licenses/activate/{$key}?instance=" . urlencode($current_instance), [
+        'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+        'timeout' => 10,
+    ]);
+
+    $activate_code = wp_remote_retrieve_response_code($activate_response);
+    $activate_body = json_decode(wp_remote_retrieve_body($activate_response));
+    error_log("License activation response for key $key (Code $activate_code): " . print_r($activate_body, true));
+
+    if ($activate_code === 200 && isset($activate_body->success) && $activate_body->success === true) {
+        // Vérification du productId dans /activate/ si présent
+        if (isset($activate_body->data->productId)) {
+            error_log("Product ID from activate: value=" . $activate_body->data->productId . ", type=" . gettype($activate_body->data->productId));
+            if ($activate_body->data->productId != $expected_product_id) {
+                error_log("License $key rejected: product ID mismatch in activate (expected $expected_product_id, got " . $activate_body->data->productId . ")");
+                return false;
+            }
+        }
+        error_log("License $key activated successfully on $current_instance");
+        return true; // Activation réussie
+    }
+
+    // Gestion des erreurs d'activation
+    if ($activate_code === 400 && isset($activate_body->data->errors->lmfwc_rest_license_key_already_activated)) {
+        // Clé déjà activée, vérifier les instances
+        $activations = wp_remote_get("{$endpoint}/licenses/activations/{$key}", [
+            'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+            'timeout' => 10,
+        ]);
+
+        if (!is_wp_error($activations)) {
+            $activations_body = json_decode(wp_remote_retrieve_body($activations));
+            error_log("License activations after error for key $key: " . print_r($activations_body, true));
+            $found_current_instance = false;
+
+            if (isset($activations_body->success) && $activations_body->success === true && !empty($activations_body->data)) {
+                foreach ($activations_body->data as $activation) {
+                    if ($activation->instance === $current_instance) {
+                        $found_current_instance = true;
+                        break;
+                    }
+                }
+            }
+
+            if ($found_current_instance) {
+                error_log("License $key already activated on this instance ($current_instance), considered valid.");
+                return true;
+            }
+        }
+    }
+
+    error_log("Activation failed for key $key (Code $activate_code): " . wp_remote_retrieve_body($activate_response));
+    return false;
 }
 
-// Add plugin settings link
+// PERIODIC LICENSE CHECK
+function athswp_periodic_license_check() {
+    $key = get_option('athswp_license_key');
+    if ($key) {
+        $api_key = 'ck_20551ed87d39acacbef2bf23a89926ae0c4e6794';
+        $api_secret = 'cs_b81243b795cbce812308c13c0842de1a0f3fdd31';
+        $endpoint = 'https://tulipemedia.com/wp-json/lmfwc/v2';
+        $current_instance = home_url();
+        $expected_product_id = '4595'; // ID produit correct pour ATHS
+
+        $response = wp_remote_get("{$endpoint}/licenses/validate/{$key}", [
+            'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+            'timeout' => 10,
+        ]);
+
+        if (is_wp_error($response)) {
+            error_log("Periodic license check failed for key $key: " . $response->get_error_message());
+            return;
+        }
+
+        $response_code = wp_remote_retrieve_response_code($response);
+        $body = json_decode(wp_remote_retrieve_body($response));
+        error_log("Periodic license check response for key $key (Code $response_code): " . print_r($body, true));
+
+        // Vérifier la validité générale
+        if (!isset($body->success) || $body->success !== true) {
+            update_option('athswp_premium_status', 'no');
+            update_option('athswp_license_message', __('Your license is invalid. Please check or renew your license.', 'add-to-home-screen-wp'));
+            error_log("License $key invalidated during periodic check.");
+            return;
+        }
+
+        // Vérification du productId si présent
+        if (isset($body->data->productId)) {
+            error_log("Product ID from periodic validate: value=" . $body->data->productId . ", type=" . gettype($body->data->productId));
+            if ($body->data->productId != $expected_product_id) {
+                update_option('athswp_premium_status', 'no');
+                update_option('athswp_license_message', __('Your license is not valid for this plugin. Please use an ATHS license key.', 'add-to-home-screen-wp'));
+                error_log("License $key rejected in periodic check: product ID mismatch (expected $expected_product_id, got " . $body->data->productId . ")");
+                return;
+            }
+        }
+
+        // Vérifier l'expiration
+        if (isset($body->data->expiresAt) && !empty($body->data->expiresAt)) {
+            $expiration_date = strtotime($body->data->expiresAt);
+            if ($expiration_date < time()) {
+                update_option('athswp_premium_status', 'no');
+                update_option('athswp_license_message', __('Your license has expired. Please renew it to continue using premium features.', 'add-to-home-screen-wp'));
+                error_log("License $key expired on " . $body->data->expiresAt);
+                return;
+            }
+        }
+
+        // Vérifier les activations
+        $times_activated = $body->data->timesActivated ?? 0;
+        if ($times_activated > 0) {
+            $activations = wp_remote_get("{$endpoint}/licenses/activations/{$key}", [
+                'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+                'timeout' => 10,
+            ]);
+
+            if (!is_wp_error($activations)) {
+                $activations_body = json_decode(wp_remote_retrieve_body($activations));
+                error_log("Periodic check activations for key $key: " . print_r($activations_body, true));
+                $found_current_instance = false;
+
+                if (isset($activations_body->success) && $activations_body->success === true && !empty($activations_body->data)) {
+                    foreach ($activations_body->data as $activation) {
+                        if ($activation->instance === $current_instance) {
+                            $found_current_instance = true;
+                            break;
+                        }
+                    }
+                }
+
+                if (!$found_current_instance) {
+                    update_option('athswp_premium_status', 'no');
+                    update_option('athswp_license_message', __('Your license is activated on another site. Please deactivate it there or use a different key.', 'add-to-home-screen-wp'));
+                    error_log("License $key not activated on this instance ($current_instance), invalidated.");
+                }
+            }
+        }
+    }
+}
+
+// PLANIFIER LA VÉRIFICATION QUOTIDIENNE
+if (!wp_next_scheduled('athswp_license_check')) {
+    wp_schedule_event(time(), 'daily', 'athswp_license_check');
+}
+
+// NOUVELLE FONCTION POUR DÉSACTIVER LA LICENCE
+function athswp_deactivate_license($key) {
+    if (empty($key) || strlen($key) < 5) {
+        error_log("License key $key rejected for deactivation: too short or empty");
+        return false;
+    }
+
+    $api_key = 'ck_20551ed87d39acacbef2bf23a89926ae0c4e6794';
+    $api_secret = 'cs_b81243b795cbce812308c13c0842de1a0f3fdd31';
+    $endpoint = 'https://tulipemedia.com/wp-json/lmfwc/v2';
+
+    $current_instance = home_url();
+    $deactivate_response = wp_remote_get("{$endpoint}/licenses/deactivate/{$key}?instance=" . urlencode($current_instance), [
+        'headers' => ['Authorization' => 'Basic ' . base64_encode("$api_key:$api_secret")],
+        'timeout' => 10,
+    ]);
+
+    $deactivate_code = wp_remote_retrieve_response_code($deactivate_response);
+    $deactivate_body = json_decode(wp_remote_retrieve_body($deactivate_response));
+    error_log("License deactivation response for key $key (Code $deactivate_code): " . print_r($deactivate_body, true));
+
+    if ($deactivate_code === 200 && isset($deactivate_body->success) && $deactivate_body->success === true) {
+        update_option('athswp_premium_status', 'no');
+        update_option('athswp_license_key', '');
+        return true;
+    }
+
+    error_log("Deactivation failed for key $key: " . wp_remote_retrieve_body($deactivate_response));
+    return false;
+}
+
+// AJAX HANDLER POUR DÉSACTIVER LA LICENCE
+add_action('wp_ajax_athswp_deactivate_license', 'athswp_deactivate_license_callback');
+function athswp_deactivate_license_callback() {
+    check_ajax_referer('athswp_validate_nonce', 'nonce');
+    $license_key = sanitize_text_field($_POST['license_key'] ?? '');
+
+    if (athswp_deactivate_license($license_key)) {
+        wp_send_json_success(__('License deactivated successfully! You can now activate it on another site.', 'add-to-home-screen-wp'));
+    } else {
+        wp_send_json_error(__('Failed to deactivate license. Please try again or contact support.', 'add-to-home-screen-wp'));
+    }
+}
+
+// ADD PLUGIN SETTINGS LINK
 add_filter('plugin_action_links', 'aths_plugin_action_links', 10, 2);
 function aths_plugin_action_links($links, $file) {
     static $this_plugin;
@@ -158,7 +415,7 @@ function aths_plugin_action_links($links, $file) {
     return $links;
 }
 
-// Générer le manifeste PWA avec touchicon_url
+// GÉNÉRER LE MANIFESTE PWA AVEC TOUCHICON_URL
 function generate_pwa_manifest() {
     if (!isset($_GET['action']) || $_GET['action'] !== 'pwa_manifest') return;
     if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
@@ -182,7 +439,7 @@ function generate_pwa_manifest() {
 }
 add_action('init', 'generate_pwa_manifest');
 
-// Forcer la page d'accueil uniquement au lancement initial
+// FORCER LA PAGE D'ACCUEIL UNIQUEMENT AU LANCEMENT INITIAL
 function force_homepage_on_standalone() {
     if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_force_homepage') === 'on') {
         echo '<script>
@@ -201,7 +458,7 @@ function force_homepage_on_standalone() {
 }
 add_action('wp_head', 'force_homepage_on_standalone', 10);
 
-// Indicateur de chargement : uniquement pour les clics explicites
+// INDICATEUR DE CHARGEMENT : UNIQUEMENT POUR LES CLICS EXPLICITES
 function add_pwa_loading_indicator() {
     if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_show_loading', 'off') === 'on') {
         echo '<style>
@@ -250,7 +507,7 @@ function add_pwa_loading_indicator() {
 }
 add_action('wp_footer', 'add_pwa_loading_indicator', 20);
 
-// Bouton d’installation pour Android
+// BOUTON D’INSTALLATION POUR ANDROID
 function add_android_install_button() {
     if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_show_install_button', 'off') === 'on') {
         echo '<style>
@@ -313,7 +570,7 @@ function add_android_install_button() {
 }
 add_action('wp_footer', 'add_android_install_button', 25);
 
-// Activer les fonctionnalités premium
+// ACTIVER LES FONCTIONNALITÉS PREMIUM
 function enable_premium_features() {
     if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
         echo '<meta name="apple-mobile-web-app-status-bar-style" content="default">';
@@ -351,6 +608,7 @@ function add2homecustom() {
     echo 'lifespan: ' . (get_option('lifespan') ? absint(get_option('lifespan')) : 20000) . ',';
     echo 'expire: ' . (get_option('expire') ? absint(get_option('expire')) : 0) . ',';
     echo 'touchIcon: ' . (get_option('touchicon') == 'on' ? 'true' : 'false') . ',';
+    echo 'bottomOffset: ' . (get_option('bottomoffset') ? absint(get_option('bottomoffset')) : 14) . ',';
     echo '};';
     echo '</script>';
 }

@@ -208,6 +208,9 @@
                     <div class="aths-option-field">
                         <input type="text" id="athswp_license_key" name="athswp_license_key" value="<?php echo esc_attr($license_key); ?>" style="width:300px;" placeholder="ex: ATHSUS2W-HFII-5495" />
                         <button type="button" id="athswp_validate_license" class="button"><?php esc_html_e('Validate License', 'add-to-home-screen-wp'); ?></button>
+                        <?php if ($is_premium) : ?>
+                            <button type="button" id="athswp_deactivate_license" class="button"><?php esc_html_e('Deactivate License', 'add-to-home-screen-wp'); ?></button>
+                        <?php endif; ?>
                         <p class="description">
                             <span id="athswp_license_status" class="<?php echo $is_premium ? 'success' : ''; ?>">
                                 <?php
@@ -257,6 +260,41 @@
                                 console.error('Validation error:', error);
                             });
                         });
+
+                        <?php if ($is_premium) : ?>
+                        document.getElementById('athswp_deactivate_license').addEventListener('click', function() {
+                            var licenseKey = document.getElementById('athswp_license_key').value;
+                            var statusElement = document.getElementById('athswp_license_status');
+                            var deactivateButton = document.getElementById('athswp_deactivate_license');
+
+                            statusElement.innerHTML = '<?php esc_html_e('Deactivating license...', 'add-to-home-screen-wp'); ?>';
+                            statusElement.className = 'checking';
+                            deactivateButton.disabled = true;
+
+                            fetch('<?php echo admin_url('admin-ajax.php'); ?>', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                                body: 'action=athswp_deactivate_license&license_key=' + encodeURIComponent(licenseKey) + '&nonce=<?php echo wp_create_nonce('athswp_validate_nonce'); ?>'
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                if (data.success) {
+                                    statusElement.innerHTML = '<?php esc_html_e('License deactivated successfully!', 'add-to-home-screen-wp'); ?>';
+                                    statusElement.className = 'success';
+                                    setTimeout(() => location.reload(), 1000);
+                                } else {
+                                    statusElement.innerHTML = data.data;
+                                    statusElement.className = 'error';
+                                    deactivateButton.disabled = false;
+                                }
+                            })
+                            .catch(error => {
+                                statusElement.innerHTML = '<?php esc_html_e('Error deactivating license. Please try again.', 'add-to-home-screen-wp'); ?>';
+                                statusElement.className = 'error';
+                                deactivateButton.disabled = false;
+                            });
+                        });
+                        <?php endif; ?>
                         </script>
                     </div>
                 </div>
