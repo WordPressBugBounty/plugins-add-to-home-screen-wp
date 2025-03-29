@@ -1,0 +1,33 @@
+#pwa-loading-indicator {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    /* border-top-color défini via inline CSS */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { rotate: 0deg; }
+    100% { rotate: 360deg; }
+}
+
+#pwa-install-button {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background-color: #000000; /* Ajusté par JS */
+    color: white;
+    padding: 10px 20px;
+    border-radius: 25px;
+    border: none;
+    font-size: 16px;
+    cursor: pointer;
+    z-index: 1000;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.3);
+}
+
+#pwa-install-button:hover {
+    opacity: 0.9;
+}

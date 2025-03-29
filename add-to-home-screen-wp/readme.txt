@@ -1,10 +1,10 @@
 === Add to Home Screen WP ===
 Contributors: tulipwork
 Donate link: https://tulipemedia.com
-Tags: iPhone, iOs, homescreen, webapp, PWA, push notifications
+Tags: iPhone, iOs, homescreen, webapp, PWA
 Requires at least: 6.7
 Tested up to: 6.7
-Stable tag: 2.6.5
+Stable tag: 2.6.6
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
@@ -37,7 +37,8 @@ Unlock advanced features with a purchase at [tulipemedia.com](https://tulipemedi
 The free version adds the floating balloon, while the premium version enhances your blog with these powerful PWA features and more.
 
 = Demo =
-[Watch the Demo Video](https://www.youtube.com/watch?v=Bd4i4k_DhE4)
+🎥 Watch the demo video
+[youtube https://www.youtube.com/watch?v=Bd4i4k_DhE4]
 
 [Check a demo on my blog](https://tulipemedia.com) (load it on an iPhone).
 
@@ -113,6 +114,9 @@ Purchase a subscription at [tulipemedia.com](https://tulipemedia.com/en/product/
 
 
 == Changelog ==
+= 2.6.6 =
+* Minor bug fixes and performance optimizations.
+
 = 2.6.5 =
 * Implemented license validation to enhance security and plugin integrity.
 * Minor bug fixes and performance optimizations.
@@ -223,6 +227,9 @@ Display title of the page.
 First version of the plugin.
 
 == Upgrade Notice ==
+= 2.6.6 =
+* Minor bug fixes and performance optimizations.
+
 = 2.6.5 =
 This version adds license validation. Activate your license key in the plugin settings to ensure uninterrupted functionality.
 
