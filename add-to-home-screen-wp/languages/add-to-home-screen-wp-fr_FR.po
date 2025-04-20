@@ -1,1838 +1,651 @@
+#, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: ATHS WP Plugin\n"
-"POT-Creation-Date: 2025-02-24 00:36+0100\n"
-"PO-Revision-Date: 2025-02-24 00:40+0100\n"
+"Project-Id-Version: ATHS MU Plugin\n"
+"POT-Creation-Date: 2025-04-20 02:18+0200\n"
+"PO-Revision-Date: 2025-04-20 02:21+0200\n"
 "Last-Translator: Tulipe Media <contact@tulipemedia.com>\n"
 "Language-Team: Tulipe Media <contact@tulipemedia.com>\n"
-"Language: fr\n"
+"Language: fr_FR\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.5\n"
-"X-Poedit-KeywordsList: __;_e;_c\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"X-Generator: Poedit 3.6\n"
+"X-Poedit-KeywordsList: __;_e;_c;esc_html_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
-"X-Poedit-SearchPath-0: add2home.css\n"
-"X-Poedit-SearchPath-1: add2home.js\n"
-"X-Poedit-SearchPath-2: index.php\n"
-"X-Poedit-SearchPath-3: options.php\n"
-"X-Poedit-SearchPath-4: readme.txt\n"
+"X-Poedit-SearchPath-0: .\n"
 
-#: tags/0.1/index.php:71 tags/0.2/index.php:71 tags/0.3/index.php:71
-#: tags/0.4/index.php:72 tags/0.5/index.php:74 tags/0.6/index.php:76
-#: tags/0.7/index.php:76 tags/0.8/index.php:76 tags/0.9/index.php:85
-#: tags/1.0/index.php:85 tags/1.1/index.php:85 tags/1.2/index.php:75
-#: tags/1.3/index.php:75 tags/1.4/index.php:75 tags/1.5/0.1/index.php:71
-#: tags/1.5/0.2/index.php:71 tags/1.5/0.3/index.php:71
-#: tags/1.5/0.4/index.php:72 tags/1.5/0.5/index.php:74
-#: tags/1.5/0.6/index.php:76 tags/1.5/0.7/index.php:76
-#: tags/1.5/0.8/index.php:76 tags/1.5/0.9/index.php:85
-#: tags/1.5/1.0/index.php:85 tags/1.5/1.1/index.php:85
-#: tags/1.5/1.2/index.php:75 tags/1.5/1.3/index.php:75
-#: tags/1.5/1.4/index.php:75 tags/1.5/5.1/0.1/index.php:71
-#: tags/1.5/5.1/0.2/index.php:71 tags/1.5/5.1/0.3/index.php:71
-#: tags/1.5/5.1/0.4/index.php:72 tags/1.5/5.1/0.5/index.php:74
-#: tags/1.5/5.1/0.6/index.php:76 tags/1.5/5.1/0.7/index.php:76
-#: tags/1.5/5.1/0.8/index.php:76 tags/1.5/5.1/0.9/index.php:85
-#: tags/1.5/5.1/1.0/index.php:85 tags/1.5/5.1/1.1/index.php:85
-#: tags/1.5/5.1/1.2/index.php:75 tags/1.5/5.1/1.3/index.php:75
-#: tags/1.5/5.1/1.4/index.php:75 tags/1.6/index.php:75 tags/1.7/index.php:75
-#: tags/1.8/index.php:75 tags/1.9/index.php:75
-msgid "You do not have sufficient permissions to access this page."
-msgstr "Vous n'avez pas les permissions nécessaires pour accéder à cette page."
-
-#: tags/0.1/options.php:45 tags/0.2/options.php:45 tags/0.3/options.php:45
-#: tags/0.4/options.php:45 tags/0.5/options.php:45 tags/0.6/options.php:45
-#: tags/0.7/options.php:45 tags/0.8/options.php:45 tags/0.9/options.php:51
-#: tags/1.0/options.php:53 tags/1.1/options.php:53 tags/1.2/options.php:53
-#: tags/1.3/options.php:53 tags/1.4/options.php:53 tags/1.5/0.1/options.php:45
-#: tags/1.5/0.2/options.php:45 tags/1.5/0.3/options.php:45
-#: tags/1.5/0.4/options.php:45 tags/1.5/0.5/options.php:45
-#: tags/1.5/0.6/options.php:45 tags/1.5/0.7/options.php:45
-#: tags/1.5/0.8/options.php:45 tags/1.5/0.9/options.php:51
-#: tags/1.5/1.0/options.php:53 tags/1.5/1.1/options.php:53
-#: tags/1.5/1.2/options.php:53 tags/1.5/1.3/options.php:53
-#: tags/1.5/1.4/options.php:53 tags/1.5/5.1/0.1/options.php:45
-#: tags/1.5/5.1/0.2/options.php:45 tags/1.5/5.1/0.3/options.php:45
-#: tags/1.5/5.1/0.4/options.php:45 tags/1.5/5.1/0.5/options.php:45
-#: tags/1.5/5.1/0.6/options.php:45 tags/1.5/5.1/0.7/options.php:45
-#: tags/1.5/5.1/0.8/options.php:45 tags/1.5/5.1/0.9/options.php:51
-#: tags/1.5/5.1/1.0/options.php:53 tags/1.5/5.1/1.1/options.php:53
-#: tags/1.5/5.1/1.2/options.php:53 tags/1.5/5.1/1.3/options.php:53
-#: tags/1.5/5.1/1.4/options.php:53 tags/1.6/options.php:53
-#: tags/1.7/options.php:53 tags/1.8/options.php:53 tags/1.9/options.php:53
-#: tags/2.1/options.php:52 tags/2.2/options.php:52
-#: tags/2.2/trunk/options.php:52 tags/2.3/options.php:52
-#: tags/2.4/options.php:52
-msgid "ATHS Options &raquo; Settings"
-msgstr "ATHS Option &raquo; Réglages"
-
-#: tags/0.1/options.php:47 tags/0.2/options.php:47 tags/0.3/options.php:47
-#: tags/0.4/options.php:47 tags/0.5/options.php:47 tags/0.6/options.php:47
-#: tags/0.7/options.php:47 tags/0.8/options.php:47 tags/1.5/0.1/options.php:47
-#: tags/1.5/0.2/options.php:47 tags/1.5/0.3/options.php:47
-#: tags/1.5/0.4/options.php:47 tags/1.5/0.5/options.php:47
-#: tags/1.5/0.6/options.php:47 tags/1.5/0.7/options.php:47
-#: tags/1.5/0.8/options.php:47 tags/1.5/5.1/0.1/options.php:47
-#: tags/1.5/5.1/0.2/options.php:47 tags/1.5/5.1/0.3/options.php:47
-#: tags/1.5/5.1/0.4/options.php:47 tags/1.5/5.1/0.5/options.php:47
-#: tags/1.5/5.1/0.6/options.php:47 tags/1.5/5.1/0.7/options.php:47
-#: tags/1.5/5.1/0.8/options.php:47
-msgid "Say hello to me!"
-msgstr "Passez-moi le bonjour !"
-
-#: tags/0.1/options.php:74 tags/0.2/options.php:74 tags/0.3/options.php:74
-#: tags/0.4/options.php:74 tags/0.5/options.php:74 tags/0.6/options.php:74
-#: tags/0.7/options.php:74 tags/0.8/options.php:74 tags/1.5/0.1/options.php:74
-#: tags/1.5/0.2/options.php:74 tags/1.5/0.3/options.php:74
-#: tags/1.5/0.4/options.php:74 tags/1.5/0.5/options.php:74
-#: tags/1.5/0.6/options.php:74 tags/1.5/0.7/options.php:74
-#: tags/1.5/0.8/options.php:74 tags/1.5/5.1/0.1/options.php:74
-#: tags/1.5/5.1/0.2/options.php:74 tags/1.5/5.1/0.3/options.php:74
-#: tags/1.5/5.1/0.4/options.php:74 tags/1.5/5.1/0.5/options.php:74
-#: tags/1.5/5.1/0.6/options.php:74 tags/1.5/5.1/0.7/options.php:74
-#: tags/1.5/5.1/0.8/options.php:74
-msgid "Spread the word, tweet my plugin!"
-msgstr "Faites passer le mot, partagez mon plugin !"
-
-#: tags/0.1/options.php:82 tags/0.1/options.php:87 tags/0.2/options.php:82
-#: tags/0.2/options.php:87 tags/0.3/options.php:82 tags/0.3/options.php:87
-#: tags/0.4/options.php:82 tags/0.4/options.php:87 tags/0.5/options.php:82
-#: tags/0.5/options.php:87 tags/0.6/options.php:82 tags/0.6/options.php:87
-#: tags/0.7/options.php:82 tags/0.7/options.php:87 tags/0.8/options.php:82
-#: tags/0.8/options.php:87 tags/0.9/options.php:88 tags/0.9/options.php:93
-#: tags/1.0/options.php:93 tags/1.0/options.php:98 tags/1.1/options.php:93
-#: tags/1.1/options.php:98 tags/1.2/options.php:93 tags/1.2/options.php:98
-#: tags/1.3/options.php:93 tags/1.3/options.php:98 tags/1.4/options.php:81
-#: tags/1.4/options.php:86 tags/1.5/0.1/options.php:82
-#: tags/1.5/0.1/options.php:87 tags/1.5/0.2/options.php:82
-#: tags/1.5/0.2/options.php:87 tags/1.5/0.3/options.php:82
-#: tags/1.5/0.3/options.php:87 tags/1.5/0.4/options.php:82
-#: tags/1.5/0.4/options.php:87 tags/1.5/0.5/options.php:82
-#: tags/1.5/0.5/options.php:87 tags/1.5/0.6/options.php:82
-#: tags/1.5/0.6/options.php:87 tags/1.5/0.7/options.php:82
-#: tags/1.5/0.7/options.php:87 tags/1.5/0.8/options.php:82
-#: tags/1.5/0.8/options.php:87 tags/1.5/0.9/options.php:88
-#: tags/1.5/0.9/options.php:93 tags/1.5/1.0/options.php:93
-#: tags/1.5/1.0/options.php:98 tags/1.5/1.1/options.php:93
-#: tags/1.5/1.1/options.php:98 tags/1.5/1.2/options.php:93
-#: tags/1.5/1.2/options.php:98 tags/1.5/1.3/options.php:93
-#: tags/1.5/1.3/options.php:98 tags/1.5/1.4/options.php:81
-#: tags/1.5/1.4/options.php:86 tags/1.5/5.1/0.1/options.php:82
-#: tags/1.5/5.1/0.1/options.php:87 tags/1.5/5.1/0.2/options.php:82
-#: tags/1.5/5.1/0.2/options.php:87 tags/1.5/5.1/0.3/options.php:82
-#: tags/1.5/5.1/0.3/options.php:87 tags/1.5/5.1/0.4/options.php:82
-#: tags/1.5/5.1/0.4/options.php:87 tags/1.5/5.1/0.5/options.php:82
-#: tags/1.5/5.1/0.5/options.php:87 tags/1.5/5.1/0.6/options.php:82
-#: tags/1.5/5.1/0.6/options.php:87 tags/1.5/5.1/0.7/options.php:82
-#: tags/1.5/5.1/0.7/options.php:87 tags/1.5/5.1/0.8/options.php:82
-#: tags/1.5/5.1/0.8/options.php:87 tags/1.5/5.1/0.9/options.php:88
-#: tags/1.5/5.1/0.9/options.php:93 tags/1.5/5.1/1.0/options.php:93
-#: tags/1.5/5.1/1.0/options.php:98 tags/1.5/5.1/1.1/options.php:93
-#: tags/1.5/5.1/1.1/options.php:98 tags/1.5/5.1/1.2/options.php:93
-#: tags/1.5/5.1/1.2/options.php:98 tags/1.5/5.1/1.3/options.php:93
-#: tags/1.5/5.1/1.3/options.php:98 tags/1.5/5.1/1.4/options.php:81
-#: tags/1.5/5.1/1.4/options.php:86 tags/1.6/options.php:81
-#: tags/1.6/options.php:86 tags/1.7/options.php:81 tags/1.7/options.php:86
-#: tags/1.8/options.php:83 tags/1.8/options.php:88 tags/1.9/options.php:83
-#: tags/1.9/options.php:88 trunk/options.php:290
-msgid "Save Settings"
-msgstr "Sauvegarder"
-
-#: tags/0.1/options.php:94 tags/0.2/options.php:94 tags/0.3/options.php:94
-#: tags/0.4/options.php:94 tags/0.5/options.php:94 tags/0.6/options.php:94
-#: tags/0.7/options.php:94 tags/0.8/options.php:94 tags/0.9/options.php:101
-#: tags/1.0/options.php:106 tags/1.1/options.php:106 tags/1.2/options.php:106
-#: tags/1.3/options.php:106 tags/1.4/options.php:94 tags/1.5/0.1/options.php:94
-#: tags/1.5/0.2/options.php:94 tags/1.5/0.3/options.php:94
-#: tags/1.5/0.4/options.php:94 tags/1.5/0.5/options.php:94
-#: tags/1.5/0.6/options.php:94 tags/1.5/0.7/options.php:94
-#: tags/1.5/0.8/options.php:94 tags/1.5/0.9/options.php:101
-#: tags/1.5/1.0/options.php:106 tags/1.5/1.1/options.php:106
-#: tags/1.5/1.2/options.php:106 tags/1.5/1.3/options.php:106
-#: tags/1.5/1.4/options.php:94 tags/1.5/5.1/0.1/options.php:94
-#: tags/1.5/5.1/0.2/options.php:94 tags/1.5/5.1/0.3/options.php:94
-#: tags/1.5/5.1/0.4/options.php:94 tags/1.5/5.1/0.5/options.php:94
-#: tags/1.5/5.1/0.6/options.php:94 tags/1.5/5.1/0.7/options.php:94
-#: tags/1.5/5.1/0.8/options.php:94 tags/1.5/5.1/0.9/options.php:101
-#: tags/1.5/5.1/1.0/options.php:106 tags/1.5/5.1/1.1/options.php:106
-#: tags/1.5/5.1/1.2/options.php:106 tags/1.5/5.1/1.3/options.php:106
-#: tags/1.5/5.1/1.4/options.php:94 tags/1.6/options.php:94
-#: tags/1.7/options.php:94 tags/1.8/options.php:96 tags/1.9/options.php:96
-#: tags/2.1/options.php:96 tags/2.2/options.php:96
-#: tags/2.2/trunk/options.php:96 tags/2.3/options.php:96
-#: tags/2.4/options.php:96 tags/2.5/options.php:95 trunk/options.php:39
-msgid "Show to returning visitors only"
-msgstr "N'afficher qu'après la seconde visite"
-
-#: tags/0.1/options.php:96 tags/0.2/options.php:96 tags/0.3/options.php:96
-#: tags/1.5/0.1/options.php:96 tags/1.5/0.2/options.php:96
-#: tags/1.5/0.3/options.php:96 tags/1.5/5.1/0.1/options.php:96
-#: tags/1.5/5.1/0.2/options.php:96 tags/1.5/5.1/0.3/options.php:96
-#: tags/2.1/options.php:100 tags/2.2/options.php:100
-#: tags/2.2/trunk/options.php:100 tags/2.3/options.php:100
-#: tags/2.4/options.php:100 tags/2.5/options.php:98 trunk/options.php:44
+#: add-to-home-screen-wp.php:39
 msgid ""
-"Set this to true and the message won't be shown the first time one user "
-"visits your blog. It can be useful to target only returning visitors and not "
-"irritate first time visitors."
+"🚀 Add %network_name (%site_name) to your %device with %icon and %add now! 🌟"
 msgstr ""
-"En cochant cette option, le message ne s'affichera pas aux nouveaux "
-"visiteurs de votre blog. Cela peut être pratique pour cibler seulement les "
-"visiteurs qui sont revenus sur votre site, et pour ne pas irriter les "
-"nouveaux lecteurs."
+"🚀 Ajoutez %network_name (%site_name) à votre %device avec %icon et %add dès "
+"maintenant ! 🌟"
 
-#: tags/0.1/options.php:101 tags/0.2/options.php:101 tags/0.3/options.php:101
-#: tags/0.4/options.php:101 tags/0.5/options.php:101 tags/0.6/options.php:101
-#: tags/0.7/options.php:101 tags/0.8/options.php:101 tags/0.9/options.php:108
-#: tags/1.0/options.php:113 tags/1.1/options.php:113 tags/1.2/options.php:113
-#: tags/1.3/options.php:113 tags/1.4/options.php:101
-#: tags/1.5/0.1/options.php:101 tags/1.5/0.2/options.php:101
-#: tags/1.5/0.3/options.php:101 tags/1.5/0.4/options.php:101
-#: tags/1.5/0.5/options.php:101 tags/1.5/0.6/options.php:101
-#: tags/1.5/0.7/options.php:101 tags/1.5/0.8/options.php:101
-#: tags/1.5/0.9/options.php:108 tags/1.5/1.0/options.php:113
-#: tags/1.5/1.1/options.php:113 tags/1.5/1.2/options.php:113
-#: tags/1.5/1.3/options.php:113 tags/1.5/1.4/options.php:101
-#: tags/1.5/5.1/0.1/options.php:101 tags/1.5/5.1/0.2/options.php:101
-#: tags/1.5/5.1/0.3/options.php:101 tags/1.5/5.1/0.4/options.php:101
-#: tags/1.5/5.1/0.5/options.php:101 tags/1.5/5.1/0.6/options.php:101
-#: tags/1.5/5.1/0.7/options.php:101 tags/1.5/5.1/0.8/options.php:101
-#: tags/1.5/5.1/0.9/options.php:108 tags/1.5/5.1/1.0/options.php:113
-#: tags/1.5/5.1/1.1/options.php:113 tags/1.5/5.1/1.2/options.php:113
-#: tags/1.5/5.1/1.3/options.php:113 tags/1.5/5.1/1.4/options.php:101
-#: tags/1.6/options.php:101 tags/1.7/options.php:101 tags/1.8/options.php:103
-#: tags/1.9/options.php:103 tags/2.1/options.php:109 tags/2.2/options.php:109
-#: tags/2.2/trunk/options.php:109 tags/2.3/options.php:109
-#: tags/2.4/options.php:109 tags/2.5/options.php:106 trunk/options.php:51
-msgid "Custom message"
-msgstr "Message personnalisé"
+#: add-to-home-screen-wp.php:40
+msgid "🚀 Add %site_name to your %device with %icon and %add now! 🌟"
+msgstr ""
+"🚀 Ajoutez %site_name à votre %device avec %icon et %add dès maintenant ! 🌟"
 
-#: tags/0.1/options.php:103 tags/0.2/options.php:103 tags/0.3/options.php:103
-#: tags/0.4/options.php:103 tags/0.5/options.php:103 tags/0.6/options.php:103
-#: tags/0.7/options.php:103 tags/0.8/options.php:103 tags/0.9/options.php:110
-#: tags/1.0/options.php:115 tags/1.1/options.php:115 tags/1.2/options.php:115
-#: tags/1.3/options.php:115 tags/1.4/options.php:103
-#: tags/1.5/0.1/options.php:103 tags/1.5/0.2/options.php:103
-#: tags/1.5/0.3/options.php:103 tags/1.5/0.4/options.php:103
-#: tags/1.5/0.5/options.php:103 tags/1.5/0.6/options.php:103
-#: tags/1.5/0.7/options.php:103 tags/1.5/0.8/options.php:103
-#: tags/1.5/0.9/options.php:110 tags/1.5/1.0/options.php:115
-#: tags/1.5/1.1/options.php:115 tags/1.5/1.2/options.php:115
-#: tags/1.5/1.3/options.php:115 tags/1.5/1.4/options.php:103
-#: tags/1.5/5.1/0.1/options.php:103 tags/1.5/5.1/0.2/options.php:103
-#: tags/1.5/5.1/0.3/options.php:103 tags/1.5/5.1/0.4/options.php:103
-#: tags/1.5/5.1/0.5/options.php:103 tags/1.5/5.1/0.6/options.php:103
-#: tags/1.5/5.1/0.7/options.php:103 tags/1.5/5.1/0.8/options.php:103
-#: tags/1.5/5.1/0.9/options.php:110 tags/1.5/5.1/1.0/options.php:115
-#: tags/1.5/5.1/1.1/options.php:115 tags/1.5/5.1/1.2/options.php:115
-#: tags/1.5/5.1/1.3/options.php:115 tags/1.5/5.1/1.4/options.php:103
-#: tags/1.6/options.php:103 tags/1.7/options.php:103 tags/1.8/options.php:105
-#: tags/1.9/options.php:105 tags/2.1/options.php:111 tags/2.2/options.php:111
-#: tags/2.2/trunk/options.php:111 tags/2.3/options.php:111
-#: tags/2.4/options.php:111 tags/2.5/options.php:108 trunk/options.php:55
+#: add-to-home-screen-wp.php:42
+msgid "🚀 Add %network_name (%site_name) to your %device now! 🌟"
+msgstr ""
+"🚀 Ajoutez %network_name (%site_name) à votre %device dès maintenant ! 🌟"
+
+#: add-to-home-screen-wp.php:43
+#, php-format
+msgid "🚀 Add %site_name to your %device now! 🌟"
+msgstr "🚀 Ajoutez %site_name à votre %device dès maintenant ! 🌟"
+
+#: add-to-home-screen-wp.php:156 add-to-home-screen-wp.php:157
+#: add-to-home-screen-wp.php:1268
+msgid "Add to Home Screen"
+msgstr "Ajouter à l'écran d'accueil"
+
+#: add-to-home-screen-wp.php:172
+msgid "General"
+msgstr "Général"
+
+#: add-to-home-screen-wp.php:173
+msgid "Pro Settings"
+msgstr "Paramètres Pro"
+
+#: add-to-home-screen-wp.php:174
+msgid "Support"
+msgstr "Support"
+
+#: add-to-home-screen-wp.php:177
+msgid "License"
+msgstr "Licence"
+
+#: add-to-home-screen-wp.php:179
+msgid "Uninstall"
+msgstr "Désinstallation"
+
+#: add-to-home-screen-wp.php:183
+msgid "Add to Home Screen & PWA"
+msgstr "Ajouter à l'écran d'accueil & PWA"
+
+#: add-to-home-screen-wp.php:280
+msgid "Add to Home Screen & PWA (Network Settings)"
+msgstr "Ajouter à l'écran d'accueil & PWA (Paramètres réseau)"
+
+#: add-to-home-screen-wp.php:289 add-to-home-screen-wp.php:541
+msgid "PWA Settings"
+msgstr "Paramètres PWA"
+
+#: add-to-home-screen-wp.php:291 add-to-home-screen-wp.php:543
+msgid "Configure Progressive Web App features."
+msgstr "Configurer les fonctionnalités de l'application Web progressive."
+
+#: add-to-home-screen-wp.php:295 add-to-home-screen-wp.php:547
+msgid "Enable PWA"
+msgstr "Activer le PWA"
+
+#: add-to-home-screen-wp.php:298
 msgid ""
-"Type the custom message that you want appearing in the balloon. You can also "
-"display default message in the language of your choice by typing the locale "
-"(e.g: en_us)."
+"Enable Progressive Web App features (spinner and basic caching) across the "
+"admin dashboard and frontend."
 msgstr ""
-"Tapez le message personnalisé que vous voulez voir apparaître dans la "
-"fenêtre contextuelle. Vous pouvez aussi afficher le message par défaut dans "
-"la langue de votre choix en tapant le code de langue. (Exemple : en_us pour "
-"avoir le message en Anglais)."
+"Activer les fonctionnalités de l'application Web progressive (chargement et "
+"mise en cache de base) dans le tableau de bord d'administration et "
+"l'interface publique."
 
-#: tags/0.1/options.php:108 tags/0.2/options.php:108 tags/0.3/options.php:111
-#: tags/0.4/options.php:111 tags/0.5/options.php:111 tags/0.6/options.php:111
-#: tags/0.7/options.php:111 tags/0.8/options.php:111 tags/0.9/options.php:118
-#: tags/1.0/options.php:121 tags/1.1/options.php:121 tags/1.2/options.php:121
-#: tags/1.3/options.php:121 tags/1.4/options.php:109
-#: tags/1.5/0.1/options.php:108 tags/1.5/0.2/options.php:108
-#: tags/1.5/0.3/options.php:111 tags/1.5/0.4/options.php:111
-#: tags/1.5/0.5/options.php:111 tags/1.5/0.6/options.php:111
-#: tags/1.5/0.7/options.php:111 tags/1.5/0.8/options.php:111
-#: tags/1.5/0.9/options.php:118 tags/1.5/1.0/options.php:121
-#: tags/1.5/1.1/options.php:121 tags/1.5/1.2/options.php:121
-#: tags/1.5/1.3/options.php:121 tags/1.5/1.4/options.php:109
-#: tags/1.5/5.1/0.1/options.php:108 tags/1.5/5.1/0.2/options.php:108
-#: tags/1.5/5.1/0.3/options.php:111 tags/1.5/5.1/0.4/options.php:111
-#: tags/1.5/5.1/0.5/options.php:111 tags/1.5/5.1/0.6/options.php:111
-#: tags/1.5/5.1/0.7/options.php:111 tags/1.5/5.1/0.8/options.php:111
-#: tags/1.5/5.1/0.9/options.php:118 tags/1.5/5.1/1.0/options.php:121
-#: tags/1.5/5.1/1.1/options.php:121 tags/1.5/5.1/1.2/options.php:121
-#: tags/1.5/5.1/1.3/options.php:121 tags/1.5/5.1/1.4/options.php:109
-#: tags/1.6/options.php:109 tags/1.7/options.php:109 tags/1.8/options.php:111
-#: tags/1.9/options.php:111 tags/2.1/options.php:125 tags/2.2/options.php:125
-#: tags/2.2/trunk/options.php:125 tags/2.3/options.php:125
-#: tags/2.4/options.php:125 tags/2.5/options.php:122 trunk/options.php:73
-msgid "Animation in"
-msgstr "Animation entrante"
+#: add-to-home-screen-wp.php:302 add-to-home-screen-wp.php:554
+msgid "Frontend PWA Start URL"
+msgstr "URL de démarrage du PWA en interface publique"
 
-#: tags/0.1/options.php:110 tags/0.2/options.php:110 tags/0.3/options.php:113
-#: tags/0.4/options.php:113 tags/0.5/options.php:113 tags/0.6/options.php:113
-#: tags/0.7/options.php:113 tags/0.8/options.php:113 tags/0.9/options.php:120
-#: tags/1.0/options.php:123 tags/1.1/options.php:123 tags/1.2/options.php:123
-#: tags/1.3/options.php:123 tags/1.4/options.php:111
-#: tags/1.5/0.1/options.php:110 tags/1.5/0.2/options.php:110
-#: tags/1.5/0.3/options.php:113 tags/1.5/0.4/options.php:113
-#: tags/1.5/0.5/options.php:113 tags/1.5/0.6/options.php:113
-#: tags/1.5/0.7/options.php:113 tags/1.5/0.8/options.php:113
-#: tags/1.5/0.9/options.php:120 tags/1.5/1.0/options.php:123
-#: tags/1.5/1.1/options.php:123 tags/1.5/1.2/options.php:123
-#: tags/1.5/1.3/options.php:123 tags/1.5/1.4/options.php:111
-#: tags/1.5/5.1/0.1/options.php:110 tags/1.5/5.1/0.2/options.php:110
-#: tags/1.5/5.1/0.3/options.php:113 tags/1.5/5.1/0.4/options.php:113
-#: tags/1.5/5.1/0.5/options.php:113 tags/1.5/5.1/0.6/options.php:113
-#: tags/1.5/5.1/0.7/options.php:113 tags/1.5/5.1/0.8/options.php:113
-#: tags/1.5/5.1/0.9/options.php:120 tags/1.5/5.1/1.0/options.php:123
-#: tags/1.5/5.1/1.1/options.php:123 tags/1.5/5.1/1.2/options.php:123
-#: tags/1.5/5.1/1.3/options.php:123 tags/1.5/5.1/1.4/options.php:111
-#: tags/1.6/options.php:111 tags/1.7/options.php:111 tags/1.8/options.php:113
-#: tags/1.9/options.php:113 tags/2.1/options.php:127 tags/2.2/options.php:127
-#: tags/2.2/trunk/options.php:127 tags/2.3/options.php:127
-#: tags/2.4/options.php:127 tags/2.5/options.php:124 trunk/options.php:80
-msgid "The animation the balloon appears with."
-msgstr "L'animation par laquelle la fenêtre apparaît."
+#: add-to-home-screen-wp.php:305 add-to-home-screen-wp.php:341
+#: add-to-home-screen-wp.php:557 add-to-home-screen-wp.php:593
+msgid "Homepage"
+msgstr "Page d'accueil"
 
-#: tags/0.1/options.php:119 tags/0.2/options.php:119 tags/0.3/options.php:122
-#: tags/0.4/options.php:122 tags/0.5/options.php:122 tags/0.6/options.php:122
-#: tags/0.7/options.php:122 tags/0.8/options.php:122 tags/0.9/options.php:129
-#: tags/1.0/options.php:132 tags/1.1/options.php:132 tags/1.2/options.php:132
-#: tags/1.3/options.php:132 tags/1.4/options.php:120
-#: tags/1.5/0.1/options.php:119 tags/1.5/0.2/options.php:119
-#: tags/1.5/0.3/options.php:122 tags/1.5/0.4/options.php:122
-#: tags/1.5/0.5/options.php:122 tags/1.5/0.6/options.php:122
-#: tags/1.5/0.7/options.php:122 tags/1.5/0.8/options.php:122
-#: tags/1.5/0.9/options.php:129 tags/1.5/1.0/options.php:132
-#: tags/1.5/1.1/options.php:132 tags/1.5/1.2/options.php:132
-#: tags/1.5/1.3/options.php:132 tags/1.5/1.4/options.php:120
-#: tags/1.5/5.1/0.1/options.php:119 tags/1.5/5.1/0.2/options.php:119
-#: tags/1.5/5.1/0.3/options.php:122 tags/1.5/5.1/0.4/options.php:122
-#: tags/1.5/5.1/0.5/options.php:122 tags/1.5/5.1/0.6/options.php:122
-#: tags/1.5/5.1/0.7/options.php:122 tags/1.5/5.1/0.8/options.php:122
-#: tags/1.5/5.1/0.9/options.php:129 tags/1.5/5.1/1.0/options.php:132
-#: tags/1.5/5.1/1.1/options.php:132 tags/1.5/5.1/1.2/options.php:132
-#: tags/1.5/5.1/1.3/options.php:132 tags/1.5/5.1/1.4/options.php:120
-#: tags/1.6/options.php:120 tags/1.7/options.php:120 tags/1.8/options.php:122
-#: tags/1.9/options.php:122 tags/2.1/options.php:136 tags/2.2/options.php:136
-#: tags/2.2/trunk/options.php:136 tags/2.3/options.php:136
-#: tags/2.4/options.php:136 tags/2.5/options.php:133 trunk/options.php:85
-msgid "Animation out"
-msgstr "Animation sortante"
+#: add-to-home-screen-wp.php:306 add-to-home-screen-wp.php:558
+msgid "Homepage with Path"
+msgstr "Page d'accueil avec chemin"
 
-#: tags/0.1/options.php:121 tags/0.2/options.php:121 tags/0.3/options.php:124
-#: tags/0.4/options.php:124 tags/0.5/options.php:124 tags/0.6/options.php:124
-#: tags/0.7/options.php:124 tags/0.8/options.php:124 tags/0.9/options.php:131
-#: tags/1.0/options.php:134 tags/1.1/options.php:134 tags/1.2/options.php:134
-#: tags/1.3/options.php:134 tags/1.4/options.php:122
-#: tags/1.5/0.1/options.php:121 tags/1.5/0.2/options.php:121
-#: tags/1.5/0.3/options.php:124 tags/1.5/0.4/options.php:124
-#: tags/1.5/0.5/options.php:124 tags/1.5/0.6/options.php:124
-#: tags/1.5/0.7/options.php:124 tags/1.5/0.8/options.php:124
-#: tags/1.5/0.9/options.php:131 tags/1.5/1.0/options.php:134
-#: tags/1.5/1.1/options.php:134 tags/1.5/1.2/options.php:134
-#: tags/1.5/1.3/options.php:134 tags/1.5/1.4/options.php:122
-#: tags/1.5/5.1/0.1/options.php:121 tags/1.5/5.1/0.2/options.php:121
-#: tags/1.5/5.1/0.3/options.php:124 tags/1.5/5.1/0.4/options.php:124
-#: tags/1.5/5.1/0.5/options.php:124 tags/1.5/5.1/0.6/options.php:124
-#: tags/1.5/5.1/0.7/options.php:124 tags/1.5/5.1/0.8/options.php:124
-#: tags/1.5/5.1/0.9/options.php:131 tags/1.5/5.1/1.0/options.php:134
-#: tags/1.5/5.1/1.1/options.php:134 tags/1.5/5.1/1.2/options.php:134
-#: tags/1.5/5.1/1.3/options.php:134 tags/1.5/5.1/1.4/options.php:122
-#: tags/1.6/options.php:122 tags/1.7/options.php:122 tags/1.8/options.php:124
-#: tags/1.9/options.php:124 tags/2.1/options.php:138 tags/2.2/options.php:138
-#: tags/2.2/trunk/options.php:138 tags/2.3/options.php:138
-#: tags/2.4/options.php:138 tags/2.5/options.php:135 trunk/options.php:92
-msgid "The animation the balloon exits with."
-msgstr "L'animation par laquelle la fenêtre disparaît."
-
-#: tags/0.1/options.php:130 tags/0.2/options.php:130 tags/0.3/options.php:133
-#: tags/0.4/options.php:133 tags/0.5/options.php:133 tags/0.6/options.php:133
-#: tags/0.7/options.php:133 tags/0.8/options.php:133 tags/0.9/options.php:140
-#: tags/1.0/options.php:143 tags/1.1/options.php:143 tags/1.2/options.php:143
-#: tags/1.3/options.php:143 tags/1.4/options.php:131
-#: tags/1.5/0.1/options.php:130 tags/1.5/0.2/options.php:130
-#: tags/1.5/0.3/options.php:133 tags/1.5/0.4/options.php:133
-#: tags/1.5/0.5/options.php:133 tags/1.5/0.6/options.php:133
-#: tags/1.5/0.7/options.php:133 tags/1.5/0.8/options.php:133
-#: tags/1.5/0.9/options.php:140 tags/1.5/1.0/options.php:143
-#: tags/1.5/1.1/options.php:143 tags/1.5/1.2/options.php:143
-#: tags/1.5/1.3/options.php:143 tags/1.5/1.4/options.php:131
-#: tags/1.5/5.1/0.1/options.php:130 tags/1.5/5.1/0.2/options.php:130
-#: tags/1.5/5.1/0.3/options.php:133 tags/1.5/5.1/0.4/options.php:133
-#: tags/1.5/5.1/0.5/options.php:133 tags/1.5/5.1/0.6/options.php:133
-#: tags/1.5/5.1/0.7/options.php:133 tags/1.5/5.1/0.8/options.php:133
-#: tags/1.5/5.1/0.9/options.php:140 tags/1.5/5.1/1.0/options.php:143
-#: tags/1.5/5.1/1.1/options.php:143 tags/1.5/5.1/1.2/options.php:143
-#: tags/1.5/5.1/1.3/options.php:143 tags/1.5/5.1/1.4/options.php:131
-#: tags/1.6/options.php:131 tags/1.7/options.php:131 tags/1.8/options.php:133
-#: tags/1.9/options.php:133 tags/2.1/options.php:147 tags/2.2/options.php:147
-#: tags/2.2/trunk/options.php:147 tags/2.3/options.php:147
-#: tags/2.4/options.php:147 tags/2.5/options.php:144 trunk/options.php:97
-msgid "Start delay"
-msgstr "Délai"
-
-#: tags/0.1/options.php:132 tags/0.2/options.php:132 tags/0.3/options.php:135
-#: tags/0.4/options.php:135 tags/0.5/options.php:135 tags/0.6/options.php:135
-#: tags/0.7/options.php:135 tags/0.8/options.php:135 tags/0.9/options.php:142
-#: tags/1.0/options.php:145 tags/1.1/options.php:145 tags/1.2/options.php:145
-#: tags/1.3/options.php:145 tags/1.4/options.php:133
-#: tags/1.5/0.1/options.php:132 tags/1.5/0.2/options.php:132
-#: tags/1.5/0.3/options.php:135 tags/1.5/0.4/options.php:135
-#: tags/1.5/0.5/options.php:135 tags/1.5/0.6/options.php:135
-#: tags/1.5/0.7/options.php:135 tags/1.5/0.8/options.php:135
-#: tags/1.5/0.9/options.php:142 tags/1.5/1.0/options.php:145
-#: tags/1.5/1.1/options.php:145 tags/1.5/1.2/options.php:145
-#: tags/1.5/1.3/options.php:145 tags/1.5/1.4/options.php:133
-#: tags/1.5/5.1/0.1/options.php:132 tags/1.5/5.1/0.2/options.php:132
-#: tags/1.5/5.1/0.3/options.php:135 tags/1.5/5.1/0.4/options.php:135
-#: tags/1.5/5.1/0.5/options.php:135 tags/1.5/5.1/0.6/options.php:135
-#: tags/1.5/5.1/0.7/options.php:135 tags/1.5/5.1/0.8/options.php:135
-#: tags/1.5/5.1/0.9/options.php:142 tags/1.5/5.1/1.0/options.php:145
-#: tags/1.5/5.1/1.1/options.php:145 tags/1.5/5.1/1.2/options.php:145
-#: tags/1.5/5.1/1.3/options.php:145 tags/1.5/5.1/1.4/options.php:133
-#: tags/1.6/options.php:133 tags/1.7/options.php:133 tags/1.8/options.php:135
-#: tags/1.9/options.php:135 tags/2.1/options.php:149 tags/2.2/options.php:149
-#: tags/2.2/trunk/options.php:149 tags/2.3/options.php:149
-#: tags/2.4/options.php:149 tags/2.5/options.php:146 trunk/options.php:100
-msgid "Milliseconds to wait before showing the message. Default: 2000"
+#: add-to-home-screen-wp.php:309 add-to-home-screen-wp.php:561
+msgid ""
+"Choose where the PWA launches when added from the frontend. \"Homepage with "
+"Path\" starts at the homepage and redirects to a relative path (e.g., /"
+"category/video/)."
 msgstr ""
-"Temps d'attente en millisecondes avant d'afficher le message. Par défaut : "
-"2000"
+"Choisissez où le PWA démarre lorsqu'il est ajouté depuis l'interface "
+"publique. \"Page d'accueil avec chemin\" commence à la page d'accueil et "
+"redirige vers un chemin relatif (par exemple, /categorie/video/)."
 
-#: tags/0.1/options.php:137 tags/0.2/options.php:137 tags/0.3/options.php:140
-#: tags/0.4/options.php:140 tags/0.5/options.php:140 tags/0.6/options.php:140
-#: tags/0.7/options.php:140 tags/0.8/options.php:140 tags/0.9/options.php:147
-#: tags/1.0/options.php:150 tags/1.1/options.php:150 tags/1.2/options.php:150
-#: tags/1.3/options.php:150 tags/1.4/options.php:138
-#: tags/1.5/0.1/options.php:137 tags/1.5/0.2/options.php:137
-#: tags/1.5/0.3/options.php:140 tags/1.5/0.4/options.php:140
-#: tags/1.5/0.5/options.php:140 tags/1.5/0.6/options.php:140
-#: tags/1.5/0.7/options.php:140 tags/1.5/0.8/options.php:140
-#: tags/1.5/0.9/options.php:147 tags/1.5/1.0/options.php:150
-#: tags/1.5/1.1/options.php:150 tags/1.5/1.2/options.php:150
-#: tags/1.5/1.3/options.php:150 tags/1.5/1.4/options.php:138
-#: tags/1.5/5.1/0.1/options.php:137 tags/1.5/5.1/0.2/options.php:137
-#: tags/1.5/5.1/0.3/options.php:140 tags/1.5/5.1/0.4/options.php:140
-#: tags/1.5/5.1/0.5/options.php:140 tags/1.5/5.1/0.6/options.php:140
-#: tags/1.5/5.1/0.7/options.php:140 tags/1.5/5.1/0.8/options.php:140
-#: tags/1.5/5.1/0.9/options.php:147 tags/1.5/5.1/1.0/options.php:150
-#: tags/1.5/5.1/1.1/options.php:150 tags/1.5/5.1/1.2/options.php:150
-#: tags/1.5/5.1/1.3/options.php:150 tags/1.5/5.1/1.4/options.php:138
-#: tags/1.6/options.php:138 tags/1.7/options.php:138 tags/1.8/options.php:140
-#: tags/1.9/options.php:140 tags/2.1/options.php:154 tags/2.2/options.php:154
-#: tags/2.2/trunk/options.php:154 tags/2.3/options.php:154
-#: tags/2.4/options.php:154 tags/2.5/options.php:151 trunk/options.php:105
+#: add-to-home-screen-wp.php:313 add-to-home-screen-wp.php:565
+msgid "Frontend Floating Balloon"
+msgstr "Infobulle flottante en interface publique"
+
+#: add-to-home-screen-wp.php:315 add-to-home-screen-wp.php:567
+msgid ""
+"Configure how to prompt users to install your web app or add a shortcut to "
+"their home screen"
+msgstr ""
+"Configurer comment inciter les utilisateurs à installer votre application "
+"Web ou à ajouter un raccourci à leur écran d'accueil"
+
+#: add-to-home-screen-wp.php:319 add-to-home-screen-wp.php:571
+msgid "Show Floating Balloon in Frontend (iOS)"
+msgstr "Afficher l'infobulle flottante en interface publique (iOS)"
+
+#: add-to-home-screen-wp.php:322
+msgid ""
+"Display a floating balloon to prompt iOS users to install the app in the "
+"frontend of all subsites."
+msgstr ""
+"Afficher une infobulle flottante pour inciter les utilisateurs iOS à "
+"installer l'application dans l'interface publique de tous les sous-sites."
+
+#: add-to-home-screen-wp.php:326 add-to-home-screen-wp.php:578
+msgid "Installation Prompt in Frontend (Android)"
+msgstr "Invite d'installation en interface publique (Android)"
+
+#: add-to-home-screen-wp.php:329 add-to-home-screen-wp.php:581
+msgid "Floating Balloon"
+msgstr "Infobulle flottante"
+
+#: add-to-home-screen-wp.php:330 add-to-home-screen-wp.php:582
+msgid "Native Install Button"
+msgstr "Bouton d'installation natif"
+
+#: add-to-home-screen-wp.php:331 add-to-home-screen-wp.php:583
+msgid "Disabled"
+msgstr "Désactivé"
+
+#: add-to-home-screen-wp.php:333 add-to-home-screen-wp.php:585
+msgid ""
+"Choose how to prompt users to install the app on Android devices in the "
+"frontend. The 'Native Install Button' uses the browser's native prompt, "
+"available only in the frontend."
+msgstr ""
+"Choisissez comment inciter les utilisateurs à installer l'application sur "
+"les appareils Android dans l'interface publique. Le \"Bouton d'installation "
+"natif\" utilise l'invite native du navigateur, disponible uniquement dans "
+"l'interface publique."
+
+#: add-to-home-screen-wp.php:337 add-to-home-screen-wp.php:589
+msgid "Balloon Display in Frontend"
+msgstr "Affichage de l'infobulle en interface publique"
+
+#: add-to-home-screen-wp.php:340 add-to-home-screen-wp.php:592
+msgid "All Pages"
+msgstr "Toutes les pages"
+
+#: add-to-home-screen-wp.php:343 add-to-home-screen-wp.php:595
+msgid "Choose where to display the floating balloon on the frontend."
+msgstr ""
+"Choisissez où afficher l'infobulle flottante dans l'interface publique."
+
+#: add-to-home-screen-wp.php:347 add-to-home-screen-wp.php:599
+msgid "Show to Returning Visitors Only"
+msgstr "Afficher uniquement aux visiteurs récurrents"
+
+#: add-to-home-screen-wp.php:350 add-to-home-screen-wp.php:602
+msgid "Show the balloon only to returning visitors."
+msgstr "Afficher l'infobulle uniquement aux visiteurs récurrents."
+
+#: add-to-home-screen-wp.php:354 add-to-home-screen-wp.php:606
+msgid "Floating Balloon Message for iOS"
+msgstr "Message de l'infobulle flottante pour iOS"
+
+#: add-to-home-screen-wp.php:359 add-to-home-screen-wp.php:609
+msgid ""
+"Custom message for iOS devices. Use %site_name for the site name, %device "
+"for the user's device, %icon for the first add icon, and %add for the second "
+"add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default "
+"message will be used."
+msgstr ""
+"Message personnalisé pour les appareils iOS. Utilisez %site_name pour le nom "
+"du site, %device pour l'appareil de l'utilisateur, %icon pour la première "
+"icône d'ajout, et %add pour la seconde icône d'ajout. Supporte le HTML de "
+"base (par exemple, <strong>, <i>). Si vide, le message par défaut sera "
+"utilisé."
+
+#: add-to-home-screen-wp.php:368 add-to-home-screen-wp.php:613
+msgid "Floating Balloon Message for Android"
+msgstr "Message de l'infobulle flottante pour Android"
+
+#: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:616
+msgid ""
+"Custom message for Android devices. Use %site_name for the site name, and "
+"%device for the user's device. Note: %icon and %add are not supported in the "
+"Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
+"default message will be used."
+msgstr ""
+"Message personnalisé pour les appareils Android. Utilisez %site_name pour le "
+"nom du site et %device pour l'appareil de l'utilisateur. Remarque : %icon et "
+"%add ne sont pas pris en charge dans l'infobulle Android. Supporte le HTML "
+"de base (par exemple, <strong>, <i>). Si vide, le message par défaut sera "
+"utilisé."
+
+#: add-to-home-screen-wp.php:382 add-to-home-screen-wp.php:620
+msgid "Animation In"
+msgstr "Animation d'entrée"
+
+#: add-to-home-screen-wp.php:385 add-to-home-screen-wp.php:396
+#: add-to-home-screen-wp.php:623 add-to-home-screen-wp.php:634
+msgid "Drop"
+msgstr "Chute"
+
+#: add-to-home-screen-wp.php:386 add-to-home-screen-wp.php:397
+#: add-to-home-screen-wp.php:624 add-to-home-screen-wp.php:635
+msgid "Bubble"
+msgstr "Bulle"
+
+#: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:398
+#: add-to-home-screen-wp.php:625 add-to-home-screen-wp.php:636
+msgid "Fade"
+msgstr "Fondu"
+
+#: add-to-home-screen-wp.php:389 add-to-home-screen-wp.php:627
+msgid "Animation when the balloon appears."
+msgstr "Animation lorsque l'infobulle apparaît."
+
+#: add-to-home-screen-wp.php:393 add-to-home-screen-wp.php:631
+msgid "Animation Out"
+msgstr "Animation de sortie"
+
+#: add-to-home-screen-wp.php:400 add-to-home-screen-wp.php:638
+msgid "Animation when the balloon disappears."
+msgstr "Animation lorsque l'infobulle disparaît."
+
+#: add-to-home-screen-wp.php:404 add-to-home-screen-wp.php:642
+msgid "Start Delay"
+msgstr "Délai de démarrage"
+
+#: add-to-home-screen-wp.php:408 add-to-home-screen-wp.php:646
+msgid ""
+"Note: Ensure this is not too close to Lifespan to give users enough time to "
+"read the balloon."
+msgstr ""
+"Remarque : Assurez-vous que ce délai n'est pas trop proche de la durée de "
+"vie pour donner aux utilisateurs suffisamment de temps pour lire l'infobulle."
+
+#: add-to-home-screen-wp.php:412 add-to-home-screen-wp.php:650
 msgid "Lifespan"
 msgstr "Durée de vie"
 
-#: tags/0.1/options.php:139 tags/0.2/options.php:139 tags/0.3/options.php:142
-#: tags/0.4/options.php:142 tags/0.5/options.php:142 tags/0.6/options.php:142
-#: tags/0.7/options.php:142 tags/0.8/options.php:142 tags/0.9/options.php:149
-#: tags/1.0/options.php:152 tags/1.1/options.php:152 tags/1.2/options.php:152
-#: tags/1.3/options.php:152 tags/1.4/options.php:140
-#: tags/1.5/0.1/options.php:139 tags/1.5/0.2/options.php:139
-#: tags/1.5/0.3/options.php:142 tags/1.5/0.4/options.php:142
-#: tags/1.5/0.5/options.php:142 tags/1.5/0.6/options.php:142
-#: tags/1.5/0.7/options.php:142 tags/1.5/0.8/options.php:142
-#: tags/1.5/0.9/options.php:149 tags/1.5/1.0/options.php:152
-#: tags/1.5/1.1/options.php:152 tags/1.5/1.2/options.php:152
-#: tags/1.5/1.3/options.php:152 tags/1.5/1.4/options.php:140
-#: tags/1.5/5.1/0.1/options.php:139 tags/1.5/5.1/0.2/options.php:139
-#: tags/1.5/5.1/0.3/options.php:142 tags/1.5/5.1/0.4/options.php:142
-#: tags/1.5/5.1/0.5/options.php:142 tags/1.5/5.1/0.6/options.php:142
-#: tags/1.5/5.1/0.7/options.php:142 tags/1.5/5.1/0.8/options.php:142
-#: tags/1.5/5.1/0.9/options.php:149 tags/1.5/5.1/1.0/options.php:152
-#: tags/1.5/5.1/1.1/options.php:152 tags/1.5/5.1/1.2/options.php:152
-#: tags/1.5/5.1/1.3/options.php:152 tags/1.5/5.1/1.4/options.php:140
-#: tags/1.6/options.php:140 tags/1.7/options.php:140 tags/1.8/options.php:142
-#: tags/1.9/options.php:142 tags/2.1/options.php:156 tags/2.2/options.php:156
-#: tags/2.2/trunk/options.php:156 tags/2.3/options.php:156
-#: tags/2.4/options.php:156 tags/2.5/options.php:153 trunk/options.php:108
-msgid "Milliseconds to wait before hiding the message. Default: 20000"
-msgstr ""
-"Temps en millisecondes avant que le message ne disparaisse. Par défaut : "
-"20000"
-
-#: tags/0.1/options.php:144 tags/0.2/options.php:144 tags/0.3/options.php:147
-#: tags/0.4/options.php:147 tags/0.5/options.php:147 tags/0.6/options.php:147
-#: tags/0.7/options.php:147 tags/0.8/options.php:147 tags/0.9/options.php:154
-#: tags/1.0/options.php:157 tags/1.1/options.php:157 tags/1.2/options.php:157
-#: tags/1.3/options.php:157 tags/1.4/options.php:145
-#: tags/1.5/0.1/options.php:144 tags/1.5/0.2/options.php:144
-#: tags/1.5/0.3/options.php:147 tags/1.5/0.4/options.php:147
-#: tags/1.5/0.5/options.php:147 tags/1.5/0.6/options.php:147
-#: tags/1.5/0.7/options.php:147 tags/1.5/0.8/options.php:147
-#: tags/1.5/0.9/options.php:154 tags/1.5/1.0/options.php:157
-#: tags/1.5/1.1/options.php:157 tags/1.5/1.2/options.php:157
-#: tags/1.5/1.3/options.php:157 tags/1.5/1.4/options.php:145
-#: tags/1.5/5.1/0.1/options.php:144 tags/1.5/5.1/0.2/options.php:144
-#: tags/1.5/5.1/0.3/options.php:147 tags/1.5/5.1/0.4/options.php:147
-#: tags/1.5/5.1/0.5/options.php:147 tags/1.5/5.1/0.6/options.php:147
-#: tags/1.5/5.1/0.7/options.php:147 tags/1.5/5.1/0.8/options.php:147
-#: tags/1.5/5.1/0.9/options.php:154 tags/1.5/5.1/1.0/options.php:157
-#: tags/1.5/5.1/1.1/options.php:157 tags/1.5/5.1/1.2/options.php:157
-#: tags/1.5/5.1/1.3/options.php:157 tags/1.5/5.1/1.4/options.php:145
-#: tags/1.6/options.php:145 tags/1.7/options.php:145 tags/1.8/options.php:147
-#: tags/1.9/options.php:147 tags/2.1/options.php:161 tags/2.2/options.php:161
-#: tags/2.2/trunk/options.php:161 tags/2.3/options.php:161
-#: tags/2.4/options.php:161 tags/2.5/options.php:158 trunk/options.php:113
-msgid "Bottom offset"
-msgstr "Distance"
-
-#: tags/0.1/options.php:146 tags/0.2/options.php:146 tags/0.3/options.php:149
-#: tags/0.4/options.php:149 tags/0.5/options.php:149 tags/0.6/options.php:149
-#: tags/0.7/options.php:149 tags/0.8/options.php:149 tags/0.9/options.php:156
-#: tags/1.0/options.php:159 tags/1.1/options.php:159 tags/1.2/options.php:159
-#: tags/1.3/options.php:159 tags/1.4/options.php:147
-#: tags/1.5/0.1/options.php:146 tags/1.5/0.2/options.php:146
-#: tags/1.5/0.3/options.php:149 tags/1.5/0.4/options.php:149
-#: tags/1.5/0.5/options.php:149 tags/1.5/0.6/options.php:149
-#: tags/1.5/0.7/options.php:149 tags/1.5/0.8/options.php:149
-#: tags/1.5/0.9/options.php:156 tags/1.5/1.0/options.php:159
-#: tags/1.5/1.1/options.php:159 tags/1.5/1.2/options.php:159
-#: tags/1.5/1.3/options.php:159 tags/1.5/1.4/options.php:147
-#: tags/1.5/5.1/0.1/options.php:146 tags/1.5/5.1/0.2/options.php:146
-#: tags/1.5/5.1/0.3/options.php:149 tags/1.5/5.1/0.4/options.php:149
-#: tags/1.5/5.1/0.5/options.php:149 tags/1.5/5.1/0.6/options.php:149
-#: tags/1.5/5.1/0.7/options.php:149 tags/1.5/5.1/0.8/options.php:149
-#: tags/1.5/5.1/0.9/options.php:156 tags/1.5/5.1/1.0/options.php:159
-#: tags/1.5/5.1/1.1/options.php:159 tags/1.5/5.1/1.2/options.php:159
-#: tags/1.5/5.1/1.3/options.php:159 tags/1.5/5.1/1.4/options.php:147
-#: tags/1.6/options.php:147 tags/1.7/options.php:147 tags/1.8/options.php:149
-#: tags/1.9/options.php:149 tags/2.1/options.php:163 tags/2.2/options.php:163
-#: tags/2.2/trunk/options.php:163 tags/2.3/options.php:163
-#: tags/2.4/options.php:163 tags/2.5/options.php:160 trunk/options.php:116
+#: add-to-home-screen-wp.php:416 add-to-home-screen-wp.php:654
 msgid ""
-"Distance in pixels from the bottom (iPhone) or the top (iPad). Default: 14"
+"Note: Set this sufficiently higher than Start Delay to ensure the balloon "
+"stays visible long enough."
 msgstr ""
-"Distance en pixels entre le bas (iPhone) ou le haut (iPad). Par défaut : 14"
+"Remarque : Définissez une valeur suffisamment supérieure au délai de "
+"démarrage pour garantir que l'infobulle reste visible assez longtemps."
 
-#: tags/0.1/options.php:151 tags/0.2/options.php:151 tags/0.3/options.php:154
-#: tags/0.4/options.php:154 tags/0.5/options.php:154 tags/0.6/options.php:154
-#: tags/0.7/options.php:154 tags/0.8/options.php:154 tags/0.9/options.php:161
-#: tags/1.0/options.php:164 tags/1.1/options.php:164 tags/1.2/options.php:164
-#: tags/1.3/options.php:164 tags/1.4/options.php:152
-#: tags/1.5/0.1/options.php:151 tags/1.5/0.2/options.php:151
-#: tags/1.5/0.3/options.php:154 tags/1.5/0.4/options.php:154
-#: tags/1.5/0.5/options.php:154 tags/1.5/0.6/options.php:154
-#: tags/1.5/0.7/options.php:154 tags/1.5/0.8/options.php:154
-#: tags/1.5/0.9/options.php:161 tags/1.5/1.0/options.php:164
-#: tags/1.5/1.1/options.php:164 tags/1.5/1.2/options.php:164
-#: tags/1.5/1.3/options.php:164 tags/1.5/1.4/options.php:152
-#: tags/1.5/5.1/0.1/options.php:151 tags/1.5/5.1/0.2/options.php:151
-#: tags/1.5/5.1/0.3/options.php:154 tags/1.5/5.1/0.4/options.php:154
-#: tags/1.5/5.1/0.5/options.php:154 tags/1.5/5.1/0.6/options.php:154
-#: tags/1.5/5.1/0.7/options.php:154 tags/1.5/5.1/0.8/options.php:154
-#: tags/1.5/5.1/0.9/options.php:161 tags/1.5/5.1/1.0/options.php:164
-#: tags/1.5/5.1/1.1/options.php:164 tags/1.5/5.1/1.2/options.php:164
-#: tags/1.5/5.1/1.3/options.php:164 tags/1.5/5.1/1.4/options.php:152
-#: tags/1.6/options.php:152 tags/1.7/options.php:152 tags/1.8/options.php:154
-#: tags/1.9/options.php:154 tags/2.1/options.php:168 tags/2.2/options.php:168
-#: tags/2.2/trunk/options.php:168 tags/2.3/options.php:168
-#: tags/2.4/options.php:168 tags/2.5/options.php:165 trunk/options.php:121
-msgid "Expire timeframe"
-msgstr "Expiration des délais"
+#: add-to-home-screen-wp.php:420 add-to-home-screen-wp.php:658
+msgid "Expiration Time"
+msgstr "Temps d'expiration"
 
-#: tags/0.1/options.php:153 tags/0.2/options.php:153 tags/0.3/options.php:156
-#: tags/1.5/0.1/options.php:153 tags/1.5/0.2/options.php:153
-#: tags/1.5/0.3/options.php:156 tags/1.5/5.1/0.1/options.php:153
-#: tags/1.5/5.1/0.2/options.php:153 tags/1.5/5.1/0.3/options.php:156
-msgid ""
-"Minutes before displaying the message again. Default: 0 (=always show). It "
-"can be useful to set a timeframe to prevent showing message at each and "
-"every page load."
-msgstr ""
-"Temps en minutes avant d'afficher à nouveau le message. Par défaut : 0 (la "
-"fenêtre s'affiche à chaque fois). Il peut être utile de fixer un délai pour "
-"empêcher le message de s'afficher à chaque chargement de page."
+#: add-to-home-screen-wp.php:427 add-to-home-screen-wp.php:665
+msgid "Bottom Offset"
+msgstr "Décalage inférieur"
 
-#: tags/0.1/options.php:158 tags/0.2/options.php:158 tags/0.3/options.php:161
-#: tags/0.4/options.php:161 tags/0.5/options.php:161 tags/0.6/options.php:161
-#: tags/0.7/options.php:161 tags/0.8/options.php:161 tags/0.9/options.php:170
-#: tags/1.0/options.php:173 tags/1.1/options.php:173 tags/1.2/options.php:173
-#: tags/1.3/options.php:173 tags/1.4/options.php:161
-#: tags/1.5/0.1/options.php:158 tags/1.5/0.2/options.php:158
-#: tags/1.5/0.3/options.php:161 tags/1.5/0.4/options.php:161
-#: tags/1.5/0.5/options.php:161 tags/1.5/0.6/options.php:161
-#: tags/1.5/0.7/options.php:161 tags/1.5/0.8/options.php:161
-#: tags/1.5/0.9/options.php:170 tags/1.5/1.0/options.php:173
-#: tags/1.5/1.1/options.php:173 tags/1.5/1.2/options.php:173
-#: tags/1.5/1.3/options.php:173 tags/1.5/1.4/options.php:161
-#: tags/1.5/5.1/0.1/options.php:158 tags/1.5/5.1/0.2/options.php:158
-#: tags/1.5/5.1/0.3/options.php:161 tags/1.5/5.1/0.4/options.php:161
-#: tags/1.5/5.1/0.5/options.php:161 tags/1.5/5.1/0.6/options.php:161
-#: tags/1.5/5.1/0.7/options.php:161 tags/1.5/5.1/0.8/options.php:161
-#: tags/1.5/5.1/0.9/options.php:170 tags/1.5/5.1/1.0/options.php:173
-#: tags/1.5/5.1/1.1/options.php:173 tags/1.5/5.1/1.2/options.php:173
-#: tags/1.5/5.1/1.3/options.php:173 tags/1.5/5.1/1.4/options.php:161
-#: tags/1.6/options.php:161 tags/1.7/options.php:161 tags/1.8/options.php:163
-#: tags/1.9/options.php:163 tags/2.1/options.php:177 tags/2.2/options.php:177
-#: tags/2.2/trunk/options.php:177 tags/2.3/options.php:177
-#: tags/2.4/options.php:177
-msgid "Touch icon"
-msgstr "Icône touch"
+#: add-to-home-screen-wp.php:434 add-to-home-screen-wp.php:672
+msgid "Precomposed Icon"
+msgstr "Icône précomposée"
 
-#: tags/0.1/options.php:160 tags/0.2/options.php:160 tags/0.3/options.php:163
-#: tags/0.4/options.php:163 tags/0.5/options.php:163 tags/0.6/options.php:163
-#: tags/0.7/options.php:163 tags/0.8/options.php:163 tags/0.9/options.php:172
-#: tags/1.5/0.1/options.php:160 tags/1.5/0.2/options.php:160
-#: tags/1.5/0.3/options.php:163 tags/1.5/0.4/options.php:163
-#: tags/1.5/0.5/options.php:163 tags/1.5/0.6/options.php:163
-#: tags/1.5/0.7/options.php:163 tags/1.5/0.8/options.php:163
-#: tags/1.5/0.9/options.php:172 tags/1.5/5.1/0.1/options.php:160
-#: tags/1.5/5.1/0.2/options.php:160 tags/1.5/5.1/0.3/options.php:163
-#: tags/1.5/5.1/0.4/options.php:163 tags/1.5/5.1/0.5/options.php:163
-#: tags/1.5/5.1/0.6/options.php:163 tags/1.5/5.1/0.7/options.php:163
-#: tags/1.5/5.1/0.8/options.php:163 tags/1.5/5.1/0.9/options.php:172
-msgid ""
-"If checked, the script checks for link rel=\"apple-touch-icon\" in the page "
-"HEAD and displays the application icon next to the message. Do NOT check if "
-"you don't have one, otherwise \"null\" mention will be displayed in place of "
-"the missing icon."
-msgstr ""
-"Si checkée, cette option indique au script de rechercher la balise "
-"rel=\"apple-touch-icon\" dans le HEAD afin d'afficher l'icône de votre blog "
-"dans la fenêtre à côté du message. Ne PAS checker si vous n'avez pas cette "
-"balise dans votre code, sous peine de voir apparaître la mention \"null\" à "
-"la place de l'icône manquante."
+#: add-to-home-screen-wp.php:437 add-to-home-screen-wp.php:675
+msgid "Display the touch icon without gloss (iOS only)."
+msgstr "Afficher l'icône tactile sans brillance (iOS uniquement)."
 
-#: tags/0.1/options.php:165 tags/0.2/options.php:165 tags/0.3/options.php:168
-#: tags/0.4/options.php:168 tags/0.5/options.php:168 tags/0.6/options.php:168
-#: tags/0.7/options.php:168 tags/0.8/options.php:168
-#: tags/1.5/0.1/options.php:165 tags/1.5/0.2/options.php:165
-#: tags/1.5/0.3/options.php:168 tags/1.5/0.4/options.php:168
-#: tags/1.5/0.5/options.php:168 tags/1.5/0.6/options.php:168
-#: tags/1.5/0.7/options.php:168 tags/1.5/0.8/options.php:168
-#: tags/1.5/5.1/0.1/options.php:165 tags/1.5/5.1/0.2/options.php:165
-#: tags/1.5/5.1/0.3/options.php:168 tags/1.5/5.1/0.4/options.php:168
-#: tags/1.5/5.1/0.5/options.php:168 tags/1.5/5.1/0.6/options.php:168
-#: tags/1.5/5.1/0.7/options.php:168 tags/1.5/5.1/0.8/options.php:168
-#: tags/2.5/options.php:191 trunk/options.php:151
-msgid "Touch icon URL"
-msgstr "URL de l'icône touch"
+#: add-to-home-screen-wp.php:441 add-to-home-screen-wp.php:679
+msgid "Touch Icon URL"
+msgstr "URL de l'icône tactile"
 
-#: tags/0.1/options.php:167 tags/0.2/options.php:167 tags/0.3/options.php:170
-#: tags/0.4/options.php:170 tags/0.5/options.php:170 tags/0.6/options.php:170
-#: tags/0.7/options.php:170 tags/0.8/options.php:170
-#: tags/1.5/0.1/options.php:167 tags/1.5/0.2/options.php:167
-#: tags/1.5/0.3/options.php:170 tags/1.5/0.4/options.php:170
-#: tags/1.5/0.5/options.php:170 tags/1.5/0.6/options.php:170
-#: tags/1.5/0.7/options.php:170 tags/1.5/0.8/options.php:170
-#: tags/1.5/5.1/0.1/options.php:167 tags/1.5/5.1/0.2/options.php:167
-#: tags/1.5/5.1/0.3/options.php:170 tags/1.5/5.1/0.4/options.php:170
-#: tags/1.5/5.1/0.5/options.php:170 tags/1.5/5.1/0.6/options.php:170
-#: tags/1.5/5.1/0.7/options.php:170 tags/1.5/5.1/0.8/options.php:170
-msgid ""
-"If mentionned, it adds a link rel=\"apple-touch-icon\" mention in the page "
-"HEAD (convenient for those who have no touch icon). <br />Recommended size: "
-"144*144."
-msgstr ""
-"Si mentionnée, cela ajoute la balise rel=\"apple-touch-icon\" dans la partie "
-"HEAD de votre page (utile pour ceux qui n'ont pas d'icône touch). <br /"
-">Taille recommandée : 144*144."
-
-#: tags/0.1/options.php:172 tags/0.2/options.php:172 tags/0.3/options.php:175
-#: tags/0.4/options.php:175 tags/0.5/options.php:182 tags/0.6/options.php:182
-#: tags/0.7/options.php:199 tags/0.8/options.php:199 tags/0.9/options.php:232
-#: tags/1.0/options.php:235 tags/1.1/options.php:235
-#: tags/1.5/0.1/options.php:172 tags/1.5/0.2/options.php:172
-#: tags/1.5/0.3/options.php:175 tags/1.5/0.4/options.php:175
-#: tags/1.5/0.5/options.php:182 tags/1.5/0.6/options.php:182
-#: tags/1.5/0.7/options.php:199 tags/1.5/0.8/options.php:199
-#: tags/1.5/0.9/options.php:232 tags/1.5/1.0/options.php:235
-#: tags/1.5/1.1/options.php:235 tags/1.5/5.1/0.1/options.php:172
-#: tags/1.5/5.1/0.2/options.php:172 tags/1.5/5.1/0.3/options.php:175
-#: tags/1.5/5.1/0.4/options.php:175 tags/1.5/5.1/0.5/options.php:182
-#: tags/1.5/5.1/0.6/options.php:182 tags/1.5/5.1/0.7/options.php:199
-#: tags/1.5/5.1/0.8/options.php:199 tags/1.5/5.1/0.9/options.php:232
-#: tags/1.5/5.1/1.0/options.php:235 tags/1.5/5.1/1.1/options.php:235
-msgid "If your theme is non responsive, these options might interest you"
-msgstr ""
-"Si votre thème n'est pas responsive design, ces options peuvent vous "
-"intéresser"
-
-#: tags/0.1/options.php:173 tags/0.2/options.php:173 tags/0.3/options.php:176
-#: tags/0.4/options.php:176 tags/0.5/options.php:183 tags/0.6/options.php:183
-#: tags/0.7/options.php:200 tags/0.8/options.php:200 tags/0.9/options.php:233
-#: tags/1.0/options.php:236 tags/1.1/options.php:236
-#: tags/1.5/0.1/options.php:173 tags/1.5/0.2/options.php:173
-#: tags/1.5/0.3/options.php:176 tags/1.5/0.4/options.php:176
-#: tags/1.5/0.5/options.php:183 tags/1.5/0.6/options.php:183
-#: tags/1.5/0.7/options.php:200 tags/1.5/0.8/options.php:200
-#: tags/1.5/0.9/options.php:233 tags/1.5/1.0/options.php:236
-#: tags/1.5/1.1/options.php:236 tags/1.5/5.1/0.1/options.php:173
-#: tags/1.5/5.1/0.2/options.php:173 tags/1.5/5.1/0.3/options.php:176
-#: tags/1.5/5.1/0.4/options.php:176 tags/1.5/5.1/0.5/options.php:183
-#: tags/1.5/5.1/0.6/options.php:183 tags/1.5/5.1/0.7/options.php:200
-#: tags/1.5/5.1/0.8/options.php:200 tags/1.5/5.1/0.9/options.php:233
-#: tags/1.5/5.1/1.0/options.php:236 tags/1.5/5.1/1.1/options.php:236
-msgid ""
-"In non-responsive themes, the floating balloon may be to small. These "
-"settings will allow you to increase dimensions and appearance."
-msgstr ""
-"Sur les thèmes non responsive, la fenêtre peut être trop petite. Ces options "
-"vous permettent d'augmenter sa taille et de modifier son apparence."
-
-#: tags/0.1/options.php:175 tags/0.2/options.php:175 tags/0.3/options.php:178
-#: tags/0.4/options.php:178 tags/0.5/options.php:185 tags/0.6/options.php:185
-#: tags/0.7/options.php:202 tags/0.8/options.php:202 tags/0.9/options.php:235
-#: tags/1.0/options.php:238 tags/1.1/options.php:238
-#: tags/1.5/0.1/options.php:175 tags/1.5/0.2/options.php:175
-#: tags/1.5/0.3/options.php:178 tags/1.5/0.4/options.php:178
-#: tags/1.5/0.5/options.php:185 tags/1.5/0.6/options.php:185
-#: tags/1.5/0.7/options.php:202 tags/1.5/0.8/options.php:202
-#: tags/1.5/0.9/options.php:235 tags/1.5/1.0/options.php:238
-#: tags/1.5/1.1/options.php:238 tags/1.5/5.1/0.1/options.php:175
-#: tags/1.5/5.1/0.2/options.php:175 tags/1.5/5.1/0.3/options.php:178
-#: tags/1.5/5.1/0.4/options.php:178 tags/1.5/5.1/0.5/options.php:185
-#: tags/1.5/5.1/0.6/options.php:185 tags/1.5/5.1/0.7/options.php:202
-#: tags/1.5/5.1/0.8/options.php:202 tags/1.5/5.1/0.9/options.php:235
-#: tags/1.5/5.1/1.0/options.php:238 tags/1.5/5.1/1.1/options.php:238
-msgid "Zoom of the floating balloon (%)"
-msgstr "Zoom de la fenêtre (%)"
-
-#: tags/0.1/options.php:177 tags/0.2/options.php:177 tags/0.3/options.php:180
-#: tags/0.4/options.php:180 tags/0.5/options.php:187 tags/0.6/options.php:187
-#: tags/0.7/options.php:204 tags/0.8/options.php:204 tags/0.9/options.php:237
-#: tags/1.0/options.php:240 tags/1.1/options.php:240
-#: tags/1.5/0.1/options.php:177 tags/1.5/0.2/options.php:177
-#: tags/1.5/0.3/options.php:180 tags/1.5/0.4/options.php:180
-#: tags/1.5/0.5/options.php:187 tags/1.5/0.6/options.php:187
-#: tags/1.5/0.7/options.php:204 tags/1.5/0.8/options.php:204
-#: tags/1.5/0.9/options.php:237 tags/1.5/1.0/options.php:240
-#: tags/1.5/1.1/options.php:240 tags/1.5/5.1/0.1/options.php:177
-#: tags/1.5/5.1/0.2/options.php:177 tags/1.5/5.1/0.3/options.php:180
-#: tags/1.5/5.1/0.4/options.php:180 tags/1.5/5.1/0.5/options.php:187
-#: tags/1.5/5.1/0.6/options.php:187 tags/1.5/5.1/0.7/options.php:204
-#: tags/1.5/5.1/0.8/options.php:204 tags/1.5/5.1/0.9/options.php:237
-#: tags/1.5/5.1/1.0/options.php:240 tags/1.5/5.1/1.1/options.php:240
-msgid ""
-"Recommended to leave blank if your theme is responsive design. If not, it is "
-"recommended to increase the balloon dimensions by zooming. <i>Recommended "
-"value for non-responsive themes: at leat 300</i>"
-msgstr ""
-"Laissez vide si votre thème est responsive. Sinon, il est recommandé "
-"d'augmenter la taille de la fenêtre. <i>Valeur recommandée : au moins 300</i>"
-
-#: tags/0.1/options.php:182 tags/0.2/options.php:182 tags/0.3/options.php:185
-#: tags/0.4/options.php:185 tags/0.5/options.php:192 tags/0.6/options.php:192
-#: tags/0.7/options.php:209 tags/0.8/options.php:209 tags/0.9/options.php:242
-#: tags/1.0/options.php:245 tags/1.1/options.php:245
-#: tags/1.5/0.1/options.php:182 tags/1.5/0.2/options.php:182
-#: tags/1.5/0.3/options.php:185 tags/1.5/0.4/options.php:185
-#: tags/1.5/0.5/options.php:192 tags/1.5/0.6/options.php:192
-#: tags/1.5/0.7/options.php:209 tags/1.5/0.8/options.php:209
-#: tags/1.5/0.9/options.php:242 tags/1.5/1.0/options.php:245
-#: tags/1.5/1.1/options.php:245 tags/1.5/5.1/0.1/options.php:182
-#: tags/1.5/5.1/0.2/options.php:182 tags/1.5/5.1/0.3/options.php:185
-#: tags/1.5/5.1/0.4/options.php:185 tags/1.5/5.1/0.5/options.php:192
-#: tags/1.5/5.1/0.6/options.php:192 tags/1.5/5.1/0.7/options.php:209
-#: tags/1.5/5.1/0.8/options.php:209 tags/1.5/5.1/0.9/options.php:242
-#: tags/1.5/5.1/1.0/options.php:245 tags/1.5/5.1/1.1/options.php:245
-msgid "Font-size of the floating balloon (%)"
-msgstr "Taille de police dans la fenêtre (%)"
-
-#: tags/0.1/options.php:184 tags/0.2/options.php:184 tags/0.3/options.php:187
-#: tags/0.4/options.php:187 tags/0.5/options.php:194 tags/0.6/options.php:194
-#: tags/0.7/options.php:211 tags/0.8/options.php:211 tags/0.9/options.php:244
-#: tags/1.5/0.1/options.php:184 tags/1.5/0.2/options.php:184
-#: tags/1.5/0.3/options.php:187 tags/1.5/0.4/options.php:187
-#: tags/1.5/0.5/options.php:194 tags/1.5/0.6/options.php:194
-#: tags/1.5/0.7/options.php:211 tags/1.5/0.8/options.php:211
-#: tags/1.5/0.9/options.php:244 tags/1.5/5.1/0.1/options.php:184
-#: tags/1.5/5.1/0.2/options.php:184 tags/1.5/5.1/0.3/options.php:187
-#: tags/1.5/5.1/0.4/options.php:187 tags/1.5/5.1/0.5/options.php:194
-#: tags/1.5/5.1/0.6/options.php:194 tags/1.5/5.1/0.7/options.php:211
-#: tags/1.5/5.1/0.8/options.php:211 tags/1.5/5.1/0.9/options.php:244
-msgid ""
-"Recommended to leave blank if your theme is responsive design. If not, it is "
-"recommended to increase it, especially if you have increased the floating "
-"balloon via the zoom field. <i>Recommended value for non-responsive themes: "
-"250</i>"
-msgstr ""
-"Laissez vide si votre thème est responsive. Sinon, il est recommandé "
-"d'augmenter la taille de la police, notamment si vous avez déjà augmenté la "
-"taille de la fenêtre via le champ Zoom. <i>Valeur recommandée pour les "
-"thèmes non responsive : 250</i>"
-
-#: tags/0.1/options.php:189 tags/0.2/options.php:189 tags/0.3/options.php:192
-#: tags/0.4/options.php:192 tags/0.5/options.php:199 tags/0.6/options.php:199
-#: tags/0.7/options.php:216 tags/0.8/options.php:216 tags/0.9/options.php:249
-#: tags/1.0/options.php:252 tags/1.1/options.php:252
-#: tags/1.5/0.1/options.php:189 tags/1.5/0.2/options.php:189
-#: tags/1.5/0.3/options.php:192 tags/1.5/0.4/options.php:192
-#: tags/1.5/0.5/options.php:199 tags/1.5/0.6/options.php:199
-#: tags/1.5/0.7/options.php:216 tags/1.5/0.8/options.php:216
-#: tags/1.5/0.9/options.php:249 tags/1.5/1.0/options.php:252
-#: tags/1.5/1.1/options.php:252 tags/1.5/5.1/0.1/options.php:189
-#: tags/1.5/5.1/0.2/options.php:189 tags/1.5/5.1/0.3/options.php:192
-#: tags/1.5/5.1/0.4/options.php:192 tags/1.5/5.1/0.5/options.php:199
-#: tags/1.5/5.1/0.6/options.php:199 tags/1.5/5.1/0.7/options.php:216
-#: tags/1.5/5.1/0.8/options.php:216 tags/1.5/5.1/0.9/options.php:249
-#: tags/1.5/5.1/1.0/options.php:252 tags/1.5/5.1/1.1/options.php:252
-msgid "Line-height (%)"
-msgstr "Line-height (%)"
-
-#: tags/0.1/options.php:191 tags/0.2/options.php:191 tags/0.3/options.php:194
-#: tags/0.4/options.php:194 tags/0.5/options.php:201 tags/0.6/options.php:201
-#: tags/0.7/options.php:218 tags/0.8/options.php:218 tags/0.9/options.php:251
-#: tags/1.5/0.1/options.php:191 tags/1.5/0.2/options.php:191
-#: tags/1.5/0.3/options.php:194 tags/1.5/0.4/options.php:194
-#: tags/1.5/0.5/options.php:201 tags/1.5/0.6/options.php:201
-#: tags/1.5/0.7/options.php:218 tags/1.5/0.8/options.php:218
-#: tags/1.5/0.9/options.php:251 tags/1.5/5.1/0.1/options.php:191
-#: tags/1.5/5.1/0.2/options.php:191 tags/1.5/5.1/0.3/options.php:194
-#: tags/1.5/5.1/0.4/options.php:194 tags/1.5/5.1/0.5/options.php:201
-#: tags/1.5/5.1/0.6/options.php:201 tags/1.5/5.1/0.7/options.php:218
-#: tags/1.5/5.1/0.8/options.php:218 tags/1.5/5.1/0.9/options.php:251
-msgid ""
-"Recommended to leave blank if your theme is responsive design. Decrease it "
-"if you have increased the zoom field. <i>Recommended value for non "
-"responsive sites: 50</i>"
-msgstr ""
-"Laissez vide si votre thème est responsive. Diminuez la valeur (fixée par "
-"défaut à 100) si vous avez augmentez la taille de la fenêtre via le champ "
-"Zoom. <i>Valeur recommandée pour les thèmes non responsive : 50</i>"
-
-#: tags/0.1/options.php:197 tags/0.2/options.php:197 tags/0.3/options.php:200
-#: tags/0.4/options.php:200 tags/0.5/options.php:207 tags/0.6/options.php:207
-#: tags/1.5/0.1/options.php:197 tags/1.5/0.2/options.php:197
-#: tags/1.5/0.3/options.php:200 tags/1.5/0.4/options.php:200
-#: tags/1.5/0.5/options.php:207 tags/1.5/0.6/options.php:207
-#: tags/1.5/5.1/0.1/options.php:197 tags/1.5/5.1/0.2/options.php:197
-#: tags/1.5/5.1/0.3/options.php:200 tags/1.5/5.1/0.4/options.php:200
-#: tags/1.5/5.1/0.5/options.php:207 tags/1.5/5.1/0.6/options.php:207
-msgid "Disable Web App Capable"
-msgstr "Désactiver Web App Capable"
-
-#: tags/0.1/options.php:199 tags/0.2/options.php:199 tags/0.3/options.php:202
-#: tags/1.5/0.1/options.php:199 tags/1.5/0.2/options.php:199
-#: tags/1.5/0.3/options.php:202 tags/1.5/5.1/0.1/options.php:199
-#: tags/1.5/5.1/0.2/options.php:199 tags/1.5/5.1/0.3/options.php:202
-msgid ""
-"If checked, the balloon will appear even if your blog has been added to the "
-"home screen. Recommended to leave uncheck."
-msgstr ""
-"En checkant cette option, la fenêtre apparaîtra même si l'utilisateur a déjà "
-"ajouté votre blog à son écran d'accueil. Recommandation : laissez l'option "
-"non checkée."
-
-#: tags/0.3/options.php:107 tags/1.5/0.3/options.php:107
-#: tags/1.5/5.1/0.3/options.php:107
-msgid ""
-"Use %device to show user's device on message, and %icon to display the add "
-"icon."
-msgstr ""
-"Tapez %device pour afficher le device de l'utilisateur dans votre message, "
-"et %icon pour afficher l'icône d'ajout."
-
-#: tags/0.4/options.php:96 tags/0.5/options.php:96 tags/0.6/options.php:96
-#: tags/0.7/options.php:96 tags/0.8/options.php:96 tags/0.9/options.php:103
-#: tags/1.0/options.php:108 tags/1.1/options.php:108 tags/1.2/options.php:108
-#: tags/1.3/options.php:108 tags/1.4/options.php:96 tags/1.5/0.4/options.php:96
-#: tags/1.5/0.5/options.php:96 tags/1.5/0.6/options.php:96
-#: tags/1.5/0.7/options.php:96 tags/1.5/0.8/options.php:96
-#: tags/1.5/0.9/options.php:103 tags/1.5/1.0/options.php:108
-#: tags/1.5/1.1/options.php:108 tags/1.5/1.2/options.php:108
-#: tags/1.5/1.3/options.php:108 tags/1.5/1.4/options.php:96
-#: tags/1.5/5.1/0.4/options.php:96 tags/1.5/5.1/0.5/options.php:96
-#: tags/1.5/5.1/0.6/options.php:96 tags/1.5/5.1/0.7/options.php:96
-#: tags/1.5/5.1/0.8/options.php:96 tags/1.5/5.1/0.9/options.php:103
-#: tags/1.5/5.1/1.0/options.php:108 tags/1.5/5.1/1.1/options.php:108
-#: tags/1.5/5.1/1.2/options.php:108 tags/1.5/5.1/1.3/options.php:108
-#: tags/1.5/5.1/1.4/options.php:96 tags/1.6/options.php:96
-#: tags/1.7/options.php:96 tags/1.8/options.php:98 tags/1.9/options.php:98
-msgid ""
-"Set this to true and the message won't be shown the first time one user "
-"visits your blog. It can be useful to target only returning visitors and not "
-"irritate first time visitors. <i>I recommend to check this value</i>."
-msgstr ""
-"En cochant cette option, le message ne s'affichera pas aux nouveaux "
-"visiteurs de votre blog. Cela peut être pratique pour cibler seulement les "
-"visiteurs qui sont revenus sur votre site, et pour ne pas irriter les "
-"nouveaux lecteurs. <i>Je vous conseille de cocher cette option</i>."
-
-#: tags/0.4/options.php:107 tags/0.5/options.php:107 tags/0.6/options.php:107
-#: tags/0.7/options.php:107 tags/0.8/options.php:107 tags/0.9/options.php:114
-#: tags/1.0/options.php:116 tags/1.1/options.php:116 tags/1.2/options.php:116
-#: tags/1.3/options.php:116 tags/1.4/options.php:104
-#: tags/1.5/0.4/options.php:107 tags/1.5/0.5/options.php:107
-#: tags/1.5/0.6/options.php:107 tags/1.5/0.7/options.php:107
-#: tags/1.5/0.8/options.php:107 tags/1.5/0.9/options.php:114
-#: tags/1.5/1.0/options.php:116 tags/1.5/1.1/options.php:116
-#: tags/1.5/1.2/options.php:116 tags/1.5/1.3/options.php:116
-#: tags/1.5/1.4/options.php:104 tags/1.5/5.1/0.4/options.php:107
-#: tags/1.5/5.1/0.5/options.php:107 tags/1.5/5.1/0.6/options.php:107
-#: tags/1.5/5.1/0.7/options.php:107 tags/1.5/5.1/0.8/options.php:107
-#: tags/1.5/5.1/0.9/options.php:114 tags/1.5/5.1/1.0/options.php:116
-#: tags/1.5/5.1/1.1/options.php:116 tags/1.5/5.1/1.2/options.php:116
-#: tags/1.5/5.1/1.3/options.php:116 tags/1.5/5.1/1.4/options.php:104
-#: tags/1.6/options.php:104
-msgid ""
-"<i>Use %device to show user's device on message, and %icon to display the "
-"add icon.</i>"
-msgstr ""
-"<i>Tapez %device pour afficher le device de l'utilisateur dans votre "
-"message, et %icon pour afficher l'icône d'ajout.</i>"
-
-#: tags/0.4/options.php:156 tags/0.5/options.php:156 tags/0.6/options.php:156
-#: tags/0.7/options.php:156 tags/1.5/0.4/options.php:156
-#: tags/1.5/0.5/options.php:156 tags/1.5/0.6/options.php:156
-#: tags/1.5/0.7/options.php:156 tags/1.5/5.1/0.4/options.php:156
-#: tags/1.5/5.1/0.5/options.php:156 tags/1.5/5.1/0.6/options.php:156
-#: tags/1.5/5.1/0.7/options.php:156
-msgid ""
-"Minutes before displaying the message again. Default: 0 (=always show). It's "
-"highly recommended to set a timeframe in order to prevent showing message at "
-"each and every page load for those who didn't add the Web App to their "
-"homescreen or those who added it but load the blog on Safari! <i>Example: "
-"43200 (for one month).</i>"
-msgstr ""
-"Temps en minutes avant d'afficher à nouveau le message. Par défaut : 0 (la "
-"fenêtre s'affiche à chaque fois). Il est très recommandé de fixer un délai "
-"pour empêcher le message de s'afficher à chaque chargement de page pour ceux "
-"qui lancent votre blog depuis Safari ! <i>Exemple: 43200 (pour un mois de "
-"délai).</i>"
-
-#: tags/0.4/options.php:202 tags/0.5/options.php:209 tags/0.6/options.php:209
-#: tags/1.5/0.4/options.php:202 tags/1.5/0.5/options.php:209
-#: tags/1.5/0.6/options.php:209 tags/1.5/5.1/0.4/options.php:202
-#: tags/1.5/5.1/0.5/options.php:209 tags/1.5/5.1/0.6/options.php:209
-msgid ""
-"If checked, the web app will open in Safari mode and not as a separate Web "
-"application. In addition, the balloon will continue to appear inside the Web "
-"App. <i>Recommended to leave uncheck</i>."
-msgstr ""
-"Si cochée, cette option va pousser l'application à se lancer sous Safari et "
-"non comme une aplication web séparée. De plus, la fenêtre contextuelle "
-"apparaîtra à chaque fois dans l'application. <i>Je vous recommande de "
-"laisser cette option décochée</i>."
-
-#: tags/0.4/options.php:207 tags/0.5/options.php:221 tags/0.6/options.php:228
-#: tags/0.7/options.php:182 tags/0.8/options.php:182 tags/0.9/options.php:215
-#: tags/1.0/options.php:218 tags/1.1/options.php:218 tags/1.2/options.php:218
-#: tags/1.3/options.php:218 tags/1.4/options.php:206
-#: tags/1.5/0.4/options.php:207 tags/1.5/0.5/options.php:221
-#: tags/1.5/0.6/options.php:228 tags/1.5/0.7/options.php:182
-#: tags/1.5/0.8/options.php:182 tags/1.5/0.9/options.php:215
-#: tags/1.5/1.0/options.php:218 tags/1.5/1.1/options.php:218
-#: tags/1.5/1.2/options.php:218 tags/1.5/1.3/options.php:218
-#: tags/1.5/1.4/options.php:206 tags/1.5/5.1/0.4/options.php:207
-#: tags/1.5/5.1/0.5/options.php:221 tags/1.5/5.1/0.6/options.php:228
-#: tags/1.5/5.1/0.7/options.php:182 tags/1.5/5.1/0.8/options.php:182
-#: tags/1.5/5.1/0.9/options.php:215 tags/1.5/5.1/1.0/options.php:218
-#: tags/1.5/5.1/1.1/options.php:218 tags/1.5/5.1/1.2/options.php:218
-#: tags/1.5/5.1/1.3/options.php:218 tags/1.5/5.1/1.4/options.php:206
-#: tags/1.6/options.php:206 tags/1.7/options.php:206 tags/1.8/options.php:208
-#: tags/1.9/options.php:208 tags/2.1/options.php:222 tags/2.2/options.php:222
-#: tags/2.2/trunk/options.php:222 tags/2.3/options.php:222
-#: tags/2.4/options.php:222 tags/2.5/options.php:201 trunk/options.php:164
-msgid "Title of your Web App"
-msgstr "Titre de votre Application Web"
-
-#: tags/0.4/options.php:209 tags/0.5/options.php:223 tags/0.6/options.php:230
-#: tags/0.7/options.php:184 tags/0.8/options.php:184 tags/0.9/options.php:217
-#: tags/1.0/options.php:220 tags/1.1/options.php:220 tags/1.2/options.php:220
-#: tags/1.3/options.php:220 tags/1.4/options.php:208
-#: tags/1.5/0.4/options.php:209 tags/1.5/0.5/options.php:223
-#: tags/1.5/0.6/options.php:230 tags/1.5/0.7/options.php:184
-#: tags/1.5/0.8/options.php:184 tags/1.5/0.9/options.php:217
-#: tags/1.5/1.0/options.php:220 tags/1.5/1.1/options.php:220
-#: tags/1.5/1.2/options.php:220 tags/1.5/1.3/options.php:220
-#: tags/1.5/1.4/options.php:208 tags/1.5/5.1/0.4/options.php:209
-#: tags/1.5/5.1/0.5/options.php:223 tags/1.5/5.1/0.6/options.php:230
-#: tags/1.5/5.1/0.7/options.php:184 tags/1.5/5.1/0.8/options.php:184
-#: tags/1.5/5.1/0.9/options.php:217 tags/1.5/5.1/1.0/options.php:220
-#: tags/1.5/5.1/1.1/options.php:220 tags/1.5/5.1/1.2/options.php:220
-#: tags/1.5/5.1/1.3/options.php:220 tags/1.5/5.1/1.4/options.php:208
-#: tags/1.6/options.php:208 tags/1.7/options.php:208 tags/1.8/options.php:210
-#: tags/1.9/options.php:210 tags/2.1/options.php:224 tags/2.2/options.php:224
-#: tags/2.2/trunk/options.php:224 tags/2.3/options.php:224
-#: tags/2.4/options.php:224
-msgid ""
-"Type the name of your blog (max: 12 characters !). Default: it takes the "
-"default title of the page."
-msgstr ""
-"Tapez le nom de votre blog (max : 12 caractères !). Par défault : le titre "
-"de la page sera récupéré."
-
-#: tags/0.5/index.php:340 tags/0.6/index.php:355 tags/1.5/0.5/index.php:340
-#: tags/1.5/0.6/index.php:355 tags/1.5/5.1/0.5/index.php:340
-#: tags/1.5/5.1/0.6/index.php:355
-msgid "Back"
-msgstr "Retour"
-
-#: tags/0.5/options.php:175 tags/0.6/options.php:175 tags/0.7/options.php:175
-#: tags/0.8/options.php:175 tags/1.5/0.5/options.php:175
-#: tags/1.5/0.6/options.php:175 tags/1.5/0.7/options.php:175
-#: tags/1.5/0.8/options.php:175 tags/1.5/5.1/0.5/options.php:175
-#: tags/1.5/5.1/0.6/options.php:175 tags/1.5/5.1/0.7/options.php:175
-#: tags/1.5/5.1/0.8/options.php:175
-msgid "Touch startup URL"
-msgstr "URL de l'image de lancement"
-
-#: tags/0.5/options.php:177 tags/0.6/options.php:177 tags/0.7/options.php:177
-#: tags/1.5/0.5/options.php:177 tags/1.5/0.6/options.php:177
-#: tags/1.5/0.7/options.php:177 tags/1.5/5.1/0.5/options.php:177
-#: tags/1.5/5.1/0.6/options.php:177 tags/1.5/5.1/0.7/options.php:177
-msgid ""
-"You can specify a startup image URL that is displayed while your web "
-"application launches. <i>The image must be 320 x 460 pixels.</i>"
-msgstr ""
-"Vous pouvez spécifier l'URL d'une image de lancement qui s'afffichera "
-"pendant que votre application se charge. <i>L'image doit faire 320*420 "
-"pixels (en format portrait)</i>"
-
-#: tags/0.5/options.php:214 tags/0.6/options.php:214 tags/0.7/options.php:232
-#: tags/0.8/options.php:236 tags/0.9/options.php:310 tags/1.0/options.php:313
-#: tags/1.1/options.php:313 tags/1.5/0.5/options.php:214
-#: tags/1.5/0.6/options.php:214 tags/1.5/0.7/options.php:232
-#: tags/1.5/0.8/options.php:236 tags/1.5/0.9/options.php:310
-#: tags/1.5/1.0/options.php:313 tags/1.5/1.1/options.php:313
-#: tags/1.5/5.1/0.5/options.php:214 tags/1.5/5.1/0.6/options.php:214
-#: tags/1.5/5.1/0.7/options.php:232 tags/1.5/5.1/0.8/options.php:236
-#: tags/1.5/5.1/0.9/options.php:310 tags/1.5/5.1/1.0/options.php:313
-#: tags/1.5/5.1/1.1/options.php:313
-msgid "Force links to switch to Safari browser."
-msgstr "Forcer les liens à s'ouvrir sur Safari."
-
-#: tags/0.5/options.php:216 tags/0.6/options.php:216 tags/0.7/options.php:234
-#: tags/1.5/0.5/options.php:216 tags/1.5/0.6/options.php:216
-#: tags/1.5/0.7/options.php:234 tags/1.5/5.1/0.5/options.php:216
-#: tags/1.5/5.1/0.6/options.php:216 tags/1.5/5.1/0.7/options.php:234
-msgid ""
-"If checked, clicking on links will switch from Web App to Safari browser."
-msgstr ""
-"Si cette option est cochée, les liens du mode Plein écran s'ouvriront sur "
-"Safari et non pas dans l'application."
-
-#: tags/0.6/options.php:221 tags/0.7/options.php:239
-#: tags/1.5/0.6/options.php:221 tags/1.5/0.7/options.php:239
-#: tags/1.5/5.1/0.6/options.php:221 tags/1.5/5.1/0.7/options.php:239
-msgid "Disable bottom nav bar of the Web App"
-msgstr "Désactiver la barre de navigation de l'appli web"
-
-#: tags/0.6/options.php:223 tags/0.7/options.php:241
-#: tags/1.5/0.6/options.php:223 tags/1.5/0.7/options.php:241
-#: tags/1.5/5.1/0.6/options.php:223 tags/1.5/5.1/0.7/options.php:241
-msgid ""
-"If checked, the bottom nav bar of the Web App that provides a way for "
-"visitors to go back to previous pages will be disabled. For information: in "
-"web app mode, your blog is displaying in a fullscreen view, without any "
-"safari navigation buttons, that's why I recommend you to keep the Web App "
-"navbar."
-msgstr ""
-"En cochant cette option, la barre de navigation de l'application (boutons "
-"précédent, suivant et recharger) n'apparaîtra pas."
-
-#: tags/0.6/options.php:235 tags/0.7/options.php:189 tags/0.8/options.php:189
-#: tags/0.9/options.php:222 tags/1.0/options.php:225 tags/1.1/options.php:225
-#: tags/1.2/options.php:225 tags/1.3/options.php:225 tags/1.4/options.php:213
-#: tags/1.5/0.6/options.php:235 tags/1.5/0.7/options.php:189
-#: tags/1.5/0.8/options.php:189 tags/1.5/0.9/options.php:222
-#: tags/1.5/1.0/options.php:225 tags/1.5/1.1/options.php:225
-#: tags/1.5/1.2/options.php:225 tags/1.5/1.3/options.php:225
-#: tags/1.5/1.4/options.php:213 tags/1.5/5.1/0.6/options.php:235
-#: tags/1.5/5.1/0.7/options.php:189 tags/1.5/5.1/0.8/options.php:189
-#: tags/1.5/5.1/0.9/options.php:222 tags/1.5/5.1/1.0/options.php:225
-#: tags/1.5/5.1/1.1/options.php:225 tags/1.5/5.1/1.2/options.php:225
-#: tags/1.5/5.1/1.3/options.php:225 tags/1.5/5.1/1.4/options.php:213
-#: tags/1.6/options.php:213 tags/1.7/options.php:213 tags/1.8/options.php:215
-#: tags/1.9/options.php:215 tags/2.1/options.php:229 tags/2.2/options.php:229
-#: tags/2.2/trunk/options.php:229 tags/2.3/options.php:229
-#: tags/2.4/options.php:229 tags/2.5/options.php:208 trunk/options.php:172
-msgid "On which page the balloon should appear?"
-msgstr "Sur quelles parties du site la fenêtre doit-elle apparaître ?"
-
-#: tags/0.6/options.php:237 tags/0.7/options.php:191 tags/0.8/options.php:191
-#: tags/0.9/options.php:224 tags/1.0/options.php:227 tags/1.1/options.php:227
-#: tags/1.2/options.php:227 tags/1.3/options.php:227 tags/1.4/options.php:215
-#: tags/1.5/0.6/options.php:237 tags/1.5/0.7/options.php:191
-#: tags/1.5/0.8/options.php:191 tags/1.5/0.9/options.php:224
-#: tags/1.5/1.0/options.php:227 tags/1.5/1.1/options.php:227
-#: tags/1.5/1.2/options.php:227 tags/1.5/1.3/options.php:227
-#: tags/1.5/1.4/options.php:215 tags/1.5/5.1/0.6/options.php:237
-#: tags/1.5/5.1/0.7/options.php:191 tags/1.5/5.1/0.8/options.php:191
-#: tags/1.5/5.1/0.9/options.php:224 tags/1.5/5.1/1.0/options.php:227
-#: tags/1.5/5.1/1.1/options.php:227 tags/1.5/5.1/1.2/options.php:227
-#: tags/1.5/5.1/1.3/options.php:227 tags/1.5/5.1/1.4/options.php:215
-#: tags/1.6/options.php:215 tags/1.7/options.php:215 tags/1.8/options.php:217
-#: tags/1.9/options.php:217 tags/2.1/options.php:231 tags/2.2/options.php:231
-#: tags/2.2/trunk/options.php:231 tags/2.3/options.php:231
-#: tags/2.4/options.php:231 tags/2.5/options.php:210
-msgid ""
-"Keep in mind that if someone adds your blog to home screen from a single "
-"article page for instance, the web app will load this page and not the "
-"homepage of the blog. That's why you could choose to open the floating "
-"balloon on homepage only and not on all pages of your blog."
-msgstr ""
-"Gardez à l'esprit le fait que si vous ajoutez le blog à l'écran d'accueil "
-"depuis une page d'article par exemple, l'application web ne chargera par la "
-"suite pas la page d'accueil du blog mais l'article en question. C'est "
-"pourquoi il est préférable de ne faire apparaître la fenêtre que sur la page "
-"d'accueil de votre blog."
-
-#: tags/0.6/options.php:240 tags/0.7/options.php:194 tags/0.8/options.php:194
-#: tags/0.9/options.php:227 tags/1.0/options.php:230 tags/1.1/options.php:230
-#: tags/1.2/options.php:230 tags/1.3/options.php:230 tags/1.4/options.php:218
-#: tags/1.5/0.6/options.php:240 tags/1.5/0.7/options.php:194
-#: tags/1.5/0.8/options.php:194 tags/1.5/0.9/options.php:227
-#: tags/1.5/1.0/options.php:230 tags/1.5/1.1/options.php:230
-#: tags/1.5/1.2/options.php:230 tags/1.5/1.3/options.php:230
-#: tags/1.5/1.4/options.php:218 tags/1.5/5.1/0.6/options.php:240
-#: tags/1.5/5.1/0.7/options.php:194 tags/1.5/5.1/0.8/options.php:194
-#: tags/1.5/5.1/0.9/options.php:227 tags/1.5/5.1/1.0/options.php:230
-#: tags/1.5/5.1/1.1/options.php:230 tags/1.5/5.1/1.2/options.php:230
-#: tags/1.5/5.1/1.3/options.php:230 tags/1.5/5.1/1.4/options.php:218
-#: tags/1.6/options.php:218 tags/1.7/options.php:218 tags/1.8/options.php:220
-#: tags/1.9/options.php:220 tags/2.1/options.php:234 tags/2.2/options.php:234
-#: tags/2.2/trunk/options.php:234 tags/2.3/options.php:234
-#: tags/2.4/options.php:234 tags/2.5/options.php:213 trunk/options.php:175
-msgid "Home only"
-msgstr "Accueil seulement"
-
-#: tags/0.6/options.php:241 tags/0.7/options.php:195 tags/0.8/options.php:195
-#: tags/0.9/options.php:228 tags/1.0/options.php:231 tags/1.1/options.php:231
-#: tags/1.2/options.php:231 tags/1.3/options.php:231 tags/1.4/options.php:219
-#: tags/1.5/0.6/options.php:241 tags/1.5/0.7/options.php:195
-#: tags/1.5/0.8/options.php:195 tags/1.5/0.9/options.php:228
-#: tags/1.5/1.0/options.php:231 tags/1.5/1.1/options.php:231
-#: tags/1.5/1.2/options.php:231 tags/1.5/1.3/options.php:231
-#: tags/1.5/1.4/options.php:219 tags/1.5/5.1/0.6/options.php:241
-#: tags/1.5/5.1/0.7/options.php:195 tags/1.5/5.1/0.8/options.php:195
-#: tags/1.5/5.1/0.9/options.php:228 tags/1.5/5.1/1.0/options.php:231
-#: tags/1.5/5.1/1.1/options.php:231 tags/1.5/5.1/1.2/options.php:231
-#: tags/1.5/5.1/1.3/options.php:231 tags/1.5/5.1/1.4/options.php:219
-#: tags/1.6/options.php:219 tags/1.7/options.php:219 tags/1.8/options.php:221
-#: tags/1.9/options.php:221 tags/2.1/options.php:235 tags/2.2/options.php:235
-#: tags/2.2/trunk/options.php:235 tags/2.3/options.php:235
-#: tags/2.4/options.php:235 tags/2.5/options.php:214 trunk/options.php:176
-msgid "All pages"
-msgstr "Partout"
-
-#: tags/0.7/options.php:223 tags/1.5/0.7/options.php:223
-#: tags/1.5/5.1/0.7/options.php:223
-msgid "Separate Web App options (skip if you want to use Safari browser)"
-msgstr ""
-"Options de l'application web (ne pas toucher si vous souhaitez utiliser "
-"Safari comme navigateur de votre appli)"
-
-#: tags/0.7/options.php:225 tags/1.5/0.7/options.php:225
-#: tags/1.5/5.1/0.7/options.php:225
-msgid "Enable Web App Capable"
-msgstr "Activer Web App Capable"
-
-#: tags/0.7/options.php:227 tags/1.5/0.7/options.php:227
-#: tags/1.5/5.1/0.7/options.php:227
-msgid ""
-"If checked, the web app will not open in Safari mode but as a separate Web "
-"application with a custom nav bottom bar.<br /><i>Recommended to leave "
-"uncheck if you want to keep the Safari browser</i>."
-msgstr ""
-"Si cochée, cette option va pousser l'application comme une application web "
-"séparée en plein écran et pas sur Safari. <br /><i>Laissez décoché si vous "
-"préférez garder Safari pour naviguer sur votre blog</i>."
-
-#: tags/0.8/options.php:156 tags/1.5/0.8/options.php:156
-#: tags/1.5/5.1/0.8/options.php:156
-msgid ""
-"Minutes before displaying the message again. Default: 0 (=always show). It's "
-"highly recommended to set a timeframe in order to prevent showing message at "
-"each and every page load for those who didn't add the Web App to their "
-"homescreen or those who added it but load the blog on Safari! <i>Recommended "
-"values: 43200 for one month or 525600 for one year.</i>"
-msgstr ""
-"Temps en minutes avant d'afficher à nouveau le message. Par défaut : 0 (la "
-"fenêtre s'affiche à chaque fois). Il est très recommandé de fixer un délai "
-"pour empêcher le message de s'afficher à chaque chargement de page pour ceux "
-"qui lancent votre blog depuis Safari ! <i>Valeurs recommandées : 43200 (pour "
-"un mois de délai) ou 525600 pour un an.</i>"
-
-#: tags/0.8/options.php:177 tags/1.5/0.8/options.php:177
-#: tags/1.5/5.1/0.8/options.php:177
-msgid ""
-"You can specify a startup image URL that is displayed while your web "
-"application launches (only on Fullscreen mode). <i>The image must be 320 x "
-"460 pixels.</i>"
-msgstr ""
-"Vous pouvez spécifier l'URL d'une image de lancement qui s'afffichera "
-"pendant que votre application se charge (seulement en mode Plein écran). "
-"<i>L'image doit faire 320*420 pixels (en format portrait)</i>"
-
-#: tags/0.8/options.php:223 tags/0.9/options.php:256 tags/1.0/options.php:259
-#: tags/1.1/options.php:259 tags/1.5/0.8/options.php:223
-#: tags/1.5/0.9/options.php:256 tags/1.5/1.0/options.php:259
-#: tags/1.5/1.1/options.php:259 tags/1.5/5.1/0.8/options.php:223
-#: tags/1.5/5.1/0.9/options.php:256 tags/1.5/5.1/1.0/options.php:259
-#: tags/1.5/5.1/1.1/options.php:259
-msgid "Navigation options"
-msgstr "Options de navigation"
-
-#: tags/0.8/options.php:224 tags/0.9/options.php:257 tags/1.0/options.php:260
-#: tags/1.1/options.php:260 tags/1.5/0.8/options.php:224
-#: tags/1.5/0.9/options.php:257 tags/1.5/1.0/options.php:260
-#: tags/1.5/1.1/options.php:260 tags/1.5/5.1/0.8/options.php:224
-#: tags/1.5/5.1/0.9/options.php:257 tags/1.5/5.1/1.0/options.php:260
-#: tags/1.5/5.1/1.1/options.php:260
-msgid ""
-"Basically, you have two ways to browse your web app: on Safari or in a "
-"separate window. Each browser has its pros and cons."
-msgstr ""
-"Il y a deux façon de parcourir votre blog : via Safari ou en mode Plein "
-"écran sur une fenêtre applicative séparée. Chaque navigation a ses avantages "
-"et ses inconvénients."
-
-#: tags/0.8/options.php:226 tags/0.9/options.php:259 tags/1.0/options.php:262
-#: tags/1.1/options.php:262 tags/1.5/0.8/options.php:226
-#: tags/1.5/0.9/options.php:259 tags/1.5/1.0/options.php:262
-#: tags/1.5/1.1/options.php:262 tags/1.5/5.1/0.8/options.php:226
-#: tags/1.5/5.1/0.9/options.php:259 tags/1.5/5.1/1.0/options.php:262
-#: tags/1.5/5.1/1.1/options.php:262
-msgid "Choose your browser"
-msgstr "Choisissez votre navigateur"
-
-#: tags/0.8/options.php:228 tags/0.9/options.php:261 tags/1.0/options.php:264
-#: tags/1.1/options.php:264 tags/1.5/0.8/options.php:228
-#: tags/1.5/0.9/options.php:261 tags/1.5/1.0/options.php:264
-#: tags/1.5/1.1/options.php:264 tags/1.5/5.1/0.8/options.php:228
-#: tags/1.5/5.1/0.9/options.php:261 tags/1.5/5.1/1.0/options.php:264
-#: tags/1.5/5.1/1.1/options.php:264
-msgid ""
-"In Safari mode, your blog will open on Safari browser when you will tap on "
-"your icon, but the balloon will continue to appear (we cannot prevent it "
-"opening in this mode even if user has alreay added the blog to its "
-"homescreen). The solution is to set an important expire timeframe (e.g on "
-"year).<br /><br />In the fullscreen mode, the web app will not open in "
-"Safari mode but as a separate Web application with a custom nav bottom bar. "
-"The pro is that the balloon will never appear again in this mode. The con is "
-"that you will not have Safari native options."
-msgstr ""
-"Dans le mode Safari, votre blog s'ouvrira dans Safari quand vous cliquerez "
-"sur l'icône en écran d'accueil, mais la fenêtre d'ajout à l'écran d'accueil "
-"continuera de s'ouvrir (nous ne pouvons malheureusement pas l'empêcher de "
-"continuer à s'ouvrir même si le visiteur a déjà ajouté le blog à son écran "
-"d'accueil). La solution consiste à paramétrer un long délai d'expiration (un "
-"an par exemple).<br /><br />Dans le mode Fullscreen (Plein écran), votre "
-"blog ne s'ouvrira pas dans Safari mais comme une application séparée, avec "
-"sa propre barre de navigation. L'avantage est que dans ce mode la fenêtre "
-"invitant à ajouter le blog à l'écran d'accueil ne s'ouvrira pas. "
-"L'inconvénient, c'est que le visiteur ne pourra pas bénéficier des options "
-"offertes par la navigation de Safari."
-
-#: tags/0.8/options.php:238 tags/0.9/options.php:312 tags/1.0/options.php:315
-#: tags/1.1/options.php:315 tags/1.5/0.8/options.php:238
-#: tags/1.5/0.9/options.php:312 tags/1.5/1.0/options.php:315
-#: tags/1.5/1.1/options.php:315 tags/1.5/5.1/0.8/options.php:238
-#: tags/1.5/5.1/0.9/options.php:312 tags/1.5/5.1/1.0/options.php:315
-#: tags/1.5/5.1/1.1/options.php:315
-msgid ""
-"If checked, clicking on links from Fullscreen mode will switch from Web App "
-"to Safari browser."
-msgstr ""
-"Si cette option est cochée, les liens du mode Plein écran s'ouvriront sur "
-"Safari et non pas dans l'application."
-
-#: tags/0.8/options.php:243 tags/0.9/options.php:317 tags/1.0/options.php:320
-#: tags/1.1/options.php:320 tags/1.5/0.8/options.php:243
-#: tags/1.5/0.9/options.php:317 tags/1.5/1.0/options.php:320
-#: tags/1.5/1.1/options.php:320 tags/1.5/5.1/0.8/options.php:243
-#: tags/1.5/5.1/0.9/options.php:317 tags/1.5/5.1/1.0/options.php:320
-#: tags/1.5/5.1/1.1/options.php:320
-msgid "Disable bottom nav bar of the Fullscreen mode"
-msgstr "Désactiver la barre de navigation de l'appli web en plein écran"
-
-#: tags/0.8/options.php:245 tags/0.9/options.php:319 tags/1.0/options.php:322
-#: tags/1.1/options.php:322 tags/1.5/0.8/options.php:245
-#: tags/1.5/0.9/options.php:319 tags/1.5/1.0/options.php:322
-#: tags/1.5/1.1/options.php:322 tags/1.5/5.1/0.8/options.php:245
-#: tags/1.5/5.1/0.9/options.php:319 tags/1.5/5.1/1.0/options.php:322
-#: tags/1.5/5.1/1.1/options.php:322
-msgid ""
-"If checked, the bottom nav bar of the Fullscreen mode that provides a way "
-"for visitors to go back, forward or reload will be disabled. It could be "
-"useful if you need to load a \"real\" fullscreen view of your website, "
-"without any buttons."
-msgstr ""
-"En cochant cette option, la barre de navigation de l'application (boutons "
-"précédent, suivant et recharger) n'apparaîtra pas. Peut être utile si vous "
-"souhaitez charger votre blog en plein écran \"réel\", sans aucun bouton "
-"périphérique."
-
-#: tags/0.9/options.php:53 tags/1.0/options.php:55 tags/1.1/options.php:55
-#: tags/1.2/options.php:55 tags/1.3/options.php:55 tags/1.4/options.php:55
-#: tags/1.5/0.9/options.php:53 tags/1.5/1.0/options.php:55
-#: tags/1.5/1.1/options.php:55 tags/1.5/1.2/options.php:55
-#: tags/1.5/1.3/options.php:55 tags/1.5/1.4/options.php:55
-#: tags/1.5/5.1/0.9/options.php:53 tags/1.5/5.1/1.0/options.php:55
-#: tags/1.5/5.1/1.1/options.php:55 tags/1.5/5.1/1.2/options.php:55
-#: tags/1.5/5.1/1.3/options.php:55 tags/1.5/5.1/1.4/options.php:55
-#: tags/1.6/options.php:55 tags/1.7/options.php:55 tags/1.8/options.php:55
-#: tags/1.9/options.php:55 tags/2.1/options.php:54 tags/2.2/options.php:54
-#: tags/2.2/trunk/options.php:54 tags/2.3/options.php:54
-#: tags/2.4/options.php:54 tags/2.5/options.php:53 trunk/options.php:294
-msgid "Keep in touch with me."
-msgstr "Restons en contact ;)"
-
-#: tags/0.9/options.php:80 tags/1.0/options.php:69 tags/1.1/options.php:69
-#: tags/1.2/options.php:69 tags/1.3/options.php:69 tags/1.4/options.php:69
-#: tags/1.5/0.9/options.php:80 tags/1.5/1.0/options.php:69
-#: tags/1.5/1.1/options.php:69 tags/1.5/1.2/options.php:69
-#: tags/1.5/1.3/options.php:69 tags/1.5/1.4/options.php:69
-#: tags/1.5/5.1/0.9/options.php:80 tags/1.5/5.1/1.0/options.php:69
-#: tags/1.5/5.1/1.1/options.php:69 tags/1.5/5.1/1.2/options.php:69
-#: tags/1.5/5.1/1.3/options.php:69 tags/1.5/5.1/1.4/options.php:69
-#: tags/1.6/options.php:69 tags/1.7/options.php:69 tags/1.8/options.php:69
-#: tags/1.9/options.php:69 tags/2.1/options.php:71 tags/2.2/options.php:71
-#: tags/2.2/trunk/options.php:71 tags/2.3/options.php:71
-#: tags/2.4/options.php:71 tags/2.5/options.php:70 trunk/options.php:309
-msgid "Let me know that you are using my plugin!"
-msgstr "Vous utilisez mon extension ? Faites-le moi savoir !"
-
-#: tags/0.9/options.php:99 tags/1.0/options.php:104 tags/1.1/options.php:104
-#: tags/1.2/options.php:104 tags/1.3/options.php:104 tags/1.4/options.php:92
-#: tags/1.5/0.9/options.php:99 tags/1.5/1.0/options.php:104
-#: tags/1.5/1.1/options.php:104 tags/1.5/1.2/options.php:104
-#: tags/1.5/1.3/options.php:104 tags/1.5/1.4/options.php:92
-#: tags/1.5/5.1/0.9/options.php:99 tags/1.5/5.1/1.0/options.php:104
-#: tags/1.5/5.1/1.1/options.php:104 tags/1.5/5.1/1.2/options.php:104
-#: tags/1.5/5.1/1.3/options.php:104 tags/1.5/5.1/1.4/options.php:92
-#: tags/1.6/options.php:92 tags/1.7/options.php:92 tags/1.8/options.php:94
-#: tags/1.9/options.php:94 tags/2.1/options.php:93 tags/2.2/options.php:93
-#: tags/2.2/trunk/options.php:93 tags/2.3/options.php:93
-#: tags/2.4/options.php:93 tags/2.5/options.php:92
-msgid "Floating bubble options"
-msgstr "Options de l'infobulle"
-
-#: tags/0.9/options.php:163 tags/1.0/options.php:166 tags/1.1/options.php:166
-#: tags/1.2/options.php:166 tags/1.3/options.php:166 tags/1.4/options.php:154
-#: tags/1.5/0.9/options.php:163 tags/1.5/1.0/options.php:166
-#: tags/1.5/1.1/options.php:166 tags/1.5/1.2/options.php:166
-#: tags/1.5/1.3/options.php:166 tags/1.5/1.4/options.php:154
-#: tags/1.5/5.1/0.9/options.php:163 tags/1.5/5.1/1.0/options.php:166
-#: tags/1.5/5.1/1.1/options.php:166 tags/1.5/5.1/1.2/options.php:166
-#: tags/1.5/5.1/1.3/options.php:166 tags/1.5/5.1/1.4/options.php:154
-#: tags/1.6/options.php:154 tags/1.7/options.php:154 tags/1.8/options.php:156
-#: tags/1.9/options.php:156 tags/2.1/options.php:170 tags/2.2/options.php:170
-#: tags/2.2/trunk/options.php:170 tags/2.3/options.php:170
-#: tags/2.4/options.php:170 tags/2.5/options.php:168 trunk/options.php:126
-msgid ""
-"Minutes before displaying the message again. Default: 0 (=always show). It's "
-"highly recommended to set a timeframe in order to prevent showing message at "
-"each and every page load for those who didn't add the Web App to their "
-"homescreen or those who added it but load the blog on Safari!<br /"
-"><i>Recommended values: 43200 for one month or 525600 for one year.</i>"
-msgstr ""
-"Temps en minutes avant d'afficher à nouveau le message. Par défaut : 0 (la "
-"fenêtre s'affiche à chaque fois). Il est très recommandé de fixer un délai "
-"pour empêcher le message de s'afficher à chaque chargement de page pour ceux "
-"qui lancent votre blog depuis Safari ! <i>Valeurs recommandées : 43200 (pour "
-"un mois de délai) ou 525600 pour un an.</i>"
-
-#: tags/0.9/options.php:168 tags/1.0/options.php:171 tags/1.1/options.php:171
-#: tags/1.2/options.php:171 tags/1.3/options.php:171 tags/1.4/options.php:159
-#: tags/1.5/0.9/options.php:168 tags/1.5/1.0/options.php:171
-#: tags/1.5/1.1/options.php:171 tags/1.5/1.2/options.php:171
-#: tags/1.5/1.3/options.php:171 tags/1.5/1.4/options.php:159
-#: tags/1.5/5.1/0.9/options.php:168 tags/1.5/5.1/1.0/options.php:171
-#: tags/1.5/5.1/1.1/options.php:171 tags/1.5/5.1/1.2/options.php:171
-#: tags/1.5/5.1/1.3/options.php:171 tags/1.5/5.1/1.4/options.php:159
-#: tags/1.6/options.php:159 tags/1.7/options.php:159 tags/1.8/options.php:161
-#: tags/1.9/options.php:161 tags/2.1/options.php:175 tags/2.2/options.php:175
-#: tags/2.2/trunk/options.php:175 tags/2.3/options.php:175
-#: tags/2.4/options.php:175
-msgid "iOs touch icons"
-msgstr "Icône touch iOS"
-
-#: tags/0.9/options.php:177 tags/1.0/options.php:180 tags/1.1/options.php:180
-#: tags/1.2/options.php:180 tags/1.3/options.php:180 tags/1.4/options.php:168
-#: tags/1.5/0.9/options.php:177 tags/1.5/1.0/options.php:180
-#: tags/1.5/1.1/options.php:180 tags/1.5/1.2/options.php:180
-#: tags/1.5/1.3/options.php:180 tags/1.5/1.4/options.php:168
-#: tags/1.5/5.1/0.9/options.php:177 tags/1.5/5.1/1.0/options.php:180
-#: tags/1.5/5.1/1.1/options.php:180 tags/1.5/5.1/1.2/options.php:180
-#: tags/1.5/5.1/1.3/options.php:180 tags/1.5/5.1/1.4/options.php:168
-#: tags/1.6/options.php:168 tags/1.7/options.php:168 tags/1.8/options.php:170
-#: tags/1.9/options.php:170 tags/2.1/options.php:184 tags/2.2/options.php:184
-#: tags/2.2/trunk/options.php:184 tags/2.3/options.php:184
-#: tags/2.4/options.php:184
-msgid "Precomposed icons"
-msgstr ""
-
-#: tags/0.9/options.php:179 tags/1.0/options.php:182 tags/1.1/options.php:182
-#: tags/1.2/options.php:182 tags/1.3/options.php:182 tags/1.4/options.php:170
-#: tags/1.5/0.9/options.php:179 tags/1.5/1.0/options.php:182
-#: tags/1.5/1.1/options.php:182 tags/1.5/1.2/options.php:182
-#: tags/1.5/1.3/options.php:182 tags/1.5/1.4/options.php:170
-#: tags/1.5/5.1/0.9/options.php:179 tags/1.5/5.1/1.0/options.php:182
-#: tags/1.5/5.1/1.1/options.php:182 tags/1.5/5.1/1.2/options.php:182
-#: tags/1.5/5.1/1.3/options.php:182 tags/1.5/5.1/1.4/options.php:170
-#: tags/1.6/options.php:170 tags/1.7/options.php:170 tags/1.8/options.php:172
-#: tags/1.9/options.php:172 tags/2.1/options.php:186 tags/2.2/options.php:186
-#: tags/2.2/trunk/options.php:186 tags/2.3/options.php:186
-#: tags/2.4/options.php:186
-msgid "If checked, icons will display without the Apple gloss effect."
-msgstr ""
-"Si cette option est cochée, les icônes s'afficheront sans l'effet gloss "
-"d'Apple."
-
-#: tags/0.9/options.php:184 tags/1.0/options.php:187 tags/1.1/options.php:187
-#: tags/1.2/options.php:187 tags/1.3/options.php:187 tags/1.4/options.php:175
-#: tags/1.5/0.9/options.php:184 tags/1.5/1.0/options.php:187
-#: tags/1.5/1.1/options.php:187 tags/1.5/1.2/options.php:187
-#: tags/1.5/1.3/options.php:187 tags/1.5/1.4/options.php:175
-#: tags/1.5/5.1/0.9/options.php:184 tags/1.5/5.1/1.0/options.php:187
-#: tags/1.5/5.1/1.1/options.php:187 tags/1.5/5.1/1.2/options.php:187
-#: tags/1.5/5.1/1.3/options.php:187 tags/1.5/5.1/1.4/options.php:175
-#: tags/1.6/options.php:175 tags/1.7/options.php:175 tags/1.8/options.php:177
-#: tags/1.9/options.php:177 tags/2.1/options.php:191 tags/2.2/options.php:191
-#: tags/2.2/trunk/options.php:191 tags/2.3/options.php:191
-#: tags/2.4/options.php:191
-msgid "Touch icons URLs"
-msgstr "URLs des icônes touch"
-
-#: tags/0.9/options.php:186 tags/1.0/options.php:189 tags/1.1/options.php:189
-#: tags/1.2/options.php:189 tags/1.3/options.php:189 tags/1.4/options.php:177
-#: tags/1.5/0.9/options.php:186 tags/1.5/1.0/options.php:189
-#: tags/1.5/1.1/options.php:189 tags/1.5/1.2/options.php:189
-#: tags/1.5/1.3/options.php:189 tags/1.5/1.4/options.php:177
-#: tags/1.5/5.1/0.9/options.php:186 tags/1.5/5.1/1.0/options.php:189
-#: tags/1.5/5.1/1.1/options.php:189 tags/1.5/5.1/1.2/options.php:189
-#: tags/1.5/5.1/1.3/options.php:189 tags/1.5/5.1/1.4/options.php:177
-#: tags/1.6/options.php:177 tags/1.7/options.php:177 tags/1.8/options.php:179
-#: tags/1.9/options.php:179 tags/2.1/options.php:193 tags/2.2/options.php:193
-#: tags/2.2/trunk/options.php:193 tags/2.3/options.php:193
-#: tags/2.4/options.php:193
-msgid ""
-"If mentionned, those fields add <i>link rel=\"apple-touch-icon\"</i> in the "
-"page HEAD (convenient for those who have no touch icon). Just paste the URLs "
-"of your icons."
-msgstr ""
-"Si mentionnée, cela ajoute la balise rel=\"apple-touch-icon\" dans la partie "
-"HEAD de votre page (utile pour ceux qui n'ont pas d'icône touch). <br /"
-">Taille recommandée : 144*144."
-
-#: tags/0.9/options.php:191 tags/1.0/options.php:194 tags/1.1/options.php:194
-#: tags/1.2/options.php:194 tags/1.3/options.php:194 tags/1.4/options.php:182
-#: tags/1.5/0.9/options.php:191 tags/1.5/1.0/options.php:194
-#: tags/1.5/1.1/options.php:194 tags/1.5/1.2/options.php:194
-#: tags/1.5/1.3/options.php:194 tags/1.5/1.4/options.php:182
-#: tags/1.5/5.1/0.9/options.php:191 tags/1.5/5.1/1.0/options.php:194
-#: tags/1.5/5.1/1.1/options.php:194 tags/1.5/5.1/1.2/options.php:194
-#: tags/1.5/5.1/1.3/options.php:194 tags/1.5/5.1/1.4/options.php:182
-#: tags/1.6/options.php:182 tags/1.7/options.php:182 tags/1.8/options.php:184
-#: tags/1.9/options.php:184 tags/2.1/options.php:198 tags/2.2/options.php:198
-#: tags/2.2/trunk/options.php:198 tags/2.3/options.php:198
-#: tags/2.4/options.php:198
-msgid "57x57 touch icon URL (for iPhone 3GS and 2011 iPod Touch)."
-msgstr ""
-
-#: tags/0.9/options.php:197 tags/1.0/options.php:200 tags/1.1/options.php:200
-#: tags/1.2/options.php:200 tags/1.3/options.php:200 tags/1.4/options.php:188
-#: tags/1.5/0.9/options.php:197 tags/1.5/1.0/options.php:200
-#: tags/1.5/1.1/options.php:200 tags/1.5/1.2/options.php:200
-#: tags/1.5/1.3/options.php:200 tags/1.5/1.4/options.php:188
-#: tags/1.5/5.1/0.9/options.php:197 tags/1.5/5.1/1.0/options.php:200
-#: tags/1.5/5.1/1.1/options.php:200 tags/1.5/5.1/1.2/options.php:200
-#: tags/1.5/5.1/1.3/options.php:200 tags/1.5/5.1/1.4/options.php:188
-#: tags/1.6/options.php:188 tags/1.7/options.php:188 tags/1.8/options.php:190
-#: tags/1.9/options.php:190 tags/2.1/options.php:204 tags/2.2/options.php:204
-#: tags/2.2/trunk/options.php:204 tags/2.3/options.php:204
-#: tags/2.4/options.php:204
-msgid "72x72 touch icon URL (for 1st generation iPad, iPad 2 and iPad mini)."
-msgstr ""
-
-#: tags/0.9/options.php:203 tags/1.0/options.php:206 tags/1.1/options.php:206
-#: tags/1.2/options.php:206 tags/1.3/options.php:206 tags/1.4/options.php:194
-#: tags/1.5/0.9/options.php:203 tags/1.5/1.0/options.php:206
-#: tags/1.5/1.1/options.php:206 tags/1.5/1.2/options.php:206
-#: tags/1.5/1.3/options.php:206 tags/1.5/1.4/options.php:194
-#: tags/1.5/5.1/0.9/options.php:203 tags/1.5/5.1/1.0/options.php:206
-#: tags/1.5/5.1/1.1/options.php:206 tags/1.5/5.1/1.2/options.php:206
-#: tags/1.5/5.1/1.3/options.php:206 tags/1.5/5.1/1.4/options.php:194
-#: tags/1.6/options.php:194 tags/1.7/options.php:194 tags/1.8/options.php:196
-#: tags/1.9/options.php:196 tags/2.1/options.php:210 tags/2.2/options.php:210
-#: tags/2.2/trunk/options.php:210 tags/2.3/options.php:210
-#: tags/2.4/options.php:210
-msgid "114x114 touch icon URL (for iPhone 4, 4S, 5 and 2012 iPod Touch)."
-msgstr ""
-
-#: tags/0.9/options.php:209 tags/1.0/options.php:212 tags/1.1/options.php:212
-#: tags/1.2/options.php:212 tags/1.3/options.php:212 tags/1.4/options.php:200
-#: tags/1.5/0.9/options.php:209 tags/1.5/1.0/options.php:212
-#: tags/1.5/1.1/options.php:212 tags/1.5/1.2/options.php:212
-#: tags/1.5/1.3/options.php:212 tags/1.5/1.4/options.php:200
-#: tags/1.5/5.1/0.9/options.php:209 tags/1.5/5.1/1.0/options.php:212
-#: tags/1.5/5.1/1.1/options.php:212 tags/1.5/5.1/1.2/options.php:212
-#: tags/1.5/5.1/1.3/options.php:212 tags/1.5/5.1/1.4/options.php:200
-#: tags/1.6/options.php:200 tags/1.7/options.php:200 tags/1.8/options.php:202
-#: tags/1.9/options.php:202 tags/2.1/options.php:216 tags/2.2/options.php:216
-#: tags/2.2/trunk/options.php:216 tags/2.3/options.php:216
-#: tags/2.4/options.php:216
-msgid "144x144 touch icon URL (for iPad 3rd and 4th generation)."
-msgstr ""
-
-#: tags/0.9/options.php:269 tags/1.0/options.php:272 tags/1.1/options.php:272
-#: tags/1.5/0.9/options.php:269 tags/1.5/1.0/options.php:272
-#: tags/1.5/1.1/options.php:272 tags/1.5/5.1/0.9/options.php:269
-#: tags/1.5/5.1/1.0/options.php:272 tags/1.5/5.1/1.1/options.php:272
-msgid "Full Screen mode options"
-msgstr "Options du mode Plein Ecran"
-
-#: tags/0.9/options.php:270 tags/1.0/options.php:273 tags/1.1/options.php:273
-#: tags/1.5/0.9/options.php:270 tags/1.5/1.0/options.php:273
-#: tags/1.5/1.1/options.php:273 tags/1.5/5.1/0.9/options.php:270
-#: tags/1.5/5.1/1.0/options.php:273 tags/1.5/5.1/1.1/options.php:273
-msgid ""
-"Parameter these options if you have chosen Full Screen mode to browse your "
-"blog."
-msgstr ""
-"Paramétrez ces options dans le cas où vous avez choisi le mode \"Plein "
-"écran\" ci-dessus."
-
-#: tags/0.9/options.php:273 tags/1.0/options.php:276 tags/1.1/options.php:276
-#: tags/1.5/0.9/options.php:273 tags/1.5/1.0/options.php:276
-#: tags/1.5/1.1/options.php:276 tags/1.5/5.1/0.9/options.php:273
-#: tags/1.5/5.1/1.0/options.php:276 tags/1.5/5.1/1.1/options.php:276
-msgid "Startup images URLs"
-msgstr "URLs des images de démarrage"
-
-#: tags/0.9/options.php:275 tags/1.0/options.php:278 tags/1.1/options.php:278
-#: tags/1.5/0.9/options.php:275 tags/1.5/1.0/options.php:278
-#: tags/1.5/1.1/options.php:278 tags/1.5/5.1/0.9/options.php:275
-#: tags/1.5/5.1/1.0/options.php:278 tags/1.5/5.1/1.1/options.php:278
-msgid ""
-"You can specify startup images that are displayed while your web application "
-"launches. Just paste URLs of the images you want to use as startup screens "
-"if you don't already have ones.<br /><i>Note: these options work only on "
-"Full Screen mode</i>."
-msgstr ""
-"Vous pouvez renseigner une image de démarrage qui sera affichée au lancement "
-"de votre application, pendant qu'elle sera en train de se charger. "
-"(Seulement pour le mode \"Plein écran\")"
-
-#: tags/0.9/options.php:280 tags/1.0/options.php:283 tags/1.1/options.php:283
-#: tags/1.5/0.9/options.php:280 tags/1.5/1.0/options.php:283
-#: tags/1.5/1.1/options.php:283 tags/1.5/5.1/0.9/options.php:280
-#: tags/1.5/5.1/1.0/options.php:283 tags/1.5/5.1/1.1/options.php:283
-msgid "320x460px (iPhone 3GS, 2011 iPod Touch)."
-msgstr ""
-
-#: tags/0.9/options.php:286 tags/1.0/options.php:289 tags/1.1/options.php:289
-#: tags/1.5/0.9/options.php:286 tags/1.5/1.0/options.php:289
-#: tags/1.5/1.1/options.php:289 tags/1.5/5.1/0.9/options.php:286
-#: tags/1.5/5.1/1.0/options.php:289 tags/1.5/5.1/1.1/options.php:289
-msgid "640x920 (iPhone 4, 4S and 2011 iPod Touch)."
-msgstr ""
-
-#: tags/0.9/options.php:292 tags/1.0/options.php:295 tags/1.1/options.php:295
-#: tags/1.5/0.9/options.php:292 tags/1.5/1.0/options.php:295
-#: tags/1.5/1.1/options.php:295 tags/1.5/5.1/0.9/options.php:292
-#: tags/1.5/5.1/1.0/options.php:295 tags/1.5/5.1/1.1/options.php:295
-msgid "640x1096 (iPhone 5 and 2012 iPod Touch)."
-msgstr ""
-
-#: tags/0.9/options.php:298 tags/1.0/options.php:301 tags/1.1/options.php:301
-#: tags/1.5/0.9/options.php:298 tags/1.5/1.0/options.php:301
-#: tags/1.5/1.1/options.php:301 tags/1.5/5.1/0.9/options.php:298
-#: tags/1.5/5.1/1.0/options.php:301 tags/1.5/5.1/1.1/options.php:301
-msgid "1024x748 (iPad landscape)."
-msgstr ""
-
-#: tags/0.9/options.php:304 tags/1.0/options.php:307 tags/1.1/options.php:307
-#: tags/1.5/0.9/options.php:304 tags/1.5/1.0/options.php:307
-#: tags/1.5/1.1/options.php:307 tags/1.5/5.1/0.9/options.php:304
-#: tags/1.5/5.1/1.0/options.php:307 tags/1.5/5.1/1.1/options.php:307
-msgid "768x1004 (iPad Portrait)."
-msgstr ""
-
-#: tags/1.0/options.php:175 tags/1.1/options.php:175 tags/1.2/options.php:175
-#: tags/1.3/options.php:175 tags/1.4/options.php:163
-#: tags/1.5/1.0/options.php:175 tags/1.5/1.1/options.php:175
-#: tags/1.5/1.2/options.php:175 tags/1.5/1.3/options.php:175
-#: tags/1.5/1.4/options.php:163 tags/1.5/5.1/1.0/options.php:175
-#: tags/1.5/5.1/1.1/options.php:175 tags/1.5/5.1/1.2/options.php:175
-#: tags/1.5/5.1/1.3/options.php:175 tags/1.5/5.1/1.4/options.php:163
-#: tags/1.6/options.php:163 tags/1.7/options.php:163 tags/1.8/options.php:165
-#: tags/1.9/options.php:165 tags/2.1/options.php:179 tags/2.2/options.php:179
-#: tags/2.2/trunk/options.php:179 tags/2.3/options.php:179
-#: tags/2.4/options.php:179
-msgid ""
-"If checked, the script checks for link rel=\"apple-touch-icon\" in the page "
-"HEAD and displays the application icon next to the message."
-msgstr ""
-"Si cochée, cette option indique au script de rechercher la balise "
-"rel=\"apple-touch-icon\" dans le HEAD afin d'afficher l'icône de votre blog "
-"dans la fenêtre à côté du message dans l'infobulle."
-
-#: tags/1.0/options.php:247 tags/1.1/options.php:247
-#: tags/1.5/1.0/options.php:247 tags/1.5/1.1/options.php:247
-#: tags/1.5/5.1/1.0/options.php:247 tags/1.5/5.1/1.1/options.php:247
-msgid ""
-"Recommended to leave blank if your theme is responsive design. If not, it is "
-"recommended to increase it, especially if you have increased the floating "
-"balloon via the zoom field. <i>Recommended value for non-responsive themes: "
-"200</i>"
-msgstr ""
-"Laissez vide si votre thème est responsive. Sinon, il est recommandé "
-"d'augmenter la taille de la police, notamment si vous avez déjà augmenté la "
-"taille de la fenêtre via le champ Zoom. <i>Valeur recommandée pour les "
-"thèmes non responsive : 200</i>"
-
-#: tags/1.0/options.php:254 tags/1.1/options.php:254
-#: tags/1.5/1.0/options.php:254 tags/1.5/1.1/options.php:254
-#: tags/1.5/5.1/1.0/options.php:254 tags/1.5/5.1/1.1/options.php:254
-msgid ""
-"Recommended to leave blank if your theme is responsive design. Decrease it "
-"if you have increased the zoom field. <i>Recommended value for non "
-"responsive sites: 120</i>"
-msgstr ""
-"Laissez vide si votre thème est responsive. Diminuez la valeur (fixée par "
-"défaut à 100) si vous avez augmentez la taille de la fenêtre via le champ "
-"Zoom. <i>Valeur recommandée pour les thèmes non responsive : 120</i>"
-
-#: tags/1.7/options.php:104 tags/1.8/options.php:106 tags/1.9/options.php:106
-msgid ""
-"<i>Use %device to show user's device on message, %icon to display the first "
-"add icon, and %add to display the second add to home screen icon.</i>"
-msgstr ""
-"<i>Tapez %device pour afficher l’appareil de l'utilisateur dans votre "
-"message, %icon pour afficher l'icône d'ajout, et %add pour afficher la "
-"seconde icône d'ajout à l'écran d'accueil.</i>"
-
-#: tags/2.1/options.php:72 tags/2.2/options.php:72
-#: tags/2.2/trunk/options.php:72 tags/2.3/options.php:72
-#: tags/2.4/options.php:72 tags/2.5/options.php:71 trunk/options.php:310
-msgid ""
-"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
-"tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Apple "
-"#iOS"
-msgstr ""
-"J’utilise l’extension Add to home screen #WordPress par @ziyadbachalany ! "
-"https://tulipemedia.com/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
-"#Apple #iOS"
-
-#: tags/2.1/options.php:75 tags/2.2/options.php:75
-#: tags/2.2/trunk/options.php:75 tags/2.3/options.php:75
-#: tags/2.4/options.php:75 tags/2.5/options.php:74 trunk/options.php:313
-msgid "Spread the word!"
-msgstr "Faites passer le mot, partagez mon plugin !"
-
-#: tags/2.1/options.php:102 tags/2.2/options.php:102
-#: tags/2.2/trunk/options.php:102 tags/2.3/options.php:102
-#: tags/2.4/options.php:102 tags/2.5/options.php:100 trunk/options.php:45
-msgid "I recommend to check this value"
-msgstr "Je recommande de cocher cette option"
-
-#: tags/2.1/options.php:115 tags/2.2/options.php:115
-#: tags/2.2/trunk/options.php:115 tags/2.3/options.php:115
-#: tags/2.4/options.php:115 tags/2.5/options.php:112
-#, php-format
-msgid ""
-"Use %1$s to show user's device on message, %2$s to display the first add "
-"icon, and %3$s to display the second add to home screen icon."
-msgstr ""
-"Tapez %1$s pour afficher l’appareil de l'utilisateur dans votre message, "
-"%2$s pour afficher l'icône d'ajout, and %3$s pour afficher la seconde icône "
-"d'ajout à l'écran d'accueil."
-
-#: tags/2.5/options.php:51 trunk/options.php:23
-msgid "ATHS Options » Settings"
-msgstr "ATHS Option &raquo; Réglages"
-
-#: tags/2.5/options.php:175
-msgid "iOS Touch Icon"
-msgstr "Icône touch iOS"
-
-#: tags/2.5/options.php:177 trunk/options.php:135
-msgid "Enable touch icon"
-msgstr "Icône touch iOS"
-
-#: tags/2.5/options.php:179 trunk/options.php:138
-msgid ""
-"If checked, displays the application icon next to the message using the URL "
-"provided below."
-msgstr ""
-"Si cochée, cette option permet d’afficher l’icône de votre application à "
-"côté du message, en utilisant l’URL renseignée ci-après."
-
-#: tags/2.5/options.php:184 trunk/options.php:143
-msgid "Precomposed icon"
-msgstr ""
-
-#: tags/2.5/options.php:186 trunk/options.php:146
-msgid "If checked, the icon will display without the Apple gloss effect."
-msgstr ""
-"Si cette option est cochée, les icônes s'afficheront sans l'effet gloss "
-"d'Apple."
-
-#: tags/2.5/options.php:194
-msgid ""
-"Paste the URL of a 180x180 icon for modern iOS devices. This will be added "
-"as <i>link rel=\"apple-touch-icon\"</i> in the page HEAD."
-msgstr ""
-"Collez l’URL d’une icône 180x180 pour les appareils iOs récents. L’icône "
-"sera ajoutée dans <i>link rel=« apple-touch-icon »</i> dans la partie HEAD "
-"de la page."
-
-#: tags/2.5/options.php:203 trunk/options.php:167
-msgid ""
-"Type the name of your blog (max: 12 characters!). Default: it takes the "
-"default title of the page."
-msgstr ""
-"Tapez le nom de votre blog (max : 12 caractères !). Par défaut : le titre de "
-"la page sera récupéré."
-
-#: trunk/options.php:32
-msgid "Free Options"
-msgstr "Options gratuites"
-
-#: trunk/options.php:33
-msgid "ATHS Premium Settings"
-msgstr "Options ATHS Premium"
-
-#: trunk/options.php:58
-#, php-format
-msgid ""
-"Use %1$s to show user's device on message, %2$s to display the first add "
-"icon, and %3$s to display the second add to home screen icon. You can also "
-"use HTML tags like %4$s, %5$s, %6$s, or %7$s for formatting."
-msgstr ""
-"Tapez %1$s pour afficher l’appareil de l'utilisateur dans votre message, "
-"%2$s pour afficher l'icône d'ajout, and %3$s pour afficher la seconde icône "
-"d'ajout à l'écran d'accueil. Vous pouvez aussi utiliser des tags HTML comme "
-"%4$s, %5$s, %6$s, or %7$s pour le formatage."
-
-#: trunk/options.php:154
+#: add-to-home-screen-wp.php:444 add-to-home-screen-wp.php:682
 msgid "Upload Icon"
 msgstr "Télécharger une icône"
 
-#: trunk/options.php:157
+#: add-to-home-screen-wp.php:445 add-to-home-screen-wp.php:683
 msgid ""
-"Paste the URL or upload an icon (ideally 192x192 or 512x512 pixels, PNG "
-"format) for iOS and Android home screens. This will be used as <i>link "
-"rel=\"apple-touch-icon\"</i> and in the PWA manifest."
+"URL of the icon for the PWA on the home screen (192x192 or 512x512 PNG "
+"recommended). If empty, a default icon will be used. Note: Browsers may use "
+"an Apple Touch icon defined elsewhere (e.g., via WordPress Site Icon, your "
+"theme, or a plugin) for the home screen."
 msgstr ""
-"Collez l’URL d’une icône ou téléchargez-là (idéalement 192x192 ou 512x512 "
-"pixels, format PNG) pour les appareils iOS et Android. Ce sera utilisé en "
-"tant que <i>link rel=« apple-touch-icon »</i> ainsi que dans le manifeste "
-"PWA."
+"URL de l'icône pour le PWA sur l'écran d'accueil (PNG 192x192 ou 512x512 "
+"recommandé). Si vide, une icône par défaut sera utilisée. Remarque : Les "
+"navigateurs peuvent utiliser une icône Apple Touch définie ailleurs (par "
+"exemple, via l'icône de site WordPress, votre thème ou un plugin) pour "
+"l'écran d'accueil."
 
-#: trunk/options.php:179
+#: add-to-home-screen-wp.php:449
+msgid "Web App Title for all subsites"
+msgstr "Titre de l'application Web pour tous les sous-sites"
+
+#: add-to-home-screen-wp.php:452 add-to-home-screen-wp.php:690
 msgid ""
-"Keep in mind that if someone adds your blog to home screen from a single "
-"article page for instance, the web app will load this page and not the "
-"homepage of the blog. That's why you could choose to open the floating "
-"balloon on homepage only and not on all pages of your blog. In Premium mode, "
-"you can override this by forcing the homepage to launch."
+"Custom title when added to the home screen. If empty, the site name will be "
+"used."
 msgstr ""
-"Gardez à l'esprit le fait que si vous ajoutez le blog à l'écran d'accueil "
-"depuis une page d'article par exemple, l'application web ne chargera par la "
-"suite pas la page d'accueil du blog mais l'article en question. C'est "
-"pourquoi il est préférable de ne faire apparaître la fenêtre que sur la page "
-"d'accueil de votre blog. Dans le mode Premium, vous pouvez outrepasser cette "
-"limitation en forçant le chargement de la page d’accueil au lancement de "
-"votre web app."
+"Titre personnalisé lorsqu'il est ajouté à l'écran d'accueil. Si vide, le nom "
+"du site sera utilisé."
 
-#: trunk/options.php:209
-msgid "License Key"
-msgstr "Clé de licence"
+#: add-to-home-screen-wp.php:532
+msgid "Add to Home Screen & PWA Settings"
+msgstr "Paramètres d'ajout à l'écran d'accueil & PWA"
 
-#: trunk/options.php:213
-msgid "Enter your premium license key to unlock ATHS Premium features."
-msgstr ""
-"Entrez votre clé de licence premium pour débloquer les fonctionnalités "
-"Premium d’ATHS."
+#: add-to-home-screen-wp.php:550
+msgid "Enable Progressive Web App features."
+msgstr "Activer les fonctionnalités de l'application Web progressive."
 
-#: trunk/options.php:216
-msgid "Get Premium"
-msgstr "Obtenir Premium"
-
-#: trunk/options.php:221
-msgid "Valid license key! Premium features are unlocked."
-msgstr "Clé de licence valide ! Fonctionnalités premium débloquées."
-
-#: trunk/options.php:223
-msgid "Invalid license key. Please check your key or purchase a subscription."
-msgstr ""
-"Clé de licence invalide. Merci de vérifier votre clé de licence ou achetez-"
-"en une."
-
-#: trunk/options.php:231
-msgid "Enable ATHS Premium Features"
-msgstr "Activer les fonctionnalités Premium d’ATHS"
-
-#: trunk/options.php:235
+#: add-to-home-screen-wp.php:574
 msgid ""
-"Check to enable premium features (manifest, etc.). Uncheck to disable them "
-"without losing your settings. This turns your blog into a Web App, making it "
-"faster, giving it a native app feel on mobile devices, and allowing "
-"customization of the options below."
+"Display a floating balloon to prompt iOS users to install the app in the "
+"frontend."
 msgstr ""
-"Cochez pour activer les fonctionnalités premium (manifeste, etc.). Décochez "
-"pour les désactiver sans perdre les paramètres enregistrés. Cela transforme "
-"votre blog en Web App, le rend plus rapide, lui donne un aspect "
-"d’application mobile, et permet les personnalisations ci-dessous."
+"Afficher une infobulle flottante pour inciter les utilisateurs iOS à "
+"installer l'application dans l'interface publique."
 
-#: trunk/options.php:244
-msgid "Top Color"
-msgstr "Couleur du haut"
+#: add-to-home-screen-wp.php:687
+msgid "Web App Title"
+msgstr "Titre de l'application Web"
 
-#: trunk/options.php:247
-msgid "Reset to Default"
-msgstr "Restaurer valeurs par défaut"
+#: add-to-home-screen-wp.php:709
+msgid "Support Add to Home Screen WP’s Future! 🌟"
+msgstr "Soutenez l'avenir d'Add to Home Screen WP ! 🌟"
 
-#: trunk/options.php:248
-msgid "The color of the top bar in your Web App. Default: #000000 (black)."
-msgstr "Couleur de la top bar de votre Web App. Par défaut : #000000 (black)."
-
-#: trunk/options.php:256
-msgid "Force Homepage on Launch"
-msgstr "Forcer le chargement de la page d’accueil au lancement"
-
-#: trunk/options.php:259
+#: add-to-home-screen-wp.php:710
 msgid ""
-"If checked, the Web App will always launch on the homepage, even if added "
-"from another page."
+"Add to Home Screen WP is a tool built with passion to help WordPress users "
+"like you enhance their mobile experience. Your support can make a huge "
+"difference in keeping it growing and improving!"
 msgstr ""
-"Si coché, la Web App chargera la page d’accueil au lancement, même si elle a "
-"été ajoutée à l’écran d’accueil depuis une autre page."
+"Add to Home Screen WP est un outil conçu avec passion pour aider les "
+"utilisateurs de WordPress comme vous à améliorer leur expérience mobile. "
+"Votre soutien peut faire une énorme différence pour continuer à le "
+"développer et à l'améliorer !"
 
-#: trunk/options.php:267
-msgid "Show Loading Indicator"
-msgstr "Afficher l’indicateur de chargement"
+#: add-to-home-screen-wp.php:713
+msgid "Let me know that you are using my plugin!"
+msgstr "Faites-moi savoir que vous utilisez mon extension !"
 
-#: trunk/options.php:270
+#: add-to-home-screen-wp.php:714
 msgid ""
-"If checked, a loading spinner will appear when navigating between pages in "
-"the Web App."
+"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
+"tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
+"#Android"
 msgstr ""
-"Si coché, un indicateur de chargement s’affichera pendant le chargement des "
-"pages dans la Web App."
+"J’utilise l’extension #WordPress Add to Home Screen par @ziyadbachalany ! "
+"http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
+"#Android"
 
-#: trunk/options.php:278
-msgid "Show Install Button for Android"
-msgstr "Afficher le bouton d’installation pour Android"
+#: add-to-home-screen-wp.php:717
+msgid "Spread the word on X!"
+msgstr "Faites passer le mot sur X !"
 
-#: trunk/options.php:281
+#: add-to-home-screen-wp.php:723
+msgid "Buy Me a Coffee"
+msgstr "Offrez-moi un café"
+
+#: add-to-home-screen-wp.php:724
 msgid ""
-"If checked, a button will appear on Android devices to prompt users to add "
-"the Web App to their home screen."
+"Love using Add to Home Screen WP? A small donation can fuel my coffee cup "
+"and help me dedicate more time to enhancing this plugin for you!"
 msgstr ""
-"Si coché, un bouton apparaîtra sur les appareils Android pour inviter les "
-"utilisateurs à ajouter la Web App à leur écran d’accueil."
+"Vous aimez utiliser Add to Home Screen WP ? Un petit don peut remplir ma "
+"tasse de café et m'aider à consacrer plus de temps à l'amélioration de ce "
+"plugin pour vous !"
 
-#: trunk/options.php:338
-msgid "Select or Upload Icon"
-msgstr "Sélectionner ou télécharger une icône"
+#: add-to-home-screen-wp.php:727
+msgid "Donate Now"
+msgstr "Faire un don maintenant"
 
-#: trunk/options.php:340
-msgid "Use this Icon"
-msgstr "Utiliser cette icône"
+#: add-to-home-screen-wp.php:732
+msgid "Help Translate"
+msgstr "Aider à traduire"
 
-#~ msgid "false"
-#~ msgstr "non"
+#: add-to-home-screen-wp.php:733
+msgid ""
+"Speak another language? Help make Add to Home Screen WP accessible to more "
+"people around the world by contributing to its translations!"
+msgstr ""
+"Parlez une autre langue ? Aidez à rendre Add to Home Screen WP accessible à "
+"plus de personnes dans le monde en contribuant à ses traductions !"
 
-#~ msgid "true"
-#~ msgstr "oui"
+#: add-to-home-screen-wp.php:736
+msgid "Translate Now"
+msgstr "Traduire maintenant"
+
+#: add-to-home-screen-wp.php:741
+msgid "Rate on WordPress"
+msgstr "Noter sur WordPress"
+
+#: add-to-home-screen-wp.php:742
+msgid ""
+"Enjoying Add to Home Screen WP? Share your feedback by rating it on WordPress"
+"—it helps others discover it and motivates me to keep improving!"
+msgstr ""
+"Vous appréciez Add to Home Screen WP ? Partagez vos commentaires en le "
+"notant sur WordPress — cela aide les autres à le découvrir et me motive à "
+"continuer à l'améliorer !"
+
+#: add-to-home-screen-wp.php:745
+msgid "Rate Now"
+msgstr "Noter maintenant"
+
+#: add-to-home-screen-wp.php:750
+msgid "Need Help?"
+msgstr "Besoin d'aide ?"
+
+#: add-to-home-screen-wp.php:751
+msgid ""
+"Have questions or need assistance? Visit our support page for resources and "
+"contact options."
+msgstr ""
+"Vous avez des questions ou besoin d'assistance ? Visitez notre page de "
+"support pour des ressources et des options de contact."
+
+#: add-to-home-screen-wp.php:754
+msgid "Get Support"
+msgstr "Obtenir du support"
+
+#: add-to-home-screen-wp.php:761
+msgid "Follow Me on Social Media!"
+msgstr "Suivez-moi sur les réseaux sociaux !"
+
+#: add-to-home-screen-wp.php:762
+msgid ""
+"Stay updated on Add to Home Screen & PWA news, tips, and more by following "
+"me on your favorite platforms!"
+msgstr ""
+"Restez informé des actualités, astuces et plus encore sur Add to Home Screen "
+"WP en me suivant sur vos plateformes préférées !"
+
+#: add-to-home-screen-wp.php:798
+msgid "Unlock Premium Features!"
+msgstr "Déverrouillez les fonctionnalités Premium !"
+
+#: add-to-home-screen-wp.php:800
+msgid ""
+"Enhance your Add to Home Screen experience with these powerful premium "
+"features:"
+msgstr ""
+"Améliorez votre expérience avec Add to Home Screen grâce à ces puissantes "
+"fonctionnalités Premium :"
+
+#: add-to-home-screen-wp.php:804
+msgid "Dashboard PWA Support:"
+msgstr "Support PWA pour le tableau de bord :"
+
+#: add-to-home-screen-wp.php:804
+msgid ""
+"Enable PWA functionality specifically for the WordPress admin dashboard."
+msgstr ""
+"Activer la fonctionnalité PWA spécifiquement pour le tableau de bord "
+"d'administration de WordPress."
+
+#: add-to-home-screen-wp.php:807
+msgid "Advanced Dashboard Balloon Control:"
+msgstr "Contrôle avancé de l'infobulle dans le tableau de bord :"
+
+#: add-to-home-screen-wp.php:807
+msgid "Fine-tune where the balloon appears in the admin dashboard."
+msgstr ""
+"Personnalisez précisément où l'infobulle apparaît dans le tableau de bord "
+"d'administration."
+
+#: add-to-home-screen-wp.php:810
+msgid "Custom Top Bar & Spinner Color:"
+msgstr "Couleur personnalisée de la barre supérieure et du chargement :"
+
+#: add-to-home-screen-wp.php:810
+msgid "Personalize your PWA’s look."
+msgstr "Personnalisez l'apparence de votre PWA."
+
+#: add-to-home-screen-wp.php:813
+msgid "Floating Balloon Icon:"
+msgstr "Icône de l'infobulle flottante :"
+
+#: add-to-home-screen-wp.php:813
+msgid "Upload your own icon for the balloon."
+msgstr "Téléchargez votre propre icône pour l'infobulle."
+
+#: add-to-home-screen-wp.php:816
+msgid "Installation Statistics:"
+msgstr "Statistiques d'installation :"
+
+#: add-to-home-screen-wp.php:816
+msgid "Track how many users add your PWA to their home screens."
+msgstr ""
+"Suivez combien d'utilisateurs ajoutent votre PWA à leur écran d'accueil."
+
+#: add-to-home-screen-wp.php:823
+#, php-format
+msgid ""
+"Ready to upgrade? <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; "
+"text-decoration: underline;\">Get your premium license now</a> or <a "
+"href=\"%s\" style=\"color: #0073aa; text-decoration: underline;\">enter your "
+"license key</a> in the License tab."
+msgstr ""
+"Prêt à passer à la version supérieure ? <a href=\"%s\" target=\"_blank\" "
+"style=\"color: #0073aa; text-decoration: underline;\">Obtenez votre licence "
+"Premium maintenant</a> ou <a href=\"%s\" style=\"color: #0073aa; text-"
+"decoration: underline;\">saisissez votre clé de licence</a> dans l'onglet "
+"Licence."
+
+#: add-to-home-screen-wp.php:855
+msgid "Add to Home Screen & PWA - Uninstall Settings"
+msgstr "Ajouter à l'écran d'accueil & PWA - Paramètres de désinstallation"
+
+#: add-to-home-screen-wp.php:862
+msgid "Delete Data on Uninstall"
+msgstr "Supprimer les données lors de la désinstallation"
+
+#: add-to-home-screen-wp.php:865
+msgid ""
+"If checked, all settings and data (including statistics and license "
+"activation for the Pro version, if applicable) will be deleted when the "
+"plugin is uninstalled. The Pro license will also be deactivated on the "
+"license server to free up the activation. Uncheck this if you plan to "
+"reinstall the plugin and want to keep your settings and license activation."
+msgstr ""
+"Si coché, tous les paramètres et données (y compris les statistiques et "
+"l'activation de la licence pour la version Pro, le cas échéant) seront "
+"supprimés lors de la désinstallation du plugin. La licence Pro sera "
+"également désactivée sur le serveur de licences pour libérer l'activation. "
+"Décochez cette option si vous prévoyez de réinstaller le plugin et souhaitez "
+"conserver vos paramètres et l'activation de la licence."
+
+#: add-to-home-screen-wp.php:878
+msgid ""
+"Are you sure you want to delete all data on uninstall? This includes "
+"settings and, if applicable, statistics from the Pro version."
+msgstr ""
+"Êtes-vous sûr de vouloir supprimer toutes les données lors de la "
+"désinstallation ? Cela inclut les paramètres et, le cas échéant, les "
+"statistiques de la version Pro."
+
+#: add-to-home-screen-wp.php:879
+msgid ""
+"Are you sure you want to keep data on uninstall? Settings and statistics "
+"will remain in the database."
+msgstr ""
+"Êtes-vous sûr de vouloir conserver les données lors de la désinstallation ? "
+"Les paramètres et les statistiques resteront dans la base de données."
+
+#: add-to-home-screen-wp.php:1306
+msgid "PWA settings are applied for mobile devices only."
+msgstr "Les paramètres PWA s'appliquent uniquement aux appareils mobiles."
+
+#~ msgid "Check to enable the \"Add to Home Screen\" balloon in the dashboard."
+#~ msgstr ""
+#~ "Cochez pour activer l'infobulle \"Ajouter à l'écran d'accueil\" dans le "
+#~ "tableau de bord."
+
+#~ msgid "Custom Message"
+#~ msgstr "Message personnalisé"
+
+#~ msgid "Supports basic HTML like <center>, <strong>, <i>, etc."
+#~ msgstr "Supporte le HTML de base comme <center>, <strong>, <i>, etc."
+
+#~ msgid "Screen Title"
+#~ msgstr "Titre de l'écran"
+
+#~ msgid ""
+#~ "The title displayed on the home screen shortcut (e.g., \"TulipWork "
+#~ "Dashboard\")."
+#~ msgstr ""
+#~ "Le titre affiché sur le raccourci de l'écran d'accueil (par exemple, "
+#~ "\"Tableau de bord TulipWork\")."
+
+#~ msgid "Milliseconds before showing the balloon. Default: 2000"
+#~ msgstr "Millisecondes avant d'afficher l'infobulle. Par défaut : 2000"
+
+#~ msgid "Milliseconds before hiding the balloon. Default: 20000"
+#~ msgstr "Millisecondes avant de masquer l'infobulle. Par défaut : 20000"
+
+#~ msgid "Minutes before showing the balloon again. Default: 43200 (1 month)"
+#~ msgstr ""
+#~ "Minutes avant de réafficher l'infobulle. Par défaut : 43200 (1 mois)"
+
+#~ msgid "Distance in pixels from the bottom. Default: 14"
+#~ msgstr "Distance en pixels depuis le bas. Par défaut : 14"
+
+#~ msgid "Enable Touch Icon"
+#~ msgstr "Activer l'icône tactile"
+
+#~ msgid "Show an icon next to the balloon message."
+#~ msgstr "Afficher une icône à côté du message de l'infobulle."
+
+#~ msgid ""
+#~ "URL of the icon (192x192 or 512x512 PNG recommended). Leave blank for "
+#~ "Tulipwork default."
+#~ msgstr ""
+#~ "URL de l'icône (PNG 192x192 ou 512x512 recommandé). Laissez vide pour "
+#~ "utiliser la valeur par défaut de Tulipwork."
+
+#~ msgid "Select or Upload Icon"
+#~ msgstr "Sélectionner ou télécharger une icône"
+
+#~ msgid "Use this Icon"
+#~ msgstr "Utiliser cette icône"
+
+#~ msgid ""
+#~ "Add to Home Screen MU (Tulipwork Network Edition) requires a WordPress "
+#~ "multisite network."
+#~ msgstr ""
+#~ "Add to Home Screen MU (Édition Réseau Tulipwork) nécessite un réseau "
+#~ "multisite WordPress."
+
+#~ msgid ""
+#~ "Add to Home Screen MU (Tulipwork Network Edition) must be network-"
+#~ "activated."
+#~ msgstr ""
+#~ "Add to Home Screen MU (Édition Réseau Tulipwork) doit être activé au "
+#~ "niveau du réseau."
+
+#~ msgid "Total historical adds to home screen: %d"
+#~ msgstr "Nombre total historique d'ajouts à l'écran d'accueil : %d"
+
+#~ msgid "Settings saved successfully!"
+#~ msgstr "Paramètres enregistrés avec succès !"
+
+#~ msgid "You do not have sufficient permissions to access this page."
+#~ msgstr ""
+#~ "Vous n'avez pas les permissions suffisantes pour accéder à cette page."

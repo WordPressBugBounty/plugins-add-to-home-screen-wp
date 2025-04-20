@@ -1,330 +1,187 @@
-=== Add to Home Screen WP ===
+=== Add to Home Screen & Progressive Web App ===
 Contributors: tulipwork
-Donate link: https://tulipemedia.com
-Tags: iPhone, iOs, homescreen, webapp, PWA
+Donate link: https://paypal.me/ziyadbachalany
+Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
-Tested up to: 6.7
-Stable tag: 2.6.6
+Tested up to: 6.8
+Stable tag: 2.6.7
+Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
 
-Add to HomeScreen WordPress plugin invites your readers to add your blog as an icon / web app on the home screen of their iPhone, iPad, and iPod touch. Premium features unlock PWA support, Add to home screen button for Android users, loading indicators and other customization options.
+Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
 
 == Description ==
 
-This plugin uses [Add to Home Screen's Cubiq script](https://github.com/cubiq/add-to-homescreen "Add to home screen") to place a floating balloon inviting the user to add a website to their home screen as a standard iOS application.
+🌟 Captivate your mobile visitors with a **beautiful, customizable prompt** on iOS and Android, encouraging them to **add your site to their home screen**.
 
-It's a good way to retain visitors coming to your blog, especially if you don’t want to develop an expensive native application just to let them read your WordPress blog articles.
+🚀 Your site instantly transforms into a fast, smooth Web App, delivering **a native-like mobile experience** without the cost of building an app.
 
-The floating balloon is compatible with all recent iPhones and iPads.
+*Perfect for blogs, businesses, e-commerce, online courses and WordPress multisite networks.*
 
-<strong>2025 UPDATE: The Add to Home Screen WP Plugin is back online, fully compliant with WordPress requirements, and now offers premium features!</strong>
+= Why Choose This Plugin? =
+- **Engage Mobile Users**: Prompt visitors to save your site as an app-like icon on their phone, keeping them coming back.
+- **Cross-Platform Support**: Works on Safari (iOS) and Google Chrome (Android) for maximum compatibility across mobile devices.
+- **Cost-Effective**: Build an app-like experience with WordPress and Progressive Web App (PWA) standards—no need for native iOS or Android app development.
+- **Multisite Ready**: Seamlessly applies PWA settings across all subsites in a WordPress multisite network.
+- **Free & Pro Options**: Start with robust free features and unlock premium capabilities for advanced customization and analytics.
 
-### Free Features
-- Floating balloon to invite users to add your blog to their iOS home screen.
-- Customizable message, animations, delays, and touch icon.
-- Compatible with iPhones, iPads, and iPod Touch.
+**2025 Update**: Version 2.6.7 brings enhanced performance, improved multisite support, and new Pro features to make your PWA shine! Fully compliant with WordPress standards and optimized for the latest devices.
 
-### Premium Features
+= Free Features =
+- **Customizable Floating Balloon**: Display a stylish prompt on iOS and Android with tailored messages, animations, and delays.
+- **PWA Basics**: Enable core Progressive Web App functionality with a manifest for standalone app-like behavior.
+- **Multisite Support**: Customize PWA settings, iOS floating balloon, and Android install button consistently across all subsites in a WordPress network.
+- **Touch Icon**: Add a custom icon (192x192 or 512x512 PNG) for the home screen.
+- **Flexible Display Options**: Show the balloon on all pages or just the homepage, with settings for returning visitors.
+- **Animations & Timing**: Choose from drop, bubble, or fade animations, and set start delays and lifespans.
+- **Built-in Translations**: Includes English, French, and German translations, with support for custom message translations via WPML, Polylang, Loco Translate, and more.
+- **Clean Uninstall**: Safely remove the plugin with a proper data cleanup option to keep your site tidy.
+- **Lightweight & Fast**: Built with performance in mind, using the proven [Cubiq Add to Home Screen script](https://github.com/cubiq/add-to-homescreen).
 
-Unlock advanced features with a purchase at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/):
+= Premium Features (Pro Version) =
+🌟 Upgrade to the **Pro version** at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/) for next-level PWA power:
+- **Loading Spinner**: Display a smooth, customizable loading spinner while your app content loads — fully integrated with your brand colors.
+- **Pull to Refresh**: Offer users a native-like refresh gesture on your Web App, just like on real mobile apps.
+- **Dashboard PWA Support**: Add the WordPress admin dashboard as a web app for quick mobile access — ideal for logged-in users or clients who need fast, app-like access to the WordPress backend.
+- **Advanced Prompts**: Fine-tune dashboard prompts for iOS and Android, with custom messages and icons.
+- **Installation Tracking**: Monitor how many users add your PWA to their home screens with detailed stats (GDPR-compliant, anonymized data).
+- **Custom Colors & Spinner**: Personalize the top bar and loading spinner color for a branded experience.
+- **Custom Icons**: Upload unique icons for frontend balloons and dashboard prompts.
+- **Enhanced Multisite**: Manage Pro settings at the network level for consistent PWA behavior across subsites, or customize per subsite for unique configurations.
+- **Clean Uninstall**: Safely remove the plugin (free and Pro) with a proper data cleanup option to keep your site tidy.
 
-* *PWA Support*: Transform your blog into a Progressive Web App.
-* *Android Install Prompt*: Display a custom "Add to Home Screen" button for Android users.
-* *Loading Indicator*: Add a sleek spinner for smooth page transitions.
-* *Customization Options*: Tailor your app with color settings and force the web app to launch on the homepage.
+**Ready to elevate your PWA? Get Pro now at [tulipemedia.com!](https://tulipemedia.com/en/product/aths-wordpress-premium/) 🌟**
 
-The free version adds the floating balloon, while the premium version enhances your blog with these powerful PWA features and more.
-
-= Demo =
-🎥 Watch the demo video
+= Demos =
+- **Free Version**: See it in action on [tulipemedia.com](https://tulipemedia.com) (load on a mobile device for the full experience).
+- **Pro Version**: Experience the Pro version on [merco6.com](https://merco6.com) (mobile view recommended). You’ll see the custom top bar color and loading spinner in action — both are fully customizable in the Pro version.
+- **Video Demo**: Watch the demo video
 [youtube https://www.youtube.com/watch?v=Bd4i4k_DhE4]
 
-[Check a demo on my blog](https://tulipemedia.com) (load it on an iPhone).
+= Who’s This For? =
+- **Bloggers** wanting to keep readers engaged on mobile.
+- **Businesses** aiming for a native app-like experience without the cost.
+- **Online course creators & educators** selling courses or training to engage learners on the go.
+- **Multisite network admins** seeking a unified PWA solution.
+- **Content-Driven Businesses**—coaches, trainers, content creators, researchers, journalists, educators, and consultants seeking to engage mobile audiences with a seamless Progressive Web App.
 
-[Read more and documentation](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
-
-= Internationalisation =
-This plugin supports translations. Help translate it by [notifying me in comments](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/) and I’ll add your mo/po files.
-
-Available languages: English, French, German. Thanks to [Julian](https://profiles.wordpress.org/h3p315t05) for the German translation!
-
-= Features =
-*Free Features (Cubiq Script):*
-- Custom message with HTML support.
-- Animation: drop, bubble, or fade.
-- Delays: start delay and lifespan.
-- Expire: minutes before showing again.
-- Touch icon support.
-- Show to returning visitors only.
-
-*Premium Features:*
-- PWA Support.
-- Android Install Prompt.
-- Loading Indicator.
-- Color Option.
-- Force the web app to launch on the homepage.
-
-= Follow me =
-Keep in touch on:
-- [Instagram](https://instagram.com/ziyadbachalany/)
-- [LinkedIn](https://www.linkedin.com/in/ziyadbachalany/)
-- [Twitter](https://twitter.com/ziyadbachalany)
-- [Facebook](https://www.facebook.com/ziyadbachalany)
-- [Tulipemedia](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/)
+== Contribute ==
+- 🌐 **Translate**: Help make the plugin accessible worldwide! Contribute translations at [WordPress Translate](https://translate.wordpress.org/projects/wp-plugins/add-to-home-screen-wp/) or [contact us](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/).
+- **Donate**: Support ongoing development with a coffee! ☕ [Donate now](https://paypal.me/ziyadbachalany).
+- **Rate Me**: Love the plugin? Share a 5-star review on [WordPress.org](https://wordpress.org/support/plugin/add-to-home-screen-wp/reviews/#new-post) to help others discover it.
+- **Follow Me**: Stay updated on [Instagram](https://instagram.com/ziyadbachalany/), [LinkedIn](https://www.linkedin.com/in/ziyadbachalany/), [X](https://x.com/ziyadbachalany), [Facebook](https://www.facebook.com/ziyadbachalany), or [YouTube](https://www.youtube.com/channel/UClMfre0hj-UCxGocDleZxTQ).
 
 == Installation ==
-1. Upload the `add-to-home-screen-wp` folder to `/wp-content/plugins/` or install via the WordPress dashboard.
-2. Activate the plugin through the 'Plugins' menu in WordPress.
-3. Go to **Settings > ATHS Options** for settings.
+1. Upload the `add-to-home-screen-wp` folder to `/wp-content/plugins/` or install via the WordPress Plugins dashboard.
+2. Activate the plugin through the **Plugins** menu in WordPress.
+3. Navigate to **Settings > Add to Home Screen** (or **Network Admin > ATHS Network Options** for multisite) to configure settings.
+4. For Pro features, install the **Add to Home Screen & PWA Pro** add-on, activate it, and enter your license key in **Settings > License**.
+
+**Multisite Note**: When activated network-wide, settings are managed at the network level and applied to all subsites for a consistent PWA experience. Alternatively, activate it on individual subsites for site-specific customization.
 
 == Frequently Asked Questions ==
-= If a visitor adds my blog to its home screen, will the balloon continue to appear? =
-In the free version, the balloon may still appear when opening your blog in Safari, even after adding it to the homescreen. With the premium version, this behavior is prevented—once added to the homescreen, the balloon won’t load, ensuring a seamless experience. Alternatively, in the free version, you can set a long expire timeframe (e.g., one month or one year) in the options page to reduce its frequency.
 
-= I made changes on options page but nothing's changed when I load my blog? =
+= Will the floating balloon keep appearing after a user adds my site to their home screen? =
+In the free version, the balloon may reappear in Safari unless you set a long expiration time (e.g., 30 days) in the settings. The **Pro version** prevents the balloon from showing once the Web App is installed, ensuring a seamless user experience.
 
-Try to:
+= Why don’t my settings changes appear on my site? =
+Try the following:
+- Clear your cache if using a caching plugin.
+- Clear your browser’s cache and cookies (e.g., in Safari, double-tap the home button, long-press Safari, and close it).
+- Ensure settings are saved in the correct context (site-level for single sites, network-level for multisite).
 
-* Clear your cache if you're using a cache plugin
-* Clear your Safari cache/cookies.
-* Reboot Safari: on iPhone for instance, you have to double-click on the home button, then press Safari button several seconds and click on the close button.
+= Can I customize the floating balloon’s message? =
+Absolutely! Both free and Pro versions let you craft custom messages with HTML support (e.g., bold, links, emojis) and placeholders like `%site_name`, `%device`, and `%icon`. The Pro version adds dashboard-specific message customization.
 
-= The blog title on my icon is cut? =
+= How do I translate custom messages like the floating balloon? =
+Custom messages (e.g., floating balloon text) can be translated using WPML’s **String Translation**, Polylang, or Loco Translate. For WPML:
+1. Save your messages in **Settings > Add to Home Screen**.
+2. Go to **WPML > String Translation**.
+3. Search for your message (e.g., "iOS message") or filter by domain `add-to-home-screen-wp`.
+4. Add translations for your languages and save.
+For Polylang or Loco Translate, use their string translation tools. Check their documentation for details.
 
-Application names on the home screen are limited to a <strong>maximum of 12 characters</strong>, so anything beyond that will be truncated. Try to keep the title of your application under 13 characters on the iPhone if you want to prevent it from being cut off. Fortunately, there is an option in the plugin to customize your application title, it can be very useful especially if the title of your blog is too long.
+= How do I activate Pro features? =
+1. Purchase a license at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/).
+2. Install the **Add to Home Screen & PWA Pro** add-on.
+3. Enter your license key in **Settings > License** (or **Network Admin > License** for multisite).
+4. Configure Pro settings under **Settings > Pro Settings**.
 
-= Can I custom the text that will appear in the floating balloon? =
+= Does it work with WordPress multisite? =
+Yes! The plugin is fully compatible with multisite. When activated network-wide, settings are managed centrally in **Network Admin > ATHS Network Options** and applied to all subsites for a consistent PWA experience. Alternatively, activate it on individual subsites for site-specific customization. The Pro version extends this with network-level premium features.
 
-Of course, and it's highly suggested! You can add link, bold text and also add emojis to gamify your floating ballon and increase conversions. See screeenshots and videos to see examples.
-
-= Can I translate the message that appears in the floating ballon? =
-
-Yes sir! With WPML, download and install the "String translation" add-on, scroll down, click on "Translate texts in admin screens" and look for "Message" field with the search tool of your browser, you should find the field containing your custom message. Just check the left box and save settings. Now come back to String translation and you will find your custom message, ready to be translated!
-
-= How do I activate premium features? =
-Purchase a subscription at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/), enter your license key in **Settings > PWA Premium**, and unlock premium features.
+= What happens when I uninstall the plugin? =
+Both free and Pro versions offer a clean uninstall option. Enable **Delete Data on Uninstall** in **Settings > Add to Home Screen** to remove all plugin data. Uncheck it to preserve settings for reinstallation.
 
 == Screenshots ==
-1. Example of a nice custom floating balloon
-2. Example of the English floating balloon
-3. Example of the French floating balloon
-4. Free Plugin Option page
-5. Premium PWA Settings page
-
+1. Customizable floating balloon prompting users to add the site to their home screen (English).
+2. Floating balloon in action on iOS (French).
+3. Another example of the floating balloon in action on iOS (French).
+4. Android install button prompting users to add the site to their home screen.
+5. Free plugin settings page for easy configuration.
+6. Pro settings page with advanced PWA options and stats.
+7. Dashboard prompt for adding the admin dashboard as a PWA (Pro feature).
 
 == Changelog ==
+
+= 2.6.7 =
+* **New**: Enhanced multisite support with clearer network-level settings for subsites.
+* **Improved**: Optimized PWA manifest generation for faster load times.
+* **Improved**: Updated translations and added hooks for easier customization.
+* **Fixed**: Minor UI bugs in the settings pages for better usability.
+* **Pro**: Added exportable CSV stats for installation tracking.
+* **Pro**: Improved dashboard prompt animations and icon support.
+
 = 2.6.6 =
 * Minor bug fixes and performance optimizations.
 
 = 2.6.5 =
-* Implemented license validation to enhance security and plugin integrity.
-* Minor bug fixes and performance optimizations.
+* Added license validation for enhanced security.
+* Performance improvements for balloon rendering.
 
 = 2.6.4 =
-* Improved: License validation UI with "Checking license..." indicator and green/bold success message; switched to AJAX validation.
+* Improved license UI with real-time feedback.
+* Switched to AJAX-based license validation.
 
 = 2.6.3 =
-* Changed: Replaced embedded YouTube demo video with a clickable link in readme.txt for reliability.
+* Replaced embedded YouTube video with a clickable link for reliability.
 
 = 2.6.2 =
-* Fixed: YouTube demo video not displaying on plugin page, now embedded correctly.
+* Fixed YouTube demo video display issue.
 
 = 2.6.1 =
-* Fixed: "Enable ATHS Premium Features" checkbox now saves correctly when unchecked.
+* Fixed "Enable ATHS Premium Features" checkbox saving issue.
 
 = 2.6 =
-* Improved: free option page settings
-* Added: License key system to unlock premium features.
-* Improved: Updated plugin structure for freemium model.
+* Introduced freemium model with license key system.
+* Simplified settings page for better usability.
+* Added PWA support and Android native install prompts.
 
 = 2.5 =
-* Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
-* Removed: Deprecated touch icon sizes (57x57, 72x72, 114x114, 144x144) from options.
-* Updated: Replaced Universal Analytics tracking with Google Analytics 4 compatibility.
-* Improved: Renamed main plugin file from "index.php" to "add-to-home-screen-wp.php" to follow WordPress conventions.
-* Version 2.6 simplifies touch icon support to a single 180x180 size and updates tracking to Google Analytics 4.
+* Simplified touch icon support to 180x180 for modern iOS.
+* Updated to Google Analytics 4 compatibility.
+* Renamed main plugin file to follow WordPress conventions.
 
-= 2.4 =
-Minor fix.
-
-= 2.3 =
-Minor fix.
-
-= 2.2 =
-Support for HTML formatting in the custom message balloon for richer styling.
-
-= 2.1 =
-Major fix.
-
-= 2 =
-Major fix.
-
-= 1.9 =
-Minor fix.
-
-= 1.8 =
-Minor fix.
-
-= 1.7 =
-Minor fix, tested up to WordPress 5.4.
-
-= 1.6 =
-Little  fix.
-
-= 1.5 =
-Little  fix.
-
-= 1.4 =
-New version tested up to WordPress 5.2.
-
-= 1.3 =
-Bugs fixed.
-
-= 1.2 =
-New version tested up to 4.8.1.
-Some old functionnalities have been removed.
-
-= 1.1 =
-Fix for the iOS 7 web app status bar.
-German translation added.
-
-= 1.0 =
-Floating balloon updated for iOS 7.
-
-= 0.9 =
-New home screen icons and startup screens for all iOs devices (ipad, iPhone 5, etc...).
-
-= 0.8 =
-Fix bug with "homepage only or all pages" option.
-Some little performance improvements.
-
-= 0.7 =
-Improvement of the bottom navigation bar on Web App: added forward and reload buttons.
-Allow using Safari mode in Web App.
-Fix bug with the "returningVisitor" function.
-
-= 0.6 =
-Improvement CSS of the Web App.
-Allow opening the balloon on homepage only or all pages.
-
-= 0.5 =
-Touch startup image that is displayed while the web application launches.
-Prevent links switching to Safari browser.
-Add navigation bar (back button) in the Web App.
-
-= 0.4 =
-Allow customizing Web App Title.
-
-= 0.3 =
-Ability to use device and icon tags when customizing the message.
-Allow using apostrophe in custom message.
-
-= 0.2 =
-Display title of the page.
-
-= 0.1 =
-First version of the plugin.
+= Earlier Versions =
+* See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
-= 2.6.6 =
-* Minor bug fixes and performance optimizations.
 
-= 2.6.5 =
-This version adds license validation. Activate your license key in the plugin settings to ensure uninterrupted functionality.
-
-= 2.6.4 =
-Enhanced license activation experience with real-time feedback. Update now for a smoother Premium setup!
-
-= 2.6 =
-Version 2.6 is improving the setting page and introducing new premium features.
-
-= 2.5 =
-* Added: Simplified touch icon support to a single 180x180 size for modern iOS devices.
-* Removed: Deprecated touch icon sizes (57x57, 72x72, 114x114, 144x144) from options.
-* Updated: Replaced Universal Analytics tracking with Google Analytics 4 compatibility.
-* Improved: Renamed main plugin file from "index.php" to "add-to-home-screen-wp.php" to follow WordPress conventions.
-
-= 2.4 =
-Minor fix.
-
-= 2.3 =
-Minor fix.
-
-= 2.2 =
-Support for HTML formatting in the custom message balloon for richer styling.
-
-= 1.2 =
-New version tested up to 4.8.1.
-Some old functionalities have been removed.
-
-= 1.1 =
-Fix for the iOS 7 web app status bar.
-German translation added.
-
-= 1.0 =
-Floating balloon updated for iOS 7.
-
-= 0.9 =
-New home screen icons and startup screens for all iOs devices (ipad, iPhone 5, etc...).
-
-= 0.8 =
-Fix bug with "homepage only or all pages" option.
-Some little performance improvements.
-
-= 0.7 =
-Improvement of the bottom navigation bar on Web App with forward and reload buttons.
-Allow using Safari mode in Web App.
-Fix bug with the "returningVisitor" function.
-
-= 0.6 =
-Improvement CSS of the Web App.
-Allow opening the balloon on homepage only or all pages.
-
-= 0.5 =
-Touch startup image that is displayed while the web application launches.
-Prevent links switching to Safari browser.
-Add navigation bar (back and forward buttons) in the Web App.
-
-= 0.4 =
-Allow customizing Web App Title.
-
-= 0.3 =
-Allow using device and icon tags when customizing the message.
-Function addslashes added to allow using apostrophe in the custom message field.
-
-= 0.2 =
-Retrieve the wp_title function to display real page title below the home screen icon.
-
-= 0.1 =
-First version of the plugin.
+= 2.6.7 =
+Upgrade for improved multisite support, faster PWA performance, and new Pro features like CSV stats export and enhanced dashboard prompts. Don’t miss out on the latest mobile engagement tools!
 
 == Credits ==
-This plugin has been written by [Ziyad Bachalany](https://tulipemedia.com) and uses the [Add to Home Screen Floating Layer script](https://github.com/cubiq/add-to-homescreen) by Matteo Spinelli that is released under the MIT License (see below).
+Developed with ❤️ by [Ziyad Bachalany](https://tulipemedia.com). Uses the [Cubiq Add to Home Screen script](https://github.com/cubiq/add-to-homescreen) by Matteo Spinelli (MIT License).
 
-## License
+== Support ==
+Need help? Visit our [support page](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/) for documentation, FAQs, and contact options. Upgrade to the **Pro version** at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/).
 
-This software is released under the MIT License.
+== License ==
+This plugin is licensed under GPLv2 or later. The included Cubiq Add to Home Screen script is released under the MIT License:
 
-Copyright (c) 2013 Matteo Spinelli, https://cubiq.org/
-
-Permission is hereby granted, free of charge, to any person
-obtaining a copy of this software and associated documentation
-files (the "Software"), to deal in the Software without
-restriction, including without limitation the rights to use,
-copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the
-Software is furnished to do so, subject to the following
-conditions:
-
-The above copyright notice and this permission notice shall be
-included in all copies or substantial portions of the Software.
-
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND,
-EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES
-OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND
-NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT
-HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY,
-WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING
-FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR
-OTHER DEALINGS IN THE SOFTWARE.
+**MIT License for Cubiq Script**  
+Copyright (c) 2013 Matteo Spinelli, https://github.com/cubiq/add-to-homescreen 
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:  
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.  
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.

@@ -1,9 +1,9 @@
 <?php
 /*
-Plugin Name: Add to Home Screen WP
+Plugin Name: Add to Home Screen & Progressive Web App
 Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
-Description: Invite your visitors to add your WordPress blog to their iOS home screen (iPhone, iPod Touch, iPad) with a floating balloon.
-Version: 2.6.6
+Description: Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
+Version: 2.6.7
 Author: Ziyad Bachalany
 Author URI: https://tulipemedia.com
 License: GPL-2.0-or-later
@@ -11,13 +11,9 @@ License URI: https://www.gnu.org/licenses/gpl-2.0.html
 Text Domain: add-to-home-screen-wp
 */
 
-// Prevent direct access
 if (!defined('ABSPATH')) {
     exit;
 }
-
-// Include the license management file
-require_once plugin_dir_path(__FILE__) . 'athswp-license.php';
 
 // Load plugin text domain for translation
 function athswp_load_textdomain() {
@@ -25,816 +21,1289 @@ function athswp_load_textdomain() {
 }
 add_action('plugins_loaded', 'athswp_load_textdomain');
 
-register_deactivation_hook(__FILE__, 'athswp_deactivation');
-function athswp_deactivation() {
-    wp_clear_scheduled_hook('athswp_check_license_event');
+if (!class_exists('SimpleATHSOptions')) :
+
+    define('SimpleATHSOptions_ID', 'simple_aths_options');
+    define('SimpleATHSOptions_NICK', 'ATHS Network Options');
+
+    class SimpleATHSOptions {
+
+        /**
+         * Returns default settings for the plugin options.
+         */
+        public static function get_default_settings() {
+            $is_network_activated = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__));
+
+            return [
+                'new_message_ios' => $is_network_activated
+                    ? __('🚀 Add %network_name (%site_name) to your %device with %icon and %add now! 🌟', 'add-to-home-screen-wp')
+                    : __('🚀 Add %site_name to your %device with %icon and %add now! 🌟', 'add-to-home-screen-wp'),
+                'new_message_android' => $is_network_activated
+                    ? __('🚀 Add %network_name (%site_name) to your %device now! 🌟', 'add-to-home-screen-wp')
+                    : __('🚀 Add %site_name to your %device now! 🌟', 'add-to-home-screen-wp'),
+                'new_startdelay' => 2,
+                'new_lifespan' => 20,
+                'new_expire_days' => 0,
+                'new_bottomoffset' => 14,
+                'new_animationin' => 'fade',
+                'new_animationout' => 'fade',
+                'new_touchicon_url' => '',
+                'new_web_app_title' => '',
+                'new_returning_visitors_only' => 'off',
+                'new_precomposed_icon' => 'off',
+                'new_enable_balloon_ios_frontend' => 'on',
+                'new_install_prompt_android' => 'native_button',
+                'new_enable_pwa' => 'on',
+                'new_balloon_display_frontend' => 'all_pages',
+                'new_athswp_frontend_pwa_start_url' => 'homepage',
+                'new_athswp_pwa_custom_url' => '',
+                'new_athswp_delete_data_on_uninstall' => 'off',
+            ];
+        }
+
+        /**
+         * Sanitizes messages, allowing specific placeholders and basic HTML.
+         */
+        public static function sanitize_message($input) {
+            if (!is_string($input)) {
+                return '';
+            }
+
+            $allowed_tags = ['%site_name%', '%network_name%', '%device%', '%icon%', '%add%'];
+            $placeholders = [];
+            foreach ($allowed_tags as $index => $tag) {
+                $placeholder = '[[TAG_' . $index . ']]';
+                $placeholders[$placeholder] = $tag;
+                $input = str_replace($tag, $placeholder, $input);
+            }
+
+            $allowed_html = [
+                'center' => [],
+                'h4' => [],
+                'h3' => [],
+                'h2' => [],
+                'h1' => [],
+                'strong' => [],
+                'br' => [],
+                'p' => [],
+                'b' => [],
+                'i' => [],
+            ];
+            $sanitized = wp_kses($input, $allowed_html);
+
+            foreach ($placeholders as $placeholder => $tag) {
+                $sanitized = str_replace($placeholder, $tag, $sanitized);
+            }
+
+            return $sanitized;
+        }
+
+        /**
+         * Registers settings for the plugin.
+         */
+        public static function register() {
+            $option_group = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__)) ? 'simple_aths_network_options' : 'simple_aths_site_options';
+
+            register_setting($option_group, 'new_message_ios', ['sanitize_callback' => [__CLASS__, 'sanitize_message']]);
+            register_setting($option_group, 'new_message_android', ['sanitize_callback' => [__CLASS__, 'sanitize_message']]);
+            register_setting($option_group, 'new_startdelay', ['sanitize_callback' => 'absint']);
+            register_setting($option_group, 'new_lifespan', ['sanitize_callback' => 'absint']);
+            register_setting($option_group, 'new_expire_days', ['sanitize_callback' => 'absint']);
+            register_setting($option_group, 'new_animationin', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_animationout', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_bottomoffset', ['sanitize_callback' => 'absint']);
+            register_setting($option_group, 'new_touchicon_url', ['sanitize_callback' => 'esc_url_raw']);
+            register_setting($option_group, 'new_web_app_title', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_returning_visitors_only', ['sanitize_callback' => 'sanitize_key']);
+            register_setting($option_group, 'new_precomposed_icon', ['sanitize_callback' => 'sanitize_key']);
+            register_setting($option_group, 'new_enable_balloon_ios_frontend', ['sanitize_callback' => 'sanitize_key']);
+            register_setting($option_group, 'new_install_prompt_android', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_enable_pwa', ['sanitize_callback' => 'sanitize_key']);
+            register_setting($option_group, 'new_balloon_display_frontend', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_athswp_frontend_pwa_start_url', ['sanitize_callback' => 'sanitize_text_field']);
+            register_setting($option_group, 'new_athswp_pwa_custom_url', ['sanitize_callback' => 'esc_url_raw']);
+            register_setting($option_group, 'new_athswp_delete_data_on_uninstall', ['sanitize_callback' => 'sanitize_key']);
+
+            do_action('athswp_register_pro_settings');
+        }
+
+        /**
+         * Adds network admin menu for multisite.
+         */
+        public static function menu_network() {
+            if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                if (class_exists('ATHSWP_Pro')) {
+                    return;
+                }
+                add_menu_page(
+                    SimpleATHSOptions_NICK,
+                    SimpleATHSOptions_NICK,
+                    'manage_network_options',
+                    'simple_aths_settings',
+                    [__CLASS__, 'display_settings_page'],
+                    'dashicons-smartphone',
+                    80
+                );
+            }
+        }
+
+        /**
+         * Adds site admin menu for single sites or subsites.
+         */
+        public static function menu_site() {
+            if (!is_multisite() || !is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                add_menu_page(
+                    __('Add to Home Screen', 'add-to-home-screen-wp'),
+                    __('Add to Home Screen', 'add-to-home-screen-wp'),
+                    'manage_options',
+                    'simple_aths_settings',
+                    [__CLASS__, 'display_settings_page'],
+                    'dashicons-smartphone',
+                    80
+                );
+            }
+        }
+
+        /**
+         * Displays the settings page with tabs.
+         */
+        public static function display_settings_page() {
+            $tabs = [
+                'general' => __('General', 'add-to-home-screen-wp'),
+                'pro' => __('Pro Settings', 'add-to-home-screen-wp'),
+                'support' => __('Support', 'add-to-home-screen-wp'),
+            ];
+            if (class_exists('ATHSWP_Pro')) {
+                $tabs['license'] = __('License', 'add-to-home-screen-pro');
+            }
+            $tabs['uninstall'] = __('Uninstall', 'add-to-home-screen-wp');
+            $active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'general';
+            ?>
+            <div class="wrap">
+                <h1><?php esc_html_e('Add to Home Screen & PWA', 'add-to-home-screen-wp'); ?></h1>
+                <h2 class="nav-tab-wrapper">
+                    <?php foreach ($tabs as $tab => $name) : ?>
+                        <a href="?page=simple_aths_settings&tab=<?php echo esc_attr($tab); ?>" class="nav-tab <?php echo $active_tab === $tab ? 'nav-tab-active' : ''; ?>"><?php echo esc_html($name); ?></a>
+                    <?php endforeach; ?>
+                </h2>
+                <?php
+                if ($active_tab === 'general') {
+                    if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                        self::options_page_network();
+                    } else {
+                        self::options_page_site();
+                    }
+                } elseif ($active_tab === 'pro') {
+                    self::pro_teaser_page();
+                } elseif ($active_tab === 'support') {
+                    self::support_page();
+                } elseif ($active_tab === 'license' && class_exists('ATHSWP_Pro')) {
+                    do_action('athswp_pro_license_tab');
+                } elseif ($active_tab === 'uninstall') {
+                    self::uninstall_page();
+                }
+                ?>
+            </div>
+            <?php
+        }
+
+        /**
+         * Network settings page for multisite.
+         */
+/**
+ * Network settings page for multisite.
+ */
+public static function options_page_network() {
+    if (!current_user_can('manage_network_options')) {
+        wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'add-to-home-screen-wp'));
+    }
+
+    $options_message = '';
+    $defaults = self::get_default_settings();
+
+    if (isset($_POST['simple_aths_save_settings']) && check_admin_referer('simple_aths_network_options_update', 'simple_aths_nonce')) {
+        $settings = [
+            'new_message_ios' => self::sanitize_message($_POST['new_message_ios'] ?? ''),
+            'new_message_android' => self::sanitize_message($_POST['new_message_android'] ?? ''),
+            'new_startdelay' => isset($_POST['new_startdelay']) && $_POST['new_startdelay'] !== '' ? absint($_POST['new_startdelay']) : $defaults['new_startdelay'],
+            'new_lifespan' => isset($_POST['new_lifespan']) && $_POST['new_lifespan'] !== '' ? absint($_POST['new_lifespan']) : $defaults['new_lifespan'],
+            'new_expire_days' => isset($_POST['new_expire_days']) && $_POST['new_expire_days'] !== '' ? absint($_POST['new_expire_days']) : $defaults['new_expire_days'],
+            'new_animationin' => sanitize_text_field($_POST['new_animationin'] ?? 'fade'),
+            'new_animationout' => sanitize_text_field($_POST['new_animationout'] ?? 'fade'),
+            'new_bottomoffset' => isset($_POST['new_bottomoffset']) && $_POST['new_bottomoffset'] !== '' ? absint($_POST['new_bottomoffset']) : $defaults['new_bottomoffset'],
+            'new_touchicon_url' => esc_url_raw($_POST['new_touchicon_url'] ?? ''),
+            'new_web_app_title' => sanitize_text_field($_POST['new_web_app_title'] ?? ''),
+            'new_returning_visitors_only' => isset($_POST['new_returning_visitors_only']) ? 'on' : 'off',
+            'new_precomposed_icon' => isset($_POST['new_precomposed_icon']) ? 'on' : 'off',
+            'new_enable_balloon_ios_frontend' => isset($_POST['new_enable_balloon_ios_frontend']) ? 'on' : 'off',
+            'new_install_prompt_android' => sanitize_text_field($_POST['new_install_prompt_android'] ?? 'custom_floating_balloon'),
+            'new_enable_pwa' => isset($_POST['new_enable_pwa']) ? 'on' : 'off',
+            'new_balloon_display_frontend' => sanitize_text_field($_POST['new_balloon_display_frontend'] ?? 'all_pages'),
+            'new_athswp_frontend_pwa_start_url' => sanitize_text_field($_POST['new_athswp_frontend_pwa_start_url'] ?? 'homepage'),
+            'new_athswp_pwa_custom_url' => esc_url_raw($_POST['new_athswp_pwa_custom_url'] ?? ''),
+        ];
+
+        foreach ($settings as $key => $value) {
+            simple_aths_update_setting($key, $value);
+        }
+
+        $options_message = '<div class="updated"><p>' . esc_html__('Settings saved successfully!', 'add-to-home-screen-wp') . '</p></div>';
+    }
+
+    $defaults = self::get_default_settings();
+    $settings = [
+        'new_message_ios' => simple_aths_get_setting('new_message_ios'),
+        'new_message_android' => simple_aths_get_setting('new_message_android'),
+        'new_startdelay' => simple_aths_get_setting('new_startdelay', $defaults['new_startdelay']),
+        'new_lifespan' => simple_aths_get_setting('new_lifespan', $defaults['new_lifespan']),
+        'new_expire_days' => simple_aths_get_setting('new_expire_days', $defaults['new_expire_days']),
+        'new_animationin' => simple_aths_get_setting('new_animationin'),
+        'new_animationout' => simple_aths_get_setting('new_animationout'),
+        'new_bottomoffset' => simple_aths_get_setting('new_bottomoffset', $defaults['new_bottomoffset']),
+        'new_touchicon_url' => simple_aths_get_setting('new_touchicon_url'),
+        'new_web_app_title' => simple_aths_get_setting('new_web_app_title'),
+        'new_returning_visitors_only' => simple_aths_get_setting('new_returning_visitors_only'),
+        'new_precomposed_icon' => simple_aths_get_setting('new_precomposed_icon'),
+        'new_enable_balloon_ios_frontend' => simple_aths_get_setting('new_enable_balloon_ios_frontend'),
+        'new_install_prompt_android' => simple_aths_get_setting('new_install_prompt_android'),
+        'new_enable_pwa' => simple_aths_get_setting('new_enable_pwa'),
+        'new_balloon_display_frontend' => simple_aths_get_setting('new_balloon_display_frontend'),
+        'new_athswp_frontend_pwa_start_url' => simple_aths_get_setting('new_athswp_frontend_pwa_start_url'),
+        'new_athswp_pwa_custom_url' => simple_aths_get_setting('new_athswp_pwa_custom_url'),
+    ];
+
+    wp_enqueue_script('jquery');
+    wp_enqueue_script('wp-color-picker');
+    wp_enqueue_style('wp-color-picker');
+    ?>
+    <div class="wrap">
+        <h1><?php esc_html_e('Add to Home Screen & PWA (Network Settings)', 'add-to-home-screen-wp'); ?></h1>
+        <?php echo $options_message; ?>
+
+        <form method="post" action="">
+            <?php wp_nonce_field('simple_aths_network_options_update', 'simple_aths_nonce'); ?>
+            <?php settings_fields('simple_aths_network_options'); ?>
+
+            <table class="form-table">
+                <tr>
+                    <th scope="row"><h3><?php esc_html_e('PWA Settings', 'add-to-home-screen-wp'); ?></h3></th>
+                    <td>
+                        <p class="description"><?php esc_html_e('Configure Progressive Web App features.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_enable_pwa"><?php esc_html_e('Enable PWA', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="checkbox" name="new_enable_pwa" id="new_enable_pwa" <?php checked($settings['new_enable_pwa'] === 'on'); ?> />
+                        <p class="description"><?php esc_html_e('Enable Progressive Web App features (spinner and basic caching) across the admin dashboard and frontend.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_athswp_frontend_pwa_start_url"><?php esc_html_e('Frontend PWA Start URL', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <select name="new_athswp_frontend_pwa_start_url" id="new_athswp_frontend_pwa_start_url">
+                            <option value="homepage" <?php selected($settings['new_athswp_frontend_pwa_start_url'], 'homepage'); ?>><?php esc_html_e('Homepage', 'add-to-home-screen-wp'); ?></option>
+                            <option value="homepage_with_path" <?php selected($settings['new_athswp_frontend_pwa_start_url'], 'homepage_with_path'); ?>><?php esc_html_e('Homepage with Path', 'add-to-home-screen-wp'); ?></option>
+                        </select>
+                        <input type="text" name="new_athswp_pwa_custom_url" id="new_athswp_pwa_custom_url" value="<?php echo esc_attr($settings['new_athswp_pwa_custom_url']); ?>" placeholder="<?php esc_attr_e('e.g., /category/video/', 'add-to-home-screen-wp'); ?>" style="display: <?php echo $settings['new_athswp_frontend_pwa_start_url'] === 'homepage_with_path' ? 'inline-block' : 'none'; ?>;" class="regular-text" />
+                        <p class="description"><?php esc_html_e('Choose where the PWA launches when added from the frontend. "Homepage with Path" starts at the homepage and redirects to a relative path (e.g., /category/video/).', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><h3><?php esc_html_e('Frontend Floating Balloon', 'add-to-home-screen-wp'); ?></h3></th>
+                    <td>
+                        <p class="description"><?php esc_html_e('Configure how to prompt users to install your web app or add a shortcut to their home screen', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_enable_balloon_ios_frontend"><?php esc_html_e('Show Floating Balloon in Frontend (iOS)', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="checkbox" name="new_enable_balloon_ios_frontend" id="new_enable_balloon_ios_frontend" <?php checked($settings['new_enable_balloon_ios_frontend'] === 'on'); ?> />
+                        <p class="description"><?php esc_html_e('Display a floating balloon to prompt iOS users to install the app in the frontend of all subsites.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_install_prompt_android"><?php esc_html_e('Installation Prompt in Frontend (Android)', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <select name="new_install_prompt_android" id="new_install_prompt_android">
+                            <option value="custom_floating_balloon" <?php selected($settings['new_install_prompt_android'], 'custom_floating_balloon'); ?>><?php esc_html_e('Floating Balloon', 'add-to-home-screen-wp'); ?></option>
+                            <option value="native_button" <?php selected($settings['new_install_prompt_android'], 'native_button'); ?>><?php esc_html_e('Native Install Button', 'add-to-home-screen-wp'); ?></option>
+                            <option value="disabled" <?php selected($settings['new_install_prompt_android'], 'disabled'); ?>><?php esc_html_e('Disabled', 'add-to-home-screen-wp'); ?></option>
+                        </select>
+                        <p class="description"><?php esc_html_e('Choose how to prompt users to install the app on Android devices in the frontend. The \'Native Install Button\' uses the browser\'s native prompt, available only in the frontend.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_balloon_display_frontend"><?php esc_html_e('Balloon Display in Frontend', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <select name="new_balloon_display_frontend" id="new_balloon_display_frontend">
+                            <option value="all_pages" <?php selected($settings['new_balloon_display_frontend'], 'all_pages'); ?>><?php esc_html_e('All Pages', 'add-to-home-screen-wp'); ?></option>
+                            <option value="homepage" <?php selected($settings['new_balloon_display_frontend'], 'homepage'); ?>><?php esc_html_e('Homepage', 'add-to-home-screen-wp'); ?></option>
+                        </select>
+                        <p class="description"><?php esc_html_e('Choose where to display the floating balloon on the frontend.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_returning_visitors_only"><?php esc_html_e('Show to Returning Visitors Only', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="checkbox" name="new_returning_visitors_only" id="new_returning_visitors_only" <?php checked($settings['new_returning_visitors_only'] === 'on'); ?> />
+                        <p class="description"><?php esc_html_e('Show the balloon only to returning visitors.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_message_ios"><?php esc_html_e('Floating Balloon Message for iOS', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
+                        <p class="description">
+                            <?php
+                            esc_html_e('Custom message for iOS devices. Use %site_name for the site name, %device for the user\'s device, %icon for the first add icon, and %add for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                            if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                                echo esc_html__(', %network_name for the network name', 'add-to-home-screen-wp');
+                            }
+                            ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_message_android"><?php esc_html_e('Floating Balloon Message for Android', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
+                        <p class="description">
+                            <?php
+                            esc_html_e('Custom message for Android devices. Use %site_name for the site name, and %device for the user\'s device. Note: %icon and %add are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                            if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                                echo esc_html__(', %network_name for the network name', 'add-to-home-screen-wp');
+                            }
+                            ?>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_animationin"><?php esc_html_e('Animation In', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <select name="new_animationin" id="new_animationin">
+                            <option value="drop" <?php selected($settings['new_animationin'], 'drop'); ?>><?php esc_html_e('Drop', 'add-to-home-screen-wp'); ?></option>
+                            <option value="bubble" <?php selected($settings['new_animationin'], 'bubble'); ?>><?php esc_html_e('Bubble', 'add-to-home-screen-wp'); ?></option>
+                            <option value="fade" <?php selected($settings['new_animationin'], 'fade'); ?>><?php esc_html_e('Fade', 'add-to-home-screen-wp'); ?></option>
+                        </select>
+                        <p class="description"><?php esc_html_e('Animation when the balloon appears.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_animationout"><?php esc_html_e('Animation Out', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <select name="new_animationout" id="new_animationout">
+                            <option value="drop" <?php selected($settings['new_animationout'], 'drop'); ?>><?php esc_html_e('Drop', 'add-to-home-screen-wp'); ?></option>
+                            <option value="bubble" <?php selected($settings['new_animationout'], 'bubble'); ?>><?php esc_html_e('Bubble', 'add-to-home-screen-wp'); ?></option>
+                            <option value="fade" <?php selected($settings['new_animationout'], 'fade'); ?>><?php esc_html_e('Fade', 'add-to-home-screen-wp'); ?></option>
+                        </select>
+                        <p class="description"><?php esc_html_e('Animation when the balloon disappears.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_startdelay"><?php esc_html_e('Start Delay', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="number" name="new_startdelay" id="new_startdelay" value="<?php echo esc_attr($settings['new_startdelay']); ?>" placeholder="<?php echo esc_attr($defaults['new_startdelay']); ?>" min="0" step="0.1" />
+                        <p class="description"><?php printf(esc_html__('Seconds before showing the balloon. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_startdelay'])); ?></p>
+                        <p class="description"><?php esc_html_e('Note: Ensure this is not too close to Lifespan to give users enough time to read the balloon.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_lifespan"><?php esc_html_e('Lifespan', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="number" name="new_lifespan" id="new_lifespan" value="<?php echo esc_attr($settings['new_lifespan']); ?>" placeholder="<?php echo esc_attr($defaults['new_lifespan']); ?>" min="0" step="0.1" />
+                        <p class="description"><?php printf(esc_html__('Seconds before hiding the balloon. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_lifespan'])); ?></p>
+                        <p class="description"><?php esc_html_e('Note: Set this sufficiently higher than Start Delay to ensure the balloon stays visible long enough.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_expire_days"><?php esc_html_e('Expiration Time', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="number" name="new_expire_days" id="new_expire_days" value="<?php echo esc_attr($settings['new_expire_days']); ?>" placeholder="<?php echo esc_attr($defaults['new_expire_days']); ?>" min="0" />
+                        <p class="description"><?php printf(esc_html__('Days before showing the balloon again after it has been closed. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_expire_days'])); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_bottomoffset"><?php esc_html_e('Bottom Offset', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="number" name="new_bottomoffset" id="new_bottomoffset" value="<?php echo esc_attr($settings['new_bottomoffset']); ?>" placeholder="<?php echo esc_attr($defaults['new_bottomoffset']); ?>" min="0" />
+                        <p class="description"><?php printf(esc_html__('Distance in pixels from the bottom or top. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_bottomoffset'])); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_precomposed_icon"><?php esc_html_e('Precomposed Icon', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="checkbox" name="new_precomposed_icon" id="new_precomposed_icon" <?php checked($settings['new_precomposed_icon'] === 'on'); ?> />
+                        <p class="description"><?php esc_html_e('Display the touch icon without gloss (iOS only).', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_touchicon_url"><?php esc_html_e('Touch Icon URL', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="url" name="new_touchicon_url" id="new_touchicon_url" value="<?php echo esc_url($settings['new_touchicon_url']); ?>" />
+                        <button type="button" class="button upload-icon-button" data-input="new_touchicon_url"><?php esc_html_e('Upload Icon', 'add-to-home-screen-wp'); ?></button>
+                        <p class="description"><?php esc_html_e('URL of the icon for the PWA on the home screen (192x192 or 512x512 PNG recommended). If empty, a default icon will be used. Note: Browsers may use an Apple Touch icon defined elsewhere (e.g., via WordPress Site Icon, your theme, or a plugin) for the home screen.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+                <tr>
+                    <th scope="row"><label for="new_web_app_title"><?php esc_html_e('Web App Title for all subsites', 'add-to-home-screen-wp'); ?></label></th>
+                    <td>
+                        <input type="text" name="new_web_app_title" id="new_web_app_title" value="<?php echo esc_attr($settings['new_web_app_title']); ?>" />
+                        <p class="description"><?php esc_html_e('Custom title when added to the home screen. If empty, the site name will be used.', 'add-to-home-screen-wp'); ?></p>
+                    </td>
+                </tr>
+            </table>
+
+            <p class="submit">
+                <input type="submit" name="simple_aths_save_settings" class="button-primary" value="<?php esc_attr_e('Save Settings', 'add-to-home-screen-wp'); ?>" />
+            </p>
+        </form>
+    </div>
+    <?php
 }
 
-if (!class_exists('adhsOptions')) :
-
-define('adhsOptions_ID', 'add_to_home_screen');
-define('adhsOptions_NICK', 'ATHS Options');
-
-class adhsOptions
-{
-    public static function file_path($file) {
-        return plugin_dir_path(__FILE__) . $file;
-    }
-
-    public static function sanitize_message($input) {
-        $allowed_html = array(
-            'center' => array(),
-            'h4'     => array(),
-            'strong' => array(),
-            'br'     => array(),
-            'p'      => array(),
-            'b'      => array(),
-            'i'      => array(),
-        );
-        return wp_kses($input, $allowed_html);
-    }
-
-    public static function register() {
-        register_setting(adhsOptions_ID.'_options', 'returningvisitor', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'message', array('sanitize_callback' => array('adhsOptions', 'sanitize_message')));
-        register_setting(adhsOptions_ID.'_options', 'animationin', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'animationout', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'startdelay', array('sanitize_callback' => 'absint'));
-        register_setting(adhsOptions_ID.'_options', 'lifespan', array('sanitize_callback' => 'absint'));
-        register_setting(adhsOptions_ID.'_options', 'bottomoffset', array('sanitize_callback' => 'absint'));
-        register_setting(adhsOptions_ID.'_options', 'expire', array('sanitize_callback' => 'absint'));
-        register_setting(adhsOptions_ID.'_options', 'touchicon', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'touchicon_url', array('sanitize_callback' => 'esc_url_raw'));
-        register_setting(adhsOptions_ID.'_options', 'addmetawebcapabletitle', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'pagetarget', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'aths_touchicon_precomposed', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'athswp_license_key', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'athswp_premium_status', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'athswp_license_status', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'athswp_license_expires', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'athswp_license_message', array('sanitize_callback' => 'sanitize_text_field'));
-        register_setting(adhsOptions_ID.'_options', 'pwa_theme_color', array('sanitize_callback' => 'sanitize_hex_color'));
-        register_setting(adhsOptions_ID.'_options', 'pwa_force_homepage', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'pwa_enable_features', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'pwa_show_loading', array('sanitize_callback' => 'sanitize_key'));
-        register_setting(adhsOptions_ID.'_options', 'pwa_show_install_button', array('sanitize_callback' => 'sanitize_key'));
-    }
-
-    public static function menu() {
-        add_options_page(adhsOptions_NICK.' Plugin Options', adhsOptions_NICK, 'manage_options', adhsOptions_ID.'_options', array('adhsOptions', 'options_page'));
-    }
-
-    public static function options_page() {
-        if (!current_user_can('manage_options')) {
-            wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'add-to-home-screen-wp'));
-        }
-        
-        $active_tab = isset($_GET['tab']) ? sanitize_key($_GET['tab']) : 'settings';
-        $license_message = '';
-        $options_message = '';
-    
-        // Sauvegarde des options gratuites
-        if (isset($_POST['athswp_save_settings']) && check_admin_referer('athswp_options_update', 'athswp_nonce')) {
-            update_option('returningvisitor', isset($_POST['returningvisitor']) ? 'on' : 'off');
-            update_option('message', self::sanitize_message($_POST['message'] ?? ''));
-            update_option('animationin', sanitize_text_field($_POST['animationin'] ?? 'fade'));
-            update_option('animationout', sanitize_text_field($_POST['animationout'] ?? 'fade'));
-            update_option('startdelay', absint($_POST['startdelay'] ?? 2000));
-            update_option('lifespan', absint($_POST['lifespan'] ?? 20000));
-            update_option('bottomoffset', absint($_POST['bottomoffset'] ?? 14));
-            update_option('expire', absint($_POST['expire'] ?? 0));
-            update_option('touchicon', isset($_POST['touchicon']) ? 'on' : 'off');
-            update_option('touchicon_url', esc_url_raw($_POST['touchicon_url'] ?? ''));
-            update_option('addmetawebcapabletitle', sanitize_text_field($_POST['addmetawebcapabletitle'] ?? ''));
-            update_option('pagetarget', sanitize_text_field($_POST['pagetarget'] ?? 'allpages'));
-            update_option('aths_touchicon_precomposed', isset($_POST['aths_touchicon_precomposed']) ? 'on' : 'off');
-            wp_cache_delete('alloptions', 'options');
-            $options_message = '<div class="updated"><p>' . __('Settings saved successfully!', 'add-to-home-screen-wp') . '</p></div>';
-        }
-    
-        // Sauvegarde des options premium
-        if (isset($_POST['athswp_save_premium']) && check_admin_referer('athswp_options_update', 'athswp_nonce') && athswp_is_premium()) {
-            update_option('pwa_theme_color', sanitize_hex_color($_POST['pwa_theme_color'] ?? '#000000'));
-            update_option('pwa_enable_features', isset($_POST['pwa_enable_features']) ? 'on' : 'off');
-            update_option('pwa_force_homepage', isset($_POST['pwa_force_homepage']) ? 'on' : 'off');
-            update_option('pwa_show_loading', isset($_POST['pwa_show_loading']) ? 'on' : 'off');
-            update_option('pwa_show_install_button', isset($_POST['pwa_show_install_button']) ? 'on' : 'off');
-            wp_cache_delete('alloptions', 'options');
-            $options_message = '<div class="updated"><p>' . __('Settings saved successfully!', 'add-to-home-screen-wp') . '</p></div>';
-        }
-    
-        // Sauvegarde de la licence (inchangée)
-        if (isset($_POST['athswp_save_license']) && check_admin_referer('athswp_options_update', 'athswp_nonce')) {
-            $old_key = get_option('athswp_license_key', '');
-            $new_key = sanitize_text_field($_POST['athswp_license_key'] ?? '');
-            if (get_option('athswp_license_status', 'inactive') === 'active' && ($new_key === $old_key || empty(trim($new_key)))) {
-                $license_message = '<div class="updated"><p>' . __('License unchanged. No action taken.', 'add-to-home-screen-wp') . '</p></div>';
-            } else {
-                if ($old_key && $old_key !== $new_key && !empty($old_key) && !empty(trim($new_key))) {
-                    athswp_deactivate_license($old_key);
-                }
-                if (!empty(trim($new_key))) {
-                    update_option('athswp_license_key', $new_key, 'yes');
-                    athswp_validate_license($new_key);
-                    wp_cache_delete('athswp_license_key', 'options');
-                    wp_cache_delete('athswp_license_status', 'options');
-                    wp_cache_delete('athswp_license_message', 'options');
-                    wp_cache_delete('athswp_premium_status', 'options');
-                    wp_cache_delete('athswp_last_checked', 'options');
-                } elseif (empty($new_key) && $old_key) {
-                    athswp_deactivate_license($old_key);
-                    update_option('athswp_license_key', '', 'yes');
-                    update_option('athswp_license_status', 'inactive', 'yes');
-                    update_option('athswp_premium_status', 'no', 'yes');
-                    wp_cache_delete('athswp_license_key', 'options');
-                    wp_cache_delete('athswp_license_status', 'options');
-                    wp_cache_delete('athswp_license_message', 'options');
-                    wp_cache_delete('athswp_premium_status', 'options');
-                    wp_cache_delete('athswp_last_checked', 'options');
-                }
-                $license_message = '<div class="updated"><p>' . __('License settings saved!', 'add-to-home-screen-wp') . '</p></div>';
+        /**
+         * Site settings page for single sites or subsites.
+         */
+        public static function options_page_site() {
+            if (!current_user_can('manage_options')) {
+                wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'add-to-home-screen-wp'));
             }
-        }
-    
-        // Gestion de la désactivation de la licence (inchangée)
-        if (isset($_POST['athswp_deactivate_license']) && check_admin_referer('athswp_options_update', 'athswp_nonce')) {
-            $license_key = sanitize_text_field($_POST['athswp_license_key'] ?? '');
-            if (!empty($license_key) && athswp_deactivate_license($license_key)) {
-                $license_message = '<div class="updated"><p>' . __('License deactivated successfully!', 'add-to-home-screen-wp') . '</p></div>';
-            } else {
-                $license_message = '<div class="error"><p>' . esc_html(get_option('athswp_license_message', __('Failed to deactivate license. Please try again.', 'add-to-home-screen-wp'))) . '</p></div>';
+
+            $options_message = '';
+            $defaults = self::get_default_settings();
+
+            if (isset($_POST['simple_aths_save_settings']) && check_admin_referer('simple_aths_site_options_update', 'simple_aths_nonce')) {
+                $settings = [
+                    'new_message_ios' => self::sanitize_message($_POST['new_message_ios'] ?? ''),
+                    'new_message_android' => self::sanitize_message($_POST['new_message_android'] ?? ''),
+                    'new_startdelay' => isset($_POST['new_startdelay']) && $_POST['new_startdelay'] !== '' ? absint($_POST['new_startdelay']) : $defaults['new_startdelay'],
+                    'new_lifespan' => isset($_POST['new_lifespan']) && $_POST['new_lifespan'] !== '' ? absint($_POST['new_lifespan']) : $defaults['new_lifespan'],
+                    'new_expire_days' => isset($_POST['new_expire_days']) && $_POST['new_expire_days'] !== '' ? absint($_POST['new_expire_days']) : $defaults['new_expire_days'],
+                    'new_animationin' => sanitize_text_field($_POST['new_animationin'] ?? 'fade'),
+                    'new_animationout' => sanitize_text_field($_POST['new_animationout'] ?? 'fade'),
+                    'new_bottomoffset' => isset($_POST['new_bottomoffset']) && $_POST['new_bottomoffset'] !== '' ? absint($_POST['new_bottomoffset']) : $defaults['new_bottomoffset'],
+                    'new_touchicon_url' => esc_url_raw($_POST['new_touchicon_url'] ?? ''),
+                    'new_web_app_title' => sanitize_text_field($_POST['new_web_app_title'] ?? ''),
+                    'new_returning_visitors_only' => isset($_POST['new_returning_visitors_only']) ? 'on' : 'off',
+                    'new_precomposed_icon' => isset($_POST['new_precomposed_icon']) ? 'on' : 'off',
+                    'new_enable_balloon_ios_frontend' => isset($_POST['new_enable_balloon_ios_frontend']) ? 'on' : 'off',
+                    'new_install_prompt_android' => sanitize_text_field($_POST['new_install_prompt_android'] ?? 'custom_floating_balloon'),
+                    'new_enable_pwa' => isset($_POST['new_enable_pwa']) ? 'on' : 'off',
+                    'new_balloon_display_frontend' => sanitize_text_field($_POST['new_balloon_display_frontend'] ?? 'all_pages'),
+                    'new_athswp_frontend_pwa_start_url' => sanitize_text_field($_POST['new_athswp_frontend_pwa_start_url'] ?? 'homepage'),
+                    'new_athswp_pwa_custom_url' => esc_url_raw($_POST['new_athswp_pwa_custom_url'] ?? ''),
+                ];
+
+                foreach ($settings as $key => $value) {
+                    simple_aths_update_setting($key, $value);
+                }
+
+                $options_message = '<div class="updated"><p>' . esc_html__('Settings saved successfully!', 'add-to-home-screen-wp') . '</p></div>';
             }
-        }
-    
-        // Récupération des valeurs actuelles (inchangée)
-        $is_premium = athswp_is_premium();
-        $license_key = get_option('athswp_license_key', '');
-        $license_status = get_option('athswp_license_status', 'inactive');
-        $license_status_message = get_option('athswp_license_message', 'No license entered yet.');
-        $returningvisitor = get_option('returningvisitor', 'off');
-        $message = get_option('message', '');
-        $animationin = get_option('animationin', 'fade');
-        $animationout = get_option('animationout', 'fade');
-        $startdelay = get_option('startdelay', 2000);
-        $lifespan = get_option('lifespan', 20000);
-        $bottomoffset = get_option('bottomoffset', 14);
-        $expire = get_option('expire', 0);
-        $touchicon = get_option('touchicon', 'off');
-        $touchicon_url = get_option('touchicon_url', '');
-        $addmetawebcapabletitle = get_option('addmetawebcapabletitle', '');
-        $pagetarget = get_option('pagetarget', 'allpages');
-        $aths_touchicon_precomposed = get_option('aths_touchicon_precomposed', 'off');
-        $pwa_theme_color = get_option('pwa_theme_color', '#000000');
-        $pwa_enable_features = get_option('pwa_enable_features', 'on');
-        $pwa_force_homepage = get_option('pwa_force_homepage', 'off');
-        $pwa_show_loading = get_option('pwa_show_loading', 'off');
-        $pwa_show_install_button = get_option('pwa_show_install_button', 'off');
-    
-        wp_enqueue_script('jquery');
-        wp_enqueue_media();
-        ?>
-        <div class="wrap">
-            <h1><?php esc_html_e('Add to Home Screen WP Settings', 'add-to-home-screen-wp'); ?></h1>
-    
-            <h2 class="nav-tab-wrapper">
-                <a href="?page=add_to_home_screen_options&tab=settings" class="nav-tab <?php echo $active_tab === 'settings' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Settings', 'add-to-home-screen-wp'); ?></a>
-                <a href="?page=add_to_home_screen_options&tab=license" class="nav-tab <?php echo $active_tab === 'license' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('License', 'add-to-home-screen-wp'); ?></a>
-                <a href="?page=add_to_home_screen_options&tab=premium" class="nav-tab <?php echo $active_tab === 'premium' ? 'nav-tab-active' : ''; ?>"><?php esc_html_e('Premium Options', 'add-to-home-screen-wp'); ?></a>
-            </h2>
-    
-            <form method="post" action="">
-                <?php wp_nonce_field('athswp_options_update', 'athswp_nonce'); ?>
-                <?php settings_fields(adhsOptions_ID.'_options'); ?>
-    
-                <?php if ($active_tab === 'settings') : ?>
-                    <?php echo $options_message; ?>
-                    <h3><?php esc_html_e('Free Options', 'add-to-home-screen-wp'); ?></h3>
+
+            $defaults = self::get_default_settings();
+            $settings = [
+                'new_message_ios' => simple_aths_get_setting('new_message_ios'),
+                'new_message_android' => simple_aths_get_setting('new_message_android'),
+                'new_startdelay' => simple_aths_get_setting('new_startdelay', $defaults['new_startdelay']),
+                'new_lifespan' => simple_aths_get_setting('new_lifespan', $defaults['new_lifespan']),
+                'new_expire_days' => simple_aths_get_setting('new_expire_days', $defaults['new_expire_days']),
+                'new_animationin' => simple_aths_get_setting('new_animationin'),
+                'new_animationout' => simple_aths_get_setting('new_animationout'),
+                'new_bottomoffset' => simple_aths_get_setting('new_bottomoffset', $defaults['new_bottomoffset']),
+                'new_touchicon_url' => simple_aths_get_setting('new_touchicon_url'),
+                'new_web_app_title' => simple_aths_get_setting('new_web_app_title'),
+                'new_returning_visitors_only' => simple_aths_get_setting('new_returning_visitors_only'),
+                'new_precomposed_icon' => simple_aths_get_setting('new_precomposed_icon'),
+                'new_enable_balloon_ios_frontend' => simple_aths_get_setting('new_enable_balloon_ios_frontend'),
+                'new_install_prompt_android' => simple_aths_get_setting('new_install_prompt_android'),
+                'new_enable_pwa' => simple_aths_get_setting('new_enable_pwa'),
+                'new_balloon_display_frontend' => simple_aths_get_setting('new_balloon_display_frontend'),
+                'new_athswp_frontend_pwa_start_url' => simple_aths_get_setting('new_athswp_frontend_pwa_start_url'),
+                'new_athswp_pwa_custom_url' => simple_aths_get_setting('new_athswp_pwa_custom_url'),
+            ];
+
+            wp_enqueue_script('jquery');
+            wp_enqueue_script('wp-color-picker');
+            wp_enqueue_style('wp-color-picker');
+            ?>
+            <div class="wrap">
+                <h1><?php esc_html_e('Add to Home Screen & PWA Settings', 'add-to-home-screen-wp'); ?></h1>
+                <?php echo $options_message; ?>
+
+                <form method="post" action="">
+                    <?php wp_nonce_field('simple_aths_site_options_update', 'simple_aths_nonce'); ?>
+                    <?php settings_fields('simple_aths_site_options'); ?>
+
                     <table class="form-table">
                         <tr>
-                            <th scope="row"><label for="returningvisitor"><?php esc_html_e('Show to returning visitors only', 'add-to-home-screen-wp'); ?></label></th>
+                            <th scope="row"><h3><?php esc_html_e('PWA Settings', 'add-to-home-screen-wp'); ?></h3></th>
                             <td>
-                                <input type="checkbox" name="returningvisitor" id="returningvisitor" <?php checked($returningvisitor === 'on'); ?> />
-                                <p class="description">
-                                    <?php esc_html_e('Set this to true and the message won\'t be shown the first time one user visits your blog. It can be useful to target only returning visitors and not irritate first time visitors.', 'add-to-home-screen-wp'); ?><br>
-                                </p>
+                                <p class="description"><?php esc_html_e('Configure Progressive Web App features.', 'add-to-home-screen-wp'); ?></p>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="message"><?php esc_html_e('Custom message', 'add-to-home-screen-wp'); ?></label></th>
+                            <th scope="row"><label for="new_enable_pwa"><?php esc_html_e('Enable PWA', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
-                                <textarea rows="3" cols="50" name="message" id="message"><?php echo esc_textarea($message); ?></textarea>
-                                <p class="description">
-                                    <?php esc_html_e('Type the custom message that you want appearing in the balloon. You can also display default message in the language of your choice by typing the locale (e.g: en_us).', 'add-to-home-screen-wp'); ?><br>
-                                    <?php
-                                    $allowed_html = array(
-                                        'i' => array(),
-                                        'code' => array(),
-                                    );
-                                    echo wp_kses(
-                                        __('Use <i>%device</i> to show user\'s device on message, <i>%icon</i> to display the first add icon, and <i>%add</i> to display the second add to home screen icon. You can also use HTML tags like <code>&lt;center&gt;</code>, <code>&lt;h3&gt;</code>, <code>&lt;strong&gt;</code>, or <code>&lt;i&gt;</code> for formatting.', 'add-to-home-screen-wp'),
-                                        $allowed_html
-                                    );
-                                    ?>
-                                </p>
+                                <input type="checkbox" name="new_enable_pwa" id="new_enable_pwa" <?php checked($settings['new_enable_pwa'] === 'on'); ?> />
+                                <p class="description"><?php esc_html_e('Enable Progressive Web App features.', 'add-to-home-screen-wp'); ?></p>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="animationin"><?php esc_html_e('Animation in', 'add-to-home-screen-wp'); ?></label></th>
+                            <th scope="row"><label for="new_athswp_frontend_pwa_start_url"><?php esc_html_e('Frontend PWA Start URL', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
-                                <select name="animationin" id="animationin">
-                                    <option value="drop" <?php selected($animationin, 'drop'); ?>><?php esc_html_e('drop', 'add-to-home-screen-wp'); ?></option>
-                                    <option value="bubble" <?php selected($animationin, 'bubble'); ?>><?php esc_html_e('bubble', 'add-to-home-screen-wp'); ?></option>
-                                    <option value="fade" <?php selected($animationin, 'fade'); ?>><?php esc_html_e('fade', 'add-to-home-screen-wp'); ?></option>
+                                <select name="new_athswp_frontend_pwa_start_url" id="new_athswp_frontend_pwa_start_url">
+                                    <option value="homepage" <?php selected($settings['new_athswp_frontend_pwa_start_url'], 'homepage'); ?>><?php esc_html_e('Homepage', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="homepage_with_path" <?php selected($settings['new_athswp_frontend_pwa_start_url'], 'homepage_with_path'); ?>><?php esc_html_e('Homepage with Path', 'add-to-home-screen-wp'); ?></option>
                                 </select>
-                                <p class="description"><?php esc_html_e('The animation the balloon appears with.', 'add-to-home-screen-wp'); ?></p>
+                                <input type="text" name="new_athswp_pwa_custom_url" id="new_athswp_pwa_custom_url" value="<?php echo esc_attr($settings['new_athswp_pwa_custom_url']); ?>" placeholder="<?php esc_attr_e('e.g., /category/video/', 'add-to-home-screen-wp'); ?>" style="display: <?php echo $settings['new_athswp_frontend_pwa_start_url'] === 'homepage_with_path' ? 'inline-block' : 'none'; ?>;" class="regular-text" />
+                                <p class="description"><?php esc_html_e('Choose where the PWA launches when added from the frontend. "Homepage with Path" starts at the homepage and redirects to a relative path (e.g., /category/video/).', 'add-to-home-screen-wp'); ?></p>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="animationout"><?php esc_html_e('Animation out', 'add-to-home-screen-wp'); ?></label></th>
+                            <th scope="row"><h3><?php esc_html_e('Frontend Floating Balloon', 'add-to-home-screen-wp'); ?></h3></th>
                             <td>
-                                <select name="animationout" id="animationout">
-                                    <option value="drop" <?php selected($animationout, 'drop'); ?>><?php esc_html_e('drop', 'add-to-home-screen-wp'); ?></option>
-                                    <option value="bubble" <?php selected($animationout, 'bubble'); ?>><?php esc_html_e('bubble', 'add-to-home-screen-wp'); ?></option>
-                                    <option value="fade" <?php selected($animationout, 'fade'); ?>><?php esc_html_e('fade', 'add-to-home-screen-wp'); ?></option>
+                                <p class="description"><?php esc_html_e('Configure how to prompt users to install your web app or add a shortcut to their home screen', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_enable_balloon_ios_frontend"><?php esc_html_e('Show Floating Balloon in Frontend (iOS)', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="checkbox" name="new_enable_balloon_ios_frontend" id="new_enable_balloon_ios_frontend" <?php checked($settings['new_enable_balloon_ios_frontend'] === 'on'); ?> />
+                                <p class="description"><?php esc_html_e('Display a floating balloon to prompt iOS users to install the app in the frontend.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_install_prompt_android"><?php esc_html_e('Installation Prompt in Frontend (Android)', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <select name="new_install_prompt_android" id="new_install_prompt_android">
+                                    <option value="custom_floating_balloon" <?php selected($settings['new_install_prompt_android'], 'custom_floating_balloon'); ?>><?php esc_html_e('Floating Balloon', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="native_button" <?php selected($settings['new_install_prompt_android'], 'native_button'); ?>><?php esc_html_e('Native Install Button', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="disabled" <?php selected($settings['new_install_prompt_android'], 'disabled'); ?>><?php esc_html_e('Disabled', 'add-to-home-screen-wp'); ?></option>
                                 </select>
-                                <p class="description"><?php esc_html_e('The animation the balloon exits with.', 'add-to-home-screen-wp'); ?></p>
+                                <p class="description"><?php esc_html_e('Choose how to prompt users to install the app on Android devices in the frontend. The \'Native Install Button\' uses the browser\'s native prompt, available only in the frontend.', 'add-to-home-screen-wp'); ?></p>
                             </td>
                         </tr>
                         <tr>
-                            <th scope="row"><label for="startdelay"><?php esc_html_e('Start delay', 'add-to-home-screen-wp'); ?></label></th>
+                            <th scope="row"><label for="new_balloon_display_frontend"><?php esc_html_e('Balloon Display in Frontend', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
-                                <input type="text" name="startdelay" id="startdelay" value="<?php echo esc_attr($startdelay); ?>" />
-                                <p class="description"><?php esc_html_e('Milliseconds to wait before showing the message. Default: 2000', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="lifespan"><?php esc_html_e('Lifespan', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="text" name="lifespan" id="lifespan" value="<?php echo esc_attr($lifespan); ?>" />
-                                <p class="description"><?php esc_html_e('Milliseconds to wait before hiding the message. Default: 20000', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="bottomoffset"><?php esc_html_e('Bottom offset', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="text" name="bottomoffset" id="bottomoffset" value="<?php echo esc_attr($bottomoffset); ?>" />
-                                <p class="description"><?php esc_html_e('Distance in pixels from the bottom (iPhone) or the top (iPad). Default: 14', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="expire"><?php esc_html_e('Expire timeframe', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="text" name="expire" id="expire" value="<?php echo esc_attr($expire); ?>" />
-                                <p class="description">
-                                    <?php esc_html_e('Minutes before displaying the message again. Default: 0 (=always show). It\'s highly recommended to set a timeframe in order to prevent showing message at each and every page load for those who didn\'t add the Web App to their homescreen or those who added it but load the blog on Safari!', 'add-to-home-screen-wp'); ?><br>
-                                    <i><?php esc_html_e('Recommended values: 43200 for one month or 525600 for one year.', 'add-to-home-screen-wp'); ?></i>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="touchicon"><?php esc_html_e('Enable touch icon', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="checkbox" name="touchicon" id="touchicon" <?php checked($touchicon === 'on'); ?> />
-                                <p class="description"><?php esc_html_e('If checked, displays the application icon next to the message using the URL provided below.', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="aths_touchicon_precomposed"><?php esc_html_e('Precomposed icon', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="checkbox" name="aths_touchicon_precomposed" id="aths_touchicon_precomposed" <?php checked($aths_touchicon_precomposed === 'on'); ?> />
-                                <p class="description"><?php esc_html_e('If checked, the icon will display without the Apple gloss effect.', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="touchicon_url"><?php esc_html_e('Touch icon URL', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="url" name="touchicon_url" id="touchicon_url" value="<?php echo esc_url($touchicon_url); ?>" />
-                                <button type="button" class="button upload-icon-button" data-input="touchicon_url"><?php esc_html_e('Upload Icon', 'add-to-home-screen-wp'); ?></button>
-                                <p class="description">
-                                    <?php esc_html_e('Paste the URL or upload an icon (ideally 192x192 or 512x512 pixels, PNG format) for iOS and Android home screens. This will be used as link rel="apple-touch-icon" and in the PWA manifest.', 'add-to-home-screen-wp'); ?>
-                                </p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="addmetawebcapabletitle"><?php esc_html_e('Title of your Web App', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <input type="text" name="addmetawebcapabletitle" id="addmetawebcapabletitle" value="<?php echo esc_attr($addmetawebcapabletitle); ?>" />
-                                <p class="description"><?php esc_html_e('Type the name of your blog (max: 12 characters!). Default: it takes the default title of the page.', 'add-to-home-screen-wp'); ?></p>
-                            </td>
-                        </tr>
-                        <tr>
-                            <th scope="row"><label for="pagetarget"><?php esc_html_e('On which page the balloon should appear?', 'add-to-home-screen-wp'); ?></label></th>
-                            <td>
-                                <select name="pagetarget" id="pagetarget">
-                                    <option value="homeonly" <?php selected($pagetarget, 'homeonly'); ?>><?php esc_html_e('Home only', 'add-to-home-screen-wp'); ?></option>
-                                    <option value="allpages" <?php selected($pagetarget, 'allpages'); ?>><?php esc_html_e('All pages', 'add-to-home-screen-wp'); ?></option>
+                                <select name="new_balloon_display_frontend" id="new_balloon_display_frontend">
+                                    <option value="all_pages" <?php selected($settings['new_balloon_display_frontend'], 'all_pages'); ?>><?php esc_html_e('All Pages', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="homepage" <?php selected($settings['new_balloon_display_frontend'], 'homepage'); ?>><?php esc_html_e('Homepage', 'add-to-home-screen-wp'); ?></option>
                                 </select>
-                                <p class="description">
-                                    <?php esc_html_e('Keep in mind that if someone adds your blog to home screen from a single article page for instance, the web app will load this page and not the homepage of the blog. That\'s why you could choose to open the floating balloon on homepage only and not on all pages of your blog. In Premium mode, you can override this by forcing the homepage to launch.', 'add-to-home-screen-wp'); ?>
-                                </p>
+                                <p class="description"><?php esc_html_e('Choose where to display the floating balloon on the frontend.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_returning_visitors_only"><?php esc_html_e('Show to Returning Visitors Only', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="checkbox" name="new_returning_visitors_only" id="new_returning_visitors_only" <?php checked($settings['new_returning_visitors_only'] === 'on'); ?> />
+                                <p class="description"><?php esc_html_e('Show the balloon only to returning visitors.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_message_ios"><?php esc_html_e('Floating Balloon Message for iOS', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
+                                <p class="description"><?php esc_html_e('Custom message for iOS devices. Use %site_name for the site name, %device for the user\'s device, %icon for the first add icon, and %add for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_message_android"><?php esc_html_e('Floating Balloon Message for Android', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
+                                <p class="description"><?php esc_html_e('Custom message for Android devices. Use %site_name for the site name, and %device for the user\'s device. Note: %icon and %add are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_animationin"><?php esc_html_e('Animation In', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <select name="new_animationin" id="new_animationin">
+                                    <option value="drop" <?php selected($settings['new_animationin'], 'drop'); ?>><?php esc_html_e('Drop', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="bubble" <?php selected($settings['new_animationin'], 'bubble'); ?>><?php esc_html_e('Bubble', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="fade" <?php selected($settings['new_animationin'], 'fade'); ?>><?php esc_html_e('Fade', 'add-to-home-screen-wp'); ?></option>
+                                </select>
+                                <p class="description"><?php esc_html_e('Animation when the balloon appears.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_animationout"><?php esc_html_e('Animation Out', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <select name="new_animationout" id="new_animationout">
+                                    <option value="drop" <?php selected($settings['new_animationout'], 'drop'); ?>><?php esc_html_e('Drop', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="bubble" <?php selected($settings['new_animationout'], 'bubble'); ?>><?php esc_html_e('Bubble', 'add-to-home-screen-wp'); ?></option>
+                                    <option value="fade" <?php selected($settings['new_animationout'], 'fade'); ?>><?php esc_html_e('Fade', 'add-to-home-screen-wp'); ?></option>
+                                </select>
+                                <p class="description"><?php esc_html_e('Animation when the balloon disappears.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_startdelay"><?php esc_html_e('Start Delay', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="number" name="new_startdelay" id="new_startdelay" value="<?php echo esc_attr($settings['new_startdelay']); ?>" placeholder="<?php echo esc_attr($defaults['new_startdelay']); ?>" min="0" step="1" />
+                                <p class="description"><?php printf(esc_html__('Seconds before showing the balloon. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_startdelay'])); ?></p>
+                                <p class="description"><?php esc_html_e('Note: Ensure this is not too close to Lifespan to give users enough time to read the balloon.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_lifespan"><?php esc_html_e('Lifespan', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="number" name="new_lifespan" id="new_lifespan" value="<?php echo esc_attr($settings['new_lifespan']); ?>" placeholder="<?php echo esc_attr($defaults['new_lifespan']); ?>" min="0" step="1" />
+                                <p class="description"><?php printf(esc_html__('Seconds before hiding the balloon. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_lifespan'])); ?></p>
+                                <p class="description"><?php esc_html_e('Note: Set this sufficiently higher than Start Delay to ensure the balloon stays visible long enough.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_expire_days"><?php esc_html_e('Expiration Time', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="number" name="new_expire_days" id="new_expire_days" value="<?php echo esc_attr($settings['new_expire_days']); ?>" placeholder="<?php echo esc_attr($defaults['new_expire_days']); ?>" min="0" step="1" />
+                                <p class="description"><?php printf(esc_html__('Days before showing the balloon again after it has been closed. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_expire_days'])); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_bottomoffset"><?php esc_html_e('Bottom Offset', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="number" name="new_bottomoffset" id="new_bottomoffset" value="<?php echo esc_attr($settings['new_bottomoffset']); ?>" placeholder="<?php echo esc_attr($defaults['new_bottomoffset']); ?>" min="0" step="1" />
+                                <p class="description"><?php printf(esc_html__('Distance in pixels from the bottom or top. Default: %s', 'add-to-home-screen-wp'), esc_html($defaults['new_bottomoffset'])); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_precomposed_icon"><?php esc_html_e('Precomposed Icon', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="checkbox" name="new_precomposed_icon" id="new_precomposed_icon" <?php checked($settings['new_precomposed_icon'] === 'on'); ?> />
+                                <p class="description"><?php esc_html_e('Display the touch icon without gloss (iOS only).', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_touchicon_url"><?php esc_html_e('Touch Icon URL', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="url" name="new_touchicon_url" id="new_touchicon_url" value="<?php echo esc_url($settings['new_touchicon_url']); ?>" />
+                                <button type="button" class="button upload-icon-button" data-input="new_touchicon_url"><?php esc_html_e('Upload Icon', 'add-to-home-screen-wp'); ?></button>
+                                <p class="description"><?php esc_html_e('URL of the icon for the PWA on the home screen (192x192 or 512x512 PNG recommended). If empty, a default icon will be used. Note: Browsers may use an Apple Touch icon defined elsewhere (e.g., via WordPress Site Icon, your theme, or a plugin) for the home screen.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><label for="new_web_app_title"><?php esc_html_e('Web App Title', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="text" name="new_web_app_title" id="new_web_app_title" value="<?php echo esc_attr($settings['new_web_app_title']); ?>" />
+                                <p class="description"><?php esc_html_e('Custom title when added to the home screen. If empty, the site name will be used.', 'add-to-home-screen-wp'); ?></p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <p class="submit">
+                        <input type="submit" name="simple_aths_save_settings" class="button-primary" value="<?php esc_attr_e('Save Settings', 'add-to-home-screen-wp'); ?>" />
+                    </p>
+                </form>
+            </div>
+            <?php
+        }
+
+        /**
+         * Support page with promotional content.
+         */
+        public static function support_page() {
+            ?>
+            <div class="athswp-support-promo" style="margin-top: 20px; padding: 15px; background: #fff; border: 1px solid #ddd;">
+                <h2><?php esc_html_e('Support Add to Home Screen WP’s Future! 🌟', 'add-to-home-screen-wp'); ?></h2>
+                <p style="font-size: 16px;"><?php esc_html_e('Add to Home Screen WP is a tool built with passion to help WordPress users like you enhance their mobile experience. Your support can make a huge difference in keeping it growing and improving!', 'add-to-home-screen-wp'); ?></p>
+
+                <div style="max-width: 500px; margin: auto; text-align: center; background: #f9f9f9; padding: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                    <h3><?php esc_html_e('Let me know that you are using my plugin!', 'add-to-home-screen-wp'); ?></h3>
+                        <a href="https://twitter.com/intent/tweet?text=<?php echo urlencode(__('Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Android', 'add-to-home-screen-wp')); ?>" 
+                            target="_blank" 
+                            class="button button-primary" style="font-size: 16px; padding: 10px 20px; background:rgb(186, 0, 84); border-color: #007cba;">
+                                <?php esc_html_e('Spread the word on X!', 'add-to-home-screen-wp'); ?>
+                        </a>
+                </div>    
+
+                <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
+                    <div style="flex: 1; min-width: 300px; background: #f9f9f9; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3>☕ <?php esc_html_e('Buy Me a Coffee', 'add-to-home-screen-wp'); ?></h3>
+                        <p><?php esc_html_e('Love using Add to Home Screen WP? A small donation can fuel my coffee cup and help me dedicate more time to enhancing this plugin for you!', 'add-to-home-screen-wp'); ?></p>
+                        <p>
+                            <a href="https://paypal.me/ziyadbachalany" target="_blank" class="button button-primary" style="font-size: 16px; padding: 10px 20px; background: #007cba; border-color: #007cba;">
+                                <?php esc_html_e('Donate Now', 'add-to-home-screen-wp'); ?> 💖
+                            </a>
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; background: #f9f9f9; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3>🌍 <?php esc_html_e('Help Translate', 'add-to-home-screen-wp'); ?></h3>
+                        <p><?php esc_html_e('Speak another language? Help make Add to Home Screen WP accessible to more people around the world by contributing to its translations!', 'add-to-home-screen-wp'); ?></p>
+                        <p>
+                            <a href="https://translate.wordpress.org/projects/wp-plugins/add-to-home-screen-wp/" target="_blank" class="button button-primary" style="font-size: 16px; padding: 10px 20px; background: #46b450; border-color: #46b450;">
+                                <?php esc_html_e('Translate Now', 'add-to-home-screen-wp'); ?> ✨
+                            </a>
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; background: #f9f9f9; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3>⭐ <?php esc_html_e('Rate on WordPress', 'add-to-home-screen-wp'); ?></h3>
+                        <p><?php esc_html_e('Enjoying Add to Home Screen WP? Share your feedback by rating it on WordPress—it helps others discover it and motivates me to keep improving!', 'add-to-home-screen-wp'); ?></p>
+                        <p>
+                            <a href="https://wordpress.org/support/plugin/add-to-home-screen-wp/reviews/#new-post" target="_blank" class="button button-primary" style="font-size: 16px; padding: 10px 20px; background: #f7c948; border-color: #f7c948; color: #000;">
+                                <?php esc_html_e('Rate Now', 'add-to-home-screen-wp'); ?> 🌟
+                            </a>
+                        </p>
+                    </div>
+                    <div style="flex: 1; min-width: 300px; background: #f9f9f9; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3>❓ <?php esc_html_e('Need Help?', 'add-to-home-screen-wp'); ?></h3>
+                        <p><?php esc_html_e('Have questions or need assistance? Visit our support page for resources and contact options.', 'add-to-home-screen-wp'); ?></p>
+                        <p>
+                            <a href="https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/" target="_blank" class="button button-primary" style="font-size: 16px; padding: 10px 20px; background: #787878; border-color: #787878;">
+                                <?php esc_html_e('Get Support', 'add-to-home-screen-wp'); ?> 🛠️
+                            </a>
+                        </p>
+                    </div>
+                </div>
+
+                <div style="margin-top: 30px; text-align: center; background: #f9f9f9; padding: 20px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
+                        <h3>📱 <?php esc_html_e('Follow Me on Social Media!', 'add-to-home-screen-wp'); ?></h3>
+                        <p><?php esc_html_e('Stay updated on Add to Home Screen & PWA news, tips, and more by following me on your favorite platforms!', 'add-to-home-screen-wp'); ?></p>
+                        <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
+                            <a href="https://www.linkedin.com/in/ziyadbachalany/" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/linkedin-icon.png'); ?>" alt="LinkedIn" style="width: 32px; height: 32px; vertical-align: middle;"> LinkedIn
+                            </a>
+                            <a href="https://x.com/ziyadbachalany" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/x-icon.png'); ?>" alt="X" style="width: 32px; height: 32px; vertical-align: middle;"> X
+                            </a>
+                            <a href="https://www.instagram.com/ziyadbachalany/" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/instagram-icon.png'); ?>" alt="Instagram" style="width: 32px; height: 32px; vertical-align: middle;"> Instagram
+                            </a>
+                            <a href="https://www.facebook.com/ziyadbachalany" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/facebook-icon.png'); ?>" alt="Facebook" style="width: 32px; height: 32px; vertical-align: middle;"> Facebook
+                            </a>
+                            <a href="https://www.youtube.com/channel/UClMfre0hj-UCxGocDleZxTQ" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/youtube-icon.png'); ?>" alt="YouTube" style="width: 32px; height: 32px; vertical-align: middle;"> YouTube
+                            </a>
+                            <a href="https://www.tiktok.com/@ziyadbachalany" target="_blank" style="text-decoration: none;">
+                                <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/tiktok-icon.png'); ?>" alt="TikTok" style="width: 32px; height: 32px; vertical-align: middle;"> TikTok
+                            </a>
+                        </div>
+                    </div>
+
+            </div>
+            <?php
+        }
+
+        /**
+         * Pro teaser page.
+         */
+        public static function pro_teaser_page() {
+            $is_network_activated = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__));
+            $license_url = $is_network_activated && !is_network_admin() ? admin_url('network/settings.php?page=simple_aths_settings&tab=license') : admin_url('admin.php?page=simple_aths_settings&tab=license');
+            ?>
+            <div class="wrap athswp-pro-settings">
+                <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; text-align: center;">
+                    <h3><?php esc_html_e('Unlock Premium Features!', 'add-to-home-screen-wp'); ?></h3>
+                    <p style="font-size: 16px; color: #333; line-height: 1.5;">
+                        <?php esc_html_e('Enhance your Add to Home Screen experience with these powerful premium features:', 'add-to-home-screen-wp'); ?>
+                    </p>
+                    <ul style="list-style: none; padding: 0; text-align: left; margin: 20px 0;">
+                        <li style="margin-bottom: 10px;">
+                            <strong>🚀 <?php esc_html_e('Dashboard PWA Support:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Enable PWA functionality specifically for the WordPress admin dashboard.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>🎈 <?php esc_html_e('Advanced Dashboard Balloon Control:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Fine-tune where the balloon appears in the admin dashboard.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>🎨 <?php esc_html_e('Custom Top Bar & Spinner Color:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Personalize your PWA’s look.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>🖼️ <?php esc_html_e('Floating Balloon Icon:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Upload your own icon for the balloon.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>📊 <?php esc_html_e('Installation Statistics:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Track how many users add your PWA to their home screens.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                    </ul>
+                    <p>
+                        <?php
+                        printf(
+                            wp_kses(
+                                __('Ready to upgrade? <a href="%s" target="_blank" style="color: #0073aa; text-decoration: underline;">Get your premium license now</a> or <a href="%s" style="color: #0073aa; text-decoration: underline;">enter your license key</a> in the License tab.', 'add-to-home-screen-wp'),
+                                ['a' => ['href' => [], 'target' => [], 'style' => []]]
+                            ),
+                            'https://tulipemedia.com/en/product/aths-wordpress-premium/',
+                            esc_url($license_url)
+                        );
+                        ?>
+                    </p>
+                </div>
+            </div>
+            <?php
+        }
+
+        /**
+         * Uninstall settings page.
+         */
+        public static function uninstall_page() {
+            if (!current_user_can(is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__)) ? 'manage_network_options' : 'manage_options')) {
+                wp_die(esc_html__('You do not have sufficient permissions to access this page.', 'add-to-home-screen-wp'));
+            }
+
+            $options_message = '';
+            $option_group = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__)) ? 'simple_aths_network_options' : 'simple_aths_site_options';
+
+            if (isset($_POST['simple_aths_save_uninstall_settings']) && check_admin_referer('simple_aths_uninstall_options_update', 'simple_aths_uninstall_nonce')) {
+                simple_aths_update_setting('new_athswp_delete_data_on_uninstall', isset($_POST['new_athswp_delete_data_on_uninstall']) ? 'on' : 'off');
+                $options_message = '<div class="updated"><p>' . esc_html__('Uninstall settings saved successfully!', 'add-to-home-screen-wp') . '</p></div>';
+            }
+
+            $delete_data_on_uninstall = simple_aths_get_setting('new_athswp_delete_data_on_uninstall', 'off');
+            ?>
+            <div class="wrap">
+                <h1><?php esc_html_e('Add to Home Screen & PWA - Uninstall Settings', 'add-to-home-screen-wp'); ?></h1>
+                <?php echo $options_message; ?>
+                <form method="post" action="">
+                    <?php wp_nonce_field('simple_aths_uninstall_options_update', 'simple_aths_uninstall_nonce'); ?>
+                    <?php settings_fields($option_group); ?>
+                    <table class="form-table">
+                        <tr>
+                            <th scope="row"><label for="new_athswp_delete_data_on_uninstall"><?php esc_html_e('Delete Data on Uninstall', 'add-to-home-screen-wp'); ?></label></th>
+                            <td>
+                                <input type="checkbox" name="new_athswp_delete_data_on_uninstall" id="new_athswp_delete_data_on_uninstall" <?php checked($delete_data_on_uninstall === 'on'); ?> />
+                                <p class="description"><?php esc_html_e('If checked, all settings and data (including statistics and license activation for the Pro version, if applicable) will be deleted when the plugin is uninstalled. The Pro license will also be deactivated on the license server to free up the activation. Uncheck this if you plan to reinstall the plugin and want to keep your settings and license activation.', 'add-to-home-screen-wp'); ?></p>
                             </td>
                         </tr>
                     </table>
                     <p class="submit">
-                        <input type="submit" name="athswp_save_settings" class="button-primary" value="<?php esc_html_e('Save Settings', 'add-to-home-screen-wp'); ?>" />
+                        <input type="submit" name="simple_aths_save_uninstall_settings" class="button-primary" value="<?php esc_attr_e('Save Uninstall Settings', 'add-to-home-screen-wp'); ?>" />
                     </p>
-    
-                <?php elseif ($active_tab === 'license') : ?>
-                    <?php echo $license_message; ?>
-                    <div class="athswp-license-section" style="margin-top: 20px; padding: 15px; background: #f9f9f9; border: 1px solid #ddd;">
-                        <h3><?php esc_html_e('License Key', 'add-to-home-screen-wp'); ?></h3>
-                        <p><?php esc_html_e('Enter your license key to unlock Premium features.', 'add-to-home-screen-wp'); ?></p>
-                        <div class="athswp-field">
-                            <label for="athswp_license_key"><?php esc_html_e('License Key:', 'add-to-home-screen-wp'); ?></label>
-                            <input type="text" name="athswp_license_key" id="athswp_license_key" value="<?php echo esc_attr($license_key); ?>" class="regular-text" placeholder="ex: ATHSUS2W-HFII-5495" />
-                            <p class="description">
-                                <?php esc_html_e('Status:', 'add-to-home-screen-wp'); ?> <strong><?php echo esc_html($license_status); ?></strong><br>
-                                <?php echo esc_html($license_status_message); ?>
-                                <?php if (!$is_premium) : ?>
-                                    <br><?php
-                                    $allowed_html = array(
-                                        'a' => array(
-                                            'href' => array(),
-                                            'target' => array(),
-                                        ),
-                                    );
-                                    printf(
-                                        wp_kses(__('Enter your premium license key and save settings to unlock all features. <a href="%s" target="_blank">Get your license now</a>.', 'add-to-home-screen-wp'), $allowed_html),
-                                        'https://tulipemedia.com/en/product/aths-wordpress-premium/'
-                                    ); ?>
-                                <?php endif; ?>
-                            </p>
-                            <?php if ($is_premium) : ?>
-                                <p>
-                                    <input type="submit" name="athswp_deactivate_license" class="button" style="background-color: #d9534f; border-color: #d9534f; color: white;" value="<?php esc_html_e('Deactivate License', 'add-to-home-screen-wp'); ?>" onclick="return confirm('<?php esc_html_e('Are you sure you want to deactivate your license? This will disable premium features on this site.', 'add-to-home-screen-wp'); ?>');" />
-                                </p>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                    <p class="submit">
-                        <input type="submit" name="athswp_save_license" class="button-primary" value="<?php esc_html_e('Save License', 'add-to-home-screen-wp'); ?>" />
-                    </p>
-    
-                <?php elseif ($active_tab === 'premium') : ?>
-                    <?php echo $options_message; ?>
-                    <h3><?php esc_html_e('Premium Options', 'add-to-home-screen-wp'); ?></h3>
-                    <?php if ($is_premium) : ?>
-                        <table class="form-table">
-                            <tr>
-                                <th scope="row"><label for="pwa_enable_features"><?php esc_html_e('Enable ATHS Premium Features', 'add-to-home-screen-wp'); ?></label></th>
-                                <td>
-                                    <input type="checkbox" name="pwa_enable_features" id="pwa_enable_features" <?php checked($pwa_enable_features === 'on'); ?> />
-                                    <p class="description">
-                                        <?php esc_html_e('Check to enable premium features (manifest, etc.). Uncheck to disable them without losing your settings. This turns your blog into a Web App, making it faster, giving it a native app feel on mobile devices, and allowing customization of the options below.', 'add-to-home-screen-wp'); ?>
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="pwa_theme_color"><?php esc_html_e('Top Bar and Spinner Color', 'add-to-home-screen-wp'); ?></label></th>
-                                <td>
-                                    <input type="color" name="pwa_theme_color" id="pwa_theme_color" value="<?php echo esc_attr($pwa_theme_color); ?>" />
-                                    <button type="button" id="reset_top_color" class="button"><?php esc_html_e('Reset to Default', 'add-to-home-screen-wp'); ?></button>
-                                    <p class="description"><?php esc_html_e('The color of the top bar in your Web App. Default: #000000 (black).', 'add-to-home-screen-wp'); ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="pwa_force_homepage"><?php esc_html_e('Force Homepage on Launch', 'add-to-home-screen-wp'); ?></label></th>
-                                <td>
-                                    <input type="checkbox" name="pwa_force_homepage" id="pwa_force_homepage" <?php checked($pwa_force_homepage === 'on'); ?> />
-                                    <p class="description"><?php esc_html_e('If checked, the Web App will always launch on the homepage, even if added from another page.', 'add-to-home-screen-wp'); ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="pwa_show_loading"><?php esc_html_e('Show Loading Indicator', 'add-to-home-screen-wp'); ?></label></th>
-                                <td>
-                                    <input type="checkbox" name="pwa_show_loading" id="pwa_show_loading" <?php checked($pwa_show_loading === 'on'); ?> />
-                                    <p class="description"><?php esc_html_e('If checked, a loading spinner will appear when navigating between pages in the Web App.', 'add-to-home-screen-wp'); ?></p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <th scope="row"><label for="pwa_show_install_button"><?php esc_html_e('Show Install Button for Android', 'add-to-home-screen-wp'); ?></label></th>
-                                <td>
-                                    <input type="checkbox" name="pwa_show_install_button" id="pwa_show_install_button" <?php checked($pwa_show_install_button === 'on'); ?> />
-                                    <p class="description"><?php esc_html_e('If checked, a button will appear on Android devices to prompt users to add the Web App to their home screen.', 'add-to-home-screen-wp'); ?></p>
-                                </td>
-                            </tr>
-                        </table>
-                        <p class="submit">
-                            <input type="submit" name="athswp_save_premium" class="button-primary" value="<?php esc_html_e('Save Settings', 'add-to-home-screen-wp'); ?>" />
-                        </p>
-                    <?php else : ?>
-                        <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; text-align: center;">
-                            <h3><?php esc_html_e('Unlock Premium Features!', 'add-to-home-screen-wp'); ?></h3>
-                            <p style="font-size: 16px; color: #333; line-height: 1.5;">
-                                <?php esc_html_e('Take your WordPress blog to the next level with these powerful premium features:', 'add-to-home-screen-wp'); ?>
-                            </p>
-                            <ul style="list-style: none; padding: 0; text-align: left; margin: 20px 0;">
-                                <li style="margin-bottom: 10px;">
-                                    <strong>💻 Full PWA Support:</strong> <?php esc_html_e('Transform your blog into a fast and fluid Progressive Web App, launching like a native mobile app from the home screen.', 'add-to-home-screen-wp'); ?>
-                                </li>
-                                <li style="margin-bottom: 10px;">
-                                    <strong>📲 Install Button for Android & iOS:</strong> <?php esc_html_e('Add a simple “Add to Home Screen” button for both Android and iOS users with one click.', 'add-to-home-screen-wp'); ?>
-                                </li>
-                                <li style="margin-bottom: 10px;">
-                                    <strong>⏳ Stylish Loading Indicator:</strong> <?php esc_html_e('Enhance navigation with a professional spinner during page transitions.', 'add-to-home-screen-wp'); ?>
-                                </li>
-                                <li style="margin-bottom: 10px;">
-                                    <strong>🚀 Force Homepage on Launch:</strong> <?php esc_html_e('Ensure a consistent experience by always starting users on your homepage, no matter where they added your blog from.', 'add-to-home-screen-wp'); ?>
-                                </li>
-                            </ul>
-                            <p>
-                                <?php
-                                $allowed_html = array(
-                                    'a' => array(
-                                        'href' => array(),
-                                        'target' => array(),
-                                        'style' => array(),
-                                    ),
-                                );
-                                printf(
-                                    wp_kses(
-                                        __('Ready to upgrade? <a href="%s" target="_blank" style="color: #0073aa; text-decoration: underline;">Get your premium license now</a> or <a href="%s" style="color: #0073aa; text-decoration: underline;">enter your license key</a> in the License tab.', 'add-to-home-screen-wp'),
-                                        $allowed_html
-                                    ),
-                                    esc_url('https://tulipemedia.com/en/product/aths-wordpress-premium/'),
-                                    esc_url(admin_url('options-general.php?page=add_to_home_screen_options&tab=license'))
-                                );
-                                ?>
-                            </p>
-                        </div>
-                    <?php endif; ?>
-                <?php endif; ?>
-    
-                <div style="max-width: 800px; margin: 20px auto; padding: 20px; background: #F2FBFD; border: 1px solid #B7E9E9; text-align: center; border-radius: 4px;">
-                    <h3><?php esc_html_e('Keep in touch with me.', 'add-to-home-screen-wp'); ?></h3>
-                    <div style="display: flex; justify-content: center; gap: 20px; align-items: center; flex-wrap: wrap; margin: 15px 0;">
-                        <a href="https://twitter.com/ziyadbachalany" target="_blank">
-                            <img src="<?php echo esc_url(plugins_url('assets/icons/twitter.png', __FILE__)); ?>" alt="Twitter" width="40">
-                        </a>
-                        <a href="https://www.facebook.com/ziyadbachalany" target="_blank">
-                            <img src="<?php echo esc_url(plugins_url('assets/icons/facebook.png', __FILE__)); ?>" alt="Facebook" width="40">
-                        </a>
-                        <a href="https://www.linkedin.com/in/ziyadbachalany" target="_blank">
-                            <img src="<?php echo esc_url(plugins_url('assets/icons/linkedin.png', __FILE__)); ?>" alt="LinkedIn" width="40">
-                        </a>
-                        <a href="https://instagram.com/ziyadbachalany" target="_blank">
-                            <img src="<?php echo esc_url(plugins_url('assets/icons/instagram.png', __FILE__)); ?>" alt="Instagram" width="40">
-                        </a>
-                    </div>
-                    <h4><?php esc_html_e('Let me know that you are using my plugin!', 'add-to-home-screen-wp'); ?></h4>
-                    <a href="https://twitter.com/intent/tweet?text=<?php echo esc_url(urlencode(__('Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Apple #iOS', 'add-to-home-screen-wp'))); ?>" 
-                       target="_blank" 
-                       class="twitter-share-button">
-                        <?php esc_html_e('Spread the word!', 'add-to-home-screen-wp'); ?>
-                    </a>
-                </div>
-            </form>
-    
-            <script>
-            jQuery(document).ready(function($) {
-                $('.upload-icon-button').click(function(e) {
-                    e.preventDefault();
-                    var button = $(this);
-                    var inputId = button.data('input');
-                    var customUploader = wp.media({
-                        title: '<?php esc_html_e('Select or Upload Icon', 'add-to-home-screen-wp'); ?>',
-                        button: { text: '<?php esc_html_e('Use this Icon', 'add-to-home-screen-wp'); ?>' },
-                        multiple: false,
-                        library: { type: 'image' }
-                    }).on('select', function() {
-                        var attachment = customUploader.state().get('selection').first().toJSON();
-                        $('#' + inputId).val(attachment.url);
-                    }).open();
-                });
-    
-                $('#reset_top_color').click(function(e) {
-                    e.preventDefault();
-                    $('#pwa_theme_color').val('#000000');
-                });
-            });
-            </script>
-        </div>
-        <?php
-    }
-}
-if (is_admin()) {
-    add_action('admin_init', array('adhsOptions', 'register'));
-    add_action('admin_menu', array('adhsOptions', 'menu'));
-}
-
-add_filter('plugin_action_links', 'aths_plugin_action_links', 10, 2);
-function aths_plugin_action_links($links, $file) {
-    static $this_plugin;
-    if (!$this_plugin) {
-        $this_plugin = plugin_basename(__FILE__);
-    }
-    if ($file == $this_plugin) {
-        $settings_link = '<a href="' . get_bloginfo('wpurl') . '/wp-admin/options-general.php?page=add_to_home_screen_options">' . esc_html__('Settings', 'add-to-home-screen-wp') . '</a>';
-        array_unshift($links, $settings_link);
-    }
-    return $links;
-}
-
-function generate_pwa_manifest() {
-    if (!isset($_GET['action']) || $_GET['action'] !== 'pwa_manifest') return;
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
-        $icon_url = get_option('touchicon_url', get_site_icon_url(192));
-        if (!$icon_url || !wp_remote_get($icon_url, ['timeout' => 2])['response']['code'] === 200) {
-            $icon_url = plugins_url('assets/icons/default-icon.png', __FILE__);
-        }
-        $manifest = [
-            "name" => get_option('addmetawebcapabletitle', get_bloginfo('name')),
-            "start_url" => "/",
-            "display" => "standalone",
-            "theme_color" => get_option('pwa_theme_color', '#000000'),
-            "icons" => [
-                ["src" => $icon_url, "sizes" => "192x192", "type" => "image/png"]
-            ]
-        ];
-        header('Content-Type: application/json');
-        echo json_encode($manifest);
-        exit;
-    }
-}
-add_action('init', 'generate_pwa_manifest');
-
-function force_homepage_on_standalone() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_force_homepage') === 'on') {
-        echo '<script>
-            (function() {
-                if (window.matchMedia("(display-mode: standalone)").matches || ("standalone" in window.navigator && window.navigator.standalone)) {
-                    if (!sessionStorage.getItem("pwa_launched")) {
-                        if (window.location.pathname !== "/") {
-                            window.location.href = "' . esc_url(home_url('/')) . '";
-                        }
-                        sessionStorage.setItem("pwa_launched", "true");
-                    }
-                }
-            })();
-        </script>';
-    }
-}
-add_action('wp_head', 'force_homepage_on_standalone', 10);
-
-function add_pwa_loading_indicator() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_show_loading', 'off') === 'on') {
-        $theme_color = esc_attr(get_option('pwa_theme_color', '#000000'));
-        echo '<div id="pwa-loading-indicator" style="display: none; position: fixed; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 40px; height: 40px; border: 4px solid #f3f3f3; border-top: 4px solid ' . $theme_color . '; border-radius: 50%; animation: spin 1s linear infinite; z-index: 9999; margin: 0; padding: 0; box-sizing: border-box;"></div>';
-        echo '<style>
-            @keyframes spin {
-                0% { transform: translate(-50%, -50%) rotate(0deg); }
-                100% { transform: translate(-50%, -50%) rotate(360deg); }
-            }
-            /* Ajustement pour iOS safe areas */
-            @supports (padding: env(safe-area-inset-top)) {
-                #pwa-loading-indicator {
-                    top: calc(50% + env(safe-area-inset-top));
-                    left: calc(50% + env(safe-area-inset-left));
-                }
-            }
-        </style>';
-        echo '<script>
-            (function() {
-                if (window.matchMedia("(display-mode: standalone)").matches || ("standalone" in window.navigator && window.navigator.standalone)) {
-                    const spinner = document.getElementById("pwa-loading-indicator");
-                    if (!spinner) return;
-
-                    // Réinitialiser l’état à chaque chargement
-                    spinner.style.display = "none";
-
-                    // Remplacer l’élément pour éviter les conflits d’événements
-                    const newSpinner = spinner.cloneNode(true);
-                    spinner.parentNode.replaceChild(newSpinner, spinner);
-
-                    document.addEventListener("click", function(e) {
-                        const link = e.target.closest("a");
-                        if (link && link.href && link.href.indexOf(window.location.host) !== -1) {
-                            newSpinner.style.display = "block";
-                            setTimeout(() => { newSpinner.style.display = "none"; }, 500);
-                        }
-                    });
-
-                    window.addEventListener("load", function() {
-                        newSpinner.style.display = "none";
-                    });
-                }
-            })();
-        </script>';
-    }
-}
-add_action('wp_footer', 'add_pwa_loading_indicator', 20);
-
-function athswp_set_pwa_viewport() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
-        echo '<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">';
-    }
-}
-add_action('wp_head', 'athswp_set_pwa_viewport', 1);
-
-function add_android_install_button() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on' && get_option('pwa_show_install_button', 'off') === 'on') {
-        echo '<button id="pwa-install-button">' . esc_html__('Add to Home Screen', 'add-to-home-screen-wp') . '</button>';
-        echo '<script>
-            (function() {
-                let deferredPrompt;
-                const installButton = document.getElementById("pwa-install-button");
-                installButton.style.backgroundColor = "' . esc_js(get_option('pwa_theme_color', '#000000')) . '";
-
-                window.addEventListener("beforeinstallprompt", function(e) {
-                    e.preventDefault();
-                    deferredPrompt = e;
-                    installButton.style.display = "block";
-                });
-
-                installButton.addEventListener("click", function() {
-                    if (deferredPrompt) {
-                        deferredPrompt.prompt();
-                        deferredPrompt.userChoice.then((choiceResult) => {
-                            if (choiceResult.outcome === "accepted") {
-                                console.log("Utilisateur a accepté l’installation");
-                            } else {
-                                console.log("Utilisateur a refusé l’installation");
+                </form>
+                <script>
+                    jQuery(document).ready(function($) {
+                        $('#new_athswp_delete_data_on_uninstall').on('change', function() {
+                            var isChecked = $(this).is(':checked');
+                            var message = isChecked
+                                ? '<?php echo esc_js(__('Are you sure you want to delete all data on uninstall? This includes settings and, if applicable, statistics from the Pro version.', 'add-to-home-screen-wp')); ?>'
+                                : '<?php echo esc_js(__('Are you sure you want to keep data on uninstall? Settings and statistics will remain in the database.', 'add-to-home-screen-wp')); ?>';
+                            if (!confirm(message)) {
+                                $(this).prop('checked', !isChecked);
                             }
-                            deferredPrompt = null;
-                            installButton.style.display = "none";
                         });
-                    }
-                });
-
-                if (window.matchMedia("(display-mode: standalone)").matches || ("standalone" in window.navigator && window.navigator.standalone)) {
-                    installButton.style.display = "none";
-                }
-
-                if (/Android/i.test(navigator.userAgent)) {
-                    installButton.dataset.android = "true";
-                }
-            })();
-        </script>';
-    }
-}
-add_action('wp_footer', 'add_android_install_button', 25);
-
-function enable_premium_features() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
-        echo '<meta name="apple-mobile-web-app-status-bar-style" content="default">';
-        echo '<link rel="manifest" href="' . add_query_arg('action', 'pwa_manifest', site_url()) . '">';
-    }
-}
-add_action('wp_head', 'enable_premium_features', 9);
-
-function add2homecustom() {
-    $allowed_html = array(
-        'center' => array(),
-        'h4'     => array(),
-        'strong' => array(),
-        'br'     => array(),
-        'p'      => array(),
-        'b'      => array(),
-        'i'      => array(),
-    );
-
-    echo '<script type="text/javascript">';
-    echo 'var addToHomeConfig = {';
-    if (get_option('message')) {
-        $str = get_option('message');
-        $str = preg_replace("(\r\n|\n|\r)", " ", $str);
-        $safe_message = wp_kses($str, $allowed_html);
-        echo 'message: ' . wp_json_encode($safe_message) . ',';
-    }
-    if (get_option('returningvisitor') === 'on') {
-        echo 'returningVisitor: true,';
-    }
-    echo 'animationIn: "' . esc_js(get_option('animationin', 'fade')) . '",';
-    echo 'animationOut: "' . esc_js(get_option('animationout', 'fade')) . '",';
-    echo 'startdelay: ' . (get_option('startdelay') ? absint(get_option('startdelay')) : 2000) . ',';
-    echo 'lifespan: ' . (get_option('lifespan') ? absint(get_option('lifespan')) : 20000) . ',';
-    echo 'expire: ' . (get_option('expire') ? absint(get_option('expire')) : 0) . ',';
-    echo 'touchIcon: ' . (get_option('touchicon') === 'on' ? 'true' : 'false') . ',';
-    echo 'bottomOffset: ' . (get_option('bottomoffset') ? absint(get_option('bottomoffset')) : 14) . ',';
-    echo '};';
-    echo '</script>';
-}
-add_action('wp_head', 'add2homecustom', 8);
-
-add_action('wp_enqueue_scripts', 'addtohomecss');
-function addtohomecss() {
-    $pagetarget = get_option('pagetarget', 'allpages');
-    if ($pagetarget === 'homeonly') {
-        if (is_home() || is_front_page()) {
-            wp_enqueue_style('adhs', plugins_url('add2home.css', __FILE__), [], '2.5');
-        }
-    } else {
-        wp_enqueue_style('adhs', plugins_url('add2home.css', __FILE__), [], '2.5');
-    }
-}
-
-add_action('wp_enqueue_scripts', 'addtohomejs', 10);
-function addtohomejs() {
-    $pagetarget = get_option('pagetarget', 'allpages');
-    if ($pagetarget === 'homeonly') {
-        if (is_home() || is_front_page()) {
-            wp_enqueue_script('adhs', plugins_url('add2home.js', __FILE__), [], '2.5', true);
-        }
-    } else {
-        wp_enqueue_script('adhs', plugins_url('add2home.js', __FILE__), [], '2.5', true);
-    }
-}
-
-add_action('wp_enqueue_scripts', 'athswp_enqueue_frontend_styles');
-function athswp_enqueue_frontend_styles() {
-    if (athswp_is_premium() && get_option('pwa_enable_features', 'on') === 'on') {
-        wp_enqueue_style('athswp-pwa', plugins_url('pwa-styles.css', __FILE__), [], '2.6.6');
-        // Injecter la couleur dynamique
-        $theme_color = esc_attr(get_option('pwa_theme_color', '#000000'));
-        echo "<style>#pwa-loading-indicator { border-top-color: $theme_color !important; }</style>";
-    }
-}
-
-function addmetawebcapable() { ?>
-    <meta name="apple-mobile-web-app-capable" content="yes">
-<?php }
-if (get_option('browseraths') === 'fullscreenmode') {
-    add_action('wp_head', 'addmetawebcapable', 3);
-}
-
-function addmetawebcapable_title() { ?>
-    <meta name="apple-mobile-web-app-title" content="<?php if (get_option('addmetawebcapabletitle')) { echo esc_html(get_option('addmetawebcapabletitle')); } else { echo wp_title(''); } ?>">
-<?php }
-add_action('wp_head', 'addmetawebcapable_title', 2);
-
-function addtouchicon_url() {
-    $icon_url = get_option('touchicon_url', plugins_url('assets/icons/default-icon.png', __FILE__));
-    echo '<link rel="apple-touch-icon';
-    if (get_option('aths_touchicon_precomposed') === 'on') {
-        echo '-precomposed';
-    }
-    echo '" sizes="180x180" href="';
-    echo esc_url($icon_url);
-    echo '">';
-}
-if (get_option('touchicon_url') || get_option('touchicon') === 'on') {
-    add_action('wp_head', 'addtouchicon_url', 4);
-}
-
-function addmetawebcapablelinks() { ?>
-    <script type="text/javascript">
-    (function(document,navigator,standalone) {
-        if ((standalone in navigator) && navigator[standalone]) {
-            var curnode, location=document.location, stop=/^(a|html)$/i;
-            document.addEventListener('click', function(e) {
-                curnode=e.target;
-                while (!(stop).test(curnode.nodeName)) {
-                    curnode=curnode.parentNode;
-                }
-                if('href' in curnode && ( curnode.href.indexOf('http') || ~curnode.href.indexOf(location.host) ) ) {
-                    e.preventDefault();
-                    location.href = curnode.href;
-                }
-            },false);
-        }
-    })(document,window.navigator,'standalone');
-    </script>
-<?php }
-if (get_option('addmetawebcapablelinks')) {
-    add_action('wp_head', 'addmetawebcapablelinks', 3);
-}
-
-function aths_track() { ?>
-    <script>
-    if (window.navigator.standalone == true && ( navigator.userAgent.match(/iPhone/i) || navigator.userAgent.match(/iPod/i) || navigator.userAgent.match(/iPad/i) )) {
-        if (typeof gtag === 'function') {
-            gtag('event', 'webapp_usage', {
-                'event_category': 'Web App',
-                'event_label': 'Yes',
-                'value': 1
-            });
-        }
-    } else {
-        if (typeof gtag === 'function') {
-            gtag('event', 'webapp_usage', {
-                'event_category': 'Web App',
-                'event_label': 'No',
-                'value': 0
-            });
+                    });
+                </script>
+            </div>
+            <?php
         }
     }
-    </script>
-<?php }
-if (get_option('aths_track')) {
-    add_action('wp_head', 'aths_track', 4);
-}
-
-function addbottommenu() { ?>
-    <script>
-    if (window.navigator.standalone == true) {
-        document.write('<div id="backforward"><div id="backnav"><a href="javascript:history.back();"><span> </span></a></div><div id="nextnav"><a href="javascript:history.forward();"><span></span></a></div><div id="refreshnav"><A HREF="javascript:history.go(0)"><span>↻</span></A></div></div>');
-    } else {
-        document.write('');
-    }
-    </script>
-<?php }
-if ((get_option('browseraths') === 'fullscreenmode') && (!get_option('webappnavbar'))) {
-    add_action('wp_footer', 'addbottommenu', 15);
-}
 
 endif;
+
+/**
+ * Get a plugin setting.
+ */
+function simple_aths_get_setting($key, $default = '') {
+    $defaults = SimpleATHSOptions::get_default_settings();
+    $default = isset($defaults[$key]) ? $defaults[$key] : $default;
+
+    if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+        return get_network_option(null, $key, $default);
+    }
+    return get_option($key, $default);
+}
+
+/**
+ * Update a plugin setting.
+ */
+function simple_aths_update_setting($key, $value) {
+    $is_network_activated = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__));
+    return $is_network_activated ? update_site_option($key, $value) : update_option($key, $value);
+}
+
+/**
+ * Register admin menus.
+ */
+if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+    add_action('network_admin_menu', ['SimpleATHSOptions', 'menu_network'], 10);
+} else {
+    add_action('admin_menu', ['SimpleATHSOptions', 'menu_site'], 20);
+}
+
+add_action('admin_init', ['SimpleATHSOptions', 'register']);
+
+/**
+ * Enqueue frontend scripts and styles.
+ */
+add_action('wp_enqueue_scripts', 'simple_aths_enqueue_frontend_scripts', 20);
+function simple_aths_enqueue_frontend_scripts() {
+    if (!wp_is_mobile()) {
+        return;
+    }
+
+    $enable_pwa = simple_aths_get_setting('new_enable_pwa', 'on');
+
+    if ($enable_pwa === 'on') {
+        wp_enqueue_script('simple-aths-pwa', plugins_url('athswp-pwa.js', __FILE__), ['jquery'], '3.0.0', true);
+        wp_add_inline_script('simple-aths-pwa', 'const ATHSWP_SW_URL = "' . plugins_url('athswp-sw.js', __FILE__) . '";');
+        wp_enqueue_style('simple-aths-pwa', plugins_url('athswp-pwa.css', __FILE__), [], '3.0.0');
+        $spinner_color = apply_filters('athswp_topbar_spinner_color', '#000000');
+        wp_add_inline_script('simple-aths-pwa', 'const ATHSWP_SPINNER_COLOR = "' . esc_js($spinner_color) . '";');
+        if (class_exists('ATHSWP_Pro')) {
+            $enable_spinner = simple_aths_get_setting('new_athswp_pro_enable_spinner', 'on');
+            wp_add_inline_script('simple-aths-pwa', 'const ATHSWP_ENABLE_SPINNER = "' . ($enable_spinner === 'on' ? 'true' : 'false') . '";');
+        }
+        wp_enqueue_script('simple-aths-pwa-fix', plugins_url('athswp-pwa-fix.js', __FILE__), [], '3.0.0', true);
+    }
+}
+
+/**
+ * Enqueue admin scripts.
+ */
+add_action('admin_enqueue_scripts', 'simple_aths_enqueue_admin_scripts', 10);
+function simple_aths_enqueue_admin_scripts($hook) {
+    if (strpos($hook, 'simple_aths_settings') !== false || 
+        strpos($hook, 'athswp_pro_settings') !== false || 
+        (is_network_admin() && isset($_GET['page']) && in_array($_GET['page'], ['simple_aths_settings', 'athswp_pro_settings']))) {
+        wp_enqueue_media();
+        wp_enqueue_script('simple-aths-admin', plugins_url('athswp-admin.js', __FILE__), ['jquery', 'wp-mediaelement'], '3.0.0', true);
+    }
+}
+
+/**
+ * Add balloon configuration for frontend.
+ */
+/**
+ * Add balloon configuration for frontend.
+ */
+add_action('wp_head', 'simple_aths_add_balloon_config_frontend', 100);
+function simple_aths_add_balloon_config_frontend() {
+    if (is_admin() || strpos($_SERVER['REQUEST_URI'] ?? '', '/wp-admin/') !== false) {
+        return;
+    }
+
+    if (!wp_is_mobile()) {
+        return;
+    }
+
+    $enable_balloon_ios_frontend = simple_aths_get_setting('new_enable_balloon_ios_frontend', 'on');
+    $install_prompt_android = simple_aths_get_setting('new_install_prompt_android', 'custom_floating_balloon');
+    $balloon_display_frontend = simple_aths_get_setting('new_balloon_display_frontend', 'all_pages');
+
+    // Skip if balloon is set to homepage only and not on homepage
+    if ($balloon_display_frontend === 'homepage' && !is_front_page()) {
+        return;
+    }
+
+    $is_ios = stripos($_SERVER['HTTP_USER_AGENT'], 'iPhone') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== false;
+    $is_android = stripos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false;
+
+    // Only show balloon if enabled for the device
+    if (!($is_ios && $enable_balloon_ios_frontend === 'on') && !($is_android && $install_prompt_android === 'custom_floating_balloon')) {
+        return;
+    }
+
+    // Generate or retrieve UUID
+    $uuid = isset($_COOKIE['simple_aths_uuid']) ? sanitize_text_field($_COOKIE['simple_aths_uuid']) : wp_generate_uuid4();
+    $cookie_path = is_multisite() ? parse_url(get_site_url(), PHP_URL_PATH) : '/';
+    setcookie('simple_aths_uuid', $uuid, time() + (365 * DAY_IN_SECONDS), $cookie_path);
+
+    // Check returning visitors
+    $returning_visitors_only = simple_aths_get_setting('new_returning_visitors_only', 'off') === 'on';
+    if ($returning_visitors_only) {
+        $first_visit = get_transient('simple_aths_first_visit_' . $uuid);
+        if ($first_visit === false) {
+            set_transient('simple_aths_first_visit_' . $uuid, true, YEAR_IN_SECONDS);
+            return; // Skip balloon for first visit
+        }
+    } else {
+        // Set first visit transient if not already set
+        if (get_transient('simple_aths_first_visit_' . $uuid) === false) {
+            set_transient('simple_aths_first_visit_' . $uuid, true, YEAR_IN_SECONDS);
+        }
+    }
+
+    // Check if balloon was closed in this session
+    if (isset($_COOKIE['simple_aths_session_closed']) && $_COOKIE['simple_aths_session_closed'] === '1') {
+        return;
+    }
+
+    // Check expiration time
+    $expire_days = absint(simple_aths_get_setting('new_expire_days', 0));
+    if ($expire_days > 0) {
+        $balloon_closed = get_transient('simple_aths_balloon_closed_' . $uuid);
+        if ($balloon_closed !== false) {
+            return; // Skip balloon if within expiration period
+        }
+    }
+
+    // Get message
+    $defaults = SimpleATHSOptions::get_default_settings();
+    $message = $is_ios ? simple_aths_get_setting('new_message_ios') : simple_aths_get_setting('new_message_android');
+    if (empty($message)) {
+        $message = $is_ios ? $defaults['new_message_ios'] : $defaults['new_message_android'];
+    }
+
+    // Replace placeholders
+    $message = str_replace('%site_name', esc_html(get_bloginfo('name')), $message);
+    $message = str_replace('%network_name', esc_html(is_multisite() ? get_network()->site_name : get_bloginfo('name')), $message);
+    $message = str_replace('%device', $is_ios ? 'iPhone' : 'Android', $message);
+    $message = preg_replace("(\r\n|\n|\r)", " ", $message);
+
+    // Sanitize message
+    $allowed_html = [
+        'center' => [],
+        'h4' => [],
+        'h3' => [],
+        'h2' => [],
+        'h1' => [],
+        'strong' => [],
+        'br' => [],
+        'p' => [],
+        'b' => [],
+        'i' => [],
+        'span' => ['class' => []],
+    ];
+    $safe_message = wp_kses($message, $allowed_html);
+    if (empty($safe_message)) {
+        $safe_message = $is_ios
+            ? 'Add ' . esc_html(get_bloginfo('name')) . ' to your iPhone now!'
+            : 'Add ' . esc_html(get_bloginfo('name')) . ' to your Android now!';
+    }
+
+    // Get other settings
+    $startdelay = absint(simple_aths_get_setting('new_startdelay', 2));
+    $lifespan = absint(simple_aths_get_setting('new_lifespan', 20));
+    $bottomoffset = absint(simple_aths_get_setting('new_bottomoffset', 14));
+    $animationin = sanitize_text_field(simple_aths_get_setting('new_animationin', 'fade'));
+    $animationout = sanitize_text_field(simple_aths_get_setting('new_animationout', 'fade'));
+    $touchicon_url = esc_url_raw(simple_aths_get_setting('new_touchicon_url', ''));
+    $precomposed_icon = simple_aths_get_setting('new_precomposed_icon', 'off') === 'on';
+    $balloon_icon_url = apply_filters('athswp_balloon_icon_url', $touchicon_url);
+
+    // Enqueue scripts and styles
+    $cache_buster = '3.0.0-' . wp_rand(100000, 999999);
+    wp_enqueue_style('simple-aths', plugins_url('add2home.css', __FILE__) . '?v=' . $cache_buster, [], '3.0.0');
+    wp_enqueue_script('simple-aths', plugins_url('add2home.js', __FILE__) . '?v=' . $cache_buster, ['jquery'], '3.0.0', true);
+
+    // Generate nonce for AJAX
+    $nonce = wp_create_nonce('simple_aths_close_balloon');
+
+    // Output JavaScript configuration
+    ?>
+    <script type="text/javascript">
+        (function() {
+            // Skip if in PWA mode
+            if (window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches) {
+                return;
+            }
+
+            window.addToHomeMessage = <?php echo wp_json_encode($safe_message); ?>;
+            window.addToHomeConfig = {
+                message: window.addToHomeMessage,
+                animationIn: '<?php echo esc_js($animationin); ?>',
+                animationOut: '<?php echo esc_js($animationout); ?>',
+                startDelay: <?php echo absint($startdelay * 1000); ?>,
+                lifespan: <?php echo absint($lifespan * 1000); ?>,
+                expire: 0, // Disable add2home.js expiration logic
+                bottomOffset: <?php echo absint($bottomoffset); ?>,
+                returningVisitor: false, // Disable add2home.js returning visitor logic
+                touchIcon: <?php echo $touchicon_url ? 'true' : 'false'; ?>,
+                balloonIcon: '<?php echo esc_js($balloon_icon_url); ?>',
+                precomposedIcon: <?php echo $precomposed_icon ? 'true' : 'false'; ?>,
+                enableBalloonIOS: '<?php echo esc_js($enable_balloon_ios_frontend); ?>',
+                installPromptAndroid: '<?php echo esc_js($install_prompt_android); ?>'
+            };
+
+            document.addEventListener('DOMContentLoaded', function() {
+                if (typeof addToHome !== 'undefined') {
+                    addToHome.show(); // Remove overrideChecks
+                    // Handle close button click
+                    var closeButton = document.querySelector('#addToHomeScreen .addToHomeClose');
+                    if (closeButton) {
+                        closeButton.addEventListener('click', function() {
+                            jQuery.ajax({
+                                url: '<?php echo admin_url('admin-ajax.php'); ?>',
+                                type: 'POST',
+                                data: {
+                                    action: 'simple_aths_close_balloon',
+                                    nonce: '<?php echo esc_js($nonce); ?>',
+                                    uuid: '<?php echo esc_js($uuid); ?>'
+                                },
+                                success: function() {
+                                    console.log('Balloon closure recorded');
+                                }
+                            });
+                        });
+                    }
+                }
+            });
+        })();
+    </script>
+    <?php
+}
+
+/**
+ * AJAX handler for balloon closure.
+ */
+add_action('wp_ajax_simple_aths_close_balloon', 'simple_aths_close_balloon');
+add_action('wp_ajax_nopriv_simple_aths_close_balloon', 'simple_aths_close_balloon');
+function simple_aths_close_balloon() {
+    check_ajax_referer('simple_aths_close_balloon', 'nonce');
+
+    $uuid = isset($_POST['uuid']) ? sanitize_text_field($_POST['uuid']) : '';
+    if (empty($uuid)) {
+        wp_send_json_error(['message' => 'Invalid UUID']);
+    }
+
+    // Set session cookie
+    $cookie_path = is_multisite() ? parse_url(get_site_url(), PHP_URL_PATH) : '/';
+    setcookie('simple_aths_session_closed', '1', 0, $cookie_path); // Session cookie (expires when browser closes)
+
+    // Set expiration transient
+    $expire_days = absint(simple_aths_get_setting('new_expire_days', 0));
+    if ($expire_days > 0) {
+        set_transient('simple_aths_balloon_closed_' . $uuid, true, $expire_days * DAY_IN_SECONDS);
+    }
+
+    wp_send_json_success();
+}
+
+/**
+ * Add PWA manifest for frontend.
+ */
+add_action('wp_head', 'simple_aths_add_manifest_frontend', 100);
+function simple_aths_add_manifest_frontend() {
+    if (!wp_is_mobile()) {
+        return;
+    }
+
+    $enable_pwa = simple_aths_get_setting('new_enable_pwa', 'on');
+    if ($enable_pwa !== 'on') {
+        return;
+    }
+
+    $request_uri = $_SERVER['REQUEST_URI'] ?? '';
+    if (is_admin() || $request_uri === '/pwa-add/') {
+        add_action('admin_notices', 'simple_aths_pwa_admin_notice');
+        return;
+    }
+
+    $web_app_title = simple_aths_get_setting('new_web_app_title', '');
+    $screen_title = !empty($web_app_title) ? $web_app_title : get_bloginfo('name');
+    $touchicon_url = simple_aths_get_setting('new_touchicon_url', '');
+    if (empty($touchicon_url)) {
+        $touchicon_url = plugins_url('assets/icons/tulipwork-default-icon.png', __FILE__);
+    }
+    $topbar_spinner_color = apply_filters('athswp_topbar_spinner_color', '#000000');
+    $frontend_pwa_start_url = simple_aths_get_setting('new_athswp_frontend_pwa_start_url', 'homepage');
+    $pwa_custom_url = simple_aths_get_setting('new_athswp_pwa_custom_url', '');
+
+    $is_ios = stripos($_SERVER['HTTP_USER_AGENT'], 'iPhone') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== false;
+    $is_android = stripos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false;
+    if ($is_ios || $is_android) {
+        ?>
+        <meta name="apple-mobile-web-app-capable" content="yes">
+        <meta name="mobile-web-app-capable" content="yes">
+        <meta name="apple-mobile-web-app-title" content="<?php echo esc_attr($screen_title); ?>">
+        <?php
+    }
+
+    $start_url = ($frontend_pwa_start_url === 'homepage_with_path' && !empty($pwa_custom_url))
+        ? (preg_match('#^https?://#', $pwa_custom_url) ? $pwa_custom_url : home_url($pwa_custom_url))
+        : home_url('/');
+
+    $redirect_url = $start_url;
+
+    $manifest = [
+        'name' => $screen_title,
+        'short_name' => $screen_title,
+        'start_url' => $start_url,
+        'scope' => home_url('/'),
+        'display' => 'standalone',
+        'background_color' => '#ffffff',
+        'theme_color' => $topbar_spinner_color,
+        'context' => 'frontend',
+        'icons' => [
+            [
+                'src' => $touchicon_url,
+                'sizes' => '192x192',
+                'type' => 'image/png'
+            ]
+        ]
+    ];
+
+    if ($frontend_pwa_start_url === 'homepage_with_path' && !empty($pwa_custom_url)) {
+        ?>
+        <script>
+        jQuery(document).ready(function($) {
+            if (window.navigator.standalone === true || window.matchMedia("(display-mode: standalone)").matches) {
+                if (!localStorage.getItem('simple_aths_pwa_redirected_frontend')) {
+                    localStorage.setItem('simple_aths_pwa_redirected_frontend', 'true');
+                    window.location.href = '<?php echo esc_url($redirect_url); ?>';
+                }
+            }
+        });
+        </script>
+        <?php
+    }
+
+    ?>
+    <link rel="manifest" href="data:application/manifest+json,<?php echo rawurlencode(json_encode($manifest)); ?>">
+    <?php
+}
+
+/**
+ * Add Android native install button.
+ */
+add_action('wp_footer', 'simple_aths_add_android_install_button', 25);
+function simple_aths_add_android_install_button() {
+    if (!wp_is_mobile() || stripos($_SERVER['HTTP_USER_AGENT'], 'Android') === false) {
+        return;
+    }
+
+    if (is_admin() || strpos($_SERVER['REQUEST_URI'] ?? '', '/wp-admin/') !== false) {
+        return;
+    }
+
+    $install_prompt_android = simple_aths_get_setting('new_install_prompt_android', 'custom_floating_balloon');
+    $enable_pwa = simple_aths_get_setting('new_enable_pwa', 'on');
+    if ($install_prompt_android !== 'native_button' || $enable_pwa !== 'on') {
+        return;
+    }
+
+    $topbar_spinner_color = apply_filters('athswp_topbar_spinner_color', '#000000');
+    ?>
+    <button id="pwa-install-button" style="display: none; position: fixed; bottom: 20px; right: 20px; padding: 10px 20px; background-color: <?php echo esc_attr($topbar_spinner_color); ?>; color: white; border: none; border-radius: 5px; z-index: 1000; cursor: pointer;">
+        <?php esc_html_e('Add to Home Screen', 'add-to-home-screen-wp'); ?>
+    </button>
+    <script>
+        (function() {
+            let deferredPrompt;
+            const installButton = document.getElementById("pwa-install-button");
+
+            window.addEventListener("beforeinstallprompt", function(e) {
+                deferredPrompt = e;
+                setTimeout(() => {
+                    installButton.style.display = "block";
+                }, 500);
+            });
+
+            installButton.addEventListener("click", function() {
+                if (deferredPrompt) {
+                    deferredPrompt.prompt();
+                    deferredPrompt.userChoice.then((choiceResult) => {
+                        deferredPrompt = null;
+                        installButton.style.display = "none";
+                    });
+                }
+            });
+
+            if (window.matchMedia("(display-mode: standalone)").matches || ("standalone" in window.navigator && window.navigator.standalone)) {
+                installButton.style.display = "none";
+            }
+        })();
+    </script>
+    <?php
+}
+
+/**
+ * PWA admin notice for admin pages.
+ */
+function simple_aths_pwa_admin_notice() {
+    ?>
+    <div class="notice notice-info">
+        <p><?php esc_html_e('PWA settings are applied for mobile devices only.', 'add-to-home-screen-wp'); ?></p>
+    </div>
+    <?php
+}
