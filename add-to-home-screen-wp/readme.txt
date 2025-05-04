@@ -4,7 +4,7 @@ Donate link: https://paypal.me/ziyadbachalany
 Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 2.6.7
+Stable tag: 2.6.8
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -21,7 +21,7 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 
 = Why Choose This Plugin? =
 - **Engage Mobile Users**: Prompt visitors to save your site as an app-like icon on their phone, keeping them coming back.
-- **Cross-Platform Support**: Works on Safari (iOS) and Google Chrome (Android) for maximum compatibility across mobile devices.
+- **Cross-Platform Support**: Works on Safari and Chrome for iOS, as well as Chrome for Android, ensuring maximum compatibility across mobile devices.
 - **Cost-Effective**: Build an app-like experience with WordPress and Progressive Web App (PWA) standards—no need for native iOS or Android app development.
 - **Multisite Ready**: Seamlessly applies PWA settings across all subsites in a WordPress multisite network.
 - **Free & Pro Options**: Start with robust free features and unlock premium capabilities for advanced customization and analytics.
@@ -67,7 +67,7 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 - **Content-Driven Businesses**—coaches, trainers, content creators, researchers, journalists, educators, and consultants seeking to engage mobile audiences with a seamless Progressive Web App.
 
 == Contribute ==
-- 🌐 **Translate**: Help make the plugin accessible worldwide! Contribute translations at [WordPress Translate](https://translate.wordpress.org/projects/wp-plugins/add-to-home-screen-wp/) or [contact us](https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/).
+- 🌐 **Translate**: Help make the plugin accessible worldwide! Contribute translations at [WordPress Translate](https://translate.wordpress.org/projects/wp-plugins/add-to-home-screen-wp/).
 - **Donate**: Support ongoing development with a coffee! ☕ [Donate now](https://paypal.me/ziyadbachalany).
 - **Rate Me**: Love the plugin? Share a 5-star review on [WordPress.org](https://wordpress.org/support/plugin/add-to-home-screen-wp/reviews/#new-post) to help others discover it.
 - **Follow Me**: Stay updated on [Instagram](https://instagram.com/ziyadbachalany/), [LinkedIn](https://www.linkedin.com/in/ziyadbachalany/), [X](https://x.com/ziyadbachalany), [Facebook](https://www.facebook.com/ziyadbachalany), or [YouTube](https://www.youtube.com/channel/UClMfre0hj-UCxGocDleZxTQ).
@@ -125,6 +125,12 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 
 == Changelog ==
 
+= 2.6.8 =
+* **New**: Added support for displaying the floating balloon on Chrome for iOS, in addition to Safari for iOS and Chrome on Android, enhancing cross-browser compatibility.
+* **Fixed**: Corrected floating balloon height issue on Chrome Android/iOS, ensuring it no longer stretches to full screen height.
+* **Improved**: Enhanced top positioning of floating balloon on Chrome Android/iOS to dynamically adjust for WordPress admin bar when user is logged in.
+* **Improved**: Optimized CSS and JavaScript for better rendering consistency across mobile browsers.
+
 = 2.6.7 =
 * **New**: Enhanced multisite support with clearer network-level settings for subsites.
 * **Improved**: Optimized PWA manifest generation for faster load times.
@@ -167,6 +173,9 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 * See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
+
+= 2.6.8 =
+Upgrade for a smoother floating balloon experience on Chrome Android/iOS, with fixed height rendering and dynamic positioning to avoid overlap with the WordPress admin bar. Enjoy a polished mobile PWA experience!
 
 = 2.6.7 =
 Upgrade for improved multisite support, faster PWA performance, and new Pro features like CSV stats export and enhanced dashboard prompts. Don’t miss out on the latest mobile engagement tools!

@@ -3,7 +3,7 @@
 Plugin Name: Add to Home Screen & Progressive Web App
 Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
 Description: Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
-Version: 2.6.7
+Version: 2.6.8
 Author: Ziyad Bachalany
 Author URI: https://tulipemedia.com
 License: GPL-2.0-or-later
@@ -985,8 +985,10 @@ function simple_aths_add_balloon_config_frontend() {
         return;
     }
 
-    $is_ios = stripos($_SERVER['HTTP_USER_AGENT'], 'iPhone') !== false || stripos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== false;
-    $is_android = stripos($_SERVER['HTTP_USER_AGENT'], 'Android') !== false;
+    $user_agent = $_SERVER['HTTP_USER_AGENT'] ?? '';
+    $is_ios = stripos($user_agent, 'iPhone') !== false || stripos($user_agent, 'iPad') !== false;
+    $is_android = stripos($user_agent, 'Android') !== false;
+    $is_chrome = stripos($user_agent, 'Chrome') !== false || stripos($user_agent, 'CriOS') !== false;
 
     // Only show balloon if enabled for the device
     if (!($is_ios && $enable_balloon_ios_frontend === 'on') && !($is_android && $install_prompt_android === 'custom_floating_balloon')) {
@@ -1007,7 +1009,6 @@ function simple_aths_add_balloon_config_frontend() {
             return; // Skip balloon for first visit
         }
     } else {
-        // Set first visit transient if not already set
         if (get_transient('simple_aths_first_visit_' . $uuid) === false) {
             set_transient('simple_aths_first_visit_' . $uuid, true, YEAR_IN_SECONDS);
         }
@@ -1095,9 +1096,9 @@ function simple_aths_add_balloon_config_frontend() {
                 animationOut: '<?php echo esc_js($animationout); ?>',
                 startDelay: <?php echo absint($startdelay * 1000); ?>,
                 lifespan: <?php echo absint($lifespan * 1000); ?>,
-                expire: 0, // Disable add2home.js expiration logic
+                expire: 0,
                 bottomOffset: <?php echo absint($bottomoffset); ?>,
-                returningVisitor: false, // Disable add2home.js returning visitor logic
+                returningVisitor: false,
                 touchIcon: <?php echo $touchicon_url ? 'true' : 'false'; ?>,
                 balloonIcon: '<?php echo esc_js($balloon_icon_url); ?>',
                 precomposedIcon: <?php echo $precomposed_icon ? 'true' : 'false'; ?>,
@@ -1107,11 +1108,60 @@ function simple_aths_add_balloon_config_frontend() {
 
             document.addEventListener('DOMContentLoaded', function() {
                 if (typeof addToHome !== 'undefined') {
-                    addToHome.show(); // Remove overrideChecks
+                    // Debug to check why balloon might not show
+                    console.log('ATHSWP: Attempting to show balloon - isChrome: <?php echo $is_chrome ? 'true' : 'false'; ?>, isIOS: <?php echo $is_ios ? 'true' : 'false'; ?>, isAndroid: <?php echo $is_android ? 'true' : 'false'; ?>, enableBalloonIOS: <?php echo json_encode($enable_balloon_ios_frontend); ?>');
+                    addToHome.show();
+                    // Apply Chrome-specific customizations
+                    var isChrome = <?php echo $is_chrome ? 'true' : 'false'; ?>;
+                    var isAndroid = <?php echo $is_android ? 'true' : 'false'; ?>;
+                    var isIOS = <?php echo $is_ios ? 'true' : 'false'; ?>;
+                    if (isChrome && (isAndroid || isIOS)) {
+                        var balloon = document.querySelector('#addToHomeScreen');
+                        if (balloon) {
+                            console.log('ATHSWP: Applying Chrome customizations - adding addToHomeChrome class');
+                            balloon.classList.add('addToHomeChrome');
+                            // Adjust top position based on admin bar presence
+                            var adminBar = document.querySelector('#wpadminbar');
+                            var topOffset = adminBar ? (adminBar.offsetHeight + <?php echo absint($bottomoffset); ?>) : <?php echo absint($bottomoffset); ?>;
+                            balloon.style.bottom = 'auto';
+                            balloon.style.top = topOffset + 'px';
+                            console.log('ATHSWP: Admin bar ' + (adminBar ? 'present' : 'absent') + ', setting top to ' + topOffset + 'px');
+                            <?php if ($is_android && $install_prompt_android === 'custom_floating_balloon') : ?>
+                            // Make balloon clickable on Android Chrome
+                            console.log('ATHSWP: Setting up clickable balloon for Android Chrome');
+                            let deferredPrompt;
+                            window.addEventListener('beforeinstallprompt', function(e) {
+                                console.log('ATHSWP: beforeinstallprompt event fired');
+                                deferredPrompt = e;
+                            });
+                            balloon.style.cursor = 'pointer';
+                            balloon.addEventListener('click', function(e) {
+                                // Avoid triggering click on close button
+                                if (e.target.classList.contains('addToHomeClose')) {
+                                    console.log('ATHSWP: Click on close button, skipping prompt');
+                                    return;
+                                }
+                                console.log('ATHSWP: Balloon clicked, attempting to prompt');
+                                if (deferredPrompt) {
+                                    deferredPrompt.prompt();
+                                    deferredPrompt.userChoice.then((choiceResult) => {
+                                        console.log('ATHSWP: User choice:', choiceResult.outcome);
+                                        deferredPrompt = null;
+                                    });
+                                } else {
+                                    console.log('ATHSWP: No deferredPrompt available');
+                                }
+                            });
+                            <?php endif; ?>
+                        } else {
+                            console.log('ATHSWP: Balloon element not found');
+                        }
+                    }
                     // Handle close button click
                     var closeButton = document.querySelector('#addToHomeScreen .addToHomeClose');
                     if (closeButton) {
                         closeButton.addEventListener('click', function() {
+                            console.log('ATHSWP: Close button clicked');
                             jQuery.ajax({
                                 url: '<?php echo admin_url('admin-ajax.php'); ?>',
                                 type: 'POST',
@@ -1121,11 +1171,15 @@ function simple_aths_add_balloon_config_frontend() {
                                     uuid: '<?php echo esc_js($uuid); ?>'
                                 },
                                 success: function() {
-                                    console.log('Balloon closure recorded');
+                                    console.log('ATHSWP: Balloon closure recorded');
                                 }
                             });
                         });
+                    } else {
+                        console.log('ATHSWP: Close button not found');
                     }
+                } else {
+                    console.log('ATHSWP: addToHome not defined');
                 }
             });
         })();

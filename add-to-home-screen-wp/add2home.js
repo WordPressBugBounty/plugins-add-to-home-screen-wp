@@ -155,7 +155,7 @@ var addToHome = (function (w) {
             return;
         }
 
-        if (!overrideChecks && (!isSafari && !isMobileChrome || isSessionActive || isStandalone)) {
+        if (!overrideChecks && (!isIDevice && !isMobileChrome || isSessionActive || isStandalone)) {
             console.log('ATHSWP: Skipping balloon - isSafari: ', isSafari, 'isMobileChrome: ', isMobileChrome, 'isSessionActive: ', isSessionActive, 'isStandalone: ', isStandalone);
             return;
         }

@@ -189,3 +189,10 @@
     justify-content: center; /* Centre horizontalement */
     text-indent: 0; /* Supprime le décalage horizontal */
 }
+
+/* Prevent balloon from stretching to full screen height on Chrome Android/iOS */
+#addToHomeScreen.addToHomeChrome {
+    bottom: auto !important;
+    height: auto !important;
+    max-height: 200px !important; /* Adjust as needed based on content */
+}
