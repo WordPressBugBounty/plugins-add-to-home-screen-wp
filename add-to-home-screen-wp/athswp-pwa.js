@@ -64,6 +64,17 @@ jQuery(document).ready(function($) {
             });
 
             // Pull-to-refresh
+            function isInSidebar(target) {
+                while (target) {
+                    if (target.id === 'adminmenuwrap' || target.id === 'adminmenu' || 
+                        target.classList && (target.classList.contains('wp-submenu') || target.classList.contains('wp-menu-name'))) {
+                        return true;
+                    }
+                    target = target.parentNode;
+                }
+                return false;
+            }
+
             let startY = 0;
             let pullDistance = 0;
             let pullStartTime = 0;
@@ -72,6 +83,9 @@ jQuery(document).ready(function($) {
             let isPulling = false;
 
             document.addEventListener('touchstart', function(e) {
+                if (isInSidebar(e.target)) {
+                    return; // Ignore si geste commence dans la sidebar
+                }
                 // Vérifier si l'utilisateur est presque au sommet de la page
                 setTimeout(() => {
                     if (window.scrollY <= 5) { // Tolérance de 5 pixels pour contourner les délais de rendu
@@ -85,6 +99,9 @@ jQuery(document).ready(function($) {
             }, { passive: true });
 
             document.addEventListener('touchmove', function(e) {
+                if (isInSidebar(e.target)) {
+                    return; // Ignore si geste se déplace dans la sidebar
+                }
                 if (!isPulling) return; // Sortir si le geste n'a pas commencé au sommet
 
                 pullDistance = e.touches[0].pageY - startY;

@@ -4,7 +4,7 @@ Donate link: https://paypal.me/ziyadbachalany
 Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 2.6.8
+Stable tag: 2.7
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -17,7 +17,12 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 
 🚀 Your site instantly transforms into a fast, smooth Web App, delivering **a native-like mobile experience** without the cost of building an app.
 
+🛠️ Works seamlessly on both single-site and multisite installations. Network-wide settings are available for consistent configuration across all subsites.
+
 *Perfect for blogs, businesses, e-commerce, online courses and WordPress multisite networks.*
+
+= 📺 Watch the quick video introduction =
+[youtube https://www.youtube.com/watch?v=u2h0_h3ct48]
 
 = Why Choose This Plugin? =
 - **Engage Mobile Users**: Prompt visitors to save your site as an app-like icon on their phone, keeping them coming back.
@@ -26,7 +31,7 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 - **Multisite Ready**: Seamlessly applies PWA settings across all subsites in a WordPress multisite network.
 - **Free & Pro Options**: Start with robust free features and unlock premium capabilities for advanced customization and analytics.
 
-**2025 Update**: Version 2.6.7 brings enhanced performance, improved multisite support, and new Pro features to make your PWA shine! Fully compliant with WordPress standards and optimized for the latest devices.
+**2025 Update**: Enhanced performance, improved multisite support, and new Pro features to make your PWA shine! Fully compliant with WordPress standards and optimized for the latest devices.
 
 = Free Features =
 - **Customizable Floating Balloon**: Display a stylish prompt on iOS and Android with tailored messages, animations, and delays.
@@ -43,6 +48,7 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 🌟 Upgrade to the **Pro version** at [tulipemedia.com](https://tulipemedia.com/en/product/aths-wordpress-premium/) for next-level PWA power:
 - **Loading Spinner**: Display a smooth, customizable loading spinner while your app content loads — fully integrated with your brand colors.
 - **Pull to Refresh**: Offer users a native-like refresh gesture on your Web App, just like on real mobile apps.
+- **Bottom Navigation Bar**: Enhance your PWA with a sleek, customizable bottom bar featuring Back, Forward, and Share buttons — for a smoother and more app-like mobile experience.
 - **Dashboard PWA Support**: Add the WordPress admin dashboard as a web app for quick mobile access — ideal for logged-in users or clients who need fast, app-like access to the WordPress backend.
 - **Advanced Prompts**: Fine-tune dashboard prompts for iOS and Android, with custom messages and icons.
 - **Installation Tracking**: Monitor how many users add your PWA to their home screens with detailed stats (GDPR-compliant, anonymized data).
@@ -122,8 +128,12 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 5. Free plugin settings page for easy configuration.
 6. Pro settings page with advanced PWA options and stats.
 7. Dashboard prompt for adding the admin dashboard as a PWA (Pro feature).
+8. Custom-colored bottom bar with Back, Forward, and Share buttons for smooth navigation in PWA mode (Pro feature)
 
 == Changelog ==
+
+= 2.7 =
+* **Improved**: Improved code structure and efficiency.
 
 = 2.6.8 =
 * **New**: Added support for displaying the floating balloon on Chrome for iOS, in addition to Safari for iOS and Chrome on Android, enhancing cross-browser compatibility.
@@ -173,6 +183,8 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 * See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
+= 2.7 =
+Improved code structure and efficiency.
 
 = 2.6.8 =
 Upgrade for a smoother floating balloon experience on Chrome Android/iOS, with fixed height rendering and dynamic positioning to avoid overlap with the WordPress admin bar. Enjoy a polished mobile PWA experience!
