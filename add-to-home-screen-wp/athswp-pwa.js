@@ -75,6 +75,18 @@ jQuery(document).ready(function($) {
                 return false;
             }
 
+            // Vérifier si le target est dans un élément éditable
+            function isInEditable(target) {
+                while (target) {
+                    const tagName = target.tagName.toUpperCase();
+                    if (['INPUT', 'TEXTAREA'].includes(tagName) || target.contentEditable === 'true') {
+                        return true;
+                    }
+                    target = target.parentNode;
+                }
+                return false;
+            }
+
             let startY = 0;
             let pullDistance = 0;
             let pullStartTime = 0;
@@ -83,8 +95,8 @@ jQuery(document).ready(function($) {
             let isPulling = false;
 
             document.addEventListener('touchstart', function(e) {
-                if (isInSidebar(e.target)) {
-                    return; // Ignore si geste commence dans la sidebar
+                if (isInSidebar(e.target) || isInEditable(e.target)) {
+                    return; // Ignore si geste commence dans la sidebar ou dans un élément éditable
                 }
                 // Vérifier si l'utilisateur est presque au sommet de la page
                 setTimeout(() => {
@@ -99,8 +111,8 @@ jQuery(document).ready(function($) {
             }, { passive: true });
 
             document.addEventListener('touchmove', function(e) {
-                if (isInSidebar(e.target)) {
-                    return; // Ignore si geste se déplace dans la sidebar
+                if (isInSidebar(e.target) || isInEditable(e.target)) {
+                    return; // Ignore si geste se déplace dans la sidebar ou dans un élément éditable
                 }
                 if (!isPulling) return; // Sortir si le geste n'a pas commencé au sommet
 

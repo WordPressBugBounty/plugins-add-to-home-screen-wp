@@ -4,7 +4,7 @@ Donate link: https://paypal.me/ziyadbachalany
 Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
 Tested up to: 6.8
-Stable tag: 2.7
+Stable tag: 2.7.4
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -131,6 +131,18 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 8. Custom-colored bottom bar with Back, Forward, and Share buttons for smooth navigation in PWA mode (Pro feature)
 
 == Changelog ==
+= 2.7.4 =
+* **Fixed**: Removed embedded URLs from all translatable strings to comply with GNU gettext best practices.
+* **Improved**: French (fr_FR) and German (de_DE) language files updated to 100% completion.
+
+= 2.7.3 =
+* **Improved**: Changed placeholders from % to {} in translatable strings for better compatibility with WordPress translation system.
+
+= 2.7.2 =
+* **Fixed**: Fixed a broken link in the settings page.
+
+= 2.7.1 =
+* **Fixed**: Fixed a bug message on multisite when first activating the plugin.
 
 = 2.7 =
 * **Improved**: Improved code structure and efficiency.
@@ -183,6 +195,18 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 * See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
+= 2.7.4 =
+Minor fixes related to translations.
+
+= 2.7.3 =
+Changed placeholders from % to {} in translatable strings for better compatibility with WordPress translation system. Please update your messages in the plugin settings!
+
+= 2.7.2 =
+Improved code structure and efficiency.
+
+= 2.7.1 =
+Improved code structure and efficiency.
+
 = 2.7 =
 Improved code structure and efficiency.
 

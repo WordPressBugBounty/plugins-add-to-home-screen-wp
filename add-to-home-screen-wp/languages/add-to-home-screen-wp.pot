@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATHS WP Plugin\n"
-"POT-Creation-Date: 2025-04-20 02:18+0200\n"
+"POT-Creation-Date: 2025-10-31 01:59+0100\n"
 "PO-Revision-Date: 2013-03-21 01:31+0100\n"
 "Last-Translator: Tulipe Media <contact@tulipemedia.com>\n"
 "Language-Team: Tulipe Media <contact@tulipemedia.com>\n"
@@ -11,265 +11,263 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=n>1;\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Poedit-KeywordsList: __;_e;_c;esc_html_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: add-to-home-screen-wp.php:39
+#: add-to-home-screen-wp.php:44
 msgid ""
-"🚀 Add %network_name (%site_name) to your %device with %icon and %add now! "
-"🌟"
+"🚀 Add {network_name} ({site_name}) to your {device} with {icon} and {add} "
+"now! 🌟"
 msgstr ""
 
-#: add-to-home-screen-wp.php:40
-msgid "🚀 Add %site_name to your %device with %icon and %add now! 🌟"
+#: add-to-home-screen-wp.php:45
+msgid "🚀 Add {site_name} to your {device} with {icon} and {add} now! 🌟"
 msgstr ""
 
-#: add-to-home-screen-wp.php:42
-msgid "🚀 Add %network_name (%site_name) to your %device now! 🌟"
+#: add-to-home-screen-wp.php:47
+msgid "🚀 Add {network_name} ({site_name}) to your {device} now! 🌟"
 msgstr ""
 
-#: add-to-home-screen-wp.php:43
-#, php-format
-msgid "🚀 Add %site_name to your %device now! 🌟"
+#: add-to-home-screen-wp.php:48
+msgid "🚀 Add {site_name} to your {device} now! 🌟"
 msgstr ""
 
-#: add-to-home-screen-wp.php:156 add-to-home-screen-wp.php:157
-#: add-to-home-screen-wp.php:1268
+#: add-to-home-screen-wp.php:161 add-to-home-screen-wp.php:162
+#: add-to-home-screen-wp.php:1367
 msgid "Add to Home Screen"
 msgstr ""
 
-#: add-to-home-screen-wp.php:172
+#: add-to-home-screen-wp.php:177
 msgid "General"
 msgstr ""
 
-#: add-to-home-screen-wp.php:173
+#: add-to-home-screen-wp.php:178
 msgid "Pro Settings"
 msgstr ""
 
-#: add-to-home-screen-wp.php:174
+#: add-to-home-screen-wp.php:179
 msgid "Support"
 msgstr ""
 
-#: add-to-home-screen-wp.php:177
+#: add-to-home-screen-wp.php:182
 msgid "License"
 msgstr ""
 
-#: add-to-home-screen-wp.php:179
+#: add-to-home-screen-wp.php:184
 msgid "Uninstall"
 msgstr ""
 
-#: add-to-home-screen-wp.php:183
+#: add-to-home-screen-wp.php:188
 msgid "Add to Home Screen & PWA"
 msgstr ""
 
-#: add-to-home-screen-wp.php:280
+#: add-to-home-screen-wp.php:285
 msgid "Add to Home Screen & PWA (Network Settings)"
 msgstr ""
 
-#: add-to-home-screen-wp.php:289 add-to-home-screen-wp.php:541
+#: add-to-home-screen-wp.php:294 add-to-home-screen-wp.php:546
 msgid "PWA Settings"
 msgstr ""
 
-#: add-to-home-screen-wp.php:291 add-to-home-screen-wp.php:543
+#: add-to-home-screen-wp.php:296 add-to-home-screen-wp.php:548
 msgid "Configure Progressive Web App features."
 msgstr ""
 
-#: add-to-home-screen-wp.php:295 add-to-home-screen-wp.php:547
+#: add-to-home-screen-wp.php:300 add-to-home-screen-wp.php:552
 msgid "Enable PWA"
 msgstr ""
 
-#: add-to-home-screen-wp.php:298
+#: add-to-home-screen-wp.php:303
 msgid ""
 "Enable Progressive Web App features (spinner and basic caching) across the "
 "admin dashboard and frontend."
 msgstr ""
 
-#: add-to-home-screen-wp.php:302 add-to-home-screen-wp.php:554
+#: add-to-home-screen-wp.php:307 add-to-home-screen-wp.php:559
 msgid "Frontend PWA Start URL"
 msgstr ""
 
-#: add-to-home-screen-wp.php:305 add-to-home-screen-wp.php:341
-#: add-to-home-screen-wp.php:557 add-to-home-screen-wp.php:593
+#: add-to-home-screen-wp.php:310 add-to-home-screen-wp.php:346
+#: add-to-home-screen-wp.php:562 add-to-home-screen-wp.php:598
 msgid "Homepage"
 msgstr ""
 
-#: add-to-home-screen-wp.php:306 add-to-home-screen-wp.php:558
+#: add-to-home-screen-wp.php:311 add-to-home-screen-wp.php:563
 msgid "Homepage with Path"
 msgstr ""
 
-#: add-to-home-screen-wp.php:309 add-to-home-screen-wp.php:561
+#: add-to-home-screen-wp.php:314 add-to-home-screen-wp.php:566
 msgid ""
 "Choose where the PWA launches when added from the frontend. \"Homepage with "
 "Path\" starts at the homepage and redirects to a relative path (e.g., /"
 "category/video/)."
 msgstr ""
 
-#: add-to-home-screen-wp.php:313 add-to-home-screen-wp.php:565
+#: add-to-home-screen-wp.php:318 add-to-home-screen-wp.php:570
 msgid "Frontend Floating Balloon"
 msgstr ""
 
-#: add-to-home-screen-wp.php:315 add-to-home-screen-wp.php:567
+#: add-to-home-screen-wp.php:320 add-to-home-screen-wp.php:572
 msgid ""
 "Configure how to prompt users to install your web app or add a shortcut to "
 "their home screen"
 msgstr ""
 
-#: add-to-home-screen-wp.php:319 add-to-home-screen-wp.php:571
+#: add-to-home-screen-wp.php:324 add-to-home-screen-wp.php:576
 msgid "Show Floating Balloon in Frontend (iOS)"
 msgstr ""
 
-#: add-to-home-screen-wp.php:322
+#: add-to-home-screen-wp.php:327
 msgid ""
 "Display a floating balloon to prompt iOS users to install the app in the "
 "frontend of all subsites."
 msgstr ""
 
-#: add-to-home-screen-wp.php:326 add-to-home-screen-wp.php:578
+#: add-to-home-screen-wp.php:331 add-to-home-screen-wp.php:583
 msgid "Installation Prompt in Frontend (Android)"
 msgstr ""
 
-#: add-to-home-screen-wp.php:329 add-to-home-screen-wp.php:581
+#: add-to-home-screen-wp.php:334 add-to-home-screen-wp.php:586
 msgid "Floating Balloon"
 msgstr ""
 
-#: add-to-home-screen-wp.php:330 add-to-home-screen-wp.php:582
+#: add-to-home-screen-wp.php:335 add-to-home-screen-wp.php:587
 msgid "Native Install Button"
 msgstr ""
 
-#: add-to-home-screen-wp.php:331 add-to-home-screen-wp.php:583
+#: add-to-home-screen-wp.php:336 add-to-home-screen-wp.php:588
 msgid "Disabled"
 msgstr ""
 
-#: add-to-home-screen-wp.php:333 add-to-home-screen-wp.php:585
+#: add-to-home-screen-wp.php:338 add-to-home-screen-wp.php:590
 msgid ""
 "Choose how to prompt users to install the app on Android devices in the "
 "frontend. The 'Native Install Button' uses the browser's native prompt, "
 "available only in the frontend."
 msgstr ""
 
-#: add-to-home-screen-wp.php:337 add-to-home-screen-wp.php:589
+#: add-to-home-screen-wp.php:342 add-to-home-screen-wp.php:594
 msgid "Balloon Display in Frontend"
 msgstr ""
 
-#: add-to-home-screen-wp.php:340 add-to-home-screen-wp.php:592
+#: add-to-home-screen-wp.php:345 add-to-home-screen-wp.php:597
 msgid "All Pages"
 msgstr ""
 
-#: add-to-home-screen-wp.php:343 add-to-home-screen-wp.php:595
+#: add-to-home-screen-wp.php:348 add-to-home-screen-wp.php:600
 msgid "Choose where to display the floating balloon on the frontend."
 msgstr ""
 
-#: add-to-home-screen-wp.php:347 add-to-home-screen-wp.php:599
+#: add-to-home-screen-wp.php:352 add-to-home-screen-wp.php:604
 msgid "Show to Returning Visitors Only"
 msgstr ""
 
-#: add-to-home-screen-wp.php:350 add-to-home-screen-wp.php:602
+#: add-to-home-screen-wp.php:355 add-to-home-screen-wp.php:607
 msgid "Show the balloon only to returning visitors."
 msgstr ""
 
-#: add-to-home-screen-wp.php:354 add-to-home-screen-wp.php:606
+#: add-to-home-screen-wp.php:359 add-to-home-screen-wp.php:611
 msgid "Floating Balloon Message for iOS"
 msgstr ""
 
-#: add-to-home-screen-wp.php:359 add-to-home-screen-wp.php:609
+#: add-to-home-screen-wp.php:364
 msgid ""
-"Custom message for iOS devices. Use %site_name for the site name, %device "
-"for the user's device, %icon for the first add icon, and %add for the "
-"second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
-"default message will be used."
+"Custom message for iOS devices. Use {site_name} for the site name, {device} "
+"for the user's device, {icon} for the first add icon, and {add} for the "
+"second add icon."
 msgstr ""
 
-#: add-to-home-screen-wp.php:368 add-to-home-screen-wp.php:613
+#: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:625
 msgid "Floating Balloon Message for Android"
 msgstr ""
 
-#: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:616
+#: add-to-home-screen-wp.php:378 add-to-home-screen-wp.php:630
 msgid ""
-"Custom message for Android devices. Use %site_name for the site name, and "
-"%device for the user's device. Note: %icon and %add are not supported in "
+"Custom message for Android devices. Use {site_name} for the site name, and "
+"{device} for the user's device. Note: {icon} and {add} are not supported in "
 "the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, "
 "the default message will be used."
 msgstr ""
 
-#: add-to-home-screen-wp.php:382 add-to-home-screen-wp.php:620
+#: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:639
 msgid "Animation In"
 msgstr ""
 
-#: add-to-home-screen-wp.php:385 add-to-home-screen-wp.php:396
-#: add-to-home-screen-wp.php:623 add-to-home-screen-wp.php:634
+#: add-to-home-screen-wp.php:390 add-to-home-screen-wp.php:401
+#: add-to-home-screen-wp.php:642 add-to-home-screen-wp.php:653
 msgid "Drop"
 msgstr ""
 
-#: add-to-home-screen-wp.php:386 add-to-home-screen-wp.php:397
-#: add-to-home-screen-wp.php:624 add-to-home-screen-wp.php:635
+#: add-to-home-screen-wp.php:391 add-to-home-screen-wp.php:402
+#: add-to-home-screen-wp.php:643 add-to-home-screen-wp.php:654
 msgid "Bubble"
 msgstr ""
 
-#: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:398
-#: add-to-home-screen-wp.php:625 add-to-home-screen-wp.php:636
+#: add-to-home-screen-wp.php:392 add-to-home-screen-wp.php:403
+#: add-to-home-screen-wp.php:644 add-to-home-screen-wp.php:655
 msgid "Fade"
 msgstr ""
 
-#: add-to-home-screen-wp.php:389 add-to-home-screen-wp.php:627
+#: add-to-home-screen-wp.php:394 add-to-home-screen-wp.php:646
 msgid "Animation when the balloon appears."
 msgstr ""
 
-#: add-to-home-screen-wp.php:393 add-to-home-screen-wp.php:631
+#: add-to-home-screen-wp.php:398 add-to-home-screen-wp.php:650
 msgid "Animation Out"
 msgstr ""
 
-#: add-to-home-screen-wp.php:400 add-to-home-screen-wp.php:638
+#: add-to-home-screen-wp.php:405 add-to-home-screen-wp.php:657
 msgid "Animation when the balloon disappears."
 msgstr ""
 
-#: add-to-home-screen-wp.php:404 add-to-home-screen-wp.php:642
+#: add-to-home-screen-wp.php:409 add-to-home-screen-wp.php:661
 msgid "Start Delay"
 msgstr ""
 
-#: add-to-home-screen-wp.php:408 add-to-home-screen-wp.php:646
+#: add-to-home-screen-wp.php:413 add-to-home-screen-wp.php:665
 msgid ""
 "Note: Ensure this is not too close to Lifespan to give users enough time to "
 "read the balloon."
 msgstr ""
 
-#: add-to-home-screen-wp.php:412 add-to-home-screen-wp.php:650
+#: add-to-home-screen-wp.php:417 add-to-home-screen-wp.php:669
 msgid "Lifespan"
 msgstr ""
 
-#: add-to-home-screen-wp.php:416 add-to-home-screen-wp.php:654
+#: add-to-home-screen-wp.php:421 add-to-home-screen-wp.php:673
 msgid ""
 "Note: Set this sufficiently higher than Start Delay to ensure the balloon "
 "stays visible long enough."
 msgstr ""
 
-#: add-to-home-screen-wp.php:420 add-to-home-screen-wp.php:658
+#: add-to-home-screen-wp.php:425 add-to-home-screen-wp.php:677
 msgid "Expiration Time"
 msgstr ""
 
-#: add-to-home-screen-wp.php:427 add-to-home-screen-wp.php:665
+#: add-to-home-screen-wp.php:432 add-to-home-screen-wp.php:684
 msgid "Bottom Offset"
 msgstr ""
 
-#: add-to-home-screen-wp.php:434 add-to-home-screen-wp.php:672
+#: add-to-home-screen-wp.php:439 add-to-home-screen-wp.php:691
 msgid "Precomposed Icon"
 msgstr ""
 
-#: add-to-home-screen-wp.php:437 add-to-home-screen-wp.php:675
+#: add-to-home-screen-wp.php:442 add-to-home-screen-wp.php:694
 msgid "Display the touch icon without gloss (iOS only)."
 msgstr ""
 
-#: add-to-home-screen-wp.php:441 add-to-home-screen-wp.php:679
+#: add-to-home-screen-wp.php:446 add-to-home-screen-wp.php:698
 msgid "Touch Icon URL"
 msgstr ""
 
-#: add-to-home-screen-wp.php:444 add-to-home-screen-wp.php:682
+#: add-to-home-screen-wp.php:449 add-to-home-screen-wp.php:701
 msgid "Upload Icon"
 msgstr ""
 
-#: add-to-home-screen-wp.php:445 add-to-home-screen-wp.php:683
+#: add-to-home-screen-wp.php:450 add-to-home-screen-wp.php:702
 msgid ""
 "URL of the icon for the PWA on the home screen (192x192 or 512x512 PNG "
 "recommended). If empty, a default icon will be used. Note: Browsers may use "
@@ -277,195 +275,234 @@ msgid ""
 "theme, or a plugin) for the home screen."
 msgstr ""
 
-#: add-to-home-screen-wp.php:449
+#: add-to-home-screen-wp.php:454
 msgid "Web App Title for all subsites"
 msgstr ""
 
-#: add-to-home-screen-wp.php:452 add-to-home-screen-wp.php:690
+#: add-to-home-screen-wp.php:457 add-to-home-screen-wp.php:709
 msgid ""
 "Custom title when added to the home screen. If empty, the site name will be "
 "used."
 msgstr ""
 
-#: add-to-home-screen-wp.php:532
+#: add-to-home-screen-wp.php:537
 msgid "Add to Home Screen & PWA Settings"
 msgstr ""
 
-#: add-to-home-screen-wp.php:550
+#: add-to-home-screen-wp.php:555
 msgid "Enable Progressive Web App features."
 msgstr ""
 
-#: add-to-home-screen-wp.php:574
+#: add-to-home-screen-wp.php:579
 msgid ""
 "Display a floating balloon to prompt iOS users to install the app in the "
 "frontend."
 msgstr ""
 
-#: add-to-home-screen-wp.php:687
+#: add-to-home-screen-wp.php:616
+msgid ""
+"Custom message for iOS devices. Use {site_name} for the site name, {device} "
+"for the user's device, {icon} for the first add icon, and {add} for the "
+"second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
+"default message will be used."
+msgstr ""
+
+#: add-to-home-screen-wp.php:706
 msgid "Web App Title"
 msgstr ""
 
-#: add-to-home-screen-wp.php:709
+#: add-to-home-screen-wp.php:728
 msgid "Support Add to Home Screen WP’s Future! 🌟"
 msgstr ""
 
-#: add-to-home-screen-wp.php:710
+#: add-to-home-screen-wp.php:729
 msgid ""
 "Add to Home Screen WP is a tool built with passion to help WordPress users "
 "like you enhance their mobile experience. Your support can make a huge "
 "difference in keeping it growing and improving!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:713
+#: add-to-home-screen-wp.php:732
 msgid "Let me know that you are using my plugin!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:714
+#: add-to-home-screen-wp.php:735
+#, php-format
 msgid ""
-"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
-"tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
-"#Android"
+"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! %s "
+"#iPhone #iPad #Android"
 msgstr ""
 
-#: add-to-home-screen-wp.php:717
+#: add-to-home-screen-wp.php:742
 msgid "Spread the word on X!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:723
+#: add-to-home-screen-wp.php:748
 msgid "Buy Me a Coffee"
 msgstr ""
 
-#: add-to-home-screen-wp.php:724
+#: add-to-home-screen-wp.php:749
 msgid ""
 "Love using Add to Home Screen WP? A small donation can fuel my coffee cup "
 "and help me dedicate more time to enhancing this plugin for you!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:727
+#: add-to-home-screen-wp.php:752
 msgid "Donate Now"
 msgstr ""
 
-#: add-to-home-screen-wp.php:732
+#: add-to-home-screen-wp.php:757
 msgid "Help Translate"
 msgstr ""
 
-#: add-to-home-screen-wp.php:733
+#: add-to-home-screen-wp.php:758
 msgid ""
 "Speak another language? Help make Add to Home Screen WP accessible to more "
 "people around the world by contributing to its translations!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:736
+#: add-to-home-screen-wp.php:761
 msgid "Translate Now"
 msgstr ""
 
-#: add-to-home-screen-wp.php:741
+#: add-to-home-screen-wp.php:766
 msgid "Rate on WordPress"
 msgstr ""
 
-#: add-to-home-screen-wp.php:742
+#: add-to-home-screen-wp.php:767
 msgid ""
 "Enjoying Add to Home Screen WP? Share your feedback by rating it on "
 "WordPress—it helps others discover it and motivates me to keep improving!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:745
+#: add-to-home-screen-wp.php:770
 msgid "Rate Now"
 msgstr ""
 
-#: add-to-home-screen-wp.php:750
+#: add-to-home-screen-wp.php:775
 msgid "Need Help?"
 msgstr ""
 
-#: add-to-home-screen-wp.php:751
+#: add-to-home-screen-wp.php:776
 msgid ""
 "Have questions or need assistance? Visit our support page for resources and "
 "contact options."
 msgstr ""
 
-#: add-to-home-screen-wp.php:754
+#: add-to-home-screen-wp.php:779
 msgid "Get Support"
 msgstr ""
 
-#: add-to-home-screen-wp.php:761
+#: add-to-home-screen-wp.php:786
 msgid "Follow Me on Social Media!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:762
+#: add-to-home-screen-wp.php:787
 msgid ""
 "Stay updated on Add to Home Screen & PWA news, tips, and more by following "
 "me on your favorite platforms!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:798
+#: add-to-home-screen-wp.php:827
 msgid "Unlock Premium Features!"
 msgstr ""
 
-#: add-to-home-screen-wp.php:800
+#: add-to-home-screen-wp.php:829
 msgid ""
 "Enhance your Add to Home Screen experience with these powerful premium "
 "features:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:804
+#: add-to-home-screen-wp.php:833
+msgid "Loading Spinner:"
+msgstr ""
+
+#: add-to-home-screen-wp.php:834
+msgid ""
+"Display a smooth, customizable loading spinner while your app content loads "
+"— fully integrated with your brand colors."
+msgstr ""
+
+#: add-to-home-screen-wp.php:837
+msgid "Pull to Refresh:"
+msgstr ""
+
+#: add-to-home-screen-wp.php:838
+msgid ""
+"Offer users a native-like refresh gesture on your Web App, just like on "
+"real mobile apps."
+msgstr ""
+
+#: add-to-home-screen-wp.php:841
+msgid "Bottom Navigation Bar:"
+msgstr ""
+
+#: add-to-home-screen-wp.php:842
+msgid ""
+"Enhance your PWA with a sleek, customizable bottom bar featuring Back, "
+"Forward, and Share buttons — for a smoother and more app-like mobile "
+"experience."
+msgstr ""
+
+#: add-to-home-screen-wp.php:845
 msgid "Dashboard PWA Support:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:804
+#: add-to-home-screen-wp.php:846
 msgid ""
 "Enable PWA functionality specifically for the WordPress admin dashboard."
 msgstr ""
 
-#: add-to-home-screen-wp.php:807
+#: add-to-home-screen-wp.php:849
 msgid "Advanced Dashboard Balloon Control:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:807
+#: add-to-home-screen-wp.php:850
 msgid "Fine-tune where the balloon appears in the admin dashboard."
 msgstr ""
 
-#: add-to-home-screen-wp.php:810
+#: add-to-home-screen-wp.php:853
 msgid "Custom Top Bar & Spinner Color:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:810
+#: add-to-home-screen-wp.php:854
 msgid "Personalize your PWA’s look."
 msgstr ""
 
-#: add-to-home-screen-wp.php:813
+#: add-to-home-screen-wp.php:857
 msgid "Floating Balloon Icon:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:813
+#: add-to-home-screen-wp.php:858
 msgid "Upload your own icon for the balloon."
 msgstr ""
 
-#: add-to-home-screen-wp.php:816
+#: add-to-home-screen-wp.php:861
 msgid "Installation Statistics:"
 msgstr ""
 
-#: add-to-home-screen-wp.php:816
+#: add-to-home-screen-wp.php:862
 msgid "Track how many users add your PWA to their home screens."
 msgstr ""
 
-#: add-to-home-screen-wp.php:823
+#: add-to-home-screen-wp.php:869
 #, php-format
 msgid ""
-"Ready to upgrade? <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; "
-"text-decoration: underline;\">Get your premium license now</a> or <a "
-"href=\"%s\" style=\"color: #0073aa; text-decoration: underline;\">enter "
-"your license key</a> in the License tab."
+"Download <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; text-"
+"decoration: underline; font-weight: bold;\">Add to Home Screen Pro and get "
+"your premium license now</a> and enter your license key in the \"License\" "
+"tab after installing and activating the Pro version of Add to Home Screen."
 msgstr ""
 
-#: add-to-home-screen-wp.php:855
+#: add-to-home-screen-wp.php:900
 msgid "Add to Home Screen & PWA - Uninstall Settings"
 msgstr ""
 
-#: add-to-home-screen-wp.php:862
+#: add-to-home-screen-wp.php:907
 msgid "Delete Data on Uninstall"
 msgstr ""
 
-#: add-to-home-screen-wp.php:865
+#: add-to-home-screen-wp.php:910
 msgid ""
 "If checked, all settings and data (including statistics and license "
 "activation for the Pro version, if applicable) will be deleted when the "
@@ -474,18 +511,18 @@ msgid ""
 "reinstall the plugin and want to keep your settings and license activation."
 msgstr ""
 
-#: add-to-home-screen-wp.php:878
+#: add-to-home-screen-wp.php:923
 msgid ""
 "Are you sure you want to delete all data on uninstall? This includes "
 "settings and, if applicable, statistics from the Pro version."
 msgstr ""
 
-#: add-to-home-screen-wp.php:879
+#: add-to-home-screen-wp.php:924
 msgid ""
 "Are you sure you want to keep data on uninstall? Settings and statistics "
 "will remain in the database."
 msgstr ""
 
-#: add-to-home-screen-wp.php:1306
+#: add-to-home-screen-wp.php:1405
 msgid "PWA settings are applied for mobile devices only."
 msgstr ""

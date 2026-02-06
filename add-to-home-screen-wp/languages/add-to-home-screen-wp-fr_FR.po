@@ -2,8 +2,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: ATHS MU Plugin\n"
-"POT-Creation-Date: 2025-04-20 02:18+0200\n"
-"PO-Revision-Date: 2025-04-20 02:21+0200\n"
+"POT-Creation-Date: 2025-10-31 01:59+0100\n"
+"PO-Revision-Date: 2025-10-31 02:17+0100\n"
 "Last-Translator: Tulipe Media <contact@tulipemedia.com>\n"
 "Language-Team: Tulipe Media <contact@tulipemedia.com>\n"
 "Language: fr_FR\n"
@@ -11,80 +11,81 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"X-Generator: Poedit 3.6\n"
+"X-Generator: Poedit 3.8\n"
 "X-Poedit-KeywordsList: __;_e;_c;esc_html_e\n"
 "X-Poedit-Basepath: ..\n"
 "X-Poedit-SourceCharset: UTF-8\n"
 "X-Poedit-SearchPath-0: .\n"
 
-#: add-to-home-screen-wp.php:39
+#: add-to-home-screen-wp.php:44
 msgid ""
-"🚀 Add %network_name (%site_name) to your %device with %icon and %add now! 🌟"
+"🚀 Add {network_name} ({site_name}) to your {device} with {icon} and {add} "
+"now! 🌟"
 msgstr ""
-"🚀 Ajoutez %network_name (%site_name) à votre %device avec %icon et %add dès "
+"🚀 Ajoutez {network_name} ({site_name}) à votre {device} avec {icon} et "
+"{add} dès maintenant ! 🌟"
+
+#: add-to-home-screen-wp.php:45
+msgid "🚀 Add {site_name} to your {device} with {icon} and {add} now! 🌟"
+msgstr ""
+"🚀 Ajoutez {site_name} à votre {device} avec {icon} et {add} dès "
 "maintenant ! 🌟"
 
-#: add-to-home-screen-wp.php:40
-msgid "🚀 Add %site_name to your %device with %icon and %add now! 🌟"
+#: add-to-home-screen-wp.php:47
+msgid "🚀 Add {network_name} ({site_name}) to your {device} now! 🌟"
 msgstr ""
-"🚀 Ajoutez %site_name à votre %device avec %icon et %add dès maintenant ! 🌟"
+"🚀 Ajoutez {network_name} ({site_name}) à votre {device} dès maintenant ! 🌟"
 
-#: add-to-home-screen-wp.php:42
-msgid "🚀 Add %network_name (%site_name) to your %device now! 🌟"
-msgstr ""
-"🚀 Ajoutez %network_name (%site_name) à votre %device dès maintenant ! 🌟"
+#: add-to-home-screen-wp.php:48
+msgid "🚀 Add {site_name} to your {device} now! 🌟"
+msgstr "🚀 Ajoutez {site_name} à votre {device} dès maintenant ! 🌟"
 
-#: add-to-home-screen-wp.php:43
-#, php-format
-msgid "🚀 Add %site_name to your %device now! 🌟"
-msgstr "🚀 Ajoutez %site_name à votre %device dès maintenant ! 🌟"
-
-#: add-to-home-screen-wp.php:156 add-to-home-screen-wp.php:157
-#: add-to-home-screen-wp.php:1268
+#: add-to-home-screen-wp.php:161 add-to-home-screen-wp.php:162
+#: add-to-home-screen-wp.php:1367
 msgid "Add to Home Screen"
 msgstr "Ajouter à l'écran d'accueil"
 
-#: add-to-home-screen-wp.php:172
+#: add-to-home-screen-wp.php:177
 msgid "General"
 msgstr "Général"
 
-#: add-to-home-screen-wp.php:173
+#: add-to-home-screen-wp.php:178
 msgid "Pro Settings"
 msgstr "Paramètres Pro"
 
-#: add-to-home-screen-wp.php:174
+#: add-to-home-screen-wp.php:179
 msgid "Support"
 msgstr "Support"
 
-#: add-to-home-screen-wp.php:177
+#: add-to-home-screen-wp.php:182
 msgid "License"
 msgstr "Licence"
 
-#: add-to-home-screen-wp.php:179
+#: add-to-home-screen-wp.php:184
 msgid "Uninstall"
 msgstr "Désinstallation"
 
-#: add-to-home-screen-wp.php:183
+#: add-to-home-screen-wp.php:188
 msgid "Add to Home Screen & PWA"
-msgstr "Ajouter à l'écran d'accueil & PWA"
+msgstr "Add to Home Screen & PWA"
 
-#: add-to-home-screen-wp.php:280
+#: add-to-home-screen-wp.php:285
 msgid "Add to Home Screen & PWA (Network Settings)"
-msgstr "Ajouter à l'écran d'accueil & PWA (Paramètres réseau)"
+msgstr "Add to Home Screen & PWA (Paramètres réseau)"
 
-#: add-to-home-screen-wp.php:289 add-to-home-screen-wp.php:541
+#: add-to-home-screen-wp.php:294 add-to-home-screen-wp.php:546
 msgid "PWA Settings"
 msgstr "Paramètres PWA"
 
-#: add-to-home-screen-wp.php:291 add-to-home-screen-wp.php:543
+#: add-to-home-screen-wp.php:296 add-to-home-screen-wp.php:548
 msgid "Configure Progressive Web App features."
 msgstr "Configurer les fonctionnalités de l'application Web progressive."
 
-#: add-to-home-screen-wp.php:295 add-to-home-screen-wp.php:547
+#: add-to-home-screen-wp.php:300 add-to-home-screen-wp.php:552
 msgid "Enable PWA"
 msgstr "Activer le PWA"
 
-#: add-to-home-screen-wp.php:298
+#: add-to-home-screen-wp.php:303
 msgid ""
 "Enable Progressive Web App features (spinner and basic caching) across the "
 "admin dashboard and frontend."
@@ -93,20 +94,20 @@ msgstr ""
 "mise en cache de base) dans le tableau de bord d'administration et "
 "l'interface publique."
 
-#: add-to-home-screen-wp.php:302 add-to-home-screen-wp.php:554
+#: add-to-home-screen-wp.php:307 add-to-home-screen-wp.php:559
 msgid "Frontend PWA Start URL"
 msgstr "URL de démarrage du PWA en interface publique"
 
-#: add-to-home-screen-wp.php:305 add-to-home-screen-wp.php:341
-#: add-to-home-screen-wp.php:557 add-to-home-screen-wp.php:593
+#: add-to-home-screen-wp.php:310 add-to-home-screen-wp.php:346
+#: add-to-home-screen-wp.php:562 add-to-home-screen-wp.php:598
 msgid "Homepage"
 msgstr "Page d'accueil"
 
-#: add-to-home-screen-wp.php:306 add-to-home-screen-wp.php:558
+#: add-to-home-screen-wp.php:311 add-to-home-screen-wp.php:563
 msgid "Homepage with Path"
 msgstr "Page d'accueil avec chemin"
 
-#: add-to-home-screen-wp.php:309 add-to-home-screen-wp.php:561
+#: add-to-home-screen-wp.php:314 add-to-home-screen-wp.php:566
 msgid ""
 "Choose where the PWA launches when added from the frontend. \"Homepage with "
 "Path\" starts at the homepage and redirects to a relative path (e.g., /"
@@ -116,11 +117,11 @@ msgstr ""
 "publique. \"Page d'accueil avec chemin\" commence à la page d'accueil et "
 "redirige vers un chemin relatif (par exemple, /categorie/video/)."
 
-#: add-to-home-screen-wp.php:313 add-to-home-screen-wp.php:565
+#: add-to-home-screen-wp.php:318 add-to-home-screen-wp.php:570
 msgid "Frontend Floating Balloon"
 msgstr "Infobulle flottante en interface publique"
 
-#: add-to-home-screen-wp.php:315 add-to-home-screen-wp.php:567
+#: add-to-home-screen-wp.php:320 add-to-home-screen-wp.php:572
 msgid ""
 "Configure how to prompt users to install your web app or add a shortcut to "
 "their home screen"
@@ -128,11 +129,11 @@ msgstr ""
 "Configurer comment inciter les utilisateurs à installer votre application "
 "Web ou à ajouter un raccourci à leur écran d'accueil"
 
-#: add-to-home-screen-wp.php:319 add-to-home-screen-wp.php:571
+#: add-to-home-screen-wp.php:324 add-to-home-screen-wp.php:576
 msgid "Show Floating Balloon in Frontend (iOS)"
 msgstr "Afficher l'infobulle flottante en interface publique (iOS)"
 
-#: add-to-home-screen-wp.php:322
+#: add-to-home-screen-wp.php:327
 msgid ""
 "Display a floating balloon to prompt iOS users to install the app in the "
 "frontend of all subsites."
@@ -140,23 +141,23 @@ msgstr ""
 "Afficher une infobulle flottante pour inciter les utilisateurs iOS à "
 "installer l'application dans l'interface publique de tous les sous-sites."
 
-#: add-to-home-screen-wp.php:326 add-to-home-screen-wp.php:578
+#: add-to-home-screen-wp.php:331 add-to-home-screen-wp.php:583
 msgid "Installation Prompt in Frontend (Android)"
 msgstr "Invite d'installation en interface publique (Android)"
 
-#: add-to-home-screen-wp.php:329 add-to-home-screen-wp.php:581
+#: add-to-home-screen-wp.php:334 add-to-home-screen-wp.php:586
 msgid "Floating Balloon"
 msgstr "Infobulle flottante"
 
-#: add-to-home-screen-wp.php:330 add-to-home-screen-wp.php:582
+#: add-to-home-screen-wp.php:335 add-to-home-screen-wp.php:587
 msgid "Native Install Button"
 msgstr "Bouton d'installation natif"
 
-#: add-to-home-screen-wp.php:331 add-to-home-screen-wp.php:583
+#: add-to-home-screen-wp.php:336 add-to-home-screen-wp.php:588
 msgid "Disabled"
 msgstr "Désactivé"
 
-#: add-to-home-screen-wp.php:333 add-to-home-screen-wp.php:585
+#: add-to-home-screen-wp.php:338 add-to-home-screen-wp.php:590
 msgid ""
 "Choose how to prompt users to install the app on Android devices in the "
 "frontend. The 'Native Install Button' uses the browser's native prompt, "
@@ -167,97 +168,96 @@ msgstr ""
 "natif\" utilise l'invite native du navigateur, disponible uniquement dans "
 "l'interface publique."
 
-#: add-to-home-screen-wp.php:337 add-to-home-screen-wp.php:589
+#: add-to-home-screen-wp.php:342 add-to-home-screen-wp.php:594
 msgid "Balloon Display in Frontend"
 msgstr "Affichage de l'infobulle en interface publique"
 
-#: add-to-home-screen-wp.php:340 add-to-home-screen-wp.php:592
+#: add-to-home-screen-wp.php:345 add-to-home-screen-wp.php:597
 msgid "All Pages"
 msgstr "Toutes les pages"
 
-#: add-to-home-screen-wp.php:343 add-to-home-screen-wp.php:595
+#: add-to-home-screen-wp.php:348 add-to-home-screen-wp.php:600
 msgid "Choose where to display the floating balloon on the frontend."
 msgstr ""
 "Choisissez où afficher l'infobulle flottante dans l'interface publique."
 
-#: add-to-home-screen-wp.php:347 add-to-home-screen-wp.php:599
+#: add-to-home-screen-wp.php:352 add-to-home-screen-wp.php:604
 msgid "Show to Returning Visitors Only"
 msgstr "Afficher uniquement aux visiteurs récurrents"
 
-#: add-to-home-screen-wp.php:350 add-to-home-screen-wp.php:602
+#: add-to-home-screen-wp.php:355 add-to-home-screen-wp.php:607
 msgid "Show the balloon only to returning visitors."
 msgstr "Afficher l'infobulle uniquement aux visiteurs récurrents."
 
-#: add-to-home-screen-wp.php:354 add-to-home-screen-wp.php:606
+#: add-to-home-screen-wp.php:359 add-to-home-screen-wp.php:611
 msgid "Floating Balloon Message for iOS"
 msgstr "Message de l'infobulle flottante pour iOS"
 
-#: add-to-home-screen-wp.php:359 add-to-home-screen-wp.php:609
+#: add-to-home-screen-wp.php:364
 msgid ""
-"Custom message for iOS devices. Use %site_name for the site name, %device "
-"for the user's device, %icon for the first add icon, and %add for the second "
-"add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default "
-"message will be used."
+"Custom message for iOS devices. Use {site_name} for the site name, {device} "
+"for the user's device, {icon} for the first add icon, and {add} for the "
+"second add icon."
 msgstr ""
-"Message personnalisé pour les appareils iOS. Utilisez %site_name pour le nom "
-"du site, %device pour l'appareil de l'utilisateur, %icon pour la première "
-"icône d'ajout, et %add pour la seconde icône d'ajout. Supporte le HTML de "
-"base (par exemple, <strong>, <i>). Si vide, le message par défaut sera "
-"utilisé."
+"Message personnalisé pour les appareils iOS. Utilisez {site_name} pour le "
+"nom du site, {device} pour l'appareil de l'utilisateur, {icon} pour la "
+"première icône d'ajout, et {add} pour la seconde icône d'ajout. Supporte le "
+"HTML de base (par exemple, <strong>, <i>). Si vide, le message par défaut "
+"sera utilisé."
 
-#: add-to-home-screen-wp.php:368 add-to-home-screen-wp.php:613
+#: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:625
 msgid "Floating Balloon Message for Android"
 msgstr "Message de l'infobulle flottante pour Android"
 
-#: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:616
+#: add-to-home-screen-wp.php:378 add-to-home-screen-wp.php:630
 msgid ""
-"Custom message for Android devices. Use %site_name for the site name, and "
-"%device for the user's device. Note: %icon and %add are not supported in the "
-"Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
-"default message will be used."
+"Custom message for Android devices. Use {site_name} for the site name, and "
+"{device} for the user's device. Note: {icon} and {add} are not supported in "
+"the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, "
+"the default message will be used."
 msgstr ""
-"Message personnalisé pour les appareils Android. Utilisez %site_name pour le "
-"nom du site et %device pour l'appareil de l'utilisateur. Remarque : %icon et "
-"%add ne sont pas pris en charge dans l'infobulle Android. Supporte le HTML "
-"de base (par exemple, <strong>, <i>). Si vide, le message par défaut sera "
-"utilisé."
+"Message personnalisé pour les appareils Android. Utilisez {site_name} pour "
+"le nom du site et {device} pour l'appareil de l'utilisateur. Remarque : "
+"{icon} et {add} ne sont pas pris en charge dans l'infobulle Android. "
+"Supporte le HTML de base (par exemple, <strong>, <i>). Si vide, le message "
+"par défaut sera utilisé."
 
-#: add-to-home-screen-wp.php:382 add-to-home-screen-wp.php:620
+#: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:639
 msgid "Animation In"
 msgstr "Animation d'entrée"
 
-#: add-to-home-screen-wp.php:385 add-to-home-screen-wp.php:396
-#: add-to-home-screen-wp.php:623 add-to-home-screen-wp.php:634
+#: add-to-home-screen-wp.php:390 add-to-home-screen-wp.php:401
+#: add-to-home-screen-wp.php:642 add-to-home-screen-wp.php:653
 msgid "Drop"
 msgstr "Chute"
 
-#: add-to-home-screen-wp.php:386 add-to-home-screen-wp.php:397
-#: add-to-home-screen-wp.php:624 add-to-home-screen-wp.php:635
+#: add-to-home-screen-wp.php:391 add-to-home-screen-wp.php:402
+#: add-to-home-screen-wp.php:643 add-to-home-screen-wp.php:654
 msgid "Bubble"
 msgstr "Bulle"
 
-#: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:398
-#: add-to-home-screen-wp.php:625 add-to-home-screen-wp.php:636
+#: add-to-home-screen-wp.php:392 add-to-home-screen-wp.php:403
+#: add-to-home-screen-wp.php:644 add-to-home-screen-wp.php:655
 msgid "Fade"
 msgstr "Fondu"
 
-#: add-to-home-screen-wp.php:389 add-to-home-screen-wp.php:627
+#: add-to-home-screen-wp.php:394 add-to-home-screen-wp.php:646
 msgid "Animation when the balloon appears."
 msgstr "Animation lorsque l'infobulle apparaît."
 
-#: add-to-home-screen-wp.php:393 add-to-home-screen-wp.php:631
+#: add-to-home-screen-wp.php:398 add-to-home-screen-wp.php:650
 msgid "Animation Out"
 msgstr "Animation de sortie"
 
-#: add-to-home-screen-wp.php:400 add-to-home-screen-wp.php:638
+#: add-to-home-screen-wp.php:405 add-to-home-screen-wp.php:657
 msgid "Animation when the balloon disappears."
 msgstr "Animation lorsque l'infobulle disparaît."
 
-#: add-to-home-screen-wp.php:404 add-to-home-screen-wp.php:642
+#: add-to-home-screen-wp.php:409 add-to-home-screen-wp.php:661
 msgid "Start Delay"
 msgstr "Délai de démarrage"
 
-#: add-to-home-screen-wp.php:408 add-to-home-screen-wp.php:646
+#: add-to-home-screen-wp.php:413 add-to-home-screen-wp.php:665
 msgid ""
 "Note: Ensure this is not too close to Lifespan to give users enough time to "
 "read the balloon."
@@ -265,11 +265,11 @@ msgstr ""
 "Remarque : Assurez-vous que ce délai n'est pas trop proche de la durée de "
 "vie pour donner aux utilisateurs suffisamment de temps pour lire l'infobulle."
 
-#: add-to-home-screen-wp.php:412 add-to-home-screen-wp.php:650
+#: add-to-home-screen-wp.php:417 add-to-home-screen-wp.php:669
 msgid "Lifespan"
 msgstr "Durée de vie"
 
-#: add-to-home-screen-wp.php:416 add-to-home-screen-wp.php:654
+#: add-to-home-screen-wp.php:421 add-to-home-screen-wp.php:673
 msgid ""
 "Note: Set this sufficiently higher than Start Delay to ensure the balloon "
 "stays visible long enough."
@@ -277,31 +277,31 @@ msgstr ""
 "Remarque : Définissez une valeur suffisamment supérieure au délai de "
 "démarrage pour garantir que l'infobulle reste visible assez longtemps."
 
-#: add-to-home-screen-wp.php:420 add-to-home-screen-wp.php:658
+#: add-to-home-screen-wp.php:425 add-to-home-screen-wp.php:677
 msgid "Expiration Time"
 msgstr "Temps d'expiration"
 
-#: add-to-home-screen-wp.php:427 add-to-home-screen-wp.php:665
+#: add-to-home-screen-wp.php:432 add-to-home-screen-wp.php:684
 msgid "Bottom Offset"
 msgstr "Décalage inférieur"
 
-#: add-to-home-screen-wp.php:434 add-to-home-screen-wp.php:672
+#: add-to-home-screen-wp.php:439 add-to-home-screen-wp.php:691
 msgid "Precomposed Icon"
 msgstr "Icône précomposée"
 
-#: add-to-home-screen-wp.php:437 add-to-home-screen-wp.php:675
+#: add-to-home-screen-wp.php:442 add-to-home-screen-wp.php:694
 msgid "Display the touch icon without gloss (iOS only)."
 msgstr "Afficher l'icône tactile sans brillance (iOS uniquement)."
 
-#: add-to-home-screen-wp.php:441 add-to-home-screen-wp.php:679
+#: add-to-home-screen-wp.php:446 add-to-home-screen-wp.php:698
 msgid "Touch Icon URL"
 msgstr "URL de l'icône tactile"
 
-#: add-to-home-screen-wp.php:444 add-to-home-screen-wp.php:682
+#: add-to-home-screen-wp.php:449 add-to-home-screen-wp.php:701
 msgid "Upload Icon"
 msgstr "Télécharger une icône"
 
-#: add-to-home-screen-wp.php:445 add-to-home-screen-wp.php:683
+#: add-to-home-screen-wp.php:450 add-to-home-screen-wp.php:702
 msgid ""
 "URL of the icon for the PWA on the home screen (192x192 or 512x512 PNG "
 "recommended). If empty, a default icon will be used. Note: Browsers may use "
@@ -314,11 +314,11 @@ msgstr ""
 "exemple, via l'icône de site WordPress, votre thème ou un plugin) pour "
 "l'écran d'accueil."
 
-#: add-to-home-screen-wp.php:449
+#: add-to-home-screen-wp.php:454
 msgid "Web App Title for all subsites"
 msgstr "Titre de l'application Web pour tous les sous-sites"
 
-#: add-to-home-screen-wp.php:452 add-to-home-screen-wp.php:690
+#: add-to-home-screen-wp.php:457 add-to-home-screen-wp.php:709
 msgid ""
 "Custom title when added to the home screen. If empty, the site name will be "
 "used."
@@ -326,15 +326,15 @@ msgstr ""
 "Titre personnalisé lorsqu'il est ajouté à l'écran d'accueil. Si vide, le nom "
 "du site sera utilisé."
 
-#: add-to-home-screen-wp.php:532
+#: add-to-home-screen-wp.php:537
 msgid "Add to Home Screen & PWA Settings"
 msgstr "Paramètres d'ajout à l'écran d'accueil & PWA"
 
-#: add-to-home-screen-wp.php:550
+#: add-to-home-screen-wp.php:555
 msgid "Enable Progressive Web App features."
 msgstr "Activer les fonctionnalités de l'application Web progressive."
 
-#: add-to-home-screen-wp.php:574
+#: add-to-home-screen-wp.php:579
 msgid ""
 "Display a floating balloon to prompt iOS users to install the app in the "
 "frontend."
@@ -342,15 +342,28 @@ msgstr ""
 "Afficher une infobulle flottante pour inciter les utilisateurs iOS à "
 "installer l'application dans l'interface publique."
 
-#: add-to-home-screen-wp.php:687
+#: add-to-home-screen-wp.php:616
+msgid ""
+"Custom message for iOS devices. Use {site_name} for the site name, {device} "
+"for the user's device, {icon} for the first add icon, and {add} for the "
+"second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
+"default message will be used."
+msgstr ""
+"Message personnalisé pour les appareils iOS. Utilisez {site_name} pour le "
+"nom du site, {device} pour l'appareil de l'utilisateur, {icon} pour la "
+"première icône d'ajout, et {add} pour la seconde icône d'ajout. Supporte le "
+"HTML de base (par exemple, <strong>, <i>). Si vide, le message par défaut "
+"sera utilisé."
+
+#: add-to-home-screen-wp.php:706
 msgid "Web App Title"
 msgstr "Titre de l'application Web"
 
-#: add-to-home-screen-wp.php:709
+#: add-to-home-screen-wp.php:728
 msgid "Support Add to Home Screen WP’s Future! 🌟"
 msgstr "Soutenez l'avenir d'Add to Home Screen WP ! 🌟"
 
-#: add-to-home-screen-wp.php:710
+#: add-to-home-screen-wp.php:729
 msgid ""
 "Add to Home Screen WP is a tool built with passion to help WordPress users "
 "like you enhance their mobile experience. Your support can make a huge "
@@ -361,29 +374,26 @@ msgstr ""
 "Votre soutien peut faire une énorme différence pour continuer à le "
 "développer et à l'améliorer !"
 
-#: add-to-home-screen-wp.php:713
+#: add-to-home-screen-wp.php:732
 msgid "Let me know that you are using my plugin!"
 msgstr "Faites-moi savoir que vous utilisez mon extension !"
 
-#: add-to-home-screen-wp.php:714
+#: add-to-home-screen-wp.php:735
+#, php-format
 msgid ""
-"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://"
-"tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
-"#Android"
+"Using the Add to home screen #WordPress #plugin by @ziyadbachalany! %s "
+"#iPhone #iPad #Android"
 msgstr ""
-"J’utilise l’extension #WordPress Add to Home Screen par @ziyadbachalany ! "
-"http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad "
-"#Android"
 
-#: add-to-home-screen-wp.php:717
+#: add-to-home-screen-wp.php:742
 msgid "Spread the word on X!"
 msgstr "Faites passer le mot sur X !"
 
-#: add-to-home-screen-wp.php:723
+#: add-to-home-screen-wp.php:748
 msgid "Buy Me a Coffee"
 msgstr "Offrez-moi un café"
 
-#: add-to-home-screen-wp.php:724
+#: add-to-home-screen-wp.php:749
 msgid ""
 "Love using Add to Home Screen WP? A small donation can fuel my coffee cup "
 "and help me dedicate more time to enhancing this plugin for you!"
@@ -392,15 +402,15 @@ msgstr ""
 "tasse de café et m'aider à consacrer plus de temps à l'amélioration de ce "
 "plugin pour vous !"
 
-#: add-to-home-screen-wp.php:727
+#: add-to-home-screen-wp.php:752
 msgid "Donate Now"
 msgstr "Faire un don maintenant"
 
-#: add-to-home-screen-wp.php:732
+#: add-to-home-screen-wp.php:757
 msgid "Help Translate"
 msgstr "Aider à traduire"
 
-#: add-to-home-screen-wp.php:733
+#: add-to-home-screen-wp.php:758
 msgid ""
 "Speak another language? Help make Add to Home Screen WP accessible to more "
 "people around the world by contributing to its translations!"
@@ -408,15 +418,15 @@ msgstr ""
 "Parlez une autre langue ? Aidez à rendre Add to Home Screen WP accessible à "
 "plus de personnes dans le monde en contribuant à ses traductions !"
 
-#: add-to-home-screen-wp.php:736
+#: add-to-home-screen-wp.php:761
 msgid "Translate Now"
 msgstr "Traduire maintenant"
 
-#: add-to-home-screen-wp.php:741
+#: add-to-home-screen-wp.php:766
 msgid "Rate on WordPress"
 msgstr "Noter sur WordPress"
 
-#: add-to-home-screen-wp.php:742
+#: add-to-home-screen-wp.php:767
 msgid ""
 "Enjoying Add to Home Screen WP? Share your feedback by rating it on WordPress"
 "—it helps others discover it and motivates me to keep improving!"
@@ -425,15 +435,15 @@ msgstr ""
 "notant sur WordPress — cela aide les autres à le découvrir et me motive à "
 "continuer à l'améliorer !"
 
-#: add-to-home-screen-wp.php:745
+#: add-to-home-screen-wp.php:770
 msgid "Rate Now"
 msgstr "Noter maintenant"
 
-#: add-to-home-screen-wp.php:750
+#: add-to-home-screen-wp.php:775
 msgid "Need Help?"
 msgstr "Besoin d'aide ?"
 
-#: add-to-home-screen-wp.php:751
+#: add-to-home-screen-wp.php:776
 msgid ""
 "Have questions or need assistance? Visit our support page for resources and "
 "contact options."
@@ -441,27 +451,27 @@ msgstr ""
 "Vous avez des questions ou besoin d'assistance ? Visitez notre page de "
 "support pour des ressources et des options de contact."
 
-#: add-to-home-screen-wp.php:754
+#: add-to-home-screen-wp.php:779
 msgid "Get Support"
 msgstr "Obtenir du support"
 
-#: add-to-home-screen-wp.php:761
+#: add-to-home-screen-wp.php:786
 msgid "Follow Me on Social Media!"
 msgstr "Suivez-moi sur les réseaux sociaux !"
 
-#: add-to-home-screen-wp.php:762
+#: add-to-home-screen-wp.php:787
 msgid ""
 "Stay updated on Add to Home Screen & PWA news, tips, and more by following "
 "me on your favorite platforms!"
 msgstr ""
 "Restez informé des actualités, astuces et plus encore sur Add to Home Screen "
-"WP en me suivant sur vos plateformes préférées !"
+"& PWA en me suivant sur vos plateformes préférées !"
 
-#: add-to-home-screen-wp.php:798
+#: add-to-home-screen-wp.php:827
 msgid "Unlock Premium Features!"
-msgstr "Déverrouillez les fonctionnalités Premium !"
+msgstr ""
 
-#: add-to-home-screen-wp.php:800
+#: add-to-home-screen-wp.php:829
 msgid ""
 "Enhance your Add to Home Screen experience with these powerful premium "
 "features:"
@@ -469,75 +479,114 @@ msgstr ""
 "Améliorez votre expérience avec Add to Home Screen grâce à ces puissantes "
 "fonctionnalités Premium :"
 
-#: add-to-home-screen-wp.php:804
+#: add-to-home-screen-wp.php:833
+msgid "Loading Spinner:"
+msgstr "Indicateur de chargement :"
+
+#: add-to-home-screen-wp.php:834
+msgid ""
+"Display a smooth, customizable loading spinner while your app content loads "
+"— fully integrated with your brand colors."
+msgstr ""
+"Affichez un indicateur de chargement fluide et personnalisable pendant le "
+"chargement du contenu de votre application — entièrement intégré avec les "
+"couleurs de votre marque."
+
+#: add-to-home-screen-wp.php:837
+msgid "Pull to Refresh:"
+msgstr "Tirer pour actualiser :"
+
+#: add-to-home-screen-wp.php:838
+msgid ""
+"Offer users a native-like refresh gesture on your Web App, just like on real "
+"mobile apps."
+msgstr ""
+"Offrez aux utilisateurs un geste d'actualisation natif sur votre application "
+"Web, comme sur les vraies applications mobiles."
+
+#: add-to-home-screen-wp.php:841
+msgid "Bottom Navigation Bar:"
+msgstr "Barre de navigation inférieure :"
+
+#: add-to-home-screen-wp.php:842
+msgid ""
+"Enhance your PWA with a sleek, customizable bottom bar featuring Back, "
+"Forward, and Share buttons — for a smoother and more app-like mobile "
+"experience."
+msgstr ""
+"Améliorez votre PWA avec une barre inférieure élégante et personnalisable "
+"comprenant les boutons Précédent, Suivant et Partager — pour une expérience "
+"mobile plus fluide et plus proche d'une application."
+
+#: add-to-home-screen-wp.php:845
 msgid "Dashboard PWA Support:"
 msgstr "Support PWA pour le tableau de bord :"
 
-#: add-to-home-screen-wp.php:804
+#: add-to-home-screen-wp.php:846
 msgid ""
 "Enable PWA functionality specifically for the WordPress admin dashboard."
 msgstr ""
 "Activer la fonctionnalité PWA spécifiquement pour le tableau de bord "
 "d'administration de WordPress."
 
-#: add-to-home-screen-wp.php:807
+#: add-to-home-screen-wp.php:849
 msgid "Advanced Dashboard Balloon Control:"
 msgstr "Contrôle avancé de l'infobulle dans le tableau de bord :"
 
-#: add-to-home-screen-wp.php:807
+#: add-to-home-screen-wp.php:850
 msgid "Fine-tune where the balloon appears in the admin dashboard."
 msgstr ""
 "Personnalisez précisément où l'infobulle apparaît dans le tableau de bord "
 "d'administration."
 
-#: add-to-home-screen-wp.php:810
+#: add-to-home-screen-wp.php:853
 msgid "Custom Top Bar & Spinner Color:"
 msgstr "Couleur personnalisée de la barre supérieure et du chargement :"
 
-#: add-to-home-screen-wp.php:810
+#: add-to-home-screen-wp.php:854
 msgid "Personalize your PWA’s look."
 msgstr "Personnalisez l'apparence de votre PWA."
 
-#: add-to-home-screen-wp.php:813
+#: add-to-home-screen-wp.php:857
 msgid "Floating Balloon Icon:"
 msgstr "Icône de l'infobulle flottante :"
 
-#: add-to-home-screen-wp.php:813
+#: add-to-home-screen-wp.php:858
 msgid "Upload your own icon for the balloon."
 msgstr "Téléchargez votre propre icône pour l'infobulle."
 
-#: add-to-home-screen-wp.php:816
+#: add-to-home-screen-wp.php:861
 msgid "Installation Statistics:"
 msgstr "Statistiques d'installation :"
 
-#: add-to-home-screen-wp.php:816
+#: add-to-home-screen-wp.php:862
 msgid "Track how many users add your PWA to their home screens."
 msgstr ""
 "Suivez combien d'utilisateurs ajoutent votre PWA à leur écran d'accueil."
 
-#: add-to-home-screen-wp.php:823
+#: add-to-home-screen-wp.php:869
 #, php-format
 msgid ""
-"Ready to upgrade? <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; "
-"text-decoration: underline;\">Get your premium license now</a> or <a "
-"href=\"%s\" style=\"color: #0073aa; text-decoration: underline;\">enter your "
-"license key</a> in the License tab."
+"Download <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; text-"
+"decoration: underline; font-weight: bold;\">Add to Home Screen Pro and get "
+"your premium license now</a> and enter your license key in the \"License\" "
+"tab after installing and activating the Pro version of Add to Home Screen."
 msgstr ""
-"Prêt à passer à la version supérieure ? <a href=\"%s\" target=\"_blank\" "
-"style=\"color: #0073aa; text-decoration: underline;\">Obtenez votre licence "
-"Premium maintenant</a> ou <a href=\"%s\" style=\"color: #0073aa; text-"
-"decoration: underline;\">saisissez votre clé de licence</a> dans l'onglet "
-"Licence."
+"Téléchargez <a href=\"%s\" target=\"_blank\" style=\"color: #0073aa; text-"
+"decoration: underline; font-weight: bold;\">Add to Home Screen Pro et "
+"obtenez votre licence Premium maintenant</a> puis saisissez votre clé de "
+"licence dans l'onglet « Licence » après avoir installé et activé la version "
+"Pro de Add to Home Screen."
 
-#: add-to-home-screen-wp.php:855
+#: add-to-home-screen-wp.php:900
 msgid "Add to Home Screen & PWA - Uninstall Settings"
-msgstr "Ajouter à l'écran d'accueil & PWA - Paramètres de désinstallation"
+msgstr "Add to Home Screen & PWA - Paramètres de désinstallation"
 
-#: add-to-home-screen-wp.php:862
+#: add-to-home-screen-wp.php:907
 msgid "Delete Data on Uninstall"
 msgstr "Supprimer les données lors de la désinstallation"
 
-#: add-to-home-screen-wp.php:865
+#: add-to-home-screen-wp.php:910
 msgid ""
 "If checked, all settings and data (including statistics and license "
 "activation for the Pro version, if applicable) will be deleted when the "
@@ -552,7 +601,7 @@ msgstr ""
 "Décochez cette option si vous prévoyez de réinstaller le plugin et souhaitez "
 "conserver vos paramètres et l'activation de la licence."
 
-#: add-to-home-screen-wp.php:878
+#: add-to-home-screen-wp.php:923
 msgid ""
 "Are you sure you want to delete all data on uninstall? This includes "
 "settings and, if applicable, statistics from the Pro version."
@@ -561,7 +610,7 @@ msgstr ""
 "désinstallation ? Cela inclut les paramètres et, le cas échéant, les "
 "statistiques de la version Pro."
 
-#: add-to-home-screen-wp.php:879
+#: add-to-home-screen-wp.php:924
 msgid ""
 "Are you sure you want to keep data on uninstall? Settings and statistics "
 "will remain in the database."
@@ -569,83 +618,6 @@ msgstr ""
 "Êtes-vous sûr de vouloir conserver les données lors de la désinstallation ? "
 "Les paramètres et les statistiques resteront dans la base de données."
 
-#: add-to-home-screen-wp.php:1306
+#: add-to-home-screen-wp.php:1405
 msgid "PWA settings are applied for mobile devices only."
 msgstr "Les paramètres PWA s'appliquent uniquement aux appareils mobiles."
-
-#~ msgid "Check to enable the \"Add to Home Screen\" balloon in the dashboard."
-#~ msgstr ""
-#~ "Cochez pour activer l'infobulle \"Ajouter à l'écran d'accueil\" dans le "
-#~ "tableau de bord."
-
-#~ msgid "Custom Message"
-#~ msgstr "Message personnalisé"
-
-#~ msgid "Supports basic HTML like <center>, <strong>, <i>, etc."
-#~ msgstr "Supporte le HTML de base comme <center>, <strong>, <i>, etc."
-
-#~ msgid "Screen Title"
-#~ msgstr "Titre de l'écran"
-
-#~ msgid ""
-#~ "The title displayed on the home screen shortcut (e.g., \"TulipWork "
-#~ "Dashboard\")."
-#~ msgstr ""
-#~ "Le titre affiché sur le raccourci de l'écran d'accueil (par exemple, "
-#~ "\"Tableau de bord TulipWork\")."
-
-#~ msgid "Milliseconds before showing the balloon. Default: 2000"
-#~ msgstr "Millisecondes avant d'afficher l'infobulle. Par défaut : 2000"
-
-#~ msgid "Milliseconds before hiding the balloon. Default: 20000"
-#~ msgstr "Millisecondes avant de masquer l'infobulle. Par défaut : 20000"
-
-#~ msgid "Minutes before showing the balloon again. Default: 43200 (1 month)"
-#~ msgstr ""
-#~ "Minutes avant de réafficher l'infobulle. Par défaut : 43200 (1 mois)"
-
-#~ msgid "Distance in pixels from the bottom. Default: 14"
-#~ msgstr "Distance en pixels depuis le bas. Par défaut : 14"
-
-#~ msgid "Enable Touch Icon"
-#~ msgstr "Activer l'icône tactile"
-
-#~ msgid "Show an icon next to the balloon message."
-#~ msgstr "Afficher une icône à côté du message de l'infobulle."
-
-#~ msgid ""
-#~ "URL of the icon (192x192 or 512x512 PNG recommended). Leave blank for "
-#~ "Tulipwork default."
-#~ msgstr ""
-#~ "URL de l'icône (PNG 192x192 ou 512x512 recommandé). Laissez vide pour "
-#~ "utiliser la valeur par défaut de Tulipwork."
-
-#~ msgid "Select or Upload Icon"
-#~ msgstr "Sélectionner ou télécharger une icône"
-
-#~ msgid "Use this Icon"
-#~ msgstr "Utiliser cette icône"
-
-#~ msgid ""
-#~ "Add to Home Screen MU (Tulipwork Network Edition) requires a WordPress "
-#~ "multisite network."
-#~ msgstr ""
-#~ "Add to Home Screen MU (Édition Réseau Tulipwork) nécessite un réseau "
-#~ "multisite WordPress."
-
-#~ msgid ""
-#~ "Add to Home Screen MU (Tulipwork Network Edition) must be network-"
-#~ "activated."
-#~ msgstr ""
-#~ "Add to Home Screen MU (Édition Réseau Tulipwork) doit être activé au "
-#~ "niveau du réseau."
-
-#~ msgid "Total historical adds to home screen: %d"
-#~ msgstr "Nombre total historique d'ajouts à l'écran d'accueil : %d"
-
-#~ msgid "Settings saved successfully!"
-#~ msgstr "Paramètres enregistrés avec succès !"
-
-#~ msgid "You do not have sufficient permissions to access this page."
-#~ msgstr ""
-#~ "Vous n'avez pas les permissions suffisantes pour accéder à cette page."

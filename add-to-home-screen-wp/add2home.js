@@ -177,9 +177,9 @@ var addToHome = (function (w) {
 
         // Remplacer les placeholders %device, %icon et %add
         var finalMessage = message
-            .replace('%device', platform)
-            .replace('%add', OSVersion >= 4.2 || isMobileChrome ? '<span class="addToHomeadd"></span>' : '<span class="addToHomePlus">+</span>')
-            .replace('%icon', isMobileChrome ? '' : (OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>'));
+            .replace(/{device}/g, platform)
+            .replace(/{add}/g, OSVersion >= 4.2 || isMobileChrome ? '<span class="addToHomeadd"></span>' : '<span class="addToHomePlus">+</span>')
+            .replace(/{icon}/g, isMobileChrome ? '' : (OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>'));
         console.log('ATHSWP: Final message after replacements = ', finalMessage);
 
         // Remplacer options.message par finalMessage

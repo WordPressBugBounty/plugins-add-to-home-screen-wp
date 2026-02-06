@@ -3,7 +3,7 @@
 Plugin Name: Add to Home Screen & Progressive Web App
 Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
 Description: Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
-Version: 2.7
+Version: 2.7.4
 Author: Ziyad Bachalany
 Author URI: https://tulipemedia.com
 License: GPL-2.0-or-later
@@ -13,6 +13,11 @@ Text Domain: add-to-home-screen-wp
 
 if (!defined('ABSPATH')) {
     exit;
+}
+
+// Ensure is_plugin_active_for_network is available in multisite environments
+if ( is_multisite() && ! function_exists( 'is_plugin_active_for_network' ) ) {
+    require_once( ABSPATH . 'wp-admin/includes/plugin.php' );
 }
 
 // Load plugin text domain for translation
@@ -36,11 +41,11 @@ if (!class_exists('SimpleATHSOptions')) :
 
             return [
                 'new_message_ios' => $is_network_activated
-                    ? __('🚀 Add %network_name (%site_name) to your %device with %icon and %add now! 🌟', 'add-to-home-screen-wp')
-                    : __('🚀 Add %site_name to your %device with %icon and %add now! 🌟', 'add-to-home-screen-wp'),
+                        ? __('🚀 Add {network_name} ({site_name}) to your {device} with {icon} and {add} now! 🌟', 'add-to-home-screen-wp')
+                        : __('🚀 Add {site_name} to your {device} with {icon} and {add} now! 🌟', 'add-to-home-screen-wp'),
                 'new_message_android' => $is_network_activated
-                    ? __('🚀 Add %network_name (%site_name) to your %device now! 🌟', 'add-to-home-screen-wp')
-                    : __('🚀 Add %site_name to your %device now! 🌟', 'add-to-home-screen-wp'),
+                        ? __('🚀 Add {network_name} ({site_name}) to your {device} now! 🌟', 'add-to-home-screen-wp')
+                        : __('🚀 Add {site_name} to your {device} now! 🌟', 'add-to-home-screen-wp'),
                 'new_startdelay' => 2,
                 'new_lifespan' => 20,
                 'new_expire_days' => 0,
@@ -69,7 +74,7 @@ if (!class_exists('SimpleATHSOptions')) :
                 return '';
             }
 
-            $allowed_tags = ['%site_name%', '%network_name%', '%device%', '%icon%', '%add%'];
+            $allowed_tags = ['{site_name}', '{network_name}', '{device}', '{icon}', '{add}'];
             $placeholders = [];
             foreach ($allowed_tags as $index => $tag) {
                 $placeholder = '[[TAG_' . $index . ']]';
@@ -356,9 +361,9 @@ public static function options_page_network() {
                         <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
                         <p class="description">
                             <?php
-                            esc_html_e('Custom message for iOS devices. Use %site_name for the site name, %device for the user\'s device, %icon for the first add icon, and %add for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                            esc_html_e('Custom message for iOS devices. Use {site_name} for the site name, {device} for the user\'s device, {icon} for the first add icon, and {add} for the second add icon.', 'add-to-home-screen-wp');
                             if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
-                                echo esc_html__(', %network_name for the network name', 'add-to-home-screen-wp');
+                                echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
                             }
                             ?>
                         </p>
@@ -370,9 +375,9 @@ public static function options_page_network() {
                         <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
                         <p class="description">
                             <?php
-                            esc_html_e('Custom message for Android devices. Use %site_name for the site name, and %device for the user\'s device. Note: %icon and %add are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                            esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
                             if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
-                                echo esc_html__(', %network_name for the network name', 'add-to-home-screen-wp');
+                                echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
                             }
                             ?>
                         </p>
@@ -606,14 +611,28 @@ public static function options_page_network() {
                             <th scope="row"><label for="new_message_ios"><?php esc_html_e('Floating Balloon Message for iOS', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
                                 <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
-                                <p class="description"><?php esc_html_e('Custom message for iOS devices. Use %site_name for the site name, %device for the user\'s device, %icon for the first add icon, and %add for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp'); ?></p>
+                                <p class="description">
+                                    <?php
+                                    esc_html_e('Custom message for iOS devices. Use {site_name} for the site name, {device} for the user\'s device, {icon} for the first add icon, and {add} for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                                    if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                                        echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
+                                    }
+                                    ?>
+                                </p>
                             </td>
                         </tr>
                         <tr>
                             <th scope="row"><label for="new_message_android"><?php esc_html_e('Floating Balloon Message for Android', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
                                 <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
-                                <p class="description"><?php esc_html_e('Custom message for Android devices. Use %site_name for the site name, and %device for the user\'s device. Note: %icon and %add are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp'); ?></p>
+                                <p class="description">
+                                    <?php
+                                    esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                                    if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
+                                        echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
+                                    }
+                                    ?>
+                                </p>
                             </td>
                         </tr>
                         <tr>
@@ -711,11 +730,17 @@ public static function options_page_network() {
 
                 <div style="max-width: 500px; margin: auto; text-align: center; background: #f9f9f9; padding: 10px; border-radius: 6px; box-shadow: 0 2px 4px rgba(0,0,0,0.05);">
                     <h3><?php esc_html_e('Let me know that you are using my plugin!', 'add-to-home-screen-wp'); ?></h3>
-                        <a href="https://twitter.com/intent/tweet?text=<?php echo urlencode(__('Using the Add to home screen #WordPress #plugin by @ziyadbachalany! http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/ #iPhone #iPad #Android', 'add-to-home-screen-wp')); ?>" 
-                            target="_blank" 
-                            class="button button-primary" style="font-size: 16px; padding: 10px 20px; background:rgb(186, 0, 84); border-color: #007cba;">
-                                <?php esc_html_e('Spread the word on X!', 'add-to-home-screen-wp'); ?>
-                        </a>
+                    <?php
+                    $tweet_text = sprintf(
+                        __('Using the Add to home screen #WordPress #plugin by @ziyadbachalany! %s #iPhone #iPad #Android', 'add-to-home-screen-wp'),
+                        esc_url('http://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/')
+                    );
+                    ?>
+                    <a href="https://twitter.com/intent/tweet?text=<?php echo urlencode($tweet_text); ?>" 
+                        target="_blank" 
+                        class="button button-primary" style="font-size: 16px; padding: 10px 20px; background:rgb(186, 0, 84); border-color: #007cba;">
+                            <?php esc_html_e('Spread the word on X!', 'add-to-home-screen-wp'); ?>
+                    </a>
                 </div>    
 
                 <div style="display: flex; flex-wrap: wrap; gap: 20px; margin-top: 20px;">
@@ -761,26 +786,32 @@ public static function options_page_network() {
                         <h3>📱 <?php esc_html_e('Follow Me on Social Media!', 'add-to-home-screen-wp'); ?></h3>
                         <p><?php esc_html_e('Stay updated on Add to Home Screen & PWA news, tips, and more by following me on your favorite platforms!', 'add-to-home-screen-wp'); ?></p>
                         <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 15px; margin-top: 15px;">
-                            <a href="https://www.linkedin.com/in/ziyadbachalany/" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://www.linkedin.com/in/ziyadbachalany/'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/linkedin-icon.png'); ?>" alt="LinkedIn" style="width: 32px; height: 32px; vertical-align: middle;"> LinkedIn
                             </a>
-                            <a href="https://x.com/ziyadbachalany" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://x.com/ziyadbachalany'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/x-icon.png'); ?>" alt="X" style="width: 32px; height: 32px; vertical-align: middle;"> X
                             </a>
-                            <a href="https://www.instagram.com/ziyadbachalany/" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://www.instagram.com/ziyadbachalany/'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/instagram-icon.png'); ?>" alt="Instagram" style="width: 32px; height: 32px; vertical-align: middle;"> Instagram
                             </a>
-                            <a href="https://www.facebook.com/ziyadbachalany" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://www.facebook.com/ziyadbachalany'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/facebook-icon.png'); ?>" alt="Facebook" style="width: 32px; height: 32px; vertical-align: middle;"> Facebook
                             </a>
-                            <a href="https://www.youtube.com/channel/UClMfre0hj-UCxGocDleZxTQ" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://www.youtube.com/channel/UClMfre0hj-UCxGocDleZxTQ'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/youtube-icon.png'); ?>" alt="YouTube" style="width: 32px; height: 32px; vertical-align: middle;"> YouTube
                             </a>
-                            <a href="https://www.tiktok.com/@ziyadbachalany" target="_blank" style="text-decoration: none;">
+                            <?php ?>
+                            <a href="<?php echo esc_url('https://www.tiktok.com/@ziyadbachalany'); ?>" target="_blank" style="text-decoration: none;">
                                 <img src="<?php echo plugins_url('add-to-home-screen-wp/assets/icons/tiktok-icon.png'); ?>" alt="TikTok" style="width: 32px; height: 32px; vertical-align: middle;"> TikTok
                             </a>
                         </div>
-                    </div>
+                </div>
 
             </div>
             <?php
@@ -790,8 +821,6 @@ public static function options_page_network() {
          * Pro teaser page.
          */
         public static function pro_teaser_page() {
-            $is_network_activated = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__));
-            $license_url = $is_network_activated && !is_network_admin() ? admin_url('network/settings.php?page=simple_aths_settings&tab=license') : admin_url('admin.php?page=simple_aths_settings&tab=license');
             ?>
             <div class="wrap athswp-pro-settings">
                 <div style="max-width: 600px; margin: 20px auto; padding: 20px; background: #f9f9f9; border: 1px solid #ddd; border-radius: 5px; text-align: center;">
@@ -801,30 +830,46 @@ public static function options_page_network() {
                     </p>
                     <ul style="list-style: none; padding: 0; text-align: left; margin: 20px 0;">
                         <li style="margin-bottom: 10px;">
-                            <strong>🚀 <?php esc_html_e('Dashboard PWA Support:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Enable PWA functionality specifically for the WordPress admin dashboard.', 'add-to-home-screen-wp'); ?>
+                            <strong>⏳ <?php esc_html_e('Loading Spinner:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Display a smooth, customizable loading spinner while your app content loads — fully integrated with your brand colors.', 'add-to-home-screen-wp'); ?>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <strong>🎈 <?php esc_html_e('Advanced Dashboard Balloon Control:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Fine-tune where the balloon appears in the admin dashboard.', 'add-to-home-screen-wp'); ?>
+                            <strong>🔄 <?php esc_html_e('Pull to Refresh:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Offer users a native-like refresh gesture on your Web App, just like on real mobile apps.', 'add-to-home-screen-wp'); ?>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <strong>🎨 <?php esc_html_e('Custom Top Bar & Spinner Color:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Personalize your PWA’s look.', 'add-to-home-screen-wp'); ?>
+                            <strong>⬇️ <?php esc_html_e('Bottom Navigation Bar:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Enhance your PWA with a sleek, customizable bottom bar featuring Back, Forward, and Share buttons — for a smoother and more app-like mobile experience.', 'add-to-home-screen-wp'); ?>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <strong>🖼️ <?php esc_html_e('Floating Balloon Icon:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Upload your own icon for the balloon.', 'add-to-home-screen-wp'); ?>
+                            <strong>🚀 <?php esc_html_e('Dashboard PWA Support:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Enable PWA functionality specifically for the WordPress admin dashboard.', 'add-to-home-screen-wp'); ?>
                         </li>
                         <li style="margin-bottom: 10px;">
-                            <strong>📊 <?php esc_html_e('Installation Statistics:', 'add-to-home-screen-wp'); ?></strong> <?php esc_html_e('Track how many users add your PWA to their home screens.', 'add-to-home-screen-wp'); ?>
+                            <strong>🎈 <?php esc_html_e('Advanced Dashboard Balloon Control:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Fine-tune where the balloon appears in the admin dashboard.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>🎨 <?php esc_html_e('Custom Top Bar & Spinner Color:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Personalize your PWA’s look.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>🖼️ <?php esc_html_e('Floating Balloon Icon:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Upload your own icon for the balloon.', 'add-to-home-screen-wp'); ?>
+                        </li>
+                        <li style="margin-bottom: 10px;">
+                            <strong>📊 <?php esc_html_e('Installation Statistics:', 'add-to-home-screen-wp'); ?></strong> 
+                            <?php esc_html_e('Track how many users add your PWA to their home screens.', 'add-to-home-screen-wp'); ?>
                         </li>
                     </ul>
-                    <p>
+                    <p style="font-size: 18px; font-weight: 600; color: #222; line-height: 1.6;">
                         <?php
                         printf(
                             wp_kses(
-                                __('Ready to upgrade? <a href="%s" target="_blank" style="color: #0073aa; text-decoration: underline;">Get your premium license now</a> or <a href="%s" style="color: #0073aa; text-decoration: underline;">enter your license key</a> in the License tab.', 'add-to-home-screen-wp'),
+                                __('Download <a href="%s" target="_blank" style="color: #0073aa; text-decoration: underline; font-weight: bold;">Add to Home Screen Pro and get your premium license now</a> and enter your license key in the "License" tab after installing and activating the Pro version of Add to Home Screen.', 'add-to-home-screen-wp'),
                                 ['a' => ['href' => [], 'target' => [], 'style' => []]]
                             ),
-                            'https://tulipemedia.com/en/product/aths-wordpress-premium/',
-                            esc_url($license_url)
+                            'https://tulipemedia.com/en/product/aths-wordpress-premium/'
                         );
                         ?>
                     </p>
@@ -1036,9 +1081,9 @@ function simple_aths_add_balloon_config_frontend() {
     }
 
     // Replace placeholders
-    $message = str_replace('%site_name', esc_html(get_bloginfo('name')), $message);
-    $message = str_replace('%network_name', esc_html(is_multisite() ? get_network()->site_name : get_bloginfo('name')), $message);
-    $message = str_replace('%device', $is_ios ? 'iPhone' : 'Android', $message);
+    $message = str_replace('{site_name}', esc_html(get_bloginfo('name')), $message);
+    $message = str_replace('{network_name}', esc_html(is_multisite() ? get_network()->site_name : get_bloginfo('name')), $message);
+    $message = str_replace('{device}', $is_ios ? 'iPhone' : 'Android', $message);
     $message = preg_replace("(\r\n|\n|\r)", " ", $message);
 
     // Sanitize message
