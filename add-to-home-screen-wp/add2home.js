@@ -45,13 +45,13 @@ var addToHome = (function (w) {
             ca_es: 'Per instal·lar aquesta aplicació al vostre %device premeu %icon i llavors <strong>Afegir a pantalla d\'inici</strong>.',
             cs_cz: 'Pro instalaci aplikace na Váš %device, stiskněte %icon a v nabídce <strong>Přidat na plochu</strong>.',
             da_dk: 'Tilføj denne side til din %device: tryk på %icon og derefter <strong>Føj til hjemmeskærm</strong>.',
-            de_de: 'Installieren Sie diese App auf Ihrem %device: %icon antippen und dann <strong>Zum Home-Bildschirm</strong>.',
+            de_de: 'Installieren Sie diese App auf Ihrem %device: <span class="addToHomeEllipsis"></span> antippen, dann %icon antippen, dann <span class="addToHomeChevron"></span> antippen und dann <span class="addToHomeadd"></span> <strong>Zum Home-Bildschirm</strong>.',
             el_gr: 'Εγκαταστήσετε αυτήν την Εφαρμογή στήν συσκευή σας %device: %icon μετά πατάτε <strong>Προσθήκη σε Αφετηρία</strong>.',
-            en_us: 'Install this web app on your %device: tap %icon and then <strong><span class="plus" style="border:1px solid #000;padding:0px 3px 2px 3px;font-size: 12px;"> + </span> Add to Home Screen</strong>.',
+            en_us: 'Install this web app on your %device: tap <span class="addToHomeEllipsis"></span>, then tap %icon, then tap <span class="addToHomeChevron"></span> See More, then <span class="addToHomeadd"></span> <strong>Add to Home Screen</strong>.',
             en_us_android: 'Install this web app on your %device: tap the menu then <strong>Add to homescreen</strong>.',
             es_es: 'Para instalar esta app en su %device, pulse %icon y seleccione <strong>Añadir a pantalla de inicio</strong>.',
             fi_fi: 'Asenna tämä web-sovellus laitteeseesi %device: paina %icon ja sen jälkeen valitse <strong>Lisää Koti-valikkoon</strong>.',
-            fr_fr: 'Ajoutez cette application sur votre %device en cliquant sur %icon, puis <strong>Ajouter à l\'écran d\'accueil</strong>.',
+            fr_fr: 'Ajoutez cette application sur votre %device : appuyez sur <span class="addToHomeEllipsis"></span>, puis sur %icon, puis sur <span class="addToHomeChevron"></span> En voir plus, puis sur <span class="addToHomeadd"></span> <strong>Ajouter à l\'écran d\'accueil</strong>.',
             fr_fr_android: 'Ajoutez cette application sur votre %device en cliquant sur le menu, puis <strong>Ajouter à l\'écran d\'accueil</strong>.',
             he_il: '<span dir="rtl">התקן אפליקציה זו על ה-%device שלך: הקש %icon ואז <strong>הוסף למסך הבית</strong>.</span>',
             hr_hr: 'Instaliraj ovu aplikaciju na svoj %device: klikni na %icon i odaberi <strong>Dodaj u početni zaslon</strong>.',
@@ -175,10 +175,12 @@ var addToHome = (function (w) {
             message = isMobileChrome ? 'Add this site to your Android now!' : 'Add this site to your iPhone now!';
         }
 
-        // Remplacer les placeholders %device, %icon et %add
+        // Remplacer les placeholders {device}, {icon}, {more}, {chevron} et {add}
         var finalMessage = message
             .replace(/{device}/g, platform)
             .replace(/{add}/g, OSVersion >= 4.2 || isMobileChrome ? '<span class="addToHomeadd"></span>' : '<span class="addToHomePlus">+</span>')
+            .replace(/{more}/g, '<span class="addToHomeEllipsis"></span>')
+            .replace(/{chevron}/g, '<span class="addToHomeChevron"></span>')
             .replace(/{icon}/g, isMobileChrome ? '' : (OSVersion >= 4.2 ? '<span class="addToHomeShare"></span>' : '<span class="addToHomePlus">+</span>'));
         console.log('ATHSWP: Final message after replacements = ', finalMessage);
 

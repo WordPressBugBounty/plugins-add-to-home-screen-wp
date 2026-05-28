@@ -3,7 +3,7 @@
 Plugin Name: Add to Home Screen & Progressive Web App
 Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
 Description: Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
-Version: 2.7.4
+Version: 2.7.5
 Author: Ziyad Bachalany
 Author URI: https://tulipemedia.com
 License: GPL-2.0-or-later
@@ -41,13 +41,13 @@ if (!class_exists('SimpleATHSOptions')) :
 
             return [
                 'new_message_ios' => $is_network_activated
-                        ? __('🚀 Add {network_name} ({site_name}) to your {device} with {icon} and {add} now! 🌟', 'add-to-home-screen-wp')
-                        : __('🚀 Add {site_name} to your {device} with {icon} and {add} now! 🌟', 'add-to-home-screen-wp'),
+                        ? __('<span class="addToHomeIntro">Install <strong>{network_name} ({site_name})</strong> on your {device}:</span><br>1. Tap {more}<br>2. Tap {icon} Share<br>3. Tap {chevron} See More<br>4. {add} <strong>Add to Home Screen</strong>', 'add-to-home-screen-wp')
+                        : __('<span class="addToHomeIntro">Install <strong>{site_name}</strong> on your {device}:</span><br>1. Tap {more}<br>2. Tap {icon} Share<br>3. Tap {chevron} See More<br>4. {add} <strong>Add to Home Screen</strong>', 'add-to-home-screen-wp'),
                 'new_message_android' => $is_network_activated
                         ? __('🚀 Add {network_name} ({site_name}) to your {device} now! 🌟', 'add-to-home-screen-wp')
                         : __('🚀 Add {site_name} to your {device} now! 🌟', 'add-to-home-screen-wp'),
                 'new_startdelay' => 2,
-                'new_lifespan' => 20,
+                'new_lifespan' => 30,
                 'new_expire_days' => 0,
                 'new_bottomoffset' => 14,
                 'new_animationin' => 'fade',
@@ -74,7 +74,7 @@ if (!class_exists('SimpleATHSOptions')) :
                 return '';
             }
 
-            $allowed_tags = ['{site_name}', '{network_name}', '{device}', '{icon}', '{add}'];
+            $allowed_tags = ['{site_name}', '{network_name}', '{device}', '{icon}', '{add}', '{more}', '{chevron}'];
             $placeholders = [];
             foreach ($allowed_tags as $index => $tag) {
                 $placeholder = '[[TAG_' . $index . ']]';
@@ -93,6 +93,7 @@ if (!class_exists('SimpleATHSOptions')) :
                 'p' => [],
                 'b' => [],
                 'i' => [],
+                'span' => ['class' => []],
             ];
             $sanitized = wp_kses($input, $allowed_html);
 
@@ -101,6 +102,34 @@ if (!class_exists('SimpleATHSOptions')) :
             }
 
             return $sanitized;
+        }
+
+        /**
+         * Outputs the structured description for the iOS balloon message field.
+         */
+        public static function display_ios_message_description() {
+            $is_network = is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__));
+            echo '<p class="description">' . esc_html__('Custom message for iOS devices. Available placeholders:', 'add-to-home-screen-wp') . '</p>';
+            echo '<ul class="description" style="list-style:disc;padding-left:1.5em;margin:.3em 0 .4em">';
+            if ($is_network) {
+                echo '<li><code>{network_name}</code> — ' . esc_html__('network name', 'add-to-home-screen-wp') . '</li>';
+            }
+            echo '<li><code>{site_name}</code> — ' . esc_html__('site name', 'add-to-home-screen-wp') . '</li>';
+            echo '<li><code>{device}</code> — ' . esc_html__('device (iPhone, Android…)', 'add-to-home-screen-wp') . '</li>';
+            echo '<li><code>{more}</code> — ' . esc_html__('••• More Options button', 'add-to-home-screen-wp') . '</li>';
+            echo '<li><code>{icon}</code> — ' . esc_html__('Share icon', 'add-to-home-screen-wp') . '</li>';
+            echo '<li><code>{chevron}</code> — ' . esc_html__('See More chevron (∨)', 'add-to-home-screen-wp') . '</li>';
+            echo '<li><code>{add}</code> — ' . esc_html__('Add to Home Screen icon', 'add-to-home-screen-wp') . '</li>';
+            echo '</ul>';
+            echo '<p class="description">' . wp_kses(
+                __('On iOS 16.4+, correct order: <code>{more}</code> → <code>{icon}</code> → <code>{chevron}</code> → <code>{add}</code>.', 'add-to-home-screen-wp'),
+                ['code' => []]
+            ) . '</p>';
+            echo '<p class="description">' . wp_kses(
+                __('Supported HTML: <code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;br&gt;</code>. For a larger intro line: <code>&lt;span class="addToHomeIntro"&gt;…&lt;/span&gt;</code>.', 'add-to-home-screen-wp'),
+                ['code' => []]
+            ) . '</p>';
+            echo '<p class="description"><em>' . esc_html__('Leave empty to use the default message.', 'add-to-home-screen-wp') . '</em></p>';
         }
 
         /**
@@ -359,14 +388,7 @@ public static function options_page_network() {
                     <th scope="row"><label for="new_message_ios"><?php esc_html_e('Floating Balloon Message for iOS', 'add-to-home-screen-wp'); ?></label></th>
                     <td>
                         <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
-                        <p class="description">
-                            <?php
-                            esc_html_e('Custom message for iOS devices. Use {site_name} for the site name, {device} for the user\'s device, {icon} for the first add icon, and {add} for the second add icon.', 'add-to-home-screen-wp');
-                            if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
-                                echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
-                            }
-                            ?>
-                        </p>
+                        <?php self::display_ios_message_description(); ?>
                     </td>
                 </tr>
                 <tr>
@@ -375,7 +397,7 @@ public static function options_page_network() {
                         <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
                         <p class="description">
                             <?php
-                            esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                            esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>, <br>). If empty, the default message will be used.', 'add-to-home-screen-wp');
                             if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
                                 echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
                             }
@@ -611,14 +633,7 @@ public static function options_page_network() {
                             <th scope="row"><label for="new_message_ios"><?php esc_html_e('Floating Balloon Message for iOS', 'add-to-home-screen-wp'); ?></label></th>
                             <td>
                                 <textarea rows="3" cols="50" name="new_message_ios" id="new_message_ios" placeholder="<?php echo esc_attr($defaults['new_message_ios']); ?>"><?php echo esc_textarea($settings['new_message_ios']); ?></textarea>
-                                <p class="description">
-                                    <?php
-                                    esc_html_e('Custom message for iOS devices. Use {site_name} for the site name, {device} for the user\'s device, {icon} for the first add icon, and {add} for the second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
-                                    if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
-                                        echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
-                                    }
-                                    ?>
-                                </p>
+                                <?php self::display_ios_message_description(); ?>
                             </td>
                         </tr>
                         <tr>
@@ -627,7 +642,7 @@ public static function options_page_network() {
                                 <textarea rows="3" cols="50" name="new_message_android" id="new_message_android" placeholder="<?php echo esc_attr($defaults['new_message_android']); ?>"><?php echo esc_textarea($settings['new_message_android']); ?></textarea>
                                 <p class="description">
                                     <?php
-                                    esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, the default message will be used.', 'add-to-home-screen-wp');
+                                    esc_html_e('Custom message for Android devices. Use {site_name} for the site name, and {device} for the user\'s device. Note: {icon} and {add} are not supported in the Android balloon. Supports basic HTML (e.g., <strong>, <i>, <br>). If empty, the default message will be used.', 'add-to-home-screen-wp');
                                     if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
                                         echo esc_html__(', {network_name} for the network name', 'add-to-home-screen-wp');
                                     }
@@ -1109,7 +1124,7 @@ function simple_aths_add_balloon_config_frontend() {
 
     // Get other settings
     $startdelay = absint(simple_aths_get_setting('new_startdelay', 2));
-    $lifespan = absint(simple_aths_get_setting('new_lifespan', 20));
+    $lifespan = absint(simple_aths_get_setting('new_lifespan', 30));
     $bottomoffset = absint(simple_aths_get_setting('new_bottomoffset', 14));
     $animationin = sanitize_text_field(simple_aths_get_setting('new_animationin', 'fade'));
     $animationout = sanitize_text_field(simple_aths_get_setting('new_animationout', 'fade'));

@@ -3,8 +3,8 @@ Contributors: tulipwork
 Donate link: https://paypal.me/ziyadbachalany
 Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
-Tested up to: 6.8
-Stable tag: 2.7.4
+Tested up to: 7.0
+Stable tag: 2.7.5
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -32,6 +32,8 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 - **Free & Pro Options**: Start with robust free features and unlock premium capabilities for advanced customization and analytics.
 
 **2025 Update**: Enhanced performance, improved multisite support, and new Pro features to make your PWA shine! Fully compliant with WordPress standards and optimized for the latest devices.
+
+**2026 Update**: Fully adapted to the new Safari iOS share sheet flow (iOS 16.4+), which requires additional steps to reach "Add to Home Screen".
 
 = Free Features =
 - **Customizable Floating Balloon**: Display a stylish prompt on iOS and Android with tailored messages, animations, and delays.
@@ -63,7 +65,7 @@ Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen
 - **Free Version**: See it in action on [tulipemedia.com](https://tulipemedia.com) (load on a mobile device for the full experience).
 - **Pro Version**: Experience the Pro version on [merco6.com](https://merco6.com) (mobile view recommended). You’ll see the custom top bar color and loading spinner in action — both are fully customizable in the Pro version.
 - **Video Demo**: Watch the demo video
-[youtube https://www.youtube.com/watch?v=Bd4i4k_DhE4]
+[youtube https://www.youtube.com/watch?v=N6bu2aL_CbY]
 
 = Who’s This For? =
 - **Bloggers** wanting to keep readers engaged on mobile.
@@ -121,16 +123,21 @@ Yes! The plugin is fully compatible with multisite. When activated network-wide,
 Both free and Pro versions offer a clean uninstall option. Enable **Delete Data on Uninstall** in **Settings > Add to Home Screen** to remove all plugin data. Uncheck it to preserve settings for reinstallation.
 
 == Screenshots ==
-1. Customizable floating balloon prompting users to add the site to their home screen (English).
-2. Floating balloon in action on iOS (French).
-3. Another example of the floating balloon in action on iOS (French).
+1. Customizable floating balloon prompting users to add the site to their home screen.
+2. Another example of the floating balloon in action on iOS.
+3. Installing the site as a web app on iOS — one tap to add it to the home screen.
 4. Android install button prompting users to add the site to their home screen.
 5. Free plugin settings page for easy configuration.
 6. Pro settings page with advanced PWA options and stats.
-7. Dashboard prompt for adding the admin dashboard as a PWA (Pro feature).
+7. Dashboard prompt for adding the WordPress admin dashboard as a PWA (Pro feature).
 8. Custom-colored bottom bar with Back, Forward, and Share buttons for smooth navigation in PWA mode (Pro feature)
 
 == Changelog ==
+= 2.7.5 =
+* **Fixed**: Updated iOS balloon instructions to include the ••• (More Options) step required by Safari on iOS 16.4+. The "Add to Home Screen" option is no longer directly visible in the share sheet on recent iOS versions — users must first tap ••• to expand the menu.
+* **New**: Added `{more}` placeholder for custom iOS messages, rendering the ••• More Options icon inline.
+* **Improved**: French (fr_FR) and German (de_DE) translations updated for the new iOS instructions.
+
 = 2.7.4 =
 * **Fixed**: Removed embedded URLs from all translatable strings to comply with GNU gettext best practices.
 * **Improved**: French (fr_FR) and German (de_DE) language files updated to 100% completion.
@@ -195,6 +202,9 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 * See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
+= 2.7.5 =
+Major update adding compatibility with Safari on iOS 16.4+. Update recommended.
+
 = 2.7.4 =
 Minor fixes related to translations.
 

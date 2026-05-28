@@ -127,37 +127,48 @@
     font-size: 1.3em;
 }
 
-#addToHomeScreen .addToHomeadd {
+/**
+ * Intro line (first line of the balloon message)
+ */
+#addToHomeScreen .addToHomeIntro {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 4px;
+}
+
+/**
+ * Common base for all inline iOS-style action icons
+ */
+#addToHomeScreen .addToHomeShare,
+#addToHomeScreen .addToHomeadd,
+#addToHomeScreen .addToHomeEllipsis,
+#addToHomeScreen .addToHomeChevron {
     display: inline-block;
-    width: 18px;
-    height: 18px;
-    vertical-align: -3px;
+    vertical-align: -4px;
     background-repeat: no-repeat;
-    background-size: 18px 18px;
     background-position: center center;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNCIgaGVpZ2h0PSIyNCIgdmlld0JveD0iMCAwIDI0IDI0IiBmaWxsPSJub25lIiBzdHJva2U9IiMxMDZjZmUiIHN0cm9rZS13aWR0aD0iMSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBjbGFzcz0ibHVjaWRlIGx1Y2lkZS1zcXVhcmUtcGx1cy1pY29uIGx1Y2lkZS1zcXVhcmUtcGx1cyI+PHJlY3Qgd2lkdGg9IjE4IiBoZWlnaHQ9IjE4IiB4PSIzIiB5PSIzIiByeD0iMiIvPjxwYXRoIGQ9Ik04IDEyaDgiLz48cGF0aCBkPSJNMTIgOHY4Ii8+PC9zdmc+");
     text-indent: -9999em;
     overflow: hidden;
 }
 
 /**
- * The 'share' icon, displayed on iOS >= 4.2 and Android
+ * The 'share' icon (box with up-arrow) — step 2: Partager
  */
 #addToHomeScreen .addToHomeShare {
-    display: inline-block;
-    width: 18px;
-    height: 15px;
-    background-repeat: no-repeat;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACQAAAAeCAQAAADu6HTYAAADPElEQVR4Xq3TX2gcRRzA8e/M7mVv2+TSNpc/TZtrY6jUGqgaSAmEChKLrYK0YH0RFC2CSCkEfCghiKU04J8qNigq6os+iQV98MHWFwVBrQQRWs21lBw5cw3NNb1/udu72RGG5Y77IzXW77D7sAwf5scyYoL6BGXSDKFZwaGpLvIUaeoCkvX1MmsM0Ny6oRSQYOLuIS+YZOpfQdqslpUxcZrzTVAz4qPwW2O3CeIwC/RSzeY6Ow1QhUrkr+YOWfEKDkEP8Rij7CHKJmrFSDHBdwGEE5wiGChPN+PnT8VdRtEIl1d4gRj/1EVe5ZSBKGh8iqQpo/Fo5+3C/gz0MYg4zgwbqday1/Q4B8BGQ45d/Hi54lakCrU5obOcidJpu1+Lg9whjabyaOYLnrIBFFaRD+xe2ybMDWY66GmP/WA9cGfGp0CWhy0wkMN8inepFiH2rV1j0NQSNQbFLRQnS8/8YSDBBpadfv4CYDub2fmeHDNAsL1MBWUel0iA+Xik6eHcyvD3vAMSU1TGuA/YRS+dD7ovCQN43GKRFCU20Kd3V/avDVVyAZ5niTEuLA5/zBGWg9EEEhfJKN200Tat8CmRAQb9+wv7soPlHt2tQorsz1uPbr0HTY4sJwrH47zJZwABBAKLMBoQXepwgTwdHCo+fXMkQ4lrxEmQ5AaXipPqDY9V2vn09tgvTPI71EEGYxM+/uMJLJ4svpgaWGKOi/xKgmqLSUGSUd5f2vIVJ/CgBaTIUsZ7ZBsn0+NzfMOXLFCXQyTcybN6ep5ZZgUOHn7jpfUpsZshdugPGf+E5zjbyHTSRyQ8xfRPPM/s63RHeuknSoT22mjmmnAOIMkUZ6D1xSfPPAfd1WFKM3sO2CMaHx8M1NjnXKHaAGGkOW0C02WeYHUz4qMtx+w5gUDS8NckYe5lHsMYwCZEPyEEmjLDZFmAS7CDviMdxyTkMNVBKEmYLvbiQQBIBBbCQG04bGQvFWz6CfsCQLWCigILFwcfkGYBiOpbYuOizTAyYyDdCtrGaRG1LCkIgMYEFhI0WqQZoSlbGRyHKe4qOx7iv2bVQW9dp4dlM/x6kmwnWQcd/Q3FCqwTEiT5s+6D5v/pb0SSHyg7uhMWAAAAAElFTkSuQmCC);
-    background-size: 18px 15px;
-    text-indent: -9999em;
-    overflow: hidden;
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjZTVlNWVhIi8+PHBhdGggZD0iTTEwIDMuNXY3IiBzdHJva2U9IiMzYzNjNDMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNNy41IDZMMTAgMy41IDEyLjUgNiIgc3Ryb2tlPSIjM2MzYzQzIiBzdHJva2Utd2lkdGg9IjEuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTcuNSA4LjVINmExIDEgMCAwMC0xIDF2NWExIDEgMCAwMDEgMWg4YTEgMSAwIDAwMS0xdi01YTEgMSAwIDAwLTEtMWgtMS41IiBzdHJva2U9IiMzYzNjNDMiIHN0cm9rZS13aWR0aD0iMS41IiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
 }
 
-#addToHomeScreen.addToHomeIOS7 .addToHomeShare {
-    width: 11px;
-    background-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAA8CAYAAAAQTCjdAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAASCQAAEgkB80sG3AAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAAKjSURBVGiB7dpPiFVVHMDxz7m9NCtMyI2bEJEC25WrEkzHUXCRraIwdNE8ZxfYIlcis1ZEbGEzT1QCF4XgH1CyWhUoJKIWNRGEiCNKmkSiYTzfcfGuOokx77x3ZlS8382959zfn+/invvn3RdijHIRBrwkOINCYXEcdjpb7VyiYdBsLScwt5y6IloYdzqXo36Ro0gY9IKWo+5JwmzBt2HQnBw9ehYNazyn5TBee8Dh+Vq+CWu92GufnkTDR6ab7gDeBNHouMM/l9tXTXM0fGBmL726Fg1Dam74EsvKqR8VNowL2Yzj5f7rnnE4DHq2235diYYhhTGfC94up35T0y+6di/ITU0rKVd+sEi0P7xr2pSJOu8zvF+OzqEv7vDH/WFxt7/cshy/ticsN8sXYUht0kXDOlsF9XJ4UaEvNoz9X3zc5bKaZThbyr5jzJ4wlNY7KTgM+ES0vhz+KeiPw36fKC/ucAF9uFBOrTZm26SJCtaV27+xIo7cXdkTEhvOoh+XyxprU1qnim7CQdGK2HAyKRexYVShT3RItDElN+mkjiP2Ym+S3f01hv2EVal5WW6hU0ElmptaqJuBpXg6MbeFH2LDpU6CQ93zWIKnEvs0cayGU3glMfkOo1jQYewZzOuyz7FC95Jwo5OgUFfgeg993hh/eTqCTxOSm/iuk8DY0Ap1b2GhtHXxsfZN4j/X0fOx4auEIknEhqv4OiUn1L13Z/+xWfWVaG4q0dxUormpRHNTieamEs1NJZqbJ1Q0jHvdiJo5S2cVjSNOCHZhn3/SnuYnIvl3yomIIz7MXZMn9hydRCrR3FSiualEc1OJ5qYSzU0lmptKNDePjWgwcPePT7/g+4cp8wCW4GXaryK3tL+mLdD5x62ppllgu7bso8q/2HIbzGWdNmWnSJwAAAAASUVORK5CYII=);
-    background-size: 11px 15px;
+/**
+ * The '+ in square' icon — step 4: Add to Home Screen
+ */
+#addToHomeScreen .addToHomeadd {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48cmVjdCB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjZTVlNWVhIi8+PHBhdGggZD0iTTEwIDZ2OE02IDEwaDgiIHN0cm9rZT0iIzNjM2M0MyIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWNhcD0icm91bmQiIGZpbGw9Im5vbmUiLz48L3N2Zz4=");
 }
 
 /**
@@ -188,6 +199,26 @@
     align-items: center; /* Centre verticalement */
     justify-content: center; /* Centre horizontalement */
     text-indent: 0; /* Supprime le décalage horizontal */
+}
+
+/**
+ * The '•••' (More Options) icon — step 1: Safari bottom bar
+ */
+#addToHomeScreen .addToHomeEllipsis {
+    width: 30px;
+    height: 20px;
+    background-size: 30px 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDMwIDIwIj48cmVjdCB3aWR0aD0iMzAiIGhlaWdodD0iMjAiIHJ4PSI0IiBmaWxsPSIjZTVlNWVhIi8+PGNpcmNsZSBjeD0iOCIgY3k9IjEwIiByPSIyLjIiIGZpbGw9IiMzYzNjNDMiLz48Y2lyY2xlIGN4PSIxNSIgY3k9IjEwIiByPSIyLjIiIGZpbGw9IiMzYzNjNDMiLz48Y2lyY2xlIGN4PSIyMiIgY3k9IjEwIiByPSIyLjIiIGZpbGw9IiMzYzNjNDMiLz48L3N2Zz4=");
+}
+
+/**
+ * The '∨' chevron icon — step 3: "En voir plus / See More" in share sheet
+ */
+#addToHomeScreen .addToHomeChevron {
+    width: 20px;
+    height: 20px;
+    background-size: 20px 20px;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgdmlld0JveD0iMCAwIDIwIDIwIj48Y2lyY2xlIGN4PSIxMCIgY3k9IjEwIiByPSIxMCIgZmlsbD0iI2U1ZTVlYSIvPjxwYXRoIGQ9Ik02LjUgOC41bDMuNSAzLjUgMy41LTMuNSIgc3Ryb2tlPSIjM2MzYzQzIiBzdHJva2Utd2lkdGg9IjEuOCIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIiBzdHJva2UtbGluZWpvaW49InJvdW5kIiBmaWxsPSJub25lIi8+PC9zdmc+");
 }
 
 /* Prevent balloon from stretching to full screen height on Chrome Android/iOS */

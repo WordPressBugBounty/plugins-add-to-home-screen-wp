@@ -19,17 +19,26 @@ msgstr ""
 
 #: add-to-home-screen-wp.php:44
 msgid ""
-"🚀 Add {network_name} ({site_name}) to your {device} with {icon} and {add} "
-"now! 🌟"
+"<span class=\"addToHomeIntro\">Install <strong>{network_name} "
+"({site_name})</strong> on your {device}:</span><br>1. Tap {more}<br>"
+"2. Tap {icon} Share<br>3. Tap {chevron} See More<br>4. {add} "
+"<strong>Add to Home Screen</strong>"
 msgstr ""
-"🚀 Ajoutez {network_name} ({site_name}) à votre {device} avec {icon} et "
-"{add} dès maintenant ! 🌟"
+"<span class=\"addToHomeIntro\">Installez <strong>{network_name} "
+"({site_name})</strong> sur votre {device} :</span><br>1. Appuyez sur "
+"{more}<br>2. Appuyez sur {icon} Partager<br>3. Appuyez sur {chevron} En "
+"voir plus<br>4. {add} <strong>Ajouter à l'écran d'accueil</strong>"
 
 #: add-to-home-screen-wp.php:45
-msgid "🚀 Add {site_name} to your {device} with {icon} and {add} now! 🌟"
+msgid ""
+"<span class=\"addToHomeIntro\">Install <strong>{site_name}</strong> on your "
+"{device}:</span><br>1. Tap {more}<br>2. Tap {icon} Share<br>3. Tap {chevron} "
+"See More<br>4. {add} <strong>Add to Home Screen</strong>"
 msgstr ""
-"🚀 Ajoutez {site_name} à votre {device} avec {icon} et {add} dès "
-"maintenant ! 🌟"
+"<span class=\"addToHomeIntro\">Installez <strong>{site_name}</strong> sur "
+"votre {device} :</span><br>1. Appuyez sur {more}<br>2. Appuyez sur {icon} "
+"Partager<br>3. Appuyez sur {chevron} En voir plus<br>4. {add} "
+"<strong>Ajouter à l'écran d'accueil</strong>"
 
 #: add-to-home-screen-wp.php:47
 msgid "🚀 Add {network_name} ({site_name}) to your {device} now! 🌟"
@@ -196,14 +205,15 @@ msgstr "Message de l'infobulle flottante pour iOS"
 #: add-to-home-screen-wp.php:364
 msgid ""
 "Custom message for iOS devices. Use {site_name} for the site name, {device} "
-"for the user's device, {icon} for the first add icon, and {add} for the "
-"second add icon."
+"for the device, {more} for the ••• More Options button, {icon} for the Share "
+"icon, {chevron} for the See More chevron (∨), and {add} for the Add icon. On "
+"iOS 16.4+, the correct order is: {more} → {icon} → {chevron} → {add}."
 msgstr ""
 "Message personnalisé pour les appareils iOS. Utilisez {site_name} pour le "
-"nom du site, {device} pour l'appareil de l'utilisateur, {icon} pour la "
-"première icône d'ajout, et {add} pour la seconde icône d'ajout. Supporte le "
-"HTML de base (par exemple, <strong>, <i>). Si vide, le message par défaut "
-"sera utilisé."
+"nom du site, {device} pour l'appareil, {more} pour le bouton ••• Plus "
+"d'options, {icon} pour l'icône Partager, {chevron} pour le chevron En voir "
+"plus (∨), et {add} pour l'icône Ajouter. Sur iOS 16.4+, l'ordre correct est : "
+"{more} → {icon} → {chevron} → {add}."
 
 #: add-to-home-screen-wp.php:373 add-to-home-screen-wp.php:625
 msgid "Floating Balloon Message for Android"
@@ -213,13 +223,13 @@ msgstr "Message de l'infobulle flottante pour Android"
 msgid ""
 "Custom message for Android devices. Use {site_name} for the site name, and "
 "{device} for the user's device. Note: {icon} and {add} are not supported in "
-"the Android balloon. Supports basic HTML (e.g., <strong>, <i>). If empty, "
+"the Android balloon. Supports basic HTML (e.g., <strong>, <i>, <br>). If empty, "
 "the default message will be used."
 msgstr ""
 "Message personnalisé pour les appareils Android. Utilisez {site_name} pour "
 "le nom du site et {device} pour l'appareil de l'utilisateur. Remarque : "
 "{icon} et {add} ne sont pas pris en charge dans l'infobulle Android. "
-"Supporte le HTML de base (par exemple, <strong>, <i>). Si vide, le message "
+"Supporte le HTML de base (par exemple, <strong>, <i>, <br>). Si vide, le message "
 "par défaut sera utilisé."
 
 #: add-to-home-screen-wp.php:387 add-to-home-screen-wp.php:639
@@ -345,15 +355,18 @@ msgstr ""
 #: add-to-home-screen-wp.php:616
 msgid ""
 "Custom message for iOS devices. Use {site_name} for the site name, {device} "
-"for the user's device, {icon} for the first add icon, and {add} for the "
-"second add icon. Supports basic HTML (e.g., <strong>, <i>). If empty, the "
-"default message will be used."
+"for the device, {more} for the ••• More Options button, {icon} for the Share "
+"icon, {chevron} for the See More chevron (∨), and {add} for the Add icon. On "
+"iOS 16.4+, the correct order is: {more} → {icon} → {chevron} → {add}. "
+"Supports basic HTML (e.g., <strong>, <i>, <br>). If empty, the default message will "
+"be used."
 msgstr ""
 "Message personnalisé pour les appareils iOS. Utilisez {site_name} pour le "
-"nom du site, {device} pour l'appareil de l'utilisateur, {icon} pour la "
-"première icône d'ajout, et {add} pour la seconde icône d'ajout. Supporte le "
-"HTML de base (par exemple, <strong>, <i>). Si vide, le message par défaut "
-"sera utilisé."
+"nom du site, {device} pour l'appareil, {more} pour le bouton ••• Plus "
+"d'options, {icon} pour l'icône Partager, {chevron} pour le chevron En voir "
+"plus (∨), et {add} pour l'icône Ajouter. Sur iOS 16.4+, l'ordre correct est : "
+"{more} → {icon} → {chevron} → {add}. Supporte le HTML de base (par exemple, "
+"<strong>, <i>, <br>). Si vide, le message par défaut sera utilisé."
 
 #: add-to-home-screen-wp.php:706
 msgid "Web App Title"
@@ -621,3 +634,75 @@ msgstr ""
 #: add-to-home-screen-wp.php:1405
 msgid "PWA settings are applied for mobile devices only."
 msgstr "Les paramètres PWA s'appliquent uniquement aux appareils mobiles."
+
+#: add-to-home-screen-wp.php:412 add-to-home-screen-wp.php:664
+#, php-format
+msgid "Seconds before showing the balloon. Default: %s"
+msgstr "Secondes avant l'affichage de l'infobulle. Par défaut : %s"
+
+#: add-to-home-screen-wp.php:420 add-to-home-screen-wp.php:672
+#, php-format
+msgid "Seconds before hiding the balloon. Default: %s"
+msgstr "Secondes avant la disparition de l'infobulle. Par défaut : %s"
+
+#: add-to-home-screen-wp.php:428 add-to-home-screen-wp.php:680
+#, php-format
+msgid "Days before showing the balloon again after it has been closed. Default: %s"
+msgstr "Jours avant de réafficher l'infobulle après sa fermeture. Par défaut : %s"
+
+#: add-to-home-screen-wp.php:435 add-to-home-screen-wp.php:687
+#, php-format
+msgid "Distance in pixels from the bottom or top. Default: %s"
+msgstr "Distance en pixels depuis le bas ou le haut. Par défaut : %s"
+
+#: add-to-home-screen-wp.php:463 add-to-home-screen-wp.php:715
+msgid "Save Settings"
+msgstr "Enregistrer les réglages"
+
+#: add-to-home-screen-wp.php:915
+msgid "Save Uninstall Settings"
+msgstr "Enregistrer les réglages de désinstallation"
+
+#: add-to-home-screen-wp.php:108
+msgid "Custom message for iOS devices. Available placeholders:"
+msgstr "Message personnalisé pour les appareils iOS. Balises disponibles :"
+
+#: add-to-home-screen-wp.php:115
+msgid "network name"
+msgstr "nom du réseau"
+
+#: add-to-home-screen-wp.php:117
+msgid "site name"
+msgstr "nom du site"
+
+#: add-to-home-screen-wp.php:118
+msgid "device (iPhone, Android…)"
+msgstr "appareil (iPhone, Android…)"
+
+#: add-to-home-screen-wp.php:119
+msgid "••• More Options button"
+msgstr "bouton ••• Plus d'options"
+
+#: add-to-home-screen-wp.php:120
+msgid "Share icon"
+msgstr "icône Partager"
+
+#: add-to-home-screen-wp.php:121
+msgid "See More chevron (∨)"
+msgstr "chevron En voir plus (∨)"
+
+#: add-to-home-screen-wp.php:122
+msgid "Add to Home Screen icon"
+msgstr "icône Ajouter à l'écran d'accueil"
+
+#: add-to-home-screen-wp.php:124
+msgid "On iOS 16.4+, correct order: <code>{more}</code> → <code>{icon}</code> → <code>{chevron}</code> → <code>{add}</code>."
+msgstr "Sur iOS 16.4+, ordre correct : <code>{more}</code> → <code>{icon}</code> → <code>{chevron}</code> → <code>{add}</code>."
+
+#: add-to-home-screen-wp.php:128
+msgid "Supported HTML: <code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;br&gt;</code>. For a larger intro line: <code>&lt;span class=\"addToHomeIntro\"&gt;…&lt;/span&gt;</code>."
+msgstr "HTML supporté : <code>&lt;strong&gt;</code>, <code>&lt;i&gt;</code>, <code>&lt;br&gt;</code>. Pour une ligne d'intro plus grande : <code>&lt;span class=\"addToHomeIntro\"&gt;…&lt;/span&gt;</code>."
+
+#: add-to-home-screen-wp.php:132
+msgid "Leave empty to use the default message."
+msgstr "Laisser vide pour utiliser le message par défaut."
