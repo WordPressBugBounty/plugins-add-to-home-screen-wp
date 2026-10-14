@@ -3,8 +3,8 @@ Contributors: tulipwork
 Donate link: https://paypal.me/ziyadbachalany
 Tags: PWA, web app, add to home screen, mobile, multisite
 Requires at least: 6.7
-Tested up to: 7.0
-Stable tag: 2.7.5
+Tested up to: 7.1
+Stable tag: 2.7.6
 Requires PHP: 7.4
 License: GPLv2 or later
 License URI: https://www.gnu.org/licenses/gpl-2.0.html
@@ -133,6 +133,9 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 8. Custom-colored bottom bar with Back, Forward, and Share buttons for smooth navigation in PWA mode (Pro feature)
 
 == Changelog ==
+= 2.7.6 =
+* **Fixed**: Custom messages saved with the old % placeholders (%site_name, %device, %icon, %add…) are displayed correctly again: they are now automatically converted to the {site_name}, {device}… format.
+
 = 2.7.5 =
 * **Fixed**: Updated iOS balloon instructions to include the ••• (More Options) step required by Safari on iOS 16.4+. The "Add to Home Screen" option is no longer directly visible in the share sheet on recent iOS versions — users must first tap ••• to expand the menu.
 * **New**: Added `{more}` placeholder for custom iOS messages, rendering the ••• More Options icon inline.
@@ -202,6 +205,9 @@ Both free and Pro versions offer a clean uninstall option. Enable **Delete Data 
 * See the full changelog in the plugin’s documentation for details on versions 0.1 to 2.4.
 
 == Upgrade Notice ==
+= 2.7.6 =
+Fixes custom messages written with the old % placeholders. Update recommended.
+
 = 2.7.5 =
 Major update adding compatibility with Safari on iOS 16.4+. Update recommended.
 

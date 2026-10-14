@@ -3,7 +3,7 @@
 Plugin Name: Add to Home Screen & Progressive Web App
 Plugin URI: https://tulipemedia.com/en/add-to-home-screen-wordpress-plugin/
 Description: Turn your WordPress site into a Web App (PWA) with a stylish 'Add to Home Screen' prompt for iOS & Android. Boost engagement without native app costs!
-Version: 2.7.5
+Version: 2.7.6
 Author: Ziyad Bachalany
 Author URI: https://tulipemedia.com
 License: GPL-2.0-or-later
@@ -958,9 +958,22 @@ function simple_aths_get_setting($key, $default = '') {
     $default = isset($defaults[$key]) ? $defaults[$key] : $default;
 
     if (is_multisite() && is_plugin_active_for_network(plugin_basename(__FILE__))) {
-        return get_network_option(null, $key, $default);
+        $value = get_network_option(null, $key, $default);
+    } else {
+        $value = get_option($key, $default);
     }
-    return get_option($key, $default);
+    return simple_aths_legacy_placeholders($value);
+}
+
+/**
+ * Messages enregistrés avant la 2.7.3 : anciens marqueurs %site_name, %device… convertis en {site_name}, {device}…
+ * (la prise en charge des % avait été retirée en 2.7.4, les messages personnalisés s'affichaient alors tels quels).
+ */
+function simple_aths_legacy_placeholders($value) {
+    if (!is_string($value) || strpos($value, '%') === false) {
+        return $value;
+    }
+    return preg_replace('/%(site_name|network_name|device|icon|add|more|chevron)\b/', '{$1}', $value);
 }
 
 /**
